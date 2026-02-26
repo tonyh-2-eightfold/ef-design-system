@@ -1,0 +1,5 @@
+/**
+ * Eightfold Design System - Base Styles
+ * Import tokens first; fonts should be loaded by the consuming app.
+ */
+@import '../tokens/typography.css';
