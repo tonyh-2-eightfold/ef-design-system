@@ -3,6 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import * as Tabs from '@radix-ui/react-tabs'
 import type { NavbarProps } from './Navbar.types'
+import { Input } from '../Input/Input'
 import './Navbar.css'
 
 function DefaultLink({
@@ -31,11 +32,13 @@ export function Navbar({
   onSwitchUser,
   activePath = '',
   homePath = '/',
-  logoSrc = '/eightfold-logo.svg',
+  logoSrc = '/eightfold-logo.svg', // use EIGHTFOLD_LOGO_PATH from design system when serving public/
   productName = 'Career Hub',
   productIconSrc = '/career-hub-icon.svg',
   searchPlaceholder = 'Type to search',
   onSearchChange,
+  onSearchIconClick,
+  actionButtons = [],
   LinkComponent = DefaultLink,
   NavLinkComponent,
 }: NavbarProps) {
@@ -167,33 +170,59 @@ export function Navbar({
         </div>
         <div className="navbar__right">
           <div className="navbar__search">
-            <span className="material-symbols-outlined navbar__search-icon">search</span>
-            <input
-              type="search"
-              placeholder={searchPlaceholder}
-              className="navbar__search-input"
+            <span className="navbar__search-input">
+              <Input
+                size="medium"
+                shape="pill"
+                leadingIcon="search"
+                placeholder={searchPlaceholder}
+                aria-label="Search"
+                onChange={(e) => onSearchChange?.(e.target.value)}
+              />
+            </span>
+            <button
+              type="button"
+              className="navbar__search-icon-btn navbar__btn"
               aria-label="Search"
-              onChange={(e) => onSearchChange?.(e.target.value)}
-            />
+              onClick={() => onSearchIconClick?.()}
+            >
+              <span className="material-symbols-outlined navbar__btn-icon">search</span>
+            </button>
           </div>
           <div className="navbar__divider navbar__divider--vertical" />
-          <button type="button" className="navbar__btn navbar__btn--menu" aria-label="App switcher">
-            <span className="material-symbols-outlined navbar__btn-icon">apps</span>
-            <span className="material-symbols-outlined navbar__btn-icon navbar__btn-icon--sm">expand_more</span>
-          </button>
+          <div className="navbar__right-icons">
+            {actionButtons.map((btn, i) => (
+              <button
+                key={i}
+                type="button"
+                className="navbar__btn navbar__btn--action"
+                aria-label={btn.ariaLabel}
+                onClick={btn.onClick}
+              >
+                {btn.iconSrc ? (
+                  <img src={btn.iconSrc} alt="" className="navbar__btn-icon-img" width={20} height={20} />
+                ) : (
+                  <span className="material-symbols-outlined navbar__btn-icon">{btn.icon ?? 'circle'}</span>
+                )}
+              </button>
+            ))}
+            <button type="button" className="navbar__btn navbar__btn--menu" aria-label="App switcher">
+              <span className="material-symbols-outlined navbar__btn-icon">apps</span>
+            </button>
+          </div>
           <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
               <button type="button" className="navbar__avatar" aria-label="Open profile menu">
                 <span
-                  className="navbar__avatar-inner"
-                  style={user.avatarColor ? { background: user.avatarColor } : undefined}
+                  className={`navbar__avatar-inner ${user.avatarColor ? 'navbar__avatar-inner--colored' : ''}`}
+                  style={user.avatarColor ? { backgroundColor: user.avatarColor } : undefined}
                 >
                   {avatarError || !avatarSrc ? (
-                    user.avatarInitials ?? '?'
+                    <span className="navbar__avatar-initials">{user.avatarInitials ?? '?'}</span>
                   ) : (
                     <img
                       src={avatarSrc}
-                      alt={user.name}
+                      alt=""
                       className="navbar__avatar-img"
                       onError={() => setAvatarError(true)}
                     />

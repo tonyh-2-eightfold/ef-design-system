@@ -16,7 +16,11 @@
   --color-primary-blue-green: #025966;
   --color-bg2-blue-green: #B0F3FE;
   --gradient-ask: linear-gradient(90deg, rgba(188, 228, 255, 1) 0%, rgba(202, 207, 252, 1) 49%, rgba(234, 211, 232, 1) 100%);
+  /* Avatar initials - Octuple DS default (Figma 14312-85602 Initials Size=S 40) */
+  --color-avatar-initials-bg: #993838; /* Secondary Colors [day]/$color-secondary-red */
+  --color-avatar-initials-text: #FFFFFF; /* Common Colors [day]/$text-color-default-2 */
   /* Layout */
+  --navbar-height: 80px;
   --radius: 5px;
   --blur: 10px;
   --tab-gap: 16px;
@@ -25,6 +29,10 @@
   /* Responsive breakpoints from Figma (Desktop 1440, Tablet 1024, Mobile 360) */
   --breakpoint-tablet: 1024px;
   --breakpoint-mobile: 360px;
+  /* Show hamburger when width < this so tabs never compress (all items in drawer); keep high so right never overflows */
+  --breakpoint-navbar-menu: 1440px;
+  /* Below this width, show search icon instead of full search bar (value used in media query) */
+  --breakpoint-search-icon: 768px;
   /* Typography - Octuple DS Theme 2 tokens */
   --font-body2: var(--typography-header5);
   --font-button2: var(--typography-button2);
@@ -48,26 +56,33 @@
   -webkit-font-smoothing: antialiased;
 }
 
+/* Top scroll layer - above page content; menus/sheets/dialogs use higher z-index */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  height: var(--navbar-height);
+  z-index: 1000;
+  overflow-x: hidden; /* right side never overflows viewport */
 }
 
 .navbar__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px; /* minimum 24px between menu (tabs/left) and search (right) */
   padding: 0 20px 0 24px;
-  height: 80px;
+  height: var(--navbar-height);
+  min-height: var(--navbar-height);
+  max-height: var(--navbar-height);
   background: var(--color-bg-glass);
   backdrop-filter: blur(var(--blur));
   -webkit-backdrop-filter: blur(var(--blur));
   border-bottom: 1px solid var(--color-bg2-grey);
 }
 
+/* Menu (tabs) never compress; below --breakpoint-navbar-menu we show hamburger so all items in drawer */
 .navbar__left {
   display: flex;
   align-items: stretch;
@@ -151,7 +166,7 @@
 .navbar__tabs {
   flex: 1;
   align-self: stretch;
-  min-height: 80px;
+  min-height: var(--navbar-height);
 }
 
 .navbar__tabs-list {
@@ -162,8 +177,7 @@
   margin: 0;
   padding: 0;
   height: 100%;
-  min-height: 80px;
-  overflow-x: auto;
+  min-height: var(--navbar-height);
   flex-wrap: nowrap;
 }
 
@@ -239,46 +253,54 @@
   width: 20px;
 }
 
-/* Right section - Career Hub: search input, divider, app switcher, avatar (layout_VY5WOR: gap 12px) */
+/* Right section - single gap for even spacing: search | pipe | icon buttons | avatar */
 .navbar__right {
+  --navbar-right-gap: 12px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--navbar-right-gap);
+  flex-shrink: 0; /* always show search and avatar when window is narrowed */
 }
 
-/* Search input - layout_J4JDA1: padding 6px 10px, gap 6px; layout_V0UXFV: width 280px */
+.navbar__right-icons {
+  display: flex;
+  align-items: center;
+  gap: var(--navbar-right-gap); /* same as parent so all spacing is even */
+  margin: 0;
+}
+
+/* No extra margin so flex gap is the only spacing */
+.navbar__right .navbar__search,
+.navbar__right .navbar__divider--vertical {
+  margin: 0;
+}
+
+/* Search - full input by default; icon is hidden and must only appear when input is hidden (see media query) */
 .navbar__search {
   display: flex;
   align-items: center;
-  gap: 6px;
-  width: 280px;
-  height: 40px;
-  padding: 6px 10px;
-  background: var(--color-bg-default);
-  border: 1px solid var(--color-tertiary-grey);
-  border-radius: 24px;
-}
-
-.navbar__search-icon {
-  font-size: 20px !important;
-  color: var(--color-tertiary-grey);
-  flex-shrink: 0;
+  width: 320px;
 }
 
 .navbar__search-input {
-  flex: 1;
+  display: flex;
+  width: 100%;
   min-width: 0;
-  padding: 0;
-  font: 500 16px/1.5 var(--font-family);
-  color: var(--color-primary-grey);
-  background: none;
-  border: none;
-  outline: none;
 }
 
-/* Typography/Body2 for placeholder: Gilroy 500, 16px, tertiary grey */
-.navbar__search-input::placeholder {
-  color: var(--color-tertiary-grey);
+.navbar__search-input .input {
+  width: 100%;
+}
+
+/* Search icon button: only visible when search input is hidden (same breakpoint); never show with input */
+.navbar__search-icon-btn {
+  display: none !important;
+  visibility: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }
 
 .navbar__btn {
@@ -304,6 +326,14 @@
 .navbar__btn-icon {
   font-size: 20px !important;
   color: var(--color-primary-grey);
+}
+
+.navbar__btn-icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
 }
 
 .navbar__btn-icon--sm {
@@ -352,28 +382,50 @@
   flex-shrink: 0;
 }
 
+/* Avatar initials - Octuple DS Figma 14312-85602 (Initials Size=S 40): EF palette */
 .navbar__avatar-inner {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
-  font: var(--font-body3);
-  font-weight: 600;
-  color: var(--color-primary-grey);
-  background: var(--color-bg2-grey);
+  min-width: 40px;
+  min-height: 40px;
+  flex-shrink: 0;
+  font: 600 16px/1.5 var(--font-family); /* Typography/Header5 */
+  color: var(--color-avatar-initials-text);
+  background: var(--color-avatar-initials-bg);
   border-radius: 50%;
   overflow: hidden;
+}
+
+/* Custom background (avatarColor prop): override bg, keep white initials */
+.navbar__avatar-inner--colored {
+  color: var(--color-avatar-initials-text);
+}
+
+.navbar__avatar-inner--colored .navbar__avatar-initials {
+  color: var(--color-avatar-initials-text);
+}
+
+.navbar__avatar:hover .navbar__avatar-inner:not(.navbar__avatar-inner--colored) {
+  filter: brightness(0.9);
+}
+
+.navbar__avatar:hover .navbar__avatar-inner--colored {
+  filter: brightness(0.9);
+}
+
+.navbar__avatar-initials {
+  color: inherit;
+  user-select: none;
 }
 
 .navbar__avatar-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.navbar__avatar:hover .navbar__avatar-inner {
-  background: #C4C8D1;
+  display: block;
 }
 
 /* Avatar dropdown menu - Octuple DS Menu (Large) */
@@ -384,7 +436,7 @@
   background: transparent;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
-  z-index: 200;
+  z-index: 1100;
   animation: navbar-avatar-menu-in 0.15s ease-out;
 }
 
@@ -503,8 +555,8 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ========== Responsive: Tablet (≤1024px) ========== */
-@media (max-width: 1024px) {
+/* ========== Navbar menu breakpoint: show hamburger so tabs never compress; 1440px keeps right side in viewport (matches --breakpoint-navbar-menu) ========== */
+@media (max-width: 1440px) {
   .navbar__menu-btn {
     display: flex;
   }
@@ -518,6 +570,27 @@
   }
 }
 
+/* ========== Search: when search bar doesn't fit, hide input and show icon only (icon never shown when input is visible) ========== */
+@media (max-width: 768px) {
+  .navbar__search {
+    width: auto;
+  }
+
+  .navbar__search-input {
+    display: none !important;
+  }
+
+  .navbar__search-icon-btn {
+    display: flex !important;
+    visibility: visible;
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+  }
+}
+
 /* ========== Responsive: Mobile (≤360px) ========== */
 @media (max-width: 360px) {
   .navbar__logo,
@@ -528,11 +601,6 @@
   .navbar__left {
     gap: 12px;
   }
-
-  .navbar__search {
-    width: 200px;
-    min-width: 120px;
-  }
 }
 
 /* ========== Mobile menu drawer ========== */
@@ -540,7 +608,7 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
-  z-index: 101;
+  z-index: 1001;
   animation: navbar-overlay-in 0.2s ease-out;
 }
 
@@ -553,7 +621,7 @@
   max-width: 320px;
   background: var(--color-bg-default);
   box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
-  z-index: 102;
+  z-index: 1002;
   padding: 24px 0;
   animation: navbar-drawer-in 0.25s ease-out;
   outline: none;

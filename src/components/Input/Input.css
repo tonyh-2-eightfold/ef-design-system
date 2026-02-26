@@ -1,0 +1,173 @@
+/**
+ * Octuple DS Theme 2 - Input field
+ * Figma: https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?node-id=14335-55533
+ */
+.input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  background: var(--color-bg-default, #FFFFFF);
+  border: 1px solid var(--color-tertiary-grey, #69717F);
+  color: var(--color-primary-grey, #343C4C);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.input:focus-within {
+  border-color: var(--color-secondary-blue, #146DA6);
+  outline: none;
+}
+
+.input:hover:not(.input--disabled):not(:focus-within) {
+  border-color: var(--color-secondary-grey, #4F5666);
+}
+
+.input--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.input--error {
+  border-color: #C15151;
+}
+
+.input--error:focus-within {
+  border-color: #C15151;
+}
+
+.input--warning {
+  border-color: #C97E19;
+}
+
+.input--warning:focus-within {
+  border-color: #C97E19;
+}
+
+.input--success {
+  border-color: #3D8F79;
+}
+
+.input--success:focus-within {
+  border-color: #3D8F79;
+}
+
+/* Shape: Rounded corner (12/10/8px) vs Pill (24px capsule) - Figma Rounded corner / Pill shape */
+.input--rounded.input--large { border-radius: 12px; }
+.input--rounded.input--medium { border-radius: 10px; }
+.input--rounded.input--small { border-radius: 8px; }
+.input--pill.input--large,
+.input--pill.input--medium,
+.input--pill.input--small {
+  border-radius: 24px;
+}
+
+/* Size: Large - padding 10px 12px, gap 8px, Body1 18px */
+.input--large {
+  padding: 10px 12px;
+  gap: 8px;
+  min-height: 44px;
+}
+
+.input--large .input__field {
+  font: 500 18px/1.33 var(--font-family);
+}
+
+.input--large .input__leading-icon,
+.input--large .input__trailing-icon,
+.input--large .input__clear .material-symbols-outlined {
+  font-size: 24px !important;
+}
+
+/* Size: Medium - padding 6px 10px, gap 6px, Body2 16px */
+.input--medium {
+  padding: 6px 10px;
+  gap: 6px;
+  min-height: 36px;
+}
+
+.input--medium .input__field {
+  font: var(--typography-body2);
+}
+
+.input--medium .input__leading-icon,
+.input--medium .input__trailing-icon,
+.input--medium .input__clear .material-symbols-outlined {
+  font-size: 20px !important;
+}
+
+/* Size: Small - padding 4px 8px, gap 4px, Body3 14px */
+.input--small {
+  padding: 4px 8px;
+  gap: 4px;
+  min-height: 28px;
+}
+
+.input--small .input__field {
+  font: var(--typography-body3);
+}
+
+.input--small .input__leading-icon,
+.input--small .input__trailing-icon,
+.input--small .input__clear .material-symbols-outlined {
+  font-size: 18px !important;
+}
+
+.input__field {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  outline: none;
+}
+
+.input__field::placeholder {
+  color: var(--color-tertiary-grey, #69717F);
+}
+
+.input__field:disabled {
+  cursor: inherit;
+}
+
+.input__leading-icon,
+.input__trailing-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-tertiary-grey, #69717F);
+  flex-shrink: 0;
+}
+
+.input:focus-within .input__leading-icon,
+.input:hover:not(.input--disabled) .input__leading-icon {
+  color: var(--color-primary-grey, #343C4C);
+}
+
+.input__trailing {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.input__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.input__clear:hover:not(:disabled) {
+  color: var(--color-primary-grey, #343C4C);
+}
+
+.input__clear:disabled {
+  cursor: not-allowed;
+}
