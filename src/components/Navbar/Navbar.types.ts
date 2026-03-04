@@ -62,6 +62,8 @@ export interface NavbarProps {
   productName?: string
   /** Current product icon src. Use getNavbarProductConfig(productId) for design system assets. */
   productIconSrc?: string
+  /** When true, hide the product icon (EF logo remains visible). */
+  hideProductIcon?: boolean
   /** Search placeholder */
   searchPlaceholder?: string
   /** Called when search input changes */

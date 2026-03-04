@@ -32,9 +32,10 @@ export function Navbar({
   onSwitchUser,
   activePath = '',
   homePath = '/',
-  logoSrc = '/eightfold-logo.svg', // use EIGHTFOLD_LOGO_PATH from design system when serving public/
+  logoSrc = '/eightfold-logo.svg',
   productName = 'Career Hub',
   productIconSrc = '/career-hub-icon.svg',
+  hideProductIcon = false,
   searchPlaceholder = 'Type to search',
   onSearchChange,
   onSearchIconClick,
@@ -158,8 +159,23 @@ export function Navbar({
             <img src={logoSrc} alt="" className="navbar__logo" />
             <div className="navbar__divider" />
             <div className="navbar__product">
-              <img src={productIconSrc} alt="" className="navbar__product-icon" width={40} height={40} />
-              <span className="navbar__product-name">{productName}</span>
+              {!hideProductIcon && (
+                <img src={productIconSrc} alt="" className="navbar__product-icon" width={40} height={40} />
+              )}
+              <span
+                className={`navbar__product-name ${productName.trim().split(/\s+/).length > 1 ? 'navbar__product-name--two-lines' : ''}`}
+              >
+                {(() => {
+                  const words = productName.trim().split(/\s+/)
+                  if (words.length <= 1) return productName
+                  return (
+                    <>
+                      <span className="navbar__product-name__line">{words[0]}</span>
+                      <span className="navbar__product-name__line">{words.slice(1).join(' ')}</span>
+                    </>
+                  )
+                })()}
+              </span>
             </div>
           </Link>
           <Tabs.Root defaultValue={tabs[0]?.id ?? 'home'} className="navbar__tabs">
@@ -169,27 +185,29 @@ export function Navbar({
           </Tabs.Root>
         </div>
         <div className="navbar__right">
-          <div className="navbar__search">
-            <span className="navbar__search-input">
-              <Input
-                size="medium"
-                shape="pill"
-                leadingIcon="search"
-                placeholder={searchPlaceholder}
+          <div className="navbar__search-wrap">
+            <div className="navbar__search">
+              <span className="navbar__search-input">
+                <Input
+                  size="small"
+                  shape="pill"
+                  leadingIcon="search"
+                  placeholder={searchPlaceholder}
+                  aria-label="Search"
+                  onChange={(e) => onSearchChange?.(e.target.value)}
+                />
+              </span>
+              <button
+                type="button"
+                className="navbar__search-icon-btn navbar__btn"
                 aria-label="Search"
-                onChange={(e) => onSearchChange?.(e.target.value)}
-              />
-            </span>
-            <button
-              type="button"
-              className="navbar__search-icon-btn navbar__btn"
-              aria-label="Search"
-              onClick={() => onSearchIconClick?.()}
-            >
-              <span className="material-symbols-outlined navbar__btn-icon">search</span>
-            </button>
+                onClick={() => onSearchIconClick?.()}
+              >
+                <span className="material-symbols-outlined navbar__btn-icon">search</span>
+              </button>
+            </div>
+            <div className="navbar__divider navbar__divider--vertical" />
           </div>
-          <div className="navbar__divider navbar__divider--vertical" />
           <div className="navbar__right-icons">
             {actionButtons.map((btn, i) => (
               <button
@@ -282,7 +300,20 @@ export function Navbar({
           <Dialog.Overlay className="navbar__menu-overlay" />
           <Dialog.Content className="navbar__menu-drawer" aria-describedby={undefined}>
             <div className="navbar__menu-header">
-              <span className="navbar__product-name">{productName}</span>
+              <span
+                className={`navbar__product-name ${productName.trim().split(/\s+/).length > 1 ? 'navbar__product-name--two-lines' : ''}`}
+              >
+                {(() => {
+                  const words = productName.trim().split(/\s+/)
+                  if (words.length <= 1) return productName
+                  return (
+                    <>
+                      <span className="navbar__product-name__line">{words[0]}</span>
+                      <span className="navbar__product-name__line">{words.slice(1).join(' ')}</span>
+                    </>
+                  )
+                })()}
+              </span>
               <Dialog.Close asChild>
                 <button type="button" className="navbar__menu-close" aria-label="Close menu">
                   <span className="material-symbols-outlined">close</span>

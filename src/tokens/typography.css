@@ -1,23 +1,14 @@
 /**
  * Octuple DS Theme 2 - Typography Tokens
- * Source: https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?m=auto&node-id=47-3
- * Font: Gilroy
+ * Figma (node 47:3): https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?m=auto&node-id=47-3
+ * Font: Gilroy. Values verified against Figma file via API (Typography frame).
+ * For letter-spacing on subtitle/header/display, use --typography-*-letter-spacing.
  */
 
 :root {
   --font-family: 'Gilroy', 'Inter', system-ui, -apple-system, sans-serif;
 
-  /* Background-3 Colors [day]/$color-background3-orange */
-  --color-background3-orange: #FFCD78;
-  /* Background-2 Colors [day]/$color-background2-orange - Tag on BG3 */
-  --color-background2-orange: #FFE3B0;
-  /* Primary Colors [day]/$color-primary-orange */
-  --color-primary-orange: #6C4500;
-
-  /* Blue-green - Course card */
-  --color-background2-blue-green: #B0F3FE;
-  --color-background3-blue-green: #7BE4F4;
-  --color-primary-blue-green: #025966;
+  /* Semantic colors (primary, background2/3, etc.) come from semantic-colors.css (Figma node 25849:127027) */
 
   /* Caption - 12px / 1.33 */
   --typography-caption: 400 12px/1.33 var(--font-family);

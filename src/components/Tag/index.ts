@@ -1,0 +1,4 @@
+export { Tag } from './Tag'
+export type { TagProps, TagSize, TagVariant } from './Tag'
+export { TagGroup } from './TagGroup'
+export type { TagGroupProps, TagGroupType } from './TagGroup'

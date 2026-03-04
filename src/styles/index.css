@@ -1,5 +1,27 @@
 /**
  * Eightfold Design System - Base Styles
- * Import tokens first; fonts should be loaded by the consuming app.
+ * Tailwind v4 + tokens. Gilroy is loaded from /fonts/ (serve public/fonts at that path).
+ *
+ * For overlay/menu borders to use design tokens, import this file after Tailwind
+ * in your app (e.g. @import 'tailwindcss'; @theme {...}; @import 'design-system/styles').
  */
+@import 'tailwindcss';
+@import './gilroy.css';
+@import '../tokens/colors.css';
+@import '../tokens/semantic-colors.css';
 @import '../tokens/typography.css';
+@import '../tokens/spacing.css';
+@import '../tokens/corner-radius.css';
+@import '../tokens/shadcn.css';
+@import './overlay-surfaces.css';
+
+/* Component styles (so a single styles entry includes everything) */
+@import '../components/Button/Button.css';
+@import '../components/Input/Input.css';
+@import '../components/Navbar/Navbar.css';
+@import '../components/Tag/Tag.css';
+@import '../components/ObjectCard/ObjectCard.css';
+@import '../components/ObjectCard/ObjectCardBottomBar.css';
+@import '../components/CourseObjectCard/CourseObjectCard.css';
+@import '../components/PeopleObjectCard/PeopleObjectCard.css';
+@import '../components/MentorObjectCard/MentorObjectCard.css';

@@ -4,15 +4,18 @@ Octuple DS Theme 2 components for Eightfold applications.
 
 ## Contents
 
-- **Tokens**: Typography and color CSS variables (Octuple DS Theme 2)
+- **Tokens**: Typography, color palette, semantic colors, spacing, and corner radius (Octuple DS Theme 2). Figma: [typography 47:3](https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?m=auto&node-id=47-3), [palette 11686:119298](https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?m=auto&node-id=11686-119298), [semantic tokens 25849:127027](https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?m=auto&node-id=25849-127027), [spacing & corner radius 11686:120880](https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?m=auto&node-id=11686-120880)
 - **Button**: Primary, secondary, outline, ghost, orange variants
 - **Pill**: Tag/badge component with neutral, critical, orange, blueGreen variants
+- **Tag**: Tags from Octuple DS (Figma [14403-166977](https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?m=auto&node-id=14403-166977)). Standalone chips (optional remove) or **TagGroup** with Radix Toggle Group for single/multiple selection. Uses design tokens.
 - **OpenTo**: "Open to mentoring/coffee/project" indicator
-- **ElementCard**: Base card with icon, title, description, CTA button
-- **CourseElementCard**: Course card with skills and completed-by avatars
-- **PeopleElementCard**: People card with avatar and OpenTo
-- **MentorElementCard**: Mentor card with profile and match info
+- **ObjectCard**: Base card with icon, title, description, CTA button
+- **CourseObjectCard**: Course card with skills and completed-by avatars
+- **PeopleObjectCard**: People card with avatar and OpenTo
+- **MentorObjectCard**: Mentor card with profile and match info
 - **Navbar**: Top navigation with tabs, search, avatar menu
+
+The library uses **Tailwind v4** and **shadcn-style** utilities (Tailwind classes, `cn()`, `cva`) for the Tag component; other components still use plain CSS and design tokens. Tokens (Octuple) drive colors, spacing, and radius via CSS variables.
 
 ## Setup
 
@@ -20,23 +23,32 @@ Octuple DS Theme 2 components for Eightfold applications.
 npm run build
 ```
 
+### Development (demo app)
+
+The repo uses **npm workspaces** so the demo and design system share a single React instance (required for Radix). **Always run from the repo root** to avoid duplicate React and path issues.
+
+1. **Install once**: `npm install` (hoists deps to root `node_modules`).
+2. **Build design system**: `npm run build` (demo imports CSS from `dist/`).
+3. **Run demo**: `npm run demo` (build then dev server) or `npm run demo:dev` (dev server only; run after a build).
+
 ## Usage
 
 ### In your app
 
 1. Install: `npm install @tonyh-2-eightfold/ef-design-system` (or `file:../packages/design-system`)
 2. Import styles: `import '@tonyh-2-eightfold/ef-design-system/styles'`
-3. Load Gilroy fonts (place font files in `/fonts/` or configure paths)
-4. Load Material Symbols: `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0`
+3. Optional: use spacing/radius token constants and helpers from `import { SPACING_TOKENS, CORNER_RADIUS_TOKENS, spacingVar, radiusVar } from '@tonyh-2-eightfold/ef-design-system/tokens'`
+4. Gilroy: the package includes `public/fonts/` (Gilroy Regular, Medium, SemiBold). Serve it at `/fonts/` so the bundled @font-face URLs resolve, or copy `public/fonts` into your app’s public folder.
+5. Load Material Symbols: `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0`
 
 ### Components
 
 ```tsx
-import { Button, Pill, PeopleElementCard, Navbar } from '@tonyh-2-eightfold/ef-design-system'
+import { Button, Pill, PeopleObjectCard, Navbar } from '@tonyh-2-eightfold/ef-design-system'
 import { Link } from 'react-router-dom'
 
 // With React Router
-<PeopleElementCard person={person} href="/people/1" LinkComponent={Link} />
+<PeopleObjectCard person={person} href="/people/1" LinkComponent={Link} />
 <Navbar tabs={tabs} user={user} LinkComponent={Link} NavLinkComponent={NavLink} />
 ```
 
@@ -44,9 +56,25 @@ import { Link } from 'react-router-dom'
 
 Components that use navigation accept optional `LinkComponent` and `NavLinkComponent` props. Omit them for plain `<a href>` behavior.
 
+### Figma token (optional)
+
+To use the Figma API (e.g. for syncing design tokens or exporting assets), add a personal access token:
+
+1. Copy `.env.example` to `.env`
+2. Set `FIGMA_ACCESS_TOKEN` to your token (from Figma → Account → Settings → Personal access tokens)
+3. Do not commit `.env` (it is gitignored)
+
+To re-fetch the typography scale from Figma (node 47:3):  
+`FIGMA_ACCESS_TOKEN=your_token node scripts/figma-fetch-typography.js`  
+Add `--out figma-typography.json` to save the raw response.
+
+To fetch spacing and corner radius from Figma (node 11686:120880):  
+`FIGMA_ACCESS_TOKEN=your_token node scripts/figma-fetch-spacing-radius.js`  
+Add `--out figma-spacing-radius.json` to save the raw response.
+
 ### Assets
 
 Place these in your app's public folder:
-- `/course-pattern.png` (for CourseElementCard)
-- `/people-pattern.png` (for PeopleElementCard)
-- `/fonts/Gilroy-*.woff2` (or update paths in your font CSS)
+- `/course-pattern.png` (for CourseObjectCard)
+- `/people-pattern.png` (for PeopleObjectCard)
+- `/fonts/` – Gilroy is included in the package (`public/fonts/`); serve it at `/fonts/`

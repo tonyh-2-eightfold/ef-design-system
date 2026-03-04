@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import type { InputHTMLAttributes, ReactNode } from 'react'
 import './Input.css'
 
@@ -25,18 +26,21 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   className?: string
 }
 
-export function Input({
-  size = 'medium',
-  shape = 'rounded',
-  state = 'default',
-  leadingIcon,
-  trailingIcon,
-  onClear,
-  className = '',
-  disabled,
-  type = 'text',
-  ...inputProps
-}: InputProps) {
+export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+  {
+    size = 'medium',
+    shape = 'rounded',
+    state = 'default',
+    leadingIcon,
+    trailingIcon,
+    onClear,
+    className = '',
+    disabled,
+    type = 'text',
+    ...inputProps
+  },
+  ref
+) {
   const wrapperClass = [
     'input',
     `input--${size}`,
@@ -61,6 +65,7 @@ export function Input({
         <span className="input__leading-icon" aria-hidden>{renderIcon(leadingIcon)}</span>
       )}
       <input
+        ref={ref}
         type={type}
         className="input__field"
         disabled={disabled}
@@ -86,4 +91,4 @@ export function Input({
       )}
     </div>
   )
-}
+})

@@ -1,7 +1,7 @@
 /**
  * EF product logo paths for Navbar and other components.
  * Serve the `public/` folder from your app (or copy into your public dir)
- * so these paths resolve. In Storybook they are served via staticDirs.
+ * so these paths resolve.
  *
  * Multiple products are supported (Career Hub, Campaigns, Talent Acquisition, etc.).
  * The current product and nav tabs are determined by user/persona: pass productName,
