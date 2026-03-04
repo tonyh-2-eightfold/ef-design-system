@@ -19,17 +19,29 @@ export type { TagProps, TagSize, TagVariant, TagGroupProps, TagGroupType } from 
 export { OpenTo } from './components/OpenTo/OpenTo'
 export type { OpenToProps, OpenToItem } from './components/OpenTo/OpenTo'
 
-export { ObjectCard } from './components/ObjectCard/ObjectCard'
-export type { ObjectCardProps } from './components/ObjectCard/ObjectCard'
+export { InsightCard } from './components/InsightCard/InsightCard'
+export type { InsightCardProps } from './components/InsightCard/InsightCard'
 
 export { CourseObjectCard } from './components/CourseObjectCard/CourseObjectCard'
-export type { CourseObjectCardProps } from './components/CourseObjectCard/CourseObjectCard'
+export type {
+  CourseObjectCardProps,
+  CourseObjectCardFacepileProps,
+} from './components/CourseObjectCard/CourseObjectCard'
+
+export { ProjectObjectCard } from './components/ProjectObjectCard/ProjectObjectCard'
+export type {
+  ProjectObjectCardProps,
+  ProjectObjectCardFacepileProps,
+} from './components/ProjectObjectCard/ProjectObjectCard'
 
 export { PeopleObjectCard } from './components/PeopleObjectCard/PeopleObjectCard'
-export type { PeopleObjectCardProps } from './components/PeopleObjectCard/PeopleObjectCard'
+export type {
+  PeopleObjectCardProps,
+  PeopleObjectCardAvatarProps,
+} from './components/PeopleObjectCard/PeopleObjectCard'
 
-export { MentorObjectCard } from './components/MentorObjectCard/MentorObjectCard'
-export type { MentorObjectCardProps } from './components/MentorObjectCard/MentorObjectCard'
+export { MentorInsightCard } from './components/MentorInsightCard/MentorInsightCard'
+export type { MentorInsightCardProps } from './components/MentorInsightCard/MentorInsightCard'
 
 export { Navbar } from './components/Navbar/Navbar'
 export type {

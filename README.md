@@ -9,10 +9,8 @@ Octuple DS Theme 2 components for Eightfold applications.
 - **Pill**: Tag/badge component with neutral, critical, orange, blueGreen variants
 - **Tag**: Tags from Octuple DS (Figma [14403-166977](https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?m=auto&node-id=14403-166977)). Standalone chips (optional remove) or **TagGroup** with Radix Toggle Group for single/multiple selection. Uses design tokens.
 - **OpenTo**: "Open to mentoring/coffee/project" indicator
-- **ObjectCard**: Base card with icon, title, description, CTA button
-- **CourseObjectCard**: Course card with skills and completed-by avatars
-- **PeopleObjectCard**: People card with avatar and OpenTo
-- **MentorObjectCard**: Mentor card with profile and match info
+- **Object cards**: **CourseObjectCard** (course with skills, completed-by), **PeopleObjectCard** (people with avatar, OpenTo)
+- **Insight cards**: **InsightCard** (base: icon, title, description, CTA; e.g. learning path), **MentorInsightCard** (mentor profile and match)
 - **Navbar**: Top navigation with tabs, search, avatar menu
 
 The library uses **Tailwind v4** and **shadcn-style** utilities (Tailwind classes, `cn()`, `cva`) for the Tag component; other components still use plain CSS and design tokens. Tokens (Octuple) drive colors, spacing, and radius via CSS variables.
@@ -44,11 +42,12 @@ The repo uses **npm workspaces** so the demo and design system share a single Re
 ### Components
 
 ```tsx
-import { Button, Pill, PeopleObjectCard, Navbar } from '@tonyh-2-eightfold/ef-design-system'
+import { Button, Pill, PeopleObjectCard, MentorInsightCard, Navbar } from '@tonyh-2-eightfold/ef-design-system'
 import { Link } from 'react-router-dom'
 
 // With React Router
 <PeopleObjectCard person={person} href="/people/1" LinkComponent={Link} />
+<MentorInsightCard mentor={mentor} LinkComponent={Link} />
 <Navbar tabs={tabs} user={user} LinkComponent={Link} NavLinkComponent={NavLink} />
 ```
 
@@ -74,7 +73,6 @@ Add `--out figma-spacing-radius.json` to save the raw response.
 
 ### Assets
 
-Place these in your app's public folder:
-- `/course-pattern.png` (for CourseObjectCard)
-- `/people-pattern.png` (for PeopleObjectCard)
-- `/fonts/` – Gilroy is included in the package (`public/fonts/`); serve it at `/fonts/`
+The package includes assets in `public/`; serve them from your app’s public root or copy into your app:
+- `/object-card-backgrounds/` – SVG backgrounds for object cards (`course.svg`, `people.svg`, `devplan.svg`, `task.svg`, `project.svg`, `job.svg`, `article.svg`)
+- `/fonts/` – Gilroy (`public/fonts/`); serve at `/fonts/` so @font-face resolves

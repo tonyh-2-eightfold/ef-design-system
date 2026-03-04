@@ -19,7 +19,14 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarGroupCount,
+  AvatarImage,
+} from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import {
   Breadcrumb,
@@ -67,7 +74,14 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
-import { Input } from '@tonyh-2-eightfold/ef-design-system'
+import {
+  Input,
+  InsightCard,
+  CourseObjectCard,
+  ProjectObjectCard,
+  PeopleObjectCard,
+  MentorInsightCard,
+} from '@tonyh-2-eightfold/ef-design-system'
 import { Label } from '@/components/ui/label'
 import {
   Pagination,
@@ -228,13 +242,109 @@ export function UICatalog({
         </Block>
 
         <Block title="Avatar">
-          <Avatar>
-            <AvatarImage src="" alt="User" />
-            <AvatarFallback>U</AvatarFallback>
-          </Avatar>
-          <Avatar>
-            <AvatarFallback>AB</AvatarFallback>
-          </Avatar>
+          <div className="grid gap-10 sm:grid-cols-2">
+            {/* Single avatars */}
+            <div className="flex flex-col gap-6">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Single</h4>
+              <div className="flex flex-col gap-5">
+                <div>
+                  <p className="mb-2 text-[11px] font-medium text-muted-foreground">Sizes</p>
+                  <div className="flex flex-wrap items-end gap-3 grayscale">
+                    {[
+                      { size: 'sm' as const, label: 'sm' },
+                      { size: 'default' as const, label: 'default' },
+                      { size: 'lg' as const, label: 'lg' },
+                      { size: 'xl' as const, label: 'xl' },
+                      { size: '2xl' as const, label: '2xl' },
+                    ].map(({ size, label }) => (
+                      <div key={label} className="flex flex-col items-center gap-1">
+                        <Avatar size={size}>
+                          <AvatarImage src="https://github.com/shadcn.png" alt="" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                        <span className="text-[10px] text-muted-foreground">{label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="mb-2 text-[11px] font-medium text-muted-foreground">With image</p>
+                  <div className="flex flex-wrap items-center gap-4 grayscale">
+                    <Avatar>
+                      <AvatarImage src="https://github.com/shadcn.png" alt="" />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                    <Avatar>
+                      <AvatarImage src="https://github.com/evilrabbit.png" alt="" />
+                      <AvatarFallback>ER</AvatarFallback>
+                      <AvatarBadge className="bg-green-600 dark:bg-green-800" />
+                    </Avatar>
+                  </div>
+                </div>
+                <div>
+                  <p className="mb-2 text-[11px] font-medium text-muted-foreground">Fallback only</p>
+                  <div className="flex flex-wrap items-end gap-3">
+                    {[
+                      { size: 'sm' as const, label: 'sm', fallback: 'S', className: 'bg-blue-500 text-white' },
+                      { size: 'default' as const, label: 'default', fallback: 'AB', className: 'bg-emerald-500 text-white' },
+                      { size: 'lg' as const, label: 'lg', fallback: 'XY', className: 'bg-violet-500 text-white' },
+                      { size: 'xl' as const, label: 'xl', fallback: 'XL', className: 'bg-amber-500 text-white' },
+                      { size: '2xl' as const, label: '2xl', fallback: '2X', className: 'bg-rose-500 text-white' },
+                    ].map(({ size, label, fallback, className }) => (
+                      <div key={label} className="flex flex-col items-center gap-1">
+                        <Avatar size={size}>
+                          <AvatarFallback className={className}>{fallback}</AvatarFallback>
+                        </Avatar>
+                        <span className="text-[10px] text-muted-foreground">{label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Groups */}
+            <div className="flex flex-col gap-6">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Groups</h4>
+              <div className="flex flex-col gap-5">
+                <div>
+                  <p className="mb-2 text-[11px] font-medium text-muted-foreground">Default</p>
+                  <AvatarGroup className="grayscale">
+                    <Avatar>
+                      <AvatarImage src="https://github.com/shadcn.png" alt="" />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                    <Avatar>
+                      <AvatarImage src="https://github.com/maxleiter.png" alt="" />
+                      <AvatarFallback>LR</AvatarFallback>
+                    </Avatar>
+                    <Avatar>
+                      <AvatarImage src="https://github.com/evilrabbit.png" alt="" />
+                      <AvatarFallback>ER</AvatarFallback>
+                    </Avatar>
+                    <AvatarGroupCount>+3</AvatarGroupCount>
+                  </AvatarGroup>
+                </div>
+                <div>
+                  <p className="mb-2 text-[11px] font-medium text-muted-foreground">Small</p>
+                  <AvatarGroup size="sm" className="grayscale">
+                    <Avatar>
+                      <AvatarImage src="https://github.com/shadcn.png" alt="" />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                    <Avatar>
+                      <AvatarImage src="https://github.com/maxleiter.png" alt="" />
+                      <AvatarFallback>LR</AvatarFallback>
+                    </Avatar>
+                    <Avatar>
+                      <AvatarImage src="https://github.com/evilrabbit.png" alt="" />
+                      <AvatarFallback>ER</AvatarFallback>
+                    </Avatar>
+                    <AvatarGroupCount>+3</AvatarGroupCount>
+                  </AvatarGroup>
+                </div>
+              </div>
+            </div>
+          </div>
         </Block>
 
         <Block title="Badge">
@@ -333,6 +443,104 @@ export function UICatalog({
               <Button size="sm">Action</Button>
             </CardFooter>
           </Card>
+        </Block>
+
+        <Block title="Object Cards" id="object-cards" plain>
+          <p className="w-full text-sm text-muted-foreground">
+            CourseObjectCard, ProjectObjectCard, PeopleObjectCard — Octuple DS Theme 2 (Figma). Object cards for course, project, and people.
+          </p>
+          <div className="flex flex-wrap items-start gap-6">
+            <CourseObjectCard
+              course={{
+                title: 'Introduction to React',
+                provider: 'Acme Learning',
+                duration: '4h',
+                skills: ['React', 'JavaScript'],
+                completedBy: [
+                  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop&crop=face',
+                  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&h=96&fit=crop&crop=face',
+                  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&h=96&fit=crop&crop=face',
+                ],
+              }}
+              href="#"
+              renderFacepile={({ avatarUrls }) => {
+                const display = avatarUrls.slice(0, 3)
+                const extra = avatarUrls.length - display.length
+                return (
+                  <AvatarGroup size="sm">
+                    {display.map((src, i) => (
+                      <Avatar key={i}>
+                        <AvatarImage src={src} alt="" />
+                        <AvatarFallback>{String(i + 1)}</AvatarFallback>
+                      </Avatar>
+                    ))}
+                    {extra > 0 && <AvatarGroupCount>+{extra}</AvatarGroupCount>}
+                  </AvatarGroup>
+                )
+              }}
+            />
+            <ProjectObjectCard
+              project={{
+                title: 'Platform migration',
+                owner: 'Engineering',
+                status: '3 hrs/week',
+                skills: ['React', 'Node'],
+                projectManager: {
+                  name: 'Jordan Lee',
+                  avatarSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&crop=face',
+                },
+              }}
+              href="#"
+              showBottomBar={false}
+            />
+            <PeopleObjectCard
+              person={{
+                name: 'Jordan Lee',
+                title: 'Senior Engineer',
+                email: 'jordan.lee@example.com',
+                avatarSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
+                openTo: 'mentoring',
+              }}
+              href="#"
+              renderAvatar={({ src, alt, fallback }) => (
+                <Avatar size="2xl" className="people-object-card__avatar">
+                  <AvatarImage src={src} alt={alt} />
+                  <AvatarFallback>{fallback}</AvatarFallback>
+                </Avatar>
+              )}
+            />
+          </div>
+        </Block>
+
+        <Block title="Insight Cards" id="insight-cards" plain>
+          <p className="w-full text-sm text-muted-foreground">
+            InsightCard, MentorInsightCard — Learning path and mentor insight cards (Octuple DS Theme 2).
+          </p>
+          <div className="flex flex-wrap items-start gap-6">
+            <InsightCard
+              title="Learning path"
+              badge="New"
+              description="Build skills with curated courses."
+              recommendedLabel="Recommended for you"
+              icon="school"
+              bgColor="#E8F4FD"
+              iconBgColor="#B3D9FC"
+              iconColor="#0B5B8A"
+              buttonLabel="View path"
+              buttonHref="#"
+            >
+              <span style={{ font: 'var(--typography-body3)', color: '#4F5666' }}>Slot content</span>
+            </InsightCard>
+            <MentorInsightCard
+              mentor={{
+                name: 'Sam Chen',
+                role: 'Staff Engineer',
+                avatarSrc: 'https://api.dicebear.com/7.x/identicon/svg?seed=Sam',
+                matchText: 'Skills match',
+                matchCount: 3,
+              }}
+            />
+          </div>
         </Block>
 
         <Block title="Checkbox">

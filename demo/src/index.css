@@ -39,9 +39,8 @@
   --shadow-card-hover: 0 4px 12px rgb(0 0 0 / 0.08), 0 2px 4px rgb(0 0 0 / 0.04);
 }
 
-/* Design system — Octuple tokens + shadcn mapping (--background, --font-sans, etc.) */
-/* Path: demo/src/ → ../../ = repo root; design system must be built (`npm run build`) at root. */
-@import "../../dist/assets/index.css";
+/* Design system — Octuple tokens + component styles. Requires build at repo root: npm run build */
+@import "@tonyh-2-eightfold/ef-design-system/styles";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -115,6 +114,214 @@ code {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Course card: 8px padding for image/banner, 16px for text; tag and actions 16px from card edge */
+.course-object-card__inner {
+  padding: 8px !important;
+}
+.course-object-card__tag-wrap {
+  left: 16px !important;
+}
+.course-object-card__banner-actions {
+  right: 16px !important;
+}
+.course-object-card__body {
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+.course-object-card__divider {
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}
+.course-object-card .object-card-bottom-bar__content {
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+/* People card: tag and actions 16px from banner left/right (same as course card) */
+.people-object-card__tag-wrap {
+  left: 16px !important;
+}
+.people-object-card__banner-actions {
+  right: 16px !important;
+}
+
+/* Project card: ensure card and banner styles apply (match course card) */
+.project-object-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 264px;
+  max-width: 100%;
+  height: 360px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #D9DCE1;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+a.project-object-card {
+  display: flex;
+}
+.project-object-card__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.project-object-card__banner {
+  position: relative;
+  width: 100%;
+  height: 148px;
+  flex-shrink: 0;
+  align-self: stretch;
+  border-radius: 16px;
+  background: var(--color-background3-blue-violet, #E8E5F7) url('/object-card-backgrounds/project.svg') 0 0 repeat;
+  background-size: 100%;
+  background-color: var(--color-background3-blue-violet, #E8E5F7);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 12px 0 12px;
+}
+.project-object-card__tag-wrap {
+  left: 16px !important;
+}
+.project-object-card__tag-wrap .pill {
+  background: rgba(202, 207, 252, 1) !important;
+  color: #343C4C;
+}
+.project-object-card__tag-wrap .pill__icon {
+  color: #343C4C;
+}
+.project-object-card__banner-actions {
+  right: 16px !important;
+}
+.project-object-card__body {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  padding: 12px 8px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  text-align: left;
+  box-sizing: border-box;
+}
+.project-object-card__title {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  font: var(--typography-header4);
+  color: #1A212E;
+}
+.project-object-card__meta {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  font: var(--typography-caption-medium);
+  color: #4F5666;
+}
+.project-object-card__divider {
+  flex-shrink: 0;
+  align-self: stretch;
+  margin: 0 8px;
+  border-top: 1px solid #D9DCE1;
+}
+.project-object-card__icon-btn {
+  padding: 6px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #4F5666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.project-object-card__skills {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  margin-top: 8px;
+  overflow: hidden;
+  min-width: 0;
+  width: 100%;
+}
+.project-object-card__skill-tag {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  background: #F6F7F8;
+  color: #4F5666;
+  font: var(--typography-caption-medium);
+  border-radius: 4px;
+}
+.project-object-card__manager {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  min-width: 0;
+}
+.project-object-card__manager-avatar {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.project-object-card__manager-avatar--fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E8E5F7;
+  color: #343C4C;
+  font: var(--typography-caption-medium);
+  font-size: 10px;
+}
+.project-object-card__manager-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+.project-object-card__manager-label {
+  font: var(--typography-caption-medium);
+  color: #4F5666;
+  font-size: 10px;
+  line-height: 1.2;
+}
+.project-object-card__manager-name {
+  font: var(--typography-body3);
+  color: #1A212E;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.project-object-card__contributed-text {
+  font: var(--typography-caption-medium);
+  color: #4F5666;
+}
+.project-object-card .object-card-bottom-bar {
+  align-self: stretch;
+}
+.project-object-card .object-card-bottom-bar__content {
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 /* Demo: force overlay border to token so it wins in dev (canonical source remains design system overlay-surfaces.css) */

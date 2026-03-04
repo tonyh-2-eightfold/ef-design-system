@@ -3,6 +3,12 @@ import { Pill } from '../Pill/Pill'
 import './ObjectCardBottomBar.css'
 import './PeopleObjectCard.css'
 
+export interface PeopleObjectCardAvatarProps {
+  src: string
+  alt: string
+  fallback: string
+}
+
 export interface PeopleObjectCardProps {
   person: {
     name: string
@@ -13,7 +19,17 @@ export interface PeopleObjectCardProps {
   }
   href?: string
   showBookmark?: boolean
+  /** Render the avatar (e.g. shadcn Avatar). When provided, replaces the default img. */
+  renderAvatar?: (props: PeopleObjectCardAvatarProps) => React.ReactNode
   LinkComponent?: React.ComponentType<{ to: string; children: React.ReactNode; className?: string }>
+}
+
+function getInitials(name: string): string {
+  const parts = name.trim().split(/\s+/)
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[1][0]).toUpperCase().slice(0, 2)
+  }
+  return name.slice(0, 2).toUpperCase() || '?'
 }
 
 function DefaultLink({ to, children, className }: { to: string; children: React.ReactNode; className?: string }) {
@@ -24,6 +40,7 @@ export function PeopleObjectCard({
   person,
   href = '#',
   showBookmark = true,
+  renderAvatar,
   LinkComponent = DefaultLink,
 }: PeopleObjectCardProps) {
   const Link = LinkComponent
@@ -46,7 +63,15 @@ export function PeopleObjectCard({
         <div className="people-object-card__pattern" aria-hidden />
       </div>
       <div className="people-object-card__avatar-wrap">
-        <img src={person.avatarSrc} alt="" className="people-object-card__avatar" />
+        {renderAvatar ? (
+          renderAvatar({
+            src: person.avatarSrc,
+            alt: person.name,
+            fallback: getInitials(person.name),
+          })
+        ) : (
+          <img src={person.avatarSrc} alt="" className="people-object-card__avatar" />
+        )}
       </div>
       <div className="people-object-card__body">
         <span className="people-object-card__name">{person.name}</span>

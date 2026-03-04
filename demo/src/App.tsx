@@ -36,6 +36,8 @@ const SHADCN_COMPONENTS = [
   'Button',
   'Calendar',
   'Card',
+  'Object Cards',
+  'Insight Cards',
   'Checkbox',
   'Collapsible',
   'Context Menu',
@@ -98,6 +100,33 @@ const SIDEBAR_GROUPS = [
     ],
   },
 ]
+
+/** Type specs for each typography token (Octuple DS Theme 2, Figma node 47-3). */
+const TYPOGRAPHY_SPECS: Record<string, { weight: number; size: string; lineHeight: string; letterSpacing?: string }> = {
+  display1: { weight: 400, size: '96px', lineHeight: '1.17', letterSpacing: '-0.03em' },
+  display2: { weight: 400, size: '80px', lineHeight: '1.2', letterSpacing: '-0.03em' },
+  display3: { weight: 400, size: '64px', lineHeight: '1.125', letterSpacing: '-0.02em' },
+  display4: { weight: 400, size: '56px', lineHeight: '1.14', letterSpacing: '-0.02em' },
+  header1: { weight: 600, size: '40px', lineHeight: '1.2', letterSpacing: '-0.02em' },
+  header2: { weight: 600, size: '32px', lineHeight: '1.25', letterSpacing: '-0.01em' },
+  header3: { weight: 600, size: '24px', lineHeight: '1.33' },
+  header4: { weight: 600, size: '20px', lineHeight: '1.4' },
+  'header4-large': { weight: 600, size: '28px', lineHeight: '1.25' },
+  header5: { weight: 600, size: '16px', lineHeight: '1.5' },
+  header6: { weight: 600, size: '14px', lineHeight: '1.43' },
+  subtitle1: { weight: 400, size: '32px', lineHeight: '1.25', letterSpacing: '-0.015em' },
+  subtitle2: { weight: 600, size: '24px', lineHeight: '1.33', letterSpacing: '-0.01em' },
+  'pre-display': { weight: 600, size: '20px', lineHeight: '1.4' },
+  body1: { weight: 400, size: '18px', lineHeight: '1.33' },
+  body2: { weight: 500, size: '16px', lineHeight: '1.5' },
+  body3: { weight: 500, size: '14px', lineHeight: '1.43' },
+  button1: { weight: 600, size: '18px', lineHeight: '1.33' },
+  button2: { weight: 600, size: '16px', lineHeight: '1.25' },
+  button3: { weight: 600, size: '14px', lineHeight: '1.14' },
+  caption: { weight: 400, size: '12px', lineHeight: '1.33' },
+  'caption-medium': { weight: 500, size: '12px', lineHeight: '1.33' },
+  'caption-semibold': { weight: 600, size: '12px', lineHeight: '1.33' },
+}
 
 /** Typography tokens from Octuple DS Theme 2 (Figma node 47-3). Grouped for standard type scale display. */
 const TYPOGRAPHY_GROUPS = [
@@ -243,34 +272,43 @@ function TokensShowcase({ scrollToId }: { scrollToId?: string }) {
             View in Figma →
           </a>
         </p>
-        <div className="mt-6 space-y-10 rounded-lg border border-border bg-card p-6">
+        <div className="mt-8 space-y-12">
           {TYPOGRAPHY_GROUPS.map(({ title, tokens }) => (
-            <section key={title} className="space-y-4">
-              <h3 className="border-b border-border pb-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            <div key={title} className="space-y-4">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                 {title}
               </h3>
-              <div className="space-y-4">
-                {tokens.map(({ name, var: varName, sample, letterSpacingVar }) => (
-                  <div
-                    key={name}
-                    className="flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:gap-6"
-                  >
-                    <div className="min-w-[200px] shrink-0">
-                      <code className="font-mono text-xs text-muted-foreground">{varName}</code>
-                    </div>
-                    <p
-                      className="break-words text-foreground"
-                      style={{
-                        font: `var(${varName})`,
-                        ...(letterSpacingVar ? { letterSpacing: `var(${letterSpacingVar})` } : {}),
-                      } as React.CSSProperties}
+              <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-2">
+                {tokens.map(({ name, var: varName, sample, letterSpacingVar }) => {
+                  const spec = TYPOGRAPHY_SPECS[name]
+                  return (
+                    <div
+                      key={name}
+                      className="flex flex-col gap-3 rounded-xl border border-border bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
                     >
-                      {sample}
-                    </p>
-                  </div>
-                ))}
+                      <p
+                        className="min-h-[2.5em] break-words text-foreground"
+                        style={{
+                          font: `var(${varName})`,
+                          ...(letterSpacingVar ? { letterSpacing: `var(${letterSpacingVar})` } : {}),
+                        } as React.CSSProperties}
+                      >
+                        {sample}
+                      </p>
+                      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-t border-border pt-3 text-xs">
+                        <code className="font-mono text-muted-foreground">{varName}</code>
+                        {spec && (
+                          <span className="text-muted-foreground">
+                            {spec.weight} · {spec.size} · {spec.lineHeight}
+                            {spec.letterSpacing != null ? ` · ${spec.letterSpacing}` : ''}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
-            </section>
+            </div>
           ))}
         </div>
       </section>

@@ -38,7 +38,7 @@ function designSystemPublicPlugin() {
     configureServer(server: import('vite').ViteDevServer) {
       server.middlewares.use((req, res, next) => {
         const url = req.url?.split('?')[0] ?? ''
-        if (url.startsWith('/product-logos/') || url === '/eightfold-logo.svg' || url === '/ai-agent.svg' || url === '/copilot.svg' || url.startsWith('/fonts/')) {
+        if (url.startsWith('/product-logos/') || url === '/eightfold-logo.svg' || url === '/ai-agent.svg' || url === '/copilot.svg' || url.startsWith('/fonts/') || url.startsWith('/object-card-backgrounds/')) {
           const file = path.join(designSystemPublicDir, url)
           if (fs.existsSync(file) && fs.statSync(file).isFile()) {
             const ct = file.endsWith('.svg') ? 'image/svg+xml' : file.endsWith('.woff2') ? 'font/woff2' : 'application/octet-stream'

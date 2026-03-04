@@ -2,6 +2,10 @@ import { Pill } from '../Pill/Pill'
 import './ObjectCardBottomBar.css'
 import './CourseObjectCard.css'
 
+export interface CourseObjectCardFacepileProps {
+  avatarUrls: string[]
+}
+
 export interface CourseObjectCardProps {
   course: {
     title: string
@@ -12,6 +16,8 @@ export interface CourseObjectCardProps {
   }
   href?: string
   showBookmark?: boolean
+  /** Render the "completed by" facepile (e.g. AvatarGroup). When provided, replaces the default img stack. */
+  renderFacepile?: (props: CourseObjectCardFacepileProps) => React.ReactNode
   LinkComponent?: React.ComponentType<{ to: string; children: React.ReactNode; className?: string }>
 }
 
@@ -27,11 +33,12 @@ export function CourseObjectCard({
   course,
   href = '#',
   showBookmark = true,
+  renderFacepile,
   LinkComponent = DefaultLink,
 }: CourseObjectCardProps) {
   const Link = LinkComponent
   const content = (
-    <>
+    <div className="course-object-card__inner">
       <div className="course-object-card__banner">
         <div className="course-object-card__tag-wrap">
           <Pill icon="menu_book" variant="blueGreen" size="small">Course</Pill>
@@ -72,17 +79,21 @@ export function CourseObjectCard({
         <div className="object-card-bottom-bar__content">
           {course.completedBy && course.completedBy.length > 0 && (
             <>
-              <div className="course-object-card__facepile">
-                {course.completedBy.map((avatarSrc, i) => (
-                  <img key={i} src={avatarSrc} alt="" className="course-object-card__facepile-avatar" />
-                ))}
-              </div>
+              {renderFacepile ? (
+                renderFacepile({ avatarUrls: course.completedBy })
+              ) : (
+                <div className="course-object-card__facepile">
+                  {course.completedBy.map((avatarSrc, i) => (
+                    <img key={i} src={avatarSrc} alt="" className="course-object-card__facepile-avatar" />
+                  ))}
+                </div>
+              )}
               <span className="course-object-card__completed-text">completed this</span>
             </>
           )}
         </div>
       </div>
-    </>
+    </div>
   )
 
   if (href === '#') {

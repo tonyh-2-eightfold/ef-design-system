@@ -1,6 +1,5 @@
-/* Course Object Card - Octuple DS Elements - Card, Course variant
-   https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?node-id=14267-88622 */
-.course-object-card {
+/* Project Object Card - Octuple DS style, same layout as Course card */
+.project-object-card {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -18,16 +17,15 @@
   transition: box-shadow 0.15s;
 }
 
-a.course-object-card {
+a.project-object-card {
   display: flex;
 }
 
-a.course-object-card:hover {
+a.project-object-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Inner: 8px from card edge (banner/image uses this); text content adds 8px more = 16px */
-.course-object-card__inner {
+.project-object-card__inner {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -39,37 +37,44 @@ a.course-object-card:hover {
   box-sizing: border-box;
 }
 
-.course-object-card__inner > * {
+.project-object-card__inner > * {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* Banner (image area): 8px from card edge */
-.course-object-card__banner {
+.project-object-card__banner {
   position: relative;
   width: 100%;
   height: 148px;
   flex-shrink: 0;
   align-self: stretch;
   border-radius: 16px;
-  background: var(--color-background3-blue-green) url('/object-card-backgrounds/course.svg') 0 0 repeat;
+  background: var(--color-background3-blue-violet) url('/object-card-backgrounds/project.svg') 0 0 repeat;
   background-size: 100%;
-  background-color: var(--color-background3-blue-green);
+  background-color: var(--color-background3-blue-violet);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   padding: 12px 0 12px;
 }
 
-/* 16px from banner left/right (tag and actions) */
-.course-object-card__tag-wrap {
+.project-object-card__tag-wrap {
   position: absolute;
   top: -8px;
   left: 16px;
   z-index: 1;
 }
 
-.course-object-card__banner-actions {
+.project-object-card__tag-wrap .pill {
+  background: rgba(202, 207, 252, 1);
+  color: #343C4C;
+}
+
+.project-object-card__tag-wrap .pill__icon {
+  color: #343C4C;
+}
+
+.project-object-card__banner-actions {
   position: absolute;
   top: 12px;
   right: 16px;
@@ -79,7 +84,7 @@ a.course-object-card:hover {
   z-index: 1;
 }
 
-.course-object-card__icon-btn {
+.project-object-card__icon-btn {
   padding: 6px;
   border: none;
   border-radius: 50%;
@@ -92,17 +97,16 @@ a.course-object-card:hover {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-.course-object-card__icon-btn:hover {
+.project-object-card__icon-btn:hover {
   color: #1A212E;
   background: rgba(255, 255, 255, 1);
 }
 
-.course-object-card__icon-btn .material-symbols-outlined {
+.project-object-card__icon-btn .material-symbols-outlined {
   font-size: 20px;
 }
 
-/* Text content: 16px from card edge (8px inner + 8px body padding) */
-.course-object-card__body {
+.project-object-card__body {
   flex: 1;
   min-height: 0;
   min-width: 0;
@@ -119,7 +123,7 @@ a.course-object-card:hover {
   box-sizing: border-box;
 }
 
-.course-object-card__skills {
+.project-object-card__skills {
   display: flex;
   flex-wrap: nowrap;
   gap: 6px;
@@ -129,7 +133,7 @@ a.course-object-card:hover {
   width: 100%;
 }
 
-.course-object-card__skill-tag {
+.project-object-card__skill-tag {
   flex-shrink: 0;
   padding: 4px 10px;
   background: #F6F7F8;
@@ -138,8 +142,57 @@ a.course-object-card:hover {
   border-radius: 4px;
 }
 
+.project-object-card__manager {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  min-width: 0;
+}
 
-.course-object-card__title {
+.project-object-card__manager-avatar {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.project-object-card__manager-avatar--fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E8E5F7;
+  color: #343C4C;
+  font: var(--typography-caption-medium);
+  font-size: 10px;
+}
+
+.project-object-card__manager-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+
+.project-object-card__manager-label {
+  font: var(--typography-caption-medium);
+  color: #4F5666;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.project-object-card__manager-name {
+  font: var(--typography-body3);
+  color: #1A212E;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-object-card__title {
   display: block;
   width: 100%;
   min-width: 0;
@@ -147,7 +200,7 @@ a.course-object-card:hover {
   color: #1A212E;
 }
 
-.course-object-card__meta {
+.project-object-card__meta {
   display: block;
   width: 100%;
   min-width: 0;
@@ -155,29 +208,29 @@ a.course-object-card:hover {
   color: #4F5666;
 }
 
-.course-object-card__divider {
+.project-object-card__divider {
   flex-shrink: 0;
   align-self: stretch;
   margin: 0 8px;
   border-top: 1px solid #D9DCE1;
 }
 
-.course-object-card .object-card-bottom-bar {
+.project-object-card .object-card-bottom-bar {
   align-self: stretch;
 }
 
-.course-object-card .object-card-bottom-bar__content {
+.project-object-card .object-card-bottom-bar__content {
   padding-left: 8px;
   padding-right: 8px;
 }
 
-.course-object-card__facepile {
+.project-object-card__facepile {
   display: flex;
   align-items: center;
   min-width: 0;
 }
 
-.course-object-card__facepile-avatar {
+.project-object-card__facepile-avatar {
   width: 24px !important;
   height: 24px !important;
   max-width: 24px !important;
@@ -192,11 +245,11 @@ a.course-object-card:hover {
   vertical-align: middle;
 }
 
-.course-object-card__facepile-avatar:first-child {
+.project-object-card__facepile-avatar:first-child {
   margin-left: 0;
 }
 
-.course-object-card__completed-text {
+.project-object-card__contributed-text {
   font: var(--typography-caption-medium);
   color: #4F5666;
 }

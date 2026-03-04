@@ -20,8 +20,8 @@
 @import '../components/Input/Input.css';
 @import '../components/Navbar/Navbar.css';
 @import '../components/Tag/Tag.css';
-@import '../components/ObjectCard/ObjectCard.css';
-@import '../components/ObjectCard/ObjectCardBottomBar.css';
+@import '../components/InsightCard/InsightCard.css';
 @import '../components/CourseObjectCard/CourseObjectCard.css';
+@import '../components/ProjectObjectCard/ProjectObjectCard.css';
 @import '../components/PeopleObjectCard/PeopleObjectCard.css';
-@import '../components/MentorObjectCard/MentorObjectCard.css';
+@import '../components/MentorInsightCard/MentorInsightCard.css';

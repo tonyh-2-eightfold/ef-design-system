@@ -1,6 +1,6 @@
-/* Object Card - Octuple DS Theme 2, from Figma Elements - Card */
-.object-card {
-  background: var(--object-card-bg);
+/* Insight Card - Octuple DS Theme 2, from Figma Elements - Card (learning path, mentors) */
+.insight-card {
+  background: var(--insight-card-bg);
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 24px;
   padding: 24px;
@@ -13,13 +13,13 @@
   font-family: var(--font-family);
 }
 
-.object-card--fixed {
+.insight-card--fixed {
   flex: 0 0 400px;
   width: 400px;
   height: 300px;
 }
 
-.object-card__header {
+.insight-card__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -28,25 +28,25 @@
   margin-bottom: 10px;
 }
 
-.object-card__header-content {
+.insight-card__header-content {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.object-card__title-row {
+.insight-card__title-row {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.object-card__title {
+.insight-card__title {
   margin: 0;
   font: var(--typography-button1);
-  color: var(--object-card-text-color);
+  color: var(--insight-card-text-color);
 }
 
-.object-card__badge {
+.insight-card__badge {
   padding: 2px 10px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.9);
@@ -56,11 +56,11 @@
 }
 
 /* Tilted icon square - Octuple DS */
-.object-card__icon-wrap {
+.insight-card__icon-wrap {
   width: 72px;
   height: 72px;
   border-radius: 16px;
-  background: var(--object-card-icon-bg);
+  background: var(--insight-card-icon-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,30 +71,30 @@
   right: -8px;
 }
 
-.object-card__icon-wrap .material-symbols-outlined {
+.insight-card__icon-wrap .material-symbols-outlined {
   font-size: 36px !important;
   font-variation-settings: 'FILL' 1;
-  color: var(--object-card-icon-color);
+  color: var(--insight-card-icon-color);
 }
 
-.object-card__description {
+.insight-card__description {
   margin: 0;
   font: var(--typography-body3);
   color: #4F5666;
 }
 
-.object-card__recommended {
+.insight-card__recommended {
   font: var(--typography-caption-medium);
   color: #4F5666;
   margin-bottom: -6px;
 }
 
-.object-card__content {
+.insight-card__content {
   flex: 1;
   min-height: 60px;
 }
 
-.object-card__btn {
+.insight-card__btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -109,6 +109,6 @@
   transition: background 0.15s;
 }
 
-.object-card__btn:hover {
+.insight-card__btn:hover {
   background: rgba(255, 255, 255, 0.95);
 }

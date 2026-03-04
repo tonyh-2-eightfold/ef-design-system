@@ -1,7 +1,7 @@
-import { ObjectCard } from '../ObjectCard/ObjectCard'
-import './MentorObjectCard.css'
+import { InsightCard } from '../InsightCard/InsightCard'
+import './MentorInsightCard.css'
 
-export interface MentorObjectCardProps {
+export interface MentorInsightCardProps {
   title?: string
   badge?: string
   description?: string
@@ -28,7 +28,7 @@ const MENTOR_DEFAULTS = {
   buttonHref: '#',
 }
 
-export function MentorObjectCard({
+export function MentorInsightCard({
   title = MENTOR_DEFAULTS.title,
   badge = MENTOR_DEFAULTS.badge,
   description = MENTOR_DEFAULTS.description,
@@ -38,9 +38,9 @@ export function MentorObjectCard({
   mentor,
   fixedSize = true,
   LinkComponent,
-}: MentorObjectCardProps) {
+}: MentorInsightCardProps) {
   return (
-    <ObjectCard
+    <InsightCard
       title={title}
       badge={badge}
       description={description}
@@ -55,22 +55,22 @@ export function MentorObjectCard({
       fixedSize={fixedSize}
       LinkComponent={LinkComponent}
     >
-      <div className="mentor-object-card">
-        <div className="mentor-object-card__profile">
-          <img src={mentor.avatarSrc} alt="" className="mentor-object-card__avatar" />
-          <div className="mentor-object-card__info">
-            <span className="mentor-object-card__name">{mentor.name}</span>
-            <span className="mentor-object-card__role">{mentor.role}</span>
+      <div className="mentor-insight-card">
+        <div className="mentor-insight-card__profile">
+          <img src={mentor.avatarSrc} alt="" className="mentor-insight-card__avatar" />
+          <div className="mentor-insight-card__info">
+            <span className="mentor-insight-card__name">{mentor.name}</span>
+            <span className="mentor-insight-card__role">{mentor.role}</span>
           </div>
         </div>
-        <div className="mentor-object-card__match">
-          <span className="material-symbols-outlined mentor-object-card__match-icon">track_changes</span>
-          <span className="mentor-object-card__match-text">{mentor.matchText}</span>
+        <div className="mentor-insight-card__match">
+          <span className="material-symbols-outlined mentor-insight-card__match-icon">track_changes</span>
+          <span className="mentor-insight-card__match-text">{mentor.matchText}</span>
           {mentor.matchCount > 0 && (
-            <span className="mentor-object-card__match-badge">+{mentor.matchCount}</span>
+            <span className="mentor-insight-card__match-badge">+{mentor.matchCount}</span>
           )}
         </div>
       </div>
-    </ObjectCard>
+    </InsightCard>
   )
 }

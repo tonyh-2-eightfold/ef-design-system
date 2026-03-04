@@ -29,26 +29,27 @@ a.people-object-card:hover {
   flex-shrink: 0;
   align-self: stretch;
   border-radius: 16px;
-  background: var(--color-background3-orange) url('/people-pattern.png') 0 0 repeat;
+  background: var(--color-background3-orange) url('/object-card-backgrounds/people.svg') 0 0 repeat;
   background-size: 100%;
   background-color: var(--color-background3-orange);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 12px 12px 12px;
+  padding: 12px 16px 12px;
 }
 
+/* 16px from banner left/right (tag and actions), same as course card */
 .people-object-card__tag-wrap {
   position: absolute;
   top: -8px;
-  left: 12px;
+  left: 16px;
   z-index: 1;
 }
 
 .people-object-card__banner-actions {
   position: absolute;
   top: 12px;
-  right: 12px;
+  right: 16px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -122,7 +123,7 @@ a.people-object-card:hover {
 }
 
 .people-object-card__name {
-  font: var(--typography-header5);
+  font: var(--typography-header4);
   color: #1A212E;
 }
 

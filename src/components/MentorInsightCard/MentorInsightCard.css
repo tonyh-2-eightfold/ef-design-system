@@ -1,17 +1,17 @@
-/* Mentor Object Card - Octuple DS, Mentor variant */
-.mentor-object-card {
+/* Mentor Insight Card - Octuple DS, Mentor variant */
+.mentor-insight-card {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.mentor-object-card__profile {
+.mentor-insight-card__profile {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.mentor-object-card__avatar {
+.mentor-insight-card__avatar {
   width: 56px !important;
   height: 56px !important;
   max-width: 56px !important;
@@ -21,23 +21,23 @@
   border: 2px solid rgba(0, 0, 0, 0.08);
 }
 
-.mentor-object-card__info {
+.mentor-insight-card__info {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.mentor-object-card__name {
+.mentor-insight-card__name {
   font: var(--typography-header5);
   color: #1A212E;
 }
 
-.mentor-object-card__role {
+.mentor-insight-card__role {
   font: var(--typography-caption-medium);
   color: #4F5666;
 }
 
-.mentor-object-card__match {
+.mentor-insight-card__match {
   font: var(--typography-caption-medium);
   color: #4F5666;
   display: flex;
@@ -45,17 +45,17 @@
   gap: 6px;
 }
 
-.mentor-object-card__match-icon {
+.mentor-insight-card__match-icon {
   font-size: 16px;
   color: #4F5666;
 }
 
-.mentor-object-card__match-text {
+.mentor-insight-card__match-text {
   text-decoration: underline;
   text-decoration-style: dashed;
 }
 
-.mentor-object-card__match-badge {
+.mentor-insight-card__match-badge {
   padding: 2px 6px;
   background: rgba(0, 0, 0, 0.08);
   border-radius: 6px;
