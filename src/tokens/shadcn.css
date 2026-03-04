@@ -18,7 +18,7 @@
   --primary: var(--color-primary-blue);
   --primary-foreground: var(--text-color-default-2);
 
-  --secondary: var(--color-background2-grey);
+  --secondary: rgba(246, 247, 248, 1);
   --secondary-foreground: var(--text-color-default);
 
   --muted: var(--color-background1-grey);

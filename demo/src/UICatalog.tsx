@@ -463,12 +463,12 @@ export function UICatalog({
                 ],
               }}
               href="#"
-              renderFacepile={({ avatarUrls }) => {
+              renderFacepile={({ avatarUrls }: { avatarUrls: string[] }) => {
                 const display = avatarUrls.slice(0, 3)
                 const extra = avatarUrls.length - display.length
                 return (
                   <AvatarGroup size="sm">
-                    {display.map((src, i) => (
+                    {display.map((src: string, i: number) => (
                       <Avatar key={i}>
                         <AvatarImage src={src} alt="" />
                         <AvatarFallback>{String(i + 1)}</AvatarFallback>
@@ -502,7 +502,7 @@ export function UICatalog({
                 openTo: 'mentoring',
               }}
               href="#"
-              renderAvatar={({ src, alt, fallback }) => (
+              renderAvatar={({ src, alt, fallback }: { src: string; alt: string; fallback: string }) => (
                 <Avatar size="2xl" className="people-object-card__avatar">
                   <AvatarImage src={src} alt={alt} />
                   <AvatarFallback>{fallback}</AvatarFallback>
@@ -535,7 +535,7 @@ export function UICatalog({
               mentor={{
                 name: 'Sam Chen',
                 role: 'Staff Engineer',
-                avatarSrc: 'https://api.dicebear.com/7.x/identicon/svg?seed=Sam',
+                avatarSrc: 'https://i.pravatar.cc/128?u=sam-chen',
                 matchText: 'Skills match',
                 matchCount: 3,
               }}

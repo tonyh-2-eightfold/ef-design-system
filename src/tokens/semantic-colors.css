@@ -116,17 +116,18 @@
   --color-border-default: rgba(217, 220, 225, 1);
   --color-input-ink: rgba(105, 113, 127, 1);
   /* Button primary */
-  --color-button-primary-bg: rgba(235, 247, 255, 1);
+  --color-button-primary-bg: rgba(176, 243, 254, 1);
   --color-button-primary-bg-hover: rgba(255, 255, 255, 1);
-  --color-button-primary-bg-pressed: rgba(188, 228, 255, 1);
-  --color-button-primary-bg-disabled: rgba(235, 247, 255, 1);
+  --color-button-primary-bg-pressed: rgba(142, 232, 248, 1);
+  --color-button-primary-bg-disabled: rgba(176, 243, 254, 1);
   --color-button-primary-text: rgba(5, 77, 123, 1);
   /* Button secondary – filled grey (distinct from outline: no border, visible fill) */
-  --color-button-secondary-bg: rgba(237, 238, 240, 1);
-  --color-button-secondary-bg-hover: rgba(246, 247, 248, 1);
+  --color-button-secondary-bg: rgba(246, 247, 248, 1);
+  --color-button-secondary-bg-hover: rgba(237, 238, 240, 1);
   --color-button-secondary-bg-pressed: rgba(217, 220, 225, 1);
   --color-button-secondary-bg-disabled: rgba(246, 247, 248, 1);
   --color-button-secondary-text-disabled: rgba(52, 60, 76, 1);
-  /* Button outline hover */
+  /* Button outline */
+  --color-button-outline-border: rgba(25, 153, 172, 1);
   --color-button-outline-hover-bg: rgba(235, 253, 255, 1);
 }

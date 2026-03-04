@@ -53,8 +53,39 @@ function designSystemPublicPlugin() {
   }
 }
 
+/** Copy design system public assets into demo/dist on build (for Vercel / static deploy). */
+function copyDesignSystemPublicPlugin() {
+  return {
+    name: 'copy-design-system-public',
+    closeBundle() {
+      const outDir = path.resolve(demoRoot, 'dist')
+      if (!fs.existsSync(outDir) || !fs.statSync(outDir).isDirectory()) return
+      try {
+        fs.cpSync(designSystemPublicDir, path.join(outDir, 'design-system-public'), { recursive: true })
+        // Move contents to dist root so /fonts/, /object-card-backgrounds/ etc. resolve
+        const from = path.join(outDir, 'design-system-public')
+        for (const name of fs.readdirSync(from)) {
+          const src = path.join(from, name)
+          const dest = path.join(outDir, name)
+          if (fs.existsSync(dest)) {
+            if (fs.statSync(dest).isDirectory()) {
+              fs.rmSync(dest, { recursive: true })
+            } else {
+              fs.unlinkSync(dest)
+            }
+          }
+          fs.renameSync(src, dest)
+        }
+        fs.rmdirSync(from)
+      } catch (err) {
+        console.warn('[copy-design-system-public]', err)
+      }
+    },
+  }
+}
+
 export default defineConfig({
-  plugins: [requireDesignSystemPlugin(), designSystemPublicPlugin(), react(), tailwindcss()],
+  plugins: [requireDesignSystemPlugin(), designSystemPublicPlugin(), copyDesignSystemPublicPlugin(), react(), tailwindcss()],
   resolve: {
     alias: [{ find: '@', replacement: path.resolve(demoRoot, 'src') }],
   },

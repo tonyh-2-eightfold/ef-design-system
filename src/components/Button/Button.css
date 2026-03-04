@@ -64,39 +64,39 @@
   color: var(--color-primary-red);
 }
 
-/* Secondary: shadcn-aligned (--secondary / --secondary-foreground) */
+/* Secondary: design system token (--color-button-secondary-bg) for default; shadcn --secondary-foreground for text */
 .btn--secondary {
-  background: var(--secondary);
+  background: var(--color-button-secondary-bg);
   color: var(--secondary-foreground);
   border: none;
 }
 .btn--secondary:hover:not(:disabled) {
-  background: var(--muted);
+  background: var(--color-button-secondary-bg-hover);
   color: var(--secondary-foreground);
 }
 .btn--secondary:active:not(:disabled) {
-  background: var(--color-background3-grey);
+  background: var(--color-button-secondary-bg-pressed);
   color: var(--secondary-foreground);
 }
 .btn--secondary:disabled {
-  background: var(--muted);
-  color: var(--muted-foreground);
+  background: var(--color-button-secondary-bg-disabled);
+  color: var(--color-button-secondary-text-disabled);
   opacity: 1;
 }
 
 .btn--outline {
   background: transparent;
   color: var(--color-primary-blue-green);
-  border: 1px solid var(--color-border-default);
+  border: 1px solid var(--color-button-outline-border);
 }
 .btn--outline:hover:not(:disabled) {
   background: var(--color-button-outline-hover-bg);
   color: var(--color-primary-blue-green);
-  border-color: var(--color-border-default);
+  border-color: var(--color-button-outline-border);
 }
 .btn--outline:active:not(:disabled) {
   background: var(--color-background2-grey);
-  border-color: var(--color-border-default);
+  border-color: var(--color-button-outline-border);
 }
 
 .btn--ghost {
