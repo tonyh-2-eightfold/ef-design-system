@@ -73,6 +73,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@/components/ui/navigation-menu'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import {
   Input,
@@ -606,6 +614,101 @@ export function UICatalog({
               <DropdownMenuItem>Log out</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+        </Block>
+
+        <Block title="Navigation Menu">
+          <p className="w-full text-xs text-muted-foreground mb-2">Underline (line indicator)</p>
+          <NavigationMenu variant="underline">
+            <NavigationMenuList className="gap-1">
+              <NavigationMenuItem>
+                <NavigationMenuLink href="#" active>Home</NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[320px] gap-1 p-2">
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a href="#" className="block rounded-md px-3 py-2 text-sm text-foreground hover:bg-muted hover:text-foreground">
+                          Components
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a href="#" className="block rounded-md px-3 py-2 text-sm text-foreground hover:bg-muted hover:text-foreground">
+                          Templates
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a href="#" className="block rounded-md px-3 py-2 text-sm text-foreground hover:bg-muted hover:text-foreground">
+                          Documentation
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a href="#" className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground">
+                          View all products →
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink href="#">About</NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <p className="w-full text-xs text-muted-foreground mb-2 mt-6">Pill (rounded background)</p>
+          <NavigationMenu variant="pill">
+            <NavigationMenuList className="gap-1">
+              <NavigationMenuItem>
+                <NavigationMenuLink href="#" active>Home</NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[320px] gap-1 p-2">
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a href="#" className="block rounded-md px-3 py-2 text-sm text-foreground hover:bg-muted hover:text-foreground">
+                          Components
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a href="#" className="block rounded-md px-3 py-2 text-sm text-foreground hover:bg-muted hover:text-foreground">
+                          Templates
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a href="#" className="block rounded-md px-3 py-2 text-sm text-foreground hover:bg-muted hover:text-foreground">
+                          Documentation
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <a href="#" className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground">
+                          View all products →
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink href="#">About</NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </Block>
 
         <Block title="Empty">

@@ -1,3 +1,9 @@
+/** Submenu item under a navbar tab with chevron */
+export interface NavbarTabSubItem {
+  label: string
+  path: string
+}
+
 /**
  * Tab shown in the navbar.
  * Tabs are determined by user/persona: pass the tab set appropriate for the current user's product and permissions.
@@ -7,6 +13,8 @@ export interface NavbarTab {
   label: string
   path?: string
   chevron?: boolean
+  /** When set with chevron, shows a dropdown submenu (navigation menu style). Ignored if no chevron. */
+  subItems?: NavbarTabSubItem[]
   /** For tabs without path (dropdowns); onClick closes mobile menu when provided */
   onClick?: () => void
 }

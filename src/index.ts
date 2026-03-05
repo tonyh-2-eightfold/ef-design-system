@@ -43,10 +43,22 @@ export type {
 export { MentorInsightCard } from './components/MentorInsightCard/MentorInsightCard'
 export type { MentorInsightCardProps } from './components/MentorInsightCard/MentorInsightCard'
 
+export {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  NavigationMenuViewport,
+} from './components/NavigationMenu/NavigationMenu'
+export type { NavigationMenuVariant } from './components/NavigationMenu/NavigationMenu'
+
 export { Navbar } from './components/Navbar/Navbar'
 export type {
   NavbarProps,
   NavbarTab,
+  NavbarTabSubItem,
   NavbarAvatarMenuItem,
   NavbarActionButton,
   NavbarSwitchOption,

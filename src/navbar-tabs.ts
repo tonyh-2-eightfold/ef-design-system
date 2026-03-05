@@ -19,8 +19,28 @@ export const EMPLOYEE_NON_MANAGER_TABS: NavbarTab[] = [
   { id: 'home', label: 'Home', path: '/' },
   { id: 'goals', label: 'Goals', path: '/goals' },
   { id: 'career-navigator', label: 'Career navigator', path: '/career-navigator' },
-  { id: 'marketplace', label: 'Marketplace', path: '/marketplace', chevron: true },
-  { id: 'my-activity', label: 'My activity', path: '/my-activity', chevron: true },
+  {
+    id: 'marketplace',
+    label: 'Marketplace',
+    path: '/marketplace',
+    chevron: true,
+    subItems: [
+      { label: 'Learning', path: '/marketplace/learning' },
+      { label: 'Projects', path: '/marketplace/projects' },
+      { label: 'Mentorship', path: '/marketplace/mentorship' },
+    ],
+  },
+  {
+    id: 'my-activity',
+    label: 'My activity',
+    path: '/my-activity',
+    chevron: true,
+    subItems: [
+      { label: 'Goals', path: '/my-activity/goals' },
+      { label: 'Learning', path: '/my-activity/learning' },
+      { label: 'Contributions', path: '/my-activity/contributions' },
+    ],
+  },
   { id: 'people', label: 'People', path: '/people' },
 ]
 
@@ -29,8 +49,28 @@ export const MANAGER_TABS: NavbarTab[] = [
   { id: 'home', label: 'Home', path: '/' },
   { id: 'goals', label: 'Goals', path: '/goals' },
   { id: 'career-navigator', label: 'Career navigator', path: '/career-navigator' },
-  { id: 'marketplace', label: 'Marketplace', path: '/marketplace', chevron: true },
-  { id: 'my-activity', label: 'My activity', path: '/my-activity', chevron: true },
+  {
+    id: 'marketplace',
+    label: 'Marketplace',
+    path: '/marketplace',
+    chevron: true,
+    subItems: [
+      { label: 'Learning', path: '/marketplace/learning' },
+      { label: 'Projects', path: '/marketplace/projects' },
+      { label: 'Mentorship', path: '/marketplace/mentorship' },
+    ],
+  },
+  {
+    id: 'my-activity',
+    label: 'My activity',
+    path: '/my-activity',
+    chevron: true,
+    subItems: [
+      { label: 'Goals', path: '/my-activity/goals' },
+      { label: 'Learning', path: '/my-activity/learning' },
+      { label: 'Contributions', path: '/my-activity/contributions' },
+    ],
+  },
   { id: 'people', label: 'People', path: '/people' },
   { id: 'my-team', label: 'My team', path: '/my-team' },
 ]
@@ -38,10 +78,40 @@ export const MANAGER_TABS: NavbarTab[] = [
 /** Talent Acquisition – Recruiter (default) persona: Positions, Talent, Engage, Insights, More */
 export const TALENT_ACQUISITION_RECRUITER_TABS: NavbarTab[] = [
   { id: 'positions', label: 'Positions', path: '/positions' },
-  { id: 'talent', label: 'Talent', path: '/talent', chevron: true },
-  { id: 'engage', label: 'Engage', path: '/engage', chevron: true },
+  {
+    id: 'talent',
+    label: 'Talent',
+    path: '/talent',
+    chevron: true,
+    subItems: [
+      { label: 'Pipeline', path: '/talent/pipeline' },
+      { label: 'Candidates', path: '/talent/candidates' },
+      { label: 'Search', path: '/talent/search' },
+    ],
+  },
+  {
+    id: 'engage',
+    label: 'Engage',
+    path: '/engage',
+    chevron: true,
+    subItems: [
+      { label: 'Campaigns', path: '/engage/campaigns' },
+      { label: 'Emails', path: '/engage/emails' },
+      { label: 'Events', path: '/engage/events' },
+    ],
+  },
   { id: 'insights', label: 'Insights', path: '/insights' },
-  { id: 'more', label: 'More', path: '/more', chevron: true },
+  {
+    id: 'more',
+    label: 'More',
+    path: '/more',
+    chevron: true,
+    subItems: [
+      { label: 'Settings', path: '/more/settings' },
+      { label: 'Integrations', path: '/more/integrations' },
+      { label: 'Help', path: '/more/help' },
+    ],
+  },
 ]
 
 /** Talent Acquisition search input hint text */

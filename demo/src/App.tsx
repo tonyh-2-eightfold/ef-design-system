@@ -43,6 +43,7 @@ const SHADCN_COMPONENTS = [
   'Context Menu',
   'Dialog',
   'Dropdown Menu',
+  'Navigation Menu',
   'Empty',
   'Hover Card',
   'Input',
@@ -624,7 +625,7 @@ function NavbarShowcase() {
             </select>
           </div>
         </div>
-        <div className="mt-6 overflow-hidden rounded-lg border border-border">
+        <div className="mt-6 overflow-visible rounded-lg border border-border">
           <Navbar
             logoSrc={EIGHTFOLD_LOGO_PATH}
             productName={productConfig.productName}

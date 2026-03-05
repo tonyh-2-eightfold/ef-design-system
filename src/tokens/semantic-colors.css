@@ -117,7 +117,7 @@
   --color-input-ink: rgba(105, 113, 127, 1);
   /* Button primary */
   --color-button-primary-bg: rgba(176, 243, 254, 1);
-  --color-button-primary-bg-hover: rgba(255, 255, 255, 1);
+  --color-button-primary-bg-hover: rgba(235, 253, 255, 1);
   --color-button-primary-bg-pressed: rgba(142, 232, 248, 1);
   --color-button-primary-bg-disabled: rgba(176, 243, 254, 1);
   --color-button-primary-text: rgba(5, 77, 123, 1);

@@ -1,9 +1,16 @@
 import { useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import * as Tabs from '@radix-ui/react-tabs'
 import type { NavbarProps } from './Navbar.types'
 import { Input } from '../Input/Input'
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '../NavigationMenu/NavigationMenu'
 import './Navbar.css'
 
 function DefaultLink({
@@ -53,32 +60,80 @@ export function Navbar({
     : null
 
   const renderDesktopTab = (tab: (typeof tabs)[0]) => {
+    const hasSubmenu = tab.chevron && tab.subItems && tab.subItems.length > 0
+    if (tab.path && hasSubmenu) {
+      const isActive = activePath === tab.path || tab.subItems!.some((s) => s.path === activePath)
+      return (
+        <NavigationMenuItem key={tab.id}>
+          <NavigationMenuTrigger className={`navbar__tab navbar__tab--dropdown ${isActive ? 'navbar__tab--active' : ''}`}>
+            <span className="navbar__tab-label">{tab.label}</span>
+          </NavigationMenuTrigger>
+          <NavigationMenuContent className="navbar__tab-menu">
+            <div className="navbar__tab-menu-inner">
+              {tab.subItems!.map((item) => (
+                <NavigationMenuLink key={item.path} asChild>
+                  <Link to={item.path} className="navbar__tab-menu-item">
+                    {item.label}
+                  </Link>
+                </NavigationMenuLink>
+              ))}
+              {tab.path && (
+                <>
+                  <div className="navbar__tab-menu-divider" />
+                  <NavigationMenuLink asChild>
+                    <Link to={tab.path} className="navbar__tab-menu-item navbar__tab-menu-item--view-all">
+                      View all
+                    </Link>
+                  </NavigationMenuLink>
+                </>
+              )}
+            </div>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+      )
+    }
     if (tab.path) {
       const isNavLink = NavLinkComponent && NavLinkComponent !== LinkComponent
+      const active = activePath === tab.path || (tab.path === '/' && !activePath)
       if (isNavLink) {
         const NavLinkComp = NavLinkComponent
         return (
-          <NavLinkComp
-            key={tab.id}
-            to={tab.path}
-            className={({ isActive }: { isActive: boolean }) =>
-              `navbar__tab navbar__tab--link ${isActive ? 'navbar__tab--active' : ''}`
-            }
-          >
-            <span className="navbar__tab-label">
-              {tab.label}
-              {tab.chevron && (
-                <span className="material-symbols-outlined navbar__tab-chevron" aria-hidden>
-                  expand_more
+          <NavigationMenuItem key={tab.id}>
+            <NavigationMenuLink asChild active={active}>
+              <NavLinkComp to={tab.path} className="navbar__tab navbar__tab--link">
+                <span className="navbar__tab-label">
+                  {tab.label}
+                  {tab.chevron && (
+                    <span className="material-symbols-outlined navbar__tab-chevron" aria-hidden>
+                      expand_more
+                    </span>
+                  )}
                 </span>
-              )}
-            </span>
-          </NavLinkComp>
+              </NavLinkComp>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
         )
       }
-      const active = activePath === tab.path || (tab.path === '/' && !activePath)
       return (
-        <Link key={tab.id} to={tab.path} className={`navbar__tab navbar__tab--link ${active ? 'navbar__tab--active' : ''}`}>
+        <NavigationMenuItem key={tab.id}>
+          <NavigationMenuLink asChild active={active}>
+            <Link to={tab.path} className="navbar__tab navbar__tab--link">
+              <span className="navbar__tab-label">
+                {tab.label}
+                {tab.chevron && (
+                  <span className="material-symbols-outlined navbar__tab-chevron" aria-hidden>
+                    expand_more
+                  </span>
+                )}
+              </span>
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      )
+    }
+    return (
+      <NavigationMenuItem key={tab.id}>
+        <NavigationMenuLink href="#" className="navbar__tab">
           <span className="navbar__tab-label">
             {tab.label}
             {tab.chevron && (
@@ -87,25 +142,35 @@ export function Navbar({
               </span>
             )}
           </span>
-        </Link>
-      )
-    }
-    return (
-      <Tabs.Trigger key={tab.id} value={tab.id} className="navbar__tab">
-        <span className="navbar__tab-label">
-          {tab.label}
-          {tab.chevron && (
-            <span className="material-symbols-outlined navbar__tab-chevron" aria-hidden>
-              expand_more
-            </span>
-          )}
-        </span>
-      </Tabs.Trigger>
+        </NavigationMenuLink>
+      </NavigationMenuItem>
     )
   }
 
   const renderMobileTab = (tab: (typeof tabs)[0]) => {
     if (tab.path) {
+      const hasSubmenu = tab.chevron && tab.subItems && tab.subItems.length > 0
+      if (hasSubmenu) {
+        return (
+          <div key={tab.id} className="navbar__menu-group">
+            <Link to={tab.path} className="navbar__menu-link navbar__menu-link--parent" onClick={() => setMobileMenuOpen(false)}>
+              {tab.label}
+            </Link>
+            <div className="navbar__menu-sublinks">
+              {tab.subItems!.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className="navbar__menu-link navbar__menu-link--sub"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )
+      }
       return (
         <Link
           key={tab.id}
@@ -178,11 +243,11 @@ export function Navbar({
               </span>
             </div>
           </Link>
-          <Tabs.Root defaultValue={tabs[0]?.id ?? 'home'} className="navbar__tabs">
-            <Tabs.List className="navbar__tabs-list">
+          <NavigationMenu viewport={false} variant="underline" className="navbar__tabs">
+            <NavigationMenuList className="navbar__tabs-list">
               {tabs.map(renderDesktopTab)}
-            </Tabs.List>
-          </Tabs.Root>
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
         <div className="navbar__right">
           <div className="navbar__search-wrap">

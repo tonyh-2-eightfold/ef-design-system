@@ -29,6 +29,8 @@ The repo uses **npm workspaces** so the demo and design system share a single Re
 2. **Build design system**: `npm run build` (demo imports CSS from `dist/`).
 3. **Run demo**: `npm run demo` (build then dev server) or `npm run demo:dev` (dev server only; run after a build).
 
+**When you change design system components:** The demo loads the built output from `dist/`, not source. After editing any component or styles under `src/` (e.g. `src/components/**/*.tsx`, `src/components/**/*.css`, `src/styles/`), run **`npm run build`** so the demo picks up your changes. Then refresh the demo in the browser (or rely on HMR if the dev server is running).
+
 ## Usage
 
 ### In your app

@@ -87,7 +87,16 @@ function copyDesignSystemPublicPlugin() {
 export default defineConfig({
   plugins: [requireDesignSystemPlugin(), designSystemPublicPlugin(), copyDesignSystemPublicPlugin(), react(), tailwindcss()],
   resolve: {
-    alias: [{ find: '@', replacement: path.resolve(demoRoot, 'src') }],
+    alias: [
+      { find: '@', replacement: path.resolve(demoRoot, 'src') },
+      // Resolve design system from repo root so demo always uses latest build (no cached tarball)
+      { find: '@tonyh-2-eightfold/ef-design-system', replacement: designSystemRoot },
+      // Resolve styles subpath to built CSS so Navigation Menu (and all components) get design system styles
+      {
+        find: '@tonyh-2-eightfold/ef-design-system/styles',
+        replacement: path.join(designSystemRoot, 'dist', 'assets', 'index.css'),
+      },
+    ],
   },
   server: {
     port: 5173,

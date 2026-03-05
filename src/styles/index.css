@@ -18,6 +18,7 @@
 /* Component styles (so a single styles entry includes everything) */
 @import '../components/Button/Button.css';
 @import '../components/Input/Input.css';
+@import '../components/NavigationMenu/NavigationMenu.css';
 @import '../components/Navbar/Navbar.css';
 @import '../components/Tag/Tag.css';
 @import '../components/InsightCard/InsightCard.css';

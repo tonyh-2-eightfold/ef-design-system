@@ -40,7 +40,7 @@
 }
 
 /* Design system — Octuple tokens + component styles. Requires build at repo root: npm run build */
-@import "@tonyh-2-eightfold/ef-design-system/styles";
+@import "../../dist/assets/index.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -338,4 +338,81 @@ a.project-object-card {
 [data-slot="command"],
 [data-slot="hover-card-content"] {
   border-color: var(--color-border-default) !important;
+}
+
+/* Navigation Menu catalog block: allow viewport/submenu to show, same trigger/indicator as design system */
+#navigation-menu .nav-menu__viewport-wrap {
+  overflow: visible;
+}
+#navigation-menu .nav-menu--underline .nav-menu__trigger {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+#navigation-menu .nav-menu--underline .nav-menu__trigger:hover {
+  color: var(--color-tertiary-grey);
+}
+#navigation-menu .nav-menu--underline .nav-menu__trigger-label {
+  position: relative;
+}
+#navigation-menu .nav-menu--underline .nav-menu__trigger-label::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  border-radius: 4px 4px 0 0;
+  transition: background 0.15s;
+}
+/* Hover and open (click) use same grey indicator – do not override to blue */
+#navigation-menu .nav-menu--underline .nav-menu__trigger:hover .nav-menu__trigger-label::after,
+#navigation-menu .nav-menu--underline .nav-menu__trigger[data-state='open'] .nav-menu__trigger-label::after {
+  background: var(--color-bg2-grey);
+}
+#navigation-menu .nav-menu--underline .nav-menu__trigger[data-state='open'] {
+  color: var(--color-tertiary-grey);
+}
+
+/* Navigation Menu catalog block: pill variant – shadcn canonical specs */
+#navigation-menu .nav-menu--pill .nav-menu__trigger {
+  height: 2.5rem;
+  min-height: 2.5rem;
+  padding: 8px 16px;
+  font: var(--typography-body3);
+  border-radius: 9999px;
+  background: transparent;
+}
+#navigation-menu .nav-menu--pill .nav-menu__trigger:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+#navigation-menu .nav-menu--pill .nav-menu__trigger:focus-visible {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+#navigation-menu .nav-menu--pill .nav-menu__trigger[data-state='open'] {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+#navigation-menu .nav-menu--pill .nav-menu__link {
+  height: 2.5rem;
+  min-height: 2.5rem;
+  padding: 8px 16px;
+  font: var(--typography-body3);
+  border-radius: 9999px;
+  background: transparent;
+  flex-direction: row;
+  align-items: center;
+}
+#navigation-menu .nav-menu--pill .nav-menu__link:hover,
+#navigation-menu .nav-menu--pill .nav-menu__link:focus-visible {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+#navigation-menu .nav-menu--pill .nav-menu__link[data-active='true'] {
+  background: color-mix(in srgb, var(--accent) 50%, transparent);
+  color: var(--accent-foreground);
 }
