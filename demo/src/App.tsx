@@ -726,12 +726,15 @@ export default function App() {
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
       <aside className="fixed left-0 top-0 z-40 flex h-screen w-56 flex-col border-r border-border bg-background">
         <div className="flex h-14 shrink-0 items-center gap-2 border-b border-border px-4">
-          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <span className="text-xs font-bold">EF</span>
-          </div>
+          <img src={EIGHTFOLD_LOGO_PATH} alt="" className="h-6 w-6 shrink-0 object-contain" />
           <span className="font-semibold tracking-tight text-foreground">Design System</span>
         </div>
-        <nav className="flex-1 overflow-y-auto px-2 py-4">
+        <nav className="flex-1 overflow-y-auto overflow-x-hidden px-2 py-4 scrollbar-hidden">
+          <p className="mb-4 px-2 text-xs text-muted-foreground">
+            Last updated: {import.meta.env.VITE_LAST_UPDATED
+              ? new Date(import.meta.env.VITE_LAST_UPDATED + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+              : '—'}
+          </p>
           {SIDEBAR_GROUPS.map((group) => (
             <div key={group.label} className="mb-4">
               <p className="mb-1.5 px-2 text-xs font-medium text-muted-foreground">

@@ -1,5 +1,6 @@
 import path from 'node:path';
 import fs from 'node:fs';
+import { execSync } from 'node:child_process';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
@@ -80,7 +81,25 @@ function copyDesignSystemPublicPlugin() {
         },
     };
 }
+/** Last git commit date (YYYY-MM-DD) for "Last updated" in sidebar; empty if git unavailable. */
+function getLastUpdated() {
+    const dirs = [designSystemRoot, process.cwd()];
+    for (const cwd of dirs) {
+        try {
+            const out = execSync('git log -1 --format=%cI', { encoding: 'utf8', cwd }).trim().slice(0, 10);
+            if (out && /^\d{4}-\d{2}-\d{2}$/.test(out))
+                return out;
+        }
+        catch {
+            /* try next dir */
+        }
+    }
+    return '';
+}
 export default defineConfig({
+    define: {
+        'import.meta.env.VITE_LAST_UPDATED': JSON.stringify(getLastUpdated()),
+    },
     plugins: [requireDesignSystemPlugin(), designSystemPublicPlugin(), copyDesignSystemPublicPlugin(), react(), tailwindcss()],
     resolve: {
         alias: [

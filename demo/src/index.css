@@ -44,6 +44,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Hide scrollbar (still scrollable) — sidebar nav and main page */
+.scrollbar-hidden,
+html,
+body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.scrollbar-hidden::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0;
+  height: 0;
+}
+
 /* Base — shadcn-style docs */
 html {
   -webkit-font-smoothing: antialiased;
@@ -415,4 +430,19 @@ a.project-object-card {
 #navigation-menu .nav-menu--pill .nav-menu__link[data-active='true'] {
   background: color-mix(in srgb, var(--accent) 50%, transparent);
   color: var(--accent-foreground);
+}
+
+/* Force main page scrollbar hidden (last so it wins) */
+html,
+body,
+#root {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
