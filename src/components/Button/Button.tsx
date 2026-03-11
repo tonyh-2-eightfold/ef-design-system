@@ -44,6 +44,8 @@ export interface ButtonProps
   leadingIcon?: ReactNode
   /** Renders after the label with correct spacing (data-icon="inline-end") */
   trailingIcon?: ReactNode
+  /** Number shown in a badge pill after the label (e.g. count); omitted when undefined */
+  badge?: number
 }
 
 function wrapIcon(icon: ReactNode, dataIcon: 'inline-start' | 'inline-end'): ReactNode {
@@ -67,20 +69,26 @@ export function Button({
   asChild = false,
   leadingIcon,
   trailingIcon,
+  badge,
   children,
   ...props
 }: ButtonProps) {
   const Comp = asChild ? Slot : 'button'
-  const content =
-    leadingIcon != null || trailingIcon != null ? (
-      <>
-        {leadingIcon != null && wrapIcon(leadingIcon, 'inline-start')}
-        {children}
-        {trailingIcon != null && wrapIcon(trailingIcon, 'inline-end')}
-      </>
-    ) : (
-      children
-    )
+  const hasSlots = leadingIcon != null || trailingIcon != null || badge != null
+  const content = hasSlots ? (
+    <>
+      {leadingIcon != null && wrapIcon(leadingIcon, 'inline-start')}
+      {children}
+      {badge != null && (
+        <span className="btn__badge" data-slot="button-badge">
+          {badge > 99 ? '99+' : badge}
+        </span>
+      )}
+      {trailingIcon != null && wrapIcon(trailingIcon, 'inline-end')}
+    </>
+  ) : (
+    children
+  )
   return (
     <Comp
       data-slot="button"

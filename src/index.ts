@@ -54,6 +54,8 @@ export {
 } from './components/NavigationMenu/NavigationMenu'
 export type { NavigationMenuVariant } from './components/NavigationMenu/NavigationMenu'
 
+export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants } from './components/Tabs/Tabs'
+
 export { Navbar } from './components/Navbar/Navbar'
 export type {
   NavbarProps,

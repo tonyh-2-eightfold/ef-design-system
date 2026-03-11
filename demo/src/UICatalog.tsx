@@ -413,6 +413,12 @@ export function UICatalog({
             <Button variant="outline" trailingIcon={<MaterialIcon name="arrow_forward" />}>Next</Button>
             <Button variant="secondary" leadingIcon={<MaterialIcon name="add" />}>Add item</Button>
           </div>
+          <p className="mt-4 w-full text-xs font-medium text-muted-foreground">With number badge</p>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button variant="secondary" badge={3}>Notifications</Button>
+            <Button variant="outline" badge={12}>Inbox</Button>
+            <Button variant="default" badge={99}>Alerts</Button>
+          </div>
           <p className="mt-4 w-full text-xs font-medium text-muted-foreground">Sizes (text)</p>
           <div className="flex flex-wrap items-end gap-4">
             <div className="flex flex-col items-center gap-1">
