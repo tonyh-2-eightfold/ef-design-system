@@ -848,38 +848,74 @@ export function UICatalog({
         </Block>
 
         <Block title="Select">
-          <p className="mb-2 text-xs font-medium text-muted-foreground">Variants (same radius as Button)</p>
-          <div className="flex flex-wrap items-center gap-3">
-            <Select>
-              <SelectTrigger variant="primary" className="w-[180px]">
-                <SelectValue placeholder="Primary" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="a">Option A</SelectItem>
-                <SelectItem value="b">Option B</SelectItem>
-                <SelectItem value="c">Option C</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger variant="secondary" className="w-[180px]">
-                <SelectValue placeholder="Secondary" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="a">Option A</SelectItem>
-                <SelectItem value="b">Option B</SelectItem>
-                <SelectItem value="c">Option C</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger variant="outline" className="w-[180px]">
-                <SelectValue placeholder="Outline" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="a">Option A</SelectItem>
-                <SelectItem value="b">Option B</SelectItem>
-                <SelectItem value="c">Option C</SelectItem>
-              </SelectContent>
-            </Select>
+          <p className="mb-4 text-xs text-muted-foreground">Same radius as Button. Variants: primary, secondary, outline. Sizes: default, small.</p>
+          <div className="space-y-6">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
+              <div className="flex flex-wrap items-center gap-3">
+                <Select>
+                  <SelectTrigger variant="primary" className="w-[180px]">
+                    <SelectValue placeholder="Primary" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                    <SelectItem value="c">Option C</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Select>
+                  <SelectTrigger variant="secondary" className="w-[180px]">
+                    <SelectValue placeholder="Secondary" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                    <SelectItem value="c">Option C</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Select>
+                  <SelectTrigger variant="outline" className="w-[180px]">
+                    <SelectValue placeholder="Outline" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                    <SelectItem value="c">Option C</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Sizes</p>
+              <div className="flex flex-wrap items-baseline gap-6">
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-xs text-muted-foreground">Default</span>
+                  <Select>
+                    <SelectTrigger variant="outline" className="w-[180px]">
+                      <SelectValue placeholder="Default" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="a">Option A</SelectItem>
+                      <SelectItem value="b">Option B</SelectItem>
+                      <SelectItem value="c">Option C</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-xs text-muted-foreground">Small</span>
+                  <Select>
+                    <SelectTrigger size="small" variant="outline" className="w-[140px]">
+                      <SelectValue placeholder="Small" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="a">Option A</SelectItem>
+                      <SelectItem value="b">Option B</SelectItem>
+                      <SelectItem value="c">Option C</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </div>
           </div>
         </Block>
 

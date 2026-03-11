@@ -1,0 +1,44 @@
+---
+description: Shared UI primitives must live in the library; other projects depend on it
+alwaysApply: true
+---
+
+# Library-first: shared primitives live in the library
+
+Other projects use **`@tonyh-2-eightfold/ef-design-system`**. Only what lives in **`src/`** and is exported from **`src/index.ts`** is available to them.
+
+## Rule
+
+**Any reusable UI primitive that the demo or other apps use must be implemented in the library**, not only in the demo.
+
+- **Library** (`src/components/*`): Implement the component, export it from `src/index.ts`, add any new peer dependencies to `package.json` and `vite.config.ts` externals.
+- **Demo** (`demo/src/components/ui/*`): For those primitives, **re-export from the library** (e.g. `export { Select, SelectTrigger, ... } from '@tonyh-2-eightfold/ef-design-system'`). Do not implement a separate version in the demo.
+
+## Examples
+
+- **Button, Input, Navbar, Tabs, Select**: Implemented in `src/`, exported, demo re-exports. ✅
+- **Select** (after sync): Lives in `src/components/Select/Select.tsx`, demo `select.tsx` only re-exports. ✅
+- Adding a new **Dropdown** used by the demo and others: Add `src/components/Dropdown/`, export from `src/index.ts`, add peer deps if needed; in demo, add `dropdown.tsx` that re-exports from the library. ✅
+- Implementing a **fancy picker** only in `demo/src/components/ui/` and not exporting it from the library: ❌ Avoid. If it’s reusable, put it in the library first, then re-export in the demo.
+
+## Library styling: Tailwind + design tokens
+
+The library uses **Tailwind** as the foundation. Style components with Tailwind utility classes and design tokens from `src/tokens/` (e.g. `rounded-[var(--radius-8)]`, `bg-[var(--color-button-primary-bg)]`). Use `cn()` and `cva()` for variant composition. Existing components that still use a `.css` file (Button, Input, Navbar, etc.) can stay as-is; new primitives should use Tailwind.
+
+## When adding a new primitive to the library
+
+1. Create `src/components/<Name>/` with `<Name>.tsx` (Tailwind + tokens; add `.css` only if needed for complex or token-heavy styles).
+2. Add any new peer dependencies to root `package.json` and to `vite.config.ts` → `build.rollupOptions.external`.
+3. Export the public API from `src/index.ts`.
+4. In the demo, add or update `demo/src/components/ui/<name>.tsx` to re-export from `@tonyh-2-eightfold/ef-design-system` (and add any new peer deps to `demo/package.json` if needed).
+5. Run `npm run build` at repo root to verify.
+
+## Demo catalog: show everything from the library
+
+**Every library component and its variants/sizes must appear in the demo.** When you add or change something in the library (new component, new variant, new size, new prop), add or update the corresponding **Block** in `demo/src/UICatalog.tsx` so users can see it.
+
+- New **component** → add a new `<Block title="…">` with at least one example (and variants/sizes if applicable).
+- New **variant** or **size** → add an example in the existing Block (e.g. another row or item) so all options are visible.
+- Don’t leave library features undocumented in the catalog; the demo is the reference for what the library offers.
+
+This keeps the library and demo in sync and ensures other projects get the same components from the package.

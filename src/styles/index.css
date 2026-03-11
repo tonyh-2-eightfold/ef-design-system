@@ -2,8 +2,7 @@
  * Eightfold Design System - Base Styles
  * Tailwind v4 + tokens. Gilroy is loaded from /fonts/ (serve public/fonts at that path).
  *
- * For overlay/menu borders to use design tokens, import this file after Tailwind
- * in your app (e.g. @import 'tailwindcss'; @theme {...}; @import 'design-system/styles').
+ * Import this file after Tailwind in your app (e.g. @import 'tailwindcss'; @theme {...}; @import 'design-system/styles').
  */
 @import 'tailwindcss';
 @import './gilroy.css';

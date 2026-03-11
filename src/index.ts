@@ -56,6 +56,19 @@ export type { NavigationMenuVariant } from './components/NavigationMenu/Navigati
 
 export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants } from './components/Tabs/Tabs'
 
+export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from './components/Select/Select'
+
 export { Navbar } from './components/Navbar/Navbar'
 export type {
   NavbarProps,
