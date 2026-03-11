@@ -123,7 +123,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Inbox, FileText, Bell } from 'lucide-react'
+import { Inbox, FileText, Bell, Tag, X } from 'lucide-react'
 import { Textarea } from '@/components/ui/textarea'
 import { Toggle } from '@/components/ui/toggle'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
@@ -380,6 +380,14 @@ export function UICatalog({
                 <Badge variant="outline">Outline</Badge>
                 <Badge variant="ghost">Ghost</Badge>
                 <Badge variant="link">Link</Badge>
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Leading / trailing icons</p>
+              <div className="flex flex-wrap gap-2">
+                <Badge leadingIcon={<Tag className="size-3" />}>With leading</Badge>
+                <Badge trailingIcon={<X className="size-3" />}>With trailing</Badge>
+                <Badge leadingIcon={<Tag className="size-3" />} trailingIcon={<X className="size-3" />}>Both</Badge>
               </div>
             </div>
             <div>

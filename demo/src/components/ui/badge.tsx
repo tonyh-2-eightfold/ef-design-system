@@ -47,10 +47,27 @@ function Badge({
   variant = "default",
   size = "24",
   asChild = false,
+  leadingIcon,
+  trailingIcon,
+  children,
   ...props
 }: React.ComponentProps<"span"> &
-  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+  VariantProps<typeof badgeVariants> & {
+    asChild?: boolean
+    leadingIcon?: React.ReactNode
+    trailingIcon?: React.ReactNode
+  }) {
   const Comp = asChild ? Slot.Root : "span"
+
+  const content = asChild ? (
+    children
+  ) : (
+    <>
+      {leadingIcon}
+      {children}
+      {trailingIcon}
+    </>
+  )
 
   return (
     <Comp
@@ -59,7 +76,9 @@ function Badge({
       data-size={size}
       className={cn(badgeVariants({ variant, size }), className)}
       {...props}
-    />
+    >
+      {content}
+    </Comp>
   )
 }
 
