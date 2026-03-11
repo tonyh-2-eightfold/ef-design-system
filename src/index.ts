@@ -16,6 +16,9 @@ export type { SkillTagProps, SkillTagVariant } from './components/SkillTag/Skill
 export { Tag, TagGroup } from './components/Tag'
 export type { TagProps, TagSize, TagVariant, TagGroupProps, TagGroupType } from './components/Tag'
 
+export { Badge, badgeVariants } from './components/Badge'
+export type { BadgeProps, BadgeVariant, BadgeSize } from './components/Badge'
+
 export { OpenTo } from './components/OpenTo/OpenTo'
 export type { OpenToProps, OpenToItem } from './components/OpenTo/OpenTo'
 

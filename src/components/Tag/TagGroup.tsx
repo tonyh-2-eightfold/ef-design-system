@@ -1,7 +1,7 @@
 import React, { type ReactNode } from 'react'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 import { cn } from '../../lib/utils'
-import { Tag, tagGroupItemClass } from './Tag'
+import { Tag, tagGroupItemClass, type TagSize } from './Tag'
 
 export type TagGroupType = 'single' | 'multiple'
 
@@ -16,13 +16,15 @@ export interface TagGroupProps {
   defaultValue?: string | string[]
   /** Disable all tags */
   disabled?: boolean
-  /** Tag size applied to all items */
-  size?: 'sm' | 'md'
+  /** Tag size applied to all items (24h, 30h, 44h) */
+  size?: TagSize
   children?: ReactNode
   className?: string
 }
 
-function isTagChild(child: ReactNode): child is React.ReactElement<{ value?: string; children?: ReactNode }> {
+function isTagChild(
+  child: ReactNode
+): child is React.ReactElement<{ value?: string; children?: ReactNode; leadingIcon?: ReactNode; trailingIcon?: ReactNode }> {
   return React.isValidElement(child) && typeof child.type !== 'string' && (child.type === Tag || (child.type as { displayName?: string }).displayName === 'Tag')
 }
 
@@ -32,7 +34,7 @@ export function TagGroup({
   onValueChange,
   defaultValue,
   disabled = false,
-  size = 'md',
+  size = '24',
   children,
   className,
 }: TagGroupProps) {
@@ -50,6 +52,7 @@ export function TagGroup({
         if (!isTagChild(child)) return child
         const itemValue = child.props.value
         if (itemValue == null) return child
+        const { leadingIcon, trailingIcon } = child.props
         return (
           <ToggleGroup.Item
             key={itemValue}
@@ -57,7 +60,9 @@ export function TagGroup({
             className={tagGroupItemClass(size)}
             disabled={child.props.disabled}
           >
+            {leadingIcon != null && <span data-icon="inline-start">{leadingIcon}</span>}
             {child.props.children}
+            {trailingIcon != null && <span data-icon="inline-end">{trailingIcon}</span>}
           </ToggleGroup.Item>
         )
       })}

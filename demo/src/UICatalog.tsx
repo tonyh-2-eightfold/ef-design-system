@@ -27,7 +27,7 @@ import {
   AvatarGroupCount,
   AvatarImage,
 } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
+import { Badge, Tag, TagGroup } from '@tonyh-2-eightfold/ef-design-system'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -123,7 +123,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Inbox, FileText, Bell, Tag, X } from 'lucide-react'
+import { Inbox, FileText, Bell, Tag as TagIcon, X } from 'lucide-react'
 import { Textarea } from '@/components/ui/textarea'
 import { Toggle } from '@/components/ui/toggle'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
@@ -385,9 +385,9 @@ export function UICatalog({
             <div>
               <p className="mb-2 text-xs font-medium text-muted-foreground">Leading / trailing icons</p>
               <div className="flex flex-wrap gap-2">
-                <Badge leadingIcon={<Tag className="size-3" />}>With leading</Badge>
+                <Badge leadingIcon={<TagIcon className="size-3" />}>With leading</Badge>
                 <Badge trailingIcon={<X className="size-3" />}>With trailing</Badge>
-                <Badge leadingIcon={<Tag className="size-3" />} trailingIcon={<X className="size-3" />}>Both</Badge>
+                <Badge leadingIcon={<TagIcon className="size-3" />} trailingIcon={<X className="size-3" />}>Both</Badge>
               </div>
             </div>
             <div>
@@ -418,6 +418,55 @@ export function UICatalog({
                   <Badge size="none" variant="outline">Outline</Badge>
                 </div>
               </div>
+            </div>
+          </div>
+        </Block>
+
+        <Block title="Tag">
+          <div className="space-y-6 w-full">
+            <p className="text-xs text-muted-foreground">
+              Octuple DS Theme 2 — <a href="https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?m=auto&node-id=14403-166977" target="_blank" rel="noreferrer" className="underline hover:text-foreground">Figma (node 14403-166977)</a>. Selectable chips via TagGroup (single/multiple) or standalone with optional remove. Sizes: 24h, 30h, 44h (same as Badge).
+            </p>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Standalone</p>
+              <div className="flex flex-wrap gap-2">
+                <Tag>Default</Tag>
+                <Tag variant="selected">Selected</Tag>
+                <Tag variant="disabled">Disabled</Tag>
+                <Tag onRemove={() => {}}>With remove</Tag>
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Leading / trailing icons</p>
+              <div className="flex flex-wrap gap-2">
+                <Tag leadingIcon={<TagIcon className="size-3" />}>With leading</Tag>
+                <Tag trailingIcon={<X className="size-3" />}>With trailing</Tag>
+                <Tag leadingIcon={<TagIcon className="size-3" />} trailingIcon={<X className="size-3" />}>Both</Tag>
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Sizes</p>
+              <div className="flex flex-wrap gap-2">
+                <Tag size="24">24h</Tag>
+                <Tag size="30">30h</Tag>
+                <Tag size="44">44h</Tag>
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">TagGroup (single selection)</p>
+              <TagGroup type="single" defaultValue={['design']} size="30">
+                <Tag value="design">Design</Tag>
+                <Tag value="engineering">Engineering</Tag>
+                <Tag value="product">Product</Tag>
+              </TagGroup>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">TagGroup (multiple selection)</p>
+              <TagGroup type="multiple" defaultValue={['react', 'typescript']} size="30">
+                <Tag value="react">React</Tag>
+                <Tag value="typescript">TypeScript</Tag>
+                <Tag value="node">Node</Tag>
+              </TagGroup>
             </div>
           </div>
         </Block>

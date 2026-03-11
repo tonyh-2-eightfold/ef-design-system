@@ -1,14 +1,11 @@
 /**
  * Tag – Octuple DS Theme 2 (Figma node 14403-166977)
- * Radix + design tokens. Matches SkillTag pattern for consistency.
+ * Radix + design tokens. Sizes 24h, 30h, 44h (same as Badge). Gap 8.
  */
 .tag {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-3) var(--spacing-6);
-  min-height: 32px;
-  font: var(--typography-button3);
+  gap: var(--spacing-4);
   color: var(--color-tertiary-grey);
   background: var(--color-background1-grey);
   border: 1px solid var(--color-background2-grey);
@@ -18,10 +15,39 @@
   box-sizing: border-box;
 }
 
-.tag--sm {
+.tag [data-icon] {
+  pointer-events: none;
+}
+
+.tag [data-icon] svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* Sizes – Tag tokens (match Badge 24h, 30h, 44h) */
+.tag--24 {
+  min-width: 35px;
+  height: 24px;
   padding: var(--spacing-1) var(--spacing-2);
-  min-height: 24px;
   font: var(--typography-caption);
+  font-size: 0.75rem;
+}
+
+.tag--30 {
+  min-width: 43px;
+  height: 30px;
+  padding: var(--spacing-3) var(--spacing-6);
+  font: var(--typography-caption);
+  font-size: 0.75rem;
+}
+
+.tag--44 {
+  min-width: 55px;
+  height: 44px;
+  padding: var(--spacing-4) var(--spacing-8);
+  font: var(--typography-button3);
+  font-size: 0.875rem;
 }
 
 .tag--selected,
@@ -44,10 +70,10 @@
   margin: 0;
   margin-left: var(--spacing-1);
   padding: 0;
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  min-height: 24px;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
   border: none;
   background: transparent;
   color: var(--color-primary-grey);
@@ -57,11 +83,18 @@
   flex-shrink: 0;
 }
 
-.tag--sm .tag__remove {
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
-  min-height: 20px;
+.tag--30 .tag__remove {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  min-height: 22px;
+}
+
+.tag--44 .tag__remove {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .tag__remove:hover {

@@ -20,6 +20,7 @@
 @import '../components/NavigationMenu/NavigationMenu.css';
 @import '../components/Navbar/Navbar.css';
 @import '../components/Tag/Tag.css';
+@import '../components/Badge/Badge.css';
 @import '../components/InsightCard/InsightCard.css';
 @import '../components/CourseObjectCard/CourseObjectCard.css';
 @import '../components/ProjectObjectCard/ProjectObjectCard.css';

@@ -1,0 +1,149 @@
+/**
+ * Badge – Octuple DS Theme 2. Figma: node 21022-227242.
+ * Display pill using Tag design tokens (Tag/Corner radius, Tag/Padding, gap 8).
+ * Sizes: 24h, 30h, 44h, none. Use for status/labels; for selectable chips see Tag.
+ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  overflow: hidden;
+  border: 1px solid transparent;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+}
+
+.badge:focus-visible {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.badge[data-invalid] {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 3px rgb(0 0 0 / 0.1);
+}
+
+.badge [data-icon] {
+  pointer-events: none;
+}
+
+.badge [data-icon] svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* Variants – primary (button primary color) */
+.badge--default,
+.badge--primary {
+  background: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
+}
+
+a.badge--default:hover,
+a.badge--primary:hover {
+  background: var(--color-button-primary-bg-hover);
+  color: var(--color-button-primary-text);
+}
+
+/* Secondary */
+.badge--secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+a.badge--secondary:hover {
+  background: color-mix(in srgb, var(--secondary) 90%, black);
+  color: var(--secondary-foreground);
+}
+
+/* Destructive */
+.badge--destructive {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+.badge--destructive:focus-visible {
+  box-shadow: 0 0 0 3px rgb(0 0 0 / 0.1);
+}
+
+a.badge--destructive:hover {
+  background: color-mix(in srgb, var(--destructive) 90%, black);
+  color: var(--destructive-foreground);
+}
+
+/* Outline */
+.badge--outline {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+a.badge--outline:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* Ghost */
+.badge--ghost {
+  background: transparent;
+  color: var(--foreground);
+}
+
+a.badge--ghost:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* Link */
+.badge--link {
+  background: transparent;
+  color: var(--primary);
+}
+
+a.badge--link:hover {
+  text-decoration: underline;
+}
+
+/* Sizes – Tag tokens */
+.badge--24 {
+  min-width: 35px;
+  height: 24px;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-2);
+  font: var(--typography-caption);
+  font-size: 0.75rem;
+}
+
+.badge--30 {
+  min-width: 43px;
+  height: 30px;
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-2);
+  font: var(--typography-caption);
+  font-size: 0.75rem;
+}
+
+.badge--44 {
+  min-width: 55px;
+  height: 44px;
+  padding: var(--spacing-4) var(--spacing-8);
+  border-radius: var(--radius-2);
+  font: var(--typography-button3);
+  font-size: 0.875rem;
+}
+
+.badge--none {
+  min-width: 0;
+  height: auto;
+  padding: 0;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  font: var(--typography-caption);
+  font-size: 0.75rem;
+}

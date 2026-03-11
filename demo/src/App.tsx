@@ -32,6 +32,7 @@ const SHADCN_COMPONENTS = [
   'Aspect Ratio',
   'Avatar',
   'Badge',
+  'Tag',
   'Breadcrumb',
   'Button',
   'Calendar',
