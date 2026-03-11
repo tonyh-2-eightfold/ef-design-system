@@ -4,12 +4,21 @@ import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Badge – Octuple DS Theme 2. Figma: node 21022-227242.
+ * Small (24h): 35×24, Tag/Corner radius/Small, Tag/Padding Small, gap 8.
+ * Medium (30h): 43×30, Tag/Corner radius/Medium, Tag/Padding Medium, gap 8.
+ * Large (44h): 55×44, Tag/Corner radius/Large, Tag/Padding Large, gap 8.
+ */
 const badgeVariants = cva(
-  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden border border-transparent font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3",
+  "inline-flex w-fit shrink-0 items-center justify-center overflow-hidden border border-transparent font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+        default:
+          "bg-[var(--color-button-primary-bg)] text-[var(--color-button-primary-text)] [a&]:hover:bg-[var(--color-button-primary-bg-hover)]",
+        primary:
+          "bg-[var(--color-button-primary-bg)] text-[var(--color-button-primary-text)] [a&]:hover:bg-[var(--color-button-primary-bg-hover)]",
         secondary:
           "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
         destructive:
@@ -20,10 +29,10 @@ const badgeVariants = cva(
         link: "text-primary underline-offset-4 [a&]:hover:underline",
       },
       size: {
-        '44': "h-11 min-w-[2.75rem] rounded-xl px-2.5 text-sm",
-        '30': "h-[30px] min-w-[1.875rem] rounded-xl px-2 text-xs",
-        '24': "h-6 min-w-6 rounded-xl px-1.5 text-xs",
-        none: "rounded-none border-0 bg-transparent px-0 py-0 text-xs",
+        '44': "h-11 min-w-[55px] gap-[var(--spacing-4)] rounded-[var(--radius-2)] py-[var(--spacing-4)] px-[var(--spacing-8)] font-[var(--typography-button3)] text-sm",
+        '30': "h-[30px] min-w-[43px] gap-[var(--spacing-4)] rounded-[var(--radius-2)] py-[var(--spacing-3)] px-[var(--spacing-6)] font-[var(--typography-caption)] text-xs",
+        '24': "h-6 min-w-[35px] gap-[var(--spacing-4)] rounded-[var(--radius-2)] py-[var(--spacing-1)] px-[var(--spacing-2)] font-[var(--typography-caption)] text-xs",
+        none: "rounded-none border-0 bg-transparent px-0 py-0 font-[var(--typography-caption)] text-xs",
       },
     },
     defaultVariants: {

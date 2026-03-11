@@ -197,27 +197,37 @@ export function UICatalog({
 
       <div className="space-y-8">
         <Block title="Accordion">
-          <Accordion type="single" collapsible className="w-full max-w-md">
-            <AccordionItem value="1">
-              <AccordionTrigger>Item 1</AccordionTrigger>
-              <AccordionContent>Content for item 1.</AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="2">
-              <AccordionTrigger>Item 2</AccordionTrigger>
-              <AccordionContent>Content for item 2.</AccordionContent>
-            </AccordionItem>
-          </Accordion>
+          <div className="w-full">
+            <p className="mb-2 text-xs font-medium text-muted-foreground">Example</p>
+            <Accordion type="single" collapsible className="w-full max-w-md">
+              <AccordionItem value="1">
+                <AccordionTrigger>Item 1</AccordionTrigger>
+                <AccordionContent>Content for item 1.</AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="2">
+                <AccordionTrigger>Item 2</AccordionTrigger>
+                <AccordionContent>Content for item 2.</AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
         </Block>
 
         <Block title="Alert">
-          <Alert>
-            <AlertTitle>Title</AlertTitle>
-            <AlertDescription>Description text for the alert.</AlertDescription>
-          </Alert>
-          <Alert variant="destructive">
-            <AlertTitle>Destructive</AlertTitle>
-            <AlertDescription>Destructive variant.</AlertDescription>
-          </Alert>
+          <div className="space-y-4 w-full">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
+              <div className="flex flex-wrap gap-3">
+                <Alert>
+                  <AlertTitle>Default</AlertTitle>
+                  <AlertDescription>Description text for the alert.</AlertDescription>
+                </Alert>
+                <Alert variant="destructive">
+                  <AlertTitle>Destructive</AlertTitle>
+                  <AlertDescription>Destructive variant.</AlertDescription>
+                </Alert>
+              </div>
+            </div>
+          </div>
         </Block>
 
         <Block title="Alert Dialog">
@@ -257,7 +267,7 @@ export function UICatalog({
               <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Single</h4>
               <div className="flex flex-col gap-5">
                 <div>
-                  <p className="mb-2 text-[11px] font-medium text-muted-foreground">Sizes</p>
+                  <p className="mb-2 text-xs font-medium text-muted-foreground">Sizes</p>
                   <div className="flex flex-wrap items-end gap-3 grayscale">
                     {[
                       { size: 'sm' as const, label: 'sm' },
@@ -277,7 +287,7 @@ export function UICatalog({
                   </div>
                 </div>
                 <div>
-                  <p className="mb-2 text-[11px] font-medium text-muted-foreground">With image</p>
+                  <p className="mb-2 text-xs font-medium text-muted-foreground">With image</p>
                   <div className="flex flex-wrap items-center gap-4 grayscale">
                     <Avatar>
                       <AvatarImage src="https://github.com/shadcn.png" alt="" />
@@ -291,7 +301,7 @@ export function UICatalog({
                   </div>
                 </div>
                 <div>
-                  <p className="mb-2 text-[11px] font-medium text-muted-foreground">Fallback only</p>
+                  <p className="mb-2 text-xs font-medium text-muted-foreground">Fallback only</p>
                   <div className="flex flex-wrap items-end gap-3">
                     {[
                       { size: 'sm' as const, label: 'sm', fallback: 'S', className: 'bg-blue-500 text-white' },
@@ -316,7 +326,7 @@ export function UICatalog({
               <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Groups</h4>
               <div className="flex flex-col gap-5">
                 <div>
-                  <p className="mb-2 text-[11px] font-medium text-muted-foreground">Default</p>
+                  <p className="mb-2 text-xs font-medium text-muted-foreground">Default</p>
                   <AvatarGroup className="grayscale">
                     <Avatar>
                       <AvatarImage src="https://github.com/shadcn.png" alt="" />
@@ -334,7 +344,7 @@ export function UICatalog({
                   </AvatarGroup>
                 </div>
                 <div>
-                  <p className="mb-2 text-[11px] font-medium text-muted-foreground">Small</p>
+                  <p className="mb-2 text-xs font-medium text-muted-foreground">Small</p>
                   <AvatarGroup size="sm" className="grayscale">
                     <Avatar>
                       <AvatarImage src="https://github.com/shadcn.png" alt="" />
@@ -357,23 +367,48 @@ export function UICatalog({
         </Block>
 
         <Block title="Badge">
-          <div className="space-y-4">
+          <div className="space-y-6 w-full">
+            <p className="text-xs text-muted-foreground">
+              Octuple DS Theme 2 — <a href="https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?m=auto&node-id=21022-227242" target="_blank" rel="noreferrer" className="underline hover:text-foreground">Figma (node 21022-227242)</a>. Sizes: 44h, 30h, 24h, no container.
+            </p>
             <div>
-              <p className="mb-2 text-xs font-medium text-muted-foreground">Variants (size 24h)</p>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
               <div className="flex flex-wrap gap-2">
                 <Badge>Default</Badge>
                 <Badge variant="secondary">Secondary</Badge>
                 <Badge variant="destructive">Destructive</Badge>
                 <Badge variant="outline">Outline</Badge>
+                <Badge variant="ghost">Ghost</Badge>
+                <Badge variant="link">Link</Badge>
               </div>
             </div>
             <div>
-              <p className="mb-2 text-xs font-medium text-muted-foreground">Sizes (44h, 30h, 24h, no container)</p>
-              <div className="flex flex-wrap items-end gap-3">
-                <Badge size="44">44</Badge>
-                <Badge size="30">30</Badge>
-                <Badge size="24">24</Badge>
-                <Badge size="none">No container</Badge>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Size variants</p>
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-wrap items-end gap-3">
+                  <span className="w-12 text-xs text-muted-foreground">44h</span>
+                  <Badge size="44">44</Badge>
+                  <Badge size="44" variant="secondary">Secondary</Badge>
+                  <Badge size="44" variant="outline">Outline</Badge>
+                </div>
+                <div className="flex flex-wrap items-end gap-3">
+                  <span className="w-12 text-xs text-muted-foreground">30h</span>
+                  <Badge size="30">30</Badge>
+                  <Badge size="30" variant="secondary">Secondary</Badge>
+                  <Badge size="30" variant="outline">Outline</Badge>
+                </div>
+                <div className="flex flex-wrap items-end gap-3">
+                  <span className="w-12 text-xs text-muted-foreground">24h</span>
+                  <Badge size="24">24</Badge>
+                  <Badge size="24" variant="secondary">Secondary</Badge>
+                  <Badge size="24" variant="outline">Outline</Badge>
+                </div>
+                <div className="flex flex-wrap items-end gap-3">
+                  <span className="w-12 text-xs text-muted-foreground">None</span>
+                  <Badge size="none">No container</Badge>
+                  <Badge size="none" variant="secondary">Secondary</Badge>
+                  <Badge size="none" variant="outline">Outline</Badge>
+                </div>
               </div>
             </div>
           </div>
@@ -398,63 +433,51 @@ export function UICatalog({
         </Block>
 
         <Block title="Button">
-          <p className="w-full text-xs text-muted-foreground">Canonical (library). Octuple DS, tokens only.</p>
-          <div className="flex flex-wrap items-center gap-2">
-            <Button variant="default">Primary</Button>
-            <Button variant="destructive">Destructive</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="outline">Outline</Button>
-            <Button variant="ghost">Ghost</Button>
-            <Button variant="orange">Orange</Button>
-          </div>
-          <p className="mt-4 w-full text-xs font-medium text-muted-foreground">With leading / trailing icons (Material Symbols)</p>
-          <div className="flex flex-wrap items-center gap-2">
-            <Button variant="outline" leadingIcon={<MaterialIcon name="arrow_back" />}>Back</Button>
-            <Button variant="outline" trailingIcon={<MaterialIcon name="arrow_forward" />}>Next</Button>
-            <Button variant="secondary" leadingIcon={<MaterialIcon name="add" />}>Add item</Button>
-          </div>
-          <p className="mt-4 w-full text-xs font-medium text-muted-foreground">With number badge</p>
-          <div className="flex flex-wrap items-center gap-2">
-            <Button variant="secondary" badge={3}>Notifications</Button>
-            <Button variant="outline" badge={12}>Inbox</Button>
-            <Button variant="default" badge={99}>Alerts</Button>
-          </div>
-          <p className="mt-4 w-full text-xs font-medium text-muted-foreground">Sizes (text)</p>
-          <div className="flex flex-wrap items-end gap-4">
-            <div className="flex flex-col items-center gap-1">
-              <Button size="xs">xs</Button>
-              <span className="text-[10px] text-muted-foreground">size=&quot;xs&quot;</span>
+          <div className="space-y-6 w-full">
+            <p className="text-xs text-muted-foreground">Library (Octuple DS). Variants, sizes, icons, badge.</p>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
+              <div className="flex flex-wrap items-center gap-2">
+                <Button variant="default">Primary</Button>
+                <Button variant="destructive">Destructive</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="outline">Outline</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="orange">Orange</Button>
+              </div>
             </div>
-            <div className="flex flex-col items-center gap-1">
-              <Button size="sm">sm</Button>
-              <span className="text-[10px] text-muted-foreground">size=&quot;sm&quot;</span>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">With icon / badge</p>
+              <div className="flex flex-wrap items-center gap-2">
+                <Button variant="outline" leadingIcon={<MaterialIcon name="arrow_back" />}>Back</Button>
+                <Button variant="outline" trailingIcon={<MaterialIcon name="arrow_forward" />}>Next</Button>
+                <Button variant="secondary" leadingIcon={<MaterialIcon name="add" />}>Add item</Button>
+                <Button variant="secondary" badge={3}>Notifications</Button>
+                <Button variant="outline" badge={12}>Inbox</Button>
+                <Button variant="default" badge={99}>Alerts</Button>
+              </div>
             </div>
-            <div className="flex flex-col items-center gap-1">
-              <Button size="default">default</Button>
-              <span className="text-[10px] text-muted-foreground">size=&quot;default&quot;</span>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Sizes (text)</p>
+              <div className="flex flex-wrap items-end gap-4">
+                {(['xs', 'sm', 'default', 'lg'] as const).map((s) => (
+                  <div key={s} className="flex flex-col items-center gap-1">
+                    <Button size={s}>{s}</Button>
+                    <span className="text-[10px] text-muted-foreground">{s}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-col items-center gap-1">
-              <Button size="lg">lg</Button>
-              <span className="text-[10px] text-muted-foreground">size=&quot;lg&quot;</span>
-            </div>
-          </div>
-          <p className="mt-4 w-full text-xs font-medium text-muted-foreground">Sizes (icon)</p>
-          <div className="flex flex-wrap items-end gap-4">
-            <div className="flex flex-col items-center gap-1">
-              <Button size="icon-xs" aria-label="icon-xs"><MaterialIcon name="more_vert" /></Button>
-              <span className="text-[10px] text-muted-foreground">icon-xs</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <Button size="icon-sm" aria-label="icon-sm"><MaterialIcon name="more_vert" /></Button>
-              <span className="text-[10px] text-muted-foreground">icon-sm</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <Button size="icon" aria-label="icon"><MaterialIcon name="more_vert" /></Button>
-              <span className="text-[10px] text-muted-foreground">icon</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <Button size="icon-lg" aria-label="icon-lg"><MaterialIcon name="more_vert" /></Button>
-              <span className="text-[10px] text-muted-foreground">icon-lg</span>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Sizes (icon)</p>
+              <div className="flex flex-wrap items-end gap-4">
+                {(['icon-xs', 'icon-sm', 'icon', 'icon-lg'] as const).map((s) => (
+                  <div key={s} className="flex flex-col items-center gap-1">
+                    <Button size={s} aria-label={s}><MaterialIcon name="more_vert" /></Button>
+                    <span className="text-[10px] text-muted-foreground">{s}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </Block>
@@ -464,16 +487,19 @@ export function UICatalog({
         </Block>
 
         <Block title="Card">
-          <Card className="w-[280px]">
-            <CardHeader>
-              <CardTitle>Card title</CardTitle>
-              <CardDescription>Card description.</CardDescription>
-            </CardHeader>
-            <CardContent>Content here.</CardContent>
-            <CardFooter>
-              <Button size="sm">Action</Button>
-            </CardFooter>
-          </Card>
+          <div className="w-full">
+            <p className="mb-2 text-xs font-medium text-muted-foreground">Example</p>
+            <Card className="w-[280px]">
+              <CardHeader>
+                <CardTitle>Card title</CardTitle>
+                <CardDescription>Card description.</CardDescription>
+              </CardHeader>
+              <CardContent>Content here.</CardContent>
+              <CardFooter>
+                <Button size="sm">Action</Button>
+              </CardFooter>
+            </Card>
+          </div>
         </Block>
 
         <Block title="Object Cards" id="object-cards" plain>
@@ -640,8 +666,10 @@ export function UICatalog({
         </Block>
 
         <Block title="Navigation Menu">
-          <p className="w-full text-xs text-muted-foreground mb-2">Underline (line indicator)</p>
-          <NavigationMenu variant="underline">
+          <div className="space-y-6 w-full">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Variant: underline</p>
+              <NavigationMenu variant="underline">
             <NavigationMenuList className="gap-1">
               <NavigationMenuItem>
                 <NavigationMenuLink href="#" active>Home</NavigationMenuLink>
@@ -686,8 +714,10 @@ export function UICatalog({
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          <p className="w-full text-xs text-muted-foreground mb-2 mt-6">Pill (rounded background)</p>
-          <NavigationMenu variant="pill">
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Variant: pill</p>
+              <NavigationMenu variant="pill">
             <NavigationMenuList className="gap-1">
               <NavigationMenuItem>
                 <NavigationMenuLink href="#" active>Home</NavigationMenuLink>
@@ -732,6 +762,8 @@ export function UICatalog({
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
+            </div>
+          </div>
         </Block>
 
         <Block title="Empty">
@@ -754,22 +786,27 @@ export function UICatalog({
         </Block>
 
         <Block title="Input">
-          <div className="flex flex-wrap items-end gap-4">
-            <div className="flex flex-col gap-1.5">
-              <Label className="text-xs text-muted-foreground">Small</Label>
-              <Input size="small" placeholder="Placeholder" className="w-48" />
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <Label className="text-xs text-muted-foreground">Medium</Label>
-              <Input size="medium" placeholder="Placeholder" className="w-48" />
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <Label className="text-xs text-muted-foreground">Large</Label>
-              <Input size="large" placeholder="Placeholder" className="w-48" />
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <Label className="text-xs text-muted-foreground">Disabled</Label>
-              <Input size="medium" placeholder="Disabled" disabled className="w-48" />
+          <div className="space-y-4 w-full">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Sizes</p>
+              <div className="flex flex-wrap items-end gap-4">
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-xs text-muted-foreground">Small</span>
+                  <Input size="small" placeholder="Placeholder" className="w-48" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-xs text-muted-foreground">Medium</span>
+                  <Input size="medium" placeholder="Placeholder" className="w-48" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-xs text-muted-foreground">Large</span>
+                  <Input size="large" placeholder="Placeholder" className="w-48" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-xs text-muted-foreground">Disabled</span>
+                  <Input size="medium" placeholder="Disabled" disabled className="w-48" />
+                </div>
+              </div>
             </div>
           </div>
         </Block>
@@ -814,8 +851,19 @@ export function UICatalog({
         </Block>
 
         <Block title="Progress">
-          <Progress value={60} className="w-48" />
-          <Progress value={100} className="w-48" />
+          <div className="space-y-4 w-full">
+            <p className="mb-2 text-xs font-medium text-muted-foreground">Examples</p>
+            <div className="flex flex-wrap items-center gap-6">
+              <div className="flex flex-col gap-1">
+                <Progress value={60} className="w-48" />
+                <span className="text-xs text-muted-foreground">60%</span>
+              </div>
+              <div className="flex flex-col gap-1">
+                <Progress value={100} className="w-48" />
+                <span className="text-xs text-muted-foreground">100%</span>
+              </div>
+            </div>
+          </div>
         </Block>
 
         <Block title="Radio Group">
@@ -848,8 +896,8 @@ export function UICatalog({
         </Block>
 
         <Block title="Select">
-          <p className="mb-4 text-xs text-muted-foreground">Same radius as Button. Variants: primary, secondary, outline. Sizes: default, small.</p>
-          <div className="space-y-6">
+          <div className="space-y-6 w-full">
+            <p className="text-xs text-muted-foreground">Library. Same radius as Button.</p>
             <div>
               <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
               <div className="flex flex-wrap items-center gap-3">
@@ -920,14 +968,22 @@ export function UICatalog({
         </Block>
 
         <Block title="Separator">
-          <div className="flex h-5 w-full items-center gap-2">
-            <span className="text-sm">One</span>
-            <Separator orientation="vertical" />
-            <span className="text-sm">Two</span>
-            <Separator orientation="vertical" />
-            <span className="text-sm">Three</span>
+          <div className="space-y-4 w-full">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Vertical</p>
+              <div className="flex h-5 items-center gap-2">
+                <span className="text-sm">One</span>
+                <Separator orientation="vertical" />
+                <span className="text-sm">Two</span>
+                <Separator orientation="vertical" />
+                <span className="text-sm">Three</span>
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Horizontal</p>
+              <Separator className="w-48" />
+            </div>
           </div>
-          <Separator className="w-48" />
         </Block>
 
         <Block title="Sheet">
@@ -947,28 +1003,48 @@ export function UICatalog({
         </Block>
 
         <Block title="Skeleton">
-          <Skeleton className="h-8 w-32" />
-          <Skeleton className="h-20 w-48" />
-          <Skeleton className="size-10 rounded-full" />
+          <div className="space-y-4 w-full">
+            <p className="mb-2 text-xs font-medium text-muted-foreground">Examples</p>
+            <div className="flex flex-wrap items-end gap-6">
+              <Skeleton className="h-8 w-32" />
+              <Skeleton className="h-20 w-48" />
+              <Skeleton className="size-10 rounded-full" />
+            </div>
+          </div>
         </Block>
 
         <Block title="Slider">
-          <Slider
-            value={sliderVal}
-            onValueChange={setSliderVal}
-            max={100}
-            step={1}
-            className="w-48"
-          />
-          <span className="text-sm text-muted-foreground">{sliderVal[0]}</span>
+          <div className="space-y-2 w-full">
+            <p className="text-xs font-medium text-muted-foreground">Example</p>
+            <div className="flex items-center gap-4">
+              <Slider
+                value={sliderVal}
+                onValueChange={setSliderVal}
+                max={100}
+                step={1}
+                className="w-48"
+              />
+              <span className="text-sm text-muted-foreground tabular-nums">{sliderVal[0]}%</span>
+            </div>
+          </div>
         </Block>
 
         <Block title="Switch">
-          <div className="flex items-center gap-2">
-            <Switch id="s1" />
-            <Label htmlFor="s1">Toggle</Label>
+          <div className="space-y-4 w-full">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">States</p>
+              <div className="flex flex-wrap items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <Switch id="s1" />
+                  <Label htmlFor="s1">Off</Label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Switch id="s2" defaultChecked />
+                  <Label htmlFor="s2">On</Label>
+                </div>
+              </div>
+            </div>
           </div>
-          <Switch defaultChecked />
         </Block>
 
         <Block title="Table">
@@ -993,33 +1069,38 @@ export function UICatalog({
         </Block>
 
         <Block title="Tabs">
-          <div className="space-y-6">
+          <div className="space-y-6 w-full">
             <div>
-              <p className="mb-2 text-xs font-medium text-muted-foreground">Default</p>
-              <Tabs defaultValue="1">
-                <TabsList>
-                  <TabsTrigger value="1">Tab 1</TabsTrigger>
-                  <TabsTrigger value="2">Tab 2</TabsTrigger>
-                </TabsList>
-                <TabsContent value="1" className="pt-2 text-sm">Content 1</TabsContent>
-                <TabsContent value="2" className="pt-2 text-sm">Content 2</TabsContent>
-              </Tabs>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
+              <div className="space-y-4">
+                <div>
+                  <span className="text-xs text-muted-foreground">Default (pill)</span>
+                  <Tabs defaultValue="1" className="mt-1">
+                    <TabsList>
+                      <TabsTrigger value="1">Tab 1</TabsTrigger>
+                      <TabsTrigger value="2">Tab 2</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="1" className="pt-2 text-sm">Content 1</TabsContent>
+                    <TabsContent value="2" className="pt-2 text-sm">Content 2</TabsContent>
+                  </Tabs>
+                </div>
+                <div>
+                  <span className="text-xs text-muted-foreground">Line</span>
+                  <Tabs defaultValue="a" className="mt-1">
+                    <TabsList variant="line">
+                      <TabsTrigger value="a">Tab A</TabsTrigger>
+                      <TabsTrigger value="b">Tab B</TabsTrigger>
+                      <TabsTrigger value="c">Tab C</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="a" className="pt-2 text-sm">Content A</TabsContent>
+                    <TabsContent value="b" className="pt-2 text-sm">Content B</TabsContent>
+                    <TabsContent value="c" className="pt-2 text-sm">Content C</TabsContent>
+                  </Tabs>
+                </div>
+              </div>
             </div>
             <div>
-              <p className="mb-2 text-xs font-medium text-muted-foreground">With lines</p>
-              <Tabs defaultValue="a">
-                <TabsList variant="line">
-                  <TabsTrigger value="a">Tab A</TabsTrigger>
-                  <TabsTrigger value="b">Tab B</TabsTrigger>
-                  <TabsTrigger value="c">Tab C</TabsTrigger>
-                </TabsList>
-                <TabsContent value="a" className="pt-2 text-sm">Content A</TabsContent>
-                <TabsContent value="b" className="pt-2 text-sm">Content B</TabsContent>
-                <TabsContent value="c" className="pt-2 text-sm">Content C</TabsContent>
-              </Tabs>
-            </div>
-            <div>
-              <p className="mb-2 text-xs font-medium text-muted-foreground">With leading icon and badge</p>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">With icon and badge</p>
               <Tabs defaultValue="inbox">
                 <TabsList variant="line">
                   <TabsTrigger value="inbox" leadingIcon={<Inbox />} badge={3}>Inbox</TabsTrigger>
@@ -1039,17 +1120,33 @@ export function UICatalog({
         </Block>
 
         <Block title="Toggle">
-          <Toggle>Toggle</Toggle>
-          <Toggle variant="outline">Outline</Toggle>
-          <Toggle size="sm">Small</Toggle>
+          <div className="space-y-4 w-full">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
+              <div className="flex flex-wrap gap-2">
+                <Toggle>Default</Toggle>
+                <Toggle variant="outline">Outline</Toggle>
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Sizes</p>
+              <div className="flex flex-wrap items-center gap-2">
+                <Toggle size="default">Default</Toggle>
+                <Toggle size="sm">Small</Toggle>
+              </div>
+            </div>
+          </div>
         </Block>
 
         <Block title="Toggle Group">
-          <ToggleGroup type="single">
-            <ToggleGroupItem value="a">A</ToggleGroupItem>
-            <ToggleGroupItem value="b">B</ToggleGroupItem>
-            <ToggleGroupItem value="c">C</ToggleGroupItem>
-          </ToggleGroup>
+          <div className="space-y-4 w-full">
+            <p className="mb-2 text-xs font-medium text-muted-foreground">Example (single)</p>
+            <ToggleGroup type="single">
+              <ToggleGroupItem value="a">A</ToggleGroupItem>
+              <ToggleGroupItem value="b">B</ToggleGroupItem>
+              <ToggleGroupItem value="c">C</ToggleGroupItem>
+            </ToggleGroup>
+          </div>
         </Block>
 
         <Block title="Tooltip">
