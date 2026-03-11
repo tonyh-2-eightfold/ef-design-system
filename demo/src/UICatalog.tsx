@@ -123,6 +123,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Inbox, FileText, Bell } from 'lucide-react'
 import { Textarea } from '@/components/ui/textarea'
 import { Toggle } from '@/components/ui/toggle'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
@@ -356,10 +357,26 @@ export function UICatalog({
         </Block>
 
         <Block title="Badge">
-          <Badge>Default</Badge>
-          <Badge variant="secondary">Secondary</Badge>
-          <Badge variant="destructive">Destructive</Badge>
-          <Badge variant="outline">Outline</Badge>
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Variants (size 24h)</p>
+              <div className="flex flex-wrap gap-2">
+                <Badge>Default</Badge>
+                <Badge variant="secondary">Secondary</Badge>
+                <Badge variant="destructive">Destructive</Badge>
+                <Badge variant="outline">Outline</Badge>
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Sizes (44h, 30h, 24h, no container)</p>
+              <div className="flex flex-wrap items-end gap-3">
+                <Badge size="44">44</Badge>
+                <Badge size="30">30</Badge>
+                <Badge size="24">24</Badge>
+                <Badge size="none">No container</Badge>
+              </div>
+            </div>
+          </div>
         </Block>
 
         <Block title="Breadcrumb">
@@ -911,18 +928,45 @@ export function UICatalog({
         </Block>
 
         <Block title="Tabs">
-          <Tabs defaultValue="1">
-            <TabsList>
-              <TabsTrigger value="1">Tab 1</TabsTrigger>
-              <TabsTrigger value="2">Tab 2</TabsTrigger>
-            </TabsList>
-            <TabsContent value="1" className="pt-2 text-sm">
-              Tab 1 content.
-            </TabsContent>
-            <TabsContent value="2" className="pt-2 text-sm">
-              Tab 2 content.
-            </TabsContent>
-          </Tabs>
+          <div className="space-y-6">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Default</p>
+              <Tabs defaultValue="1">
+                <TabsList>
+                  <TabsTrigger value="1">Tab 1</TabsTrigger>
+                  <TabsTrigger value="2">Tab 2</TabsTrigger>
+                </TabsList>
+                <TabsContent value="1" className="pt-2 text-sm">Content 1</TabsContent>
+                <TabsContent value="2" className="pt-2 text-sm">Content 2</TabsContent>
+              </Tabs>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">With lines</p>
+              <Tabs defaultValue="a">
+                <TabsList variant="line">
+                  <TabsTrigger value="a">Tab A</TabsTrigger>
+                  <TabsTrigger value="b">Tab B</TabsTrigger>
+                  <TabsTrigger value="c">Tab C</TabsTrigger>
+                </TabsList>
+                <TabsContent value="a" className="pt-2 text-sm">Content A</TabsContent>
+                <TabsContent value="b" className="pt-2 text-sm">Content B</TabsContent>
+                <TabsContent value="c" className="pt-2 text-sm">Content C</TabsContent>
+              </Tabs>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">With leading icon and badge</p>
+              <Tabs defaultValue="inbox">
+                <TabsList variant="line">
+                  <TabsTrigger value="inbox" leadingIcon={<Inbox />} badge={3}>Inbox</TabsTrigger>
+                  <TabsTrigger value="docs" leadingIcon={<FileText />} badge={12}>Docs</TabsTrigger>
+                  <TabsTrigger value="alerts" leadingIcon={<Bell />} badge={99}>Alerts</TabsTrigger>
+                </TabsList>
+                <TabsContent value="inbox" className="pt-2 text-sm">Inbox content</TabsContent>
+                <TabsContent value="docs" className="pt-2 text-sm">Docs content</TabsContent>
+                <TabsContent value="alerts" className="pt-2 text-sm">Alerts content</TabsContent>
+              </Tabs>
+            </div>
+          </div>
         </Block>
 
         <Block title="Textarea">

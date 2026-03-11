@@ -432,6 +432,12 @@ a.project-object-card {
   color: var(--accent-foreground);
 }
 
+/* Tabs with lines: 8px horizontal inset for indicator (label+indicator padding) */
+[data-slot="tabs-list"][data-variant="line"] [data-slot="tabs-trigger"]::after {
+  left: 8px;
+  right: 8px;
+}
+
 /* Force main page scrollbar hidden (last so it wins) */
 html,
 body,
