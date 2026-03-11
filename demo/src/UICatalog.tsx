@@ -848,16 +848,39 @@ export function UICatalog({
         </Block>
 
         <Block title="Select">
-          <Select>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Pick one" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="a">Option A</SelectItem>
-              <SelectItem value="b">Option B</SelectItem>
-              <SelectItem value="c">Option C</SelectItem>
-            </SelectContent>
-          </Select>
+          <p className="mb-2 text-xs font-medium text-muted-foreground">Variants (same radius as Button)</p>
+          <div className="flex flex-wrap items-center gap-3">
+            <Select>
+              <SelectTrigger variant="primary" className="w-[180px]">
+                <SelectValue placeholder="Primary" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="a">Option A</SelectItem>
+                <SelectItem value="b">Option B</SelectItem>
+                <SelectItem value="c">Option C</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select>
+              <SelectTrigger variant="secondary" className="w-[180px]">
+                <SelectValue placeholder="Secondary" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="a">Option A</SelectItem>
+                <SelectItem value="b">Option B</SelectItem>
+                <SelectItem value="c">Option C</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select>
+              <SelectTrigger variant="outline" className="w-[180px]">
+                <SelectValue placeholder="Outline" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="a">Option A</SelectItem>
+                <SelectItem value="b">Option B</SelectItem>
+                <SelectItem value="c">Option C</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </Block>
 
         <Block title="Separator">
