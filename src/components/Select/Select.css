@@ -1,0 +1,19 @@
+/**
+ * Select – trigger and list use same typography as Button (Octuple DS).
+ */
+[data-slot="select-trigger"] {
+  font: var(--typography-button2);
+}
+
+[data-slot="select-trigger"][data-size="sm"] {
+  font: var(--typography-button3);
+  font-size: 0.75rem;
+}
+
+[data-slot="select-label"] {
+  font: var(--typography-button3);
+}
+
+[data-slot="select-item"] {
+  font: var(--typography-button3);
+}

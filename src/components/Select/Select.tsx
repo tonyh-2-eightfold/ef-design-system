@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Check, ChevronDown, ChevronUp } from 'lucide-react'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { cn } from '../../lib/utils'
+import './Select.css'
 
 function Select({
   ...props
@@ -31,9 +32,8 @@ const selectTriggerVariants = {
 } as const
 
 const selectTriggerSizeClasses = {
-  default:
-    'h-9 min-h-9 px-3 py-2 text-sm [&_svg]:size-4',
-  sm: 'h-8 min-h-8 px-2.5 py-1.5 text-xs [&_svg]:size-3.5',
+  default: 'h-9 min-h-9 px-3 py-2 [&_svg]:size-4',
+  sm: 'h-8 min-h-8 px-2.5 py-1.5 [&_svg]:size-3.5',
 } as const
 
 const selectTriggerSizeStyle = {
@@ -118,7 +118,7 @@ function SelectLabel({
   return (
     <SelectPrimitive.Label
       data-slot="select-label"
-      className={cn('px-2 py-1.5 text-xs font-medium text-foreground', className)}
+      className={cn('px-2 py-1.5 text-foreground', className)}
       {...props}
     />
   )
@@ -133,7 +133,7 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        'relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=\'size-\'])]:size-4 [&_svg:not([class*=\'text-\'])]:text-muted-foreground *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2',
+        'relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=\'size-\'])]:size-4 [&_svg:not([class*=\'text-\'])]:text-muted-foreground *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2',
         className
       )}
       {...props}
