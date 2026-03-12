@@ -23,6 +23,8 @@ function SelectValue({
 }
 
 const selectTriggerVariants = {
+  default:
+    'border-transparent bg-[rgba(235,247,255,1)] text-[var(--color-button-primary-text)] hover:bg-[rgba(220,240,255,1)] focus-visible:bg-[rgba(220,240,255,1)] data-[placeholder]:text-[var(--color-button-primary-text)]/70 [&_svg]:opacity-80',
   primary:
     'border-transparent bg-[var(--color-button-primary-bg)] text-[var(--color-button-primary-text)] hover:bg-[var(--color-button-primary-bg-hover)] focus-visible:bg-[var(--color-button-primary-bg-hover)] data-[placeholder]:text-[var(--color-button-primary-text)] [&_svg]:opacity-80',
   secondary:
@@ -44,12 +46,12 @@ const selectTriggerSizeStyle = {
 function SelectTrigger({
   className,
   size = 'default',
-  variant = 'outline',
+  variant = 'default',
   children,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
   size?: 'sm' | 'small' | 'default'
-  variant?: 'primary' | 'secondary' | 'outline'
+  variant?: 'default' | 'primary' | 'secondary' | 'outline'
 }) {
   const sizeKey = size === 'small' ? 'sm' : size
   return (

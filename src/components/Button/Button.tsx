@@ -8,7 +8,8 @@ import './Button.css'
 const buttonVariants = cva('btn', {
   variants: {
     variant: {
-      default: 'btn--primary',
+      default: 'btn--default',
+      primary: 'btn--primary',
       destructive: 'btn--destructive',
       outline: 'btn--outline',
       secondary: 'btn--secondary',

@@ -34,6 +34,21 @@
 .btn.btn--icon-sm { width: 2rem; min-height: 2rem; padding: 0; font: var(--typography-button3); }
 .btn.btn--icon-lg { width: 2.75rem; min-height: 2.75rem; padding: 0; font: var(--typography-button1); font-size: 1.125rem; }
 
+/* Default – light blue background (same as Select default) */
+.btn--default {
+  background: rgba(235, 247, 255, 1);
+  color: var(--color-button-primary-text);
+  border: none;
+}
+.btn--default:hover:not(:disabled) {
+  background: rgba(220, 240, 255, 1);
+  color: var(--color-button-primary-text);
+}
+.btn--default:active:not(:disabled) {
+  background: rgba(205, 232, 255, 1);
+  color: var(--color-button-primary-text);
+}
+
 .btn--primary {
   background: var(--color-button-primary-bg);
   color: var(--color-button-primary-text);

@@ -495,7 +495,8 @@ export function UICatalog({
             <div>
               <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
               <div className="flex flex-wrap items-center gap-2">
-                <Button variant="default">Primary</Button>
+                <Button variant="default">Default</Button>
+                <Button variant="primary">Primary</Button>
                 <Button variant="destructive">Destructive</Button>
                 <Button variant="secondary">Secondary</Button>
                 <Button variant="outline">Outline</Button>
@@ -511,7 +512,7 @@ export function UICatalog({
                 <Button variant="secondary" leadingIcon={<MaterialIcon name="add" />}>Add item</Button>
                 <Button variant="secondary" badge={3}>Notifications</Button>
                 <Button variant="outline" badge={12}>Inbox</Button>
-                <Button variant="default" badge={99}>Alerts</Button>
+                <Button variant="primary" badge={99}>Alerts</Button>
               </div>
             </div>
             <div>
@@ -958,6 +959,16 @@ export function UICatalog({
             <div>
               <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
               <div className="flex flex-wrap items-center gap-3">
+                <Select>
+                  <SelectTrigger variant="default" className="w-[180px]">
+                    <SelectValue placeholder="Default" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                    <SelectItem value="c">Option C</SelectItem>
+                  </SelectContent>
+                </Select>
                 <Select>
                   <SelectTrigger variant="primary" className="w-[180px]">
                     <SelectValue placeholder="Primary" />
