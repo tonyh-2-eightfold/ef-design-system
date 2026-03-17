@@ -89,6 +89,8 @@ import {
   ProjectObjectCard,
   PeopleObjectCard,
   MentorInsightCard,
+  ButtonDropdown,
+  DropdownMenu as DSDropdownMenu,
 } from '@tonyh-2-eightfold/ef-design-system'
 import { Label } from '@/components/ui/label'
 import {
@@ -502,6 +504,34 @@ export function UICatalog({
                 <Button variant="outline">Outline</Button>
                 <Button variant="ghost">Ghost</Button>
                 <Button variant="orange">Orange</Button>
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Button dropdown</p>
+              <div className="flex flex-wrap items-center gap-2">
+                <ButtonDropdown
+                  menu={
+                    <>
+                      <DSDropdownMenu.Item onSelect={() => {}}>Save</DSDropdownMenu.Item>
+                      <DSDropdownMenu.Item>Export</DSDropdownMenu.Item>
+                      <DSDropdownMenu.Separator />
+                      <DSDropdownMenu.Item>Log out</DSDropdownMenu.Item>
+                    </>
+                  }
+                >
+                  Actions
+                </ButtonDropdown>
+                <ButtonDropdown
+                  variant="primary"
+                  menu={
+                    <>
+                      <DSDropdownMenu.Item>Profile</DSDropdownMenu.Item>
+                      <DSDropdownMenu.Item>Settings</DSDropdownMenu.Item>
+                    </>
+                  }
+                >
+                  Account
+                </ButtonDropdown>
               </div>
             </div>
             <div>

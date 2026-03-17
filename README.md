@@ -73,6 +73,14 @@ To fetch spacing and corner radius from Figma (node 11686:120880):
 `FIGMA_ACCESS_TOKEN=your_token node scripts/figma-fetch-spacing-radius.js`  
 Add `--out figma-spacing-radius.json` to save the raw response.
 
+### Keeping other projects updated
+
+The simplest approach: in each app that uses this package, add **Dependabot** so it opens PRs when the design system is updated. No workflow or token in this repo. See **[.github/CONSUMER-SETUP.md](.github/CONSUMER-SETUP.md)** for a ready-to-use Dependabot config.
+
+### GitHub Actions (workflows that push)
+
+The **Publish** workflow (`.github/workflows/publish.yml`) uses `permissions: contents: write`. If you have branch protection on `main`, either allow the default `GITHUB_TOKEN` to bypass checks for that workflow or use a PAT for the push step. See [.github/SETUP-WORKFLOWS.md](.github/SETUP-WORKFLOWS.md).
+
 ### Assets
 
 The package includes assets in `public/`; serve them from your app’s public root or copy into your app:

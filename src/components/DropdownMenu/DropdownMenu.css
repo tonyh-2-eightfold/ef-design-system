@@ -1,0 +1,49 @@
+/**
+ * DropdownMenu – popover menu for actions/links. Matches Button typography.
+ */
+[data-slot="dropdown-menu-content"] {
+  z-index: 50;
+  min-width: 8rem;
+  padding: var(--spacing-1);
+  border-radius: var(--radius-8);
+  border: 1px solid var(--border);
+  background: var(--popover);
+  color: var(--popover-foreground);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.08), 0 2px 4px rgb(0 0 0 / 0.04);
+  font: var(--typography-button3);
+  outline: none;
+}
+
+[data-slot="dropdown-menu-item"] {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  border: none;
+  border-radius: var(--radius-2);
+  background: transparent;
+  color: var(--foreground);
+  font: var(--typography-button3);
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+[data-slot="dropdown-menu-item"]:hover,
+[data-slot="dropdown-menu-item"]:focus {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+[data-slot="dropdown-menu-item"][data-disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+[data-slot="dropdown-menu-separator"] {
+  height: 1px;
+  margin: var(--spacing-1) 0;
+  background: var(--border);
+}

@@ -75,13 +75,13 @@ export const MANAGER_TABS: NavbarTab[] = [
   { id: 'my-team', label: 'My team', path: '/my-team' },
 ]
 
-/** Career Hub – CHRO persona: Home, My activity, People, My team, Workforce, Insights, More (Goals, Career navigator, Marketplace) */
+/** Career Hub – CHRO persona: Home, My activity, People, My team, Workforce Readiness, Insights, More (Goals, Career navigator, Marketplace) */
 export const CAREER_HUB_CHRO_TABS: NavbarTab[] = [
   { id: 'home', label: 'Home', path: '/' },
   { id: 'my-activity', label: 'My activity', path: '/my-activity' },
   { id: 'people', label: 'People', path: '/people' },
   { id: 'my-team', label: 'My team', path: '/my-team' },
-  { id: 'workforce', label: 'Workforce', path: '/workforce' },
+  { id: 'workforce', label: 'Workforce Readiness', path: '/workforce' },
   { id: 'insights', label: 'Insights', path: '/insights' },
   {
     id: 'more',
@@ -97,7 +97,7 @@ export const CAREER_HUB_CHRO_TABS: NavbarTab[] = [
   },
 ]
 
-/** Career Hub – HRBP persona: Home, My goals, Career navigator, Marketplace, My activity, People, My team, Workforce */
+/** Career Hub – HRBP persona: Home, My goals, Career navigator, Marketplace, My activity, People, My team, Workforce Readiness */
 export const CAREER_HUB_HRBP_TABS: NavbarTab[] = [
   { id: 'home', label: 'Home', path: '/' },
   { id: 'my-goals', label: 'My goals', path: '/goals' },
@@ -126,7 +126,7 @@ export const CAREER_HUB_HRBP_TABS: NavbarTab[] = [
   },
   { id: 'people', label: 'People', path: '/people' },
   { id: 'my-team', label: 'My team', path: '/my-team' },
-  { id: 'workforce', label: 'Workforce', path: '/workforce' },
+  { id: 'workforce', label: 'Workforce Readiness', path: '/workforce' },
 ]
 
 /** Talent Acquisition – Recruiter (default) persona: Positions, Talent, Engage, Insights, More */

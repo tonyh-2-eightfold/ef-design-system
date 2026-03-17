@@ -1,0 +1,43 @@
+# Build and publish design system (e.g. to npm or GitHub Packages).
+# Runs on release creation; can be extended to push version bumps or changelog.
+#
+# Required setup (if this workflow pushes to the repo):
+# - This workflow uses permissions: contents: write so it can push (tags, version bumps, etc.).
+# - If the repo has branch protection on main:
+#   - Either: In Settings → Branches → Branch protection → allow the default GITHUB_TOKEN
+#     to bypass required status checks for this workflow, or
+#   - Or: Use a Personal Access Token (PAT) with write access as a repo secret (e.g. PAT_TOKEN)
+#     and use it for the checkout/push step instead of GITHUB_TOKEN.
+name: Publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+        # If using a PAT for protected-branch pushes, uncomment and set PAT_TOKEN secret:
+        # with:
+        #   token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install and build
+        run: npm ci && npm run build
+
+      - name: Pack tarball
+        run: npm run pack:tarball
+        # Add publish step here when ready (e.g. npm publish --provenance --access restricted)
