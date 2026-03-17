@@ -15,6 +15,8 @@ export interface NavbarTab {
   chevron?: boolean
   /** When set with chevron, shows a dropdown submenu (navigation menu style). Ignored if no chevron. */
   subItems?: NavbarTabSubItem[]
+  /** When true, omit the "View all" link at the bottom of the dropdown. */
+  hideViewAll?: boolean
   /** For tabs without path (dropdowns); onClick closes mobile menu when provided */
   onClick?: () => void
 }

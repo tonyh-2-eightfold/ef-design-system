@@ -16,6 +16,8 @@ import {
   EMPLOYEE_NON_MANAGER_TABS,
   EMPLOYEE_AVATAR_MENU_ITEMS,
   MANAGER_TABS,
+  CAREER_HUB_CHRO_TABS,
+  CAREER_HUB_HRBP_TABS,
   TALENT_ACQUISITION_RECRUITER_TABS,
   TALENT_ACQUISITION_SEARCH_PLACEHOLDER,
   TALENT_ACQUISITION_ACTION_BUTTONS,
@@ -551,6 +553,8 @@ const NAVBAR_PRODUCTS: {
     personas: [
       { id: 'employee', label: 'Employee (non-manager)', tabs: EMPLOYEE_NON_MANAGER_TABS, actionButtons: [] },
       { id: 'manager', label: 'Manager', tabs: MANAGER_TABS, actionButtons: [] },
+      { id: 'chro', label: 'CHRO', tabs: CAREER_HUB_CHRO_TABS, actionButtons: [] },
+      { id: 'hrbp', label: 'HRBP', tabs: CAREER_HUB_HRBP_TABS, actionButtons: [] },
     ],
   },
   {

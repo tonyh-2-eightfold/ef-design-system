@@ -75,6 +75,60 @@ export const MANAGER_TABS: NavbarTab[] = [
   { id: 'my-team', label: 'My team', path: '/my-team' },
 ]
 
+/** Career Hub – CHRO persona: Home, My activity, People, My team, Workforce, Insights, More (Goals, Career navigator, Marketplace) */
+export const CAREER_HUB_CHRO_TABS: NavbarTab[] = [
+  { id: 'home', label: 'Home', path: '/' },
+  { id: 'my-activity', label: 'My activity', path: '/my-activity' },
+  { id: 'people', label: 'People', path: '/people' },
+  { id: 'my-team', label: 'My team', path: '/my-team' },
+  { id: 'workforce', label: 'Workforce', path: '/workforce' },
+  { id: 'insights', label: 'Insights', path: '/insights' },
+  {
+    id: 'more',
+    label: 'More',
+    path: '/more',
+    chevron: true,
+    hideViewAll: true,
+    subItems: [
+      { label: 'Goals', path: '/goals' },
+      { label: 'Career navigator', path: '/career-navigator' },
+      { label: 'Marketplace', path: '/marketplace' },
+    ],
+  },
+]
+
+/** Career Hub – HRBP persona: Home, My goals, Career navigator, Marketplace, My activity, People, My team, Workforce */
+export const CAREER_HUB_HRBP_TABS: NavbarTab[] = [
+  { id: 'home', label: 'Home', path: '/' },
+  { id: 'my-goals', label: 'My goals', path: '/goals' },
+  { id: 'career-navigator', label: 'Career navigator', path: '/career-navigator' },
+  {
+    id: 'marketplace',
+    label: 'Marketplace',
+    path: '/marketplace',
+    chevron: true,
+    subItems: [
+      { label: 'Learning', path: '/marketplace/learning' },
+      { label: 'Projects', path: '/marketplace/projects' },
+      { label: 'Mentorship', path: '/marketplace/mentorship' },
+    ],
+  },
+  {
+    id: 'my-activity',
+    label: 'My activity',
+    path: '/my-activity',
+    chevron: true,
+    subItems: [
+      { label: 'Goals', path: '/my-activity/goals' },
+      { label: 'Learning', path: '/my-activity/learning' },
+      { label: 'Contributions', path: '/my-activity/contributions' },
+    ],
+  },
+  { id: 'people', label: 'People', path: '/people' },
+  { id: 'my-team', label: 'My team', path: '/my-team' },
+  { id: 'workforce', label: 'Workforce', path: '/workforce' },
+]
+
 /** Talent Acquisition – Recruiter (default) persona: Positions, Talent, Engage, Insights, More */
 export const TALENT_ACQUISITION_RECRUITER_TABS: NavbarTab[] = [
   { id: 'positions', label: 'Positions', path: '/positions' },

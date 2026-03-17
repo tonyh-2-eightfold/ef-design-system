@@ -77,7 +77,7 @@ export function Navbar({
                   </Link>
                 </NavigationMenuLink>
               ))}
-              {tab.path && (
+              {tab.path && !tab.hideViewAll && (
                 <>
                   <div className="navbar__tab-menu-divider" />
                   <NavigationMenuLink asChild>
