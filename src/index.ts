@@ -30,6 +30,17 @@ export type { TagProps, TagSize, TagVariant, TagGroupProps, TagGroupType } from 
 export { Badge, badgeVariants } from './components/Badge'
 export type { BadgeProps, BadgeVariant, BadgeSize } from './components/Badge'
 
+export {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from './components/Breadcrumb'
+export type { BreadcrumbLinkProps } from './components/Breadcrumb'
+
 export { OpenTo } from './components/OpenTo/OpenTo'
 export type { OpenToProps, OpenToItem } from './components/OpenTo/OpenTo'
 
@@ -83,7 +94,48 @@ export {
   SelectValue,
 } from './components/Select/Select'
 
+export { Progress } from './components/Progress'
+export type { ProgressProps, ProgressLabelVariant } from './components/Progress'
+
+export {
+  Stepper,
+  StepperList,
+  StepperItem,
+  StepperTrigger,
+  StepperIndicator,
+  StepperTitle,
+  StepperDescription,
+  StepperSeparator,
+} from './components/Stepper'
+export type {
+  StepperProps,
+  StepperListProps,
+  StepperItemProps,
+  StepperTriggerProps,
+  StepperIndicatorProps,
+  StepperIndicatorState,
+  StepperTitleProps,
+  StepperDescriptionProps,
+  StepperSeparatorProps,
+} from './components/Stepper'
+
 export { Navbar } from './components/Navbar/Navbar'
+export {
+  Header,
+  HeaderGroup,
+  HeaderTitle,
+  HeaderToolbar,
+  HeaderTextGroup,
+  HeaderSecondary,
+} from './components/Navbar/Header'
+export type { CareerHubHeaderSize, HeaderProps, HeaderVariant } from './components/Navbar/Header'
+
+export { ProductBackground } from './components/ProductBackground'
+export type {
+  CareerHubChevronsVariant,
+  ProductBackgroundProps,
+  ProductBackgroundVariant,
+} from './components/ProductBackground'
 export type {
   NavbarProps,
   NavbarTab,
@@ -97,13 +149,19 @@ export type {
 export {
   productLogos,
   PRODUCT_NAMES,
+  PRIMARY_NAVBAR_PRODUCT_IDS,
   getProductLogoPath,
   getNavbarProductConfig,
   EIGHTFOLD_LOGO_PATH,
   AI_AGENT_LOGO_PATH,
   COPILOT_LOGO_PATH,
 } from './product-logos'
-export type { ProductLogoId, ProductLogoSize, NavbarProductConfig } from './product-logos'
+export type {
+  ProductLogoId,
+  ProductLogoSize,
+  NavbarProductConfig,
+  PrimaryNavbarProductId,
+} from './product-logos'
 
 export {
   EMPLOYEE_NON_MANAGER_TABS,

@@ -1,0 +1,10 @@
+/**
+ * !important so demo Tailwind / layers cannot override connector fill (Octuple progress blue).
+ */
+[data-ef-stepper-connector-bar][data-filled='true'] {
+  background-color: rgba(44, 140, 201, 1) !important;
+}
+
+[data-ef-stepper-connector-bar][data-filled='false'] {
+  background-color: var(--muted) !important;
+}

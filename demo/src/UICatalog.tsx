@@ -30,6 +30,7 @@ import {
 import { Badge, Tag, TagGroup } from '@tonyh-2-eightfold/ef-design-system'
 import {
   Breadcrumb,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
@@ -91,6 +92,7 @@ import {
   MentorInsightCard,
   ButtonDropdown,
   DropdownMenu as DSDropdownMenu,
+  ProductBackground,
 } from '@tonyh-2-eightfold/ef-design-system'
 import { Label } from '@/components/ui/label'
 import {
@@ -103,6 +105,16 @@ import {
 } from '@/components/ui/pagination'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Progress } from '@/components/ui/progress'
+import {
+  Stepper,
+  StepperDescription,
+  StepperIndicator,
+  StepperItem,
+  StepperList,
+  StepperSeparator,
+  StepperTitle,
+  StepperTrigger,
+} from '@/components/ui/stepper'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import {
   Select,
@@ -181,6 +193,7 @@ export function UICatalog({
   const [open, setOpen] = useState(false)
   const [sheetOpen, setSheetOpen] = useState(false)
   const [sliderVal, setSliderVal] = useState([50])
+  const [stepperStep, setStepperStep] = useState(1)
 
   useEffect(() => {
     if (!scrollToId) return
@@ -473,22 +486,103 @@ export function UICatalog({
           </div>
         </Block>
 
-        <Block title="Breadcrumb">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="#">Lib</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Current</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+        <Block title="Breadcrumb" id="breadcrumb">
+          <div className="w-full max-w-3xl space-y-5">
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              Octuple{' '}
+              <a
+                href="https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?node-id=10130-66481"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-foreground underline underline-offset-2 hover:text-primary"
+              >
+                Breadcrumb
+              </a>
+              — slash separators, link color{' '}
+              <code className="rounded bg-muted px-1 py-0.5 font-mono text-[10px]">#146DA6</code>
+              , current page default text.
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+                <div className="border-b border-border bg-muted/50 px-4 py-3">
+                  <h3 className="text-sm font-semibold text-foreground">Full trail</h3>
+                  <p className="mt-0.5 text-[11px] text-muted-foreground">
+                    Three links + current page (Figma “Max 4 links”).
+                  </p>
+                </div>
+                <div className="flex min-h-[3.5rem] items-center px-4 py-4">
+                  <Breadcrumb className="w-full min-w-0">
+                    <BreadcrumbList>
+                      <BreadcrumbItem>
+                        <BreadcrumbLink href="#">Products</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        <BreadcrumbLink href="#">Category</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        <BreadcrumbLink href="#">Subcategory</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        <BreadcrumbPage>Detail view</BreadcrumbPage>
+                      </BreadcrumbItem>
+                    </BreadcrumbList>
+                  </Breadcrumb>
+                </div>
+              </div>
+
+              <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+                <div className="border-b border-border bg-muted/50 px-4 py-3">
+                  <h3 className="text-sm font-semibold text-foreground">Truncated</h3>
+                  <p className="mt-0.5 text-[11px] text-muted-foreground">
+                    <code className="font-mono text-[10px]">BreadcrumbEllipsis</code> collapses middle
+                    segments.
+                  </p>
+                </div>
+                <div className="flex min-h-[3.5rem] items-center px-4 py-4">
+                  <Breadcrumb className="w-full min-w-0">
+                    <BreadcrumbList>
+                      <BreadcrumbItem>
+                        <BreadcrumbLink href="#">Home</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        <BreadcrumbEllipsis />
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        <BreadcrumbLink href="#">Section</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        <BreadcrumbPage>Current</BreadcrumbPage>
+                      </BreadcrumbItem>
+                    </BreadcrumbList>
+                  </Breadcrumb>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-lg border border-dashed border-border/80 bg-muted/15 px-4 py-3">
+              <p className="text-[11px] font-medium text-muted-foreground">Compact</p>
+              <div className="mt-2">
+                <Breadcrumb>
+                  <BreadcrumbList>
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="#">App</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbPage>Settings</BreadcrumbPage>
+                    </BreadcrumbItem>
+                  </BreadcrumbList>
+                </Breadcrumb>
+              </div>
+            </div>
+          </div>
         </Block>
 
         <Block title="Button">
@@ -938,17 +1032,266 @@ export function UICatalog({
           </Popover>
         </Block>
 
-        <Block title="Progress">
-          <div className="space-y-4 w-full">
-            <p className="mb-2 text-xs font-medium text-muted-foreground">Examples</p>
-            <div className="flex flex-wrap items-center gap-6">
-              <div className="flex flex-col gap-1">
-                <Progress value={60} className="w-48" />
-                <span className="text-xs text-muted-foreground">60%</span>
+        <Block title="Product background" id="product-background" plain>
+          <div className="flex w-full max-w-5xl flex-col gap-8">
+            <p className="max-w-2xl text-xs text-muted-foreground">
+              <strong className="font-medium text-foreground">Fill priority:</strong>{' '}
+              <code className="rounded bg-muted px-1 font-mono text-[11px]">src</code> (photo) → else CH{' '}
+              <code className="rounded bg-muted px-1 font-mono text-[11px]">chevronsVariant</code> → else token{' '}
+              <strong className="text-foreground">gradient</strong> (
+              <code className="rounded bg-muted px-1 font-mono text-[11px]">variant</code>).
+            </p>
+
+            <div className="space-y-3 rounded-xl border border-border bg-card/50 p-4 shadow-sm">
+              <h4 className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                1 · Token gradients
+              </h4>
+              <p className="text-xs text-muted-foreground">
+                No <code className="rounded bg-muted px-1 font-mono text-[10px]">src</code>, no{' '}
+                <code className="rounded bg-muted px-1 font-mono text-[10px]">chevronsVariant</code>.
+              </p>
+              <div className="grid gap-4 md:grid-cols-2">
+                <ProductBackground variant="talent-acquisition" className="min-h-32 rounded-lg border border-border">
+                  <div className="flex min-h-32 flex-col justify-end p-5">
+                    <p className="text-sm font-semibold text-foreground">Talent Acquisition</p>
+                    <p className="text-xs text-muted-foreground">Blue token gradient</p>
+                  </div>
+                </ProductBackground>
+                <ProductBackground variant="career-hub" className="min-h-32 rounded-lg border border-border">
+                  <div className="flex min-h-32 flex-col justify-end p-5">
+                    <p className="text-sm font-semibold text-foreground">Career Hub</p>
+                    <p className="text-xs text-muted-foreground">Grey token gradient</p>
+                  </div>
+                </ProductBackground>
               </div>
-              <div className="flex flex-col gap-1">
-                <Progress value={100} className="w-48" />
-                <span className="text-xs text-muted-foreground">100%</span>
+            </div>
+
+            <div className="space-y-3 rounded-xl border border-border bg-card/50 p-4 shadow-sm">
+              <h4 className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                2 · Career Hub chevrons
+              </h4>
+              <p className="text-xs text-muted-foreground">
+                <code className="rounded bg-muted px-1 font-mono text-[10px]">chevronsVariant=&quot;default&quot;</code> (toolbar) ·{' '}
+                <code className="rounded bg-muted px-1 font-mono text-[10px]">&quot;profile&quot;</code> (hero).
+              </p>
+              <div className="grid gap-4 md:grid-cols-2">
+                <ProductBackground
+                  variant="career-hub"
+                  chevronsVariant="default"
+                  className="min-h-32 rounded-lg border border-border"
+                >
+                  <div className="flex min-h-32 flex-col justify-end p-5">
+                    <p className="text-sm font-semibold text-foreground">Chevrons · default</p>
+                    <p className="text-xs text-muted-foreground">292px art</p>
+                  </div>
+                </ProductBackground>
+                <ProductBackground
+                  variant="career-hub"
+                  chevronsVariant="profile"
+                  className="min-h-48 rounded-lg border border-border md:min-h-56"
+                >
+                  <div className="flex min-h-48 flex-col justify-end p-5 md:min-h-56">
+                    <p className="text-sm font-semibold text-foreground">Chevrons · profile</p>
+                    <p className="text-xs text-muted-foreground">540px art</p>
+                  </div>
+                </ProductBackground>
+              </div>
+            </div>
+
+            <div className="space-y-3 rounded-xl border border-border bg-card/50 p-4 shadow-sm">
+              <h4 className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                3 · Photo + scrim
+              </h4>
+              <p className="text-xs text-muted-foreground">
+                <code className="rounded bg-muted px-1 font-mono text-[10px]">src</code> wins; optional{' '}
+                <code className="rounded bg-muted px-1 font-mono text-[10px]">imageScrim=&#123;false&#125;</code>.
+              </p>
+              <div className="grid gap-4">
+                <ProductBackground
+                  variant="talent-acquisition"
+                  className="min-h-36 rounded-lg border border-border"
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"
+                >
+                  <div className="flex min-h-36 flex-col justify-end p-5">
+                    <p className="text-sm font-semibold text-foreground">TA + photo</p>
+                  </div>
+                </ProductBackground>
+                <ProductBackground
+                  variant="career-hub"
+                  className="min-h-36 rounded-lg border border-border"
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80"
+                >
+                  <div className="flex min-h-36 flex-col justify-end p-5">
+                    <p className="text-sm font-semibold text-foreground">CH + photo</p>
+                  </div>
+                </ProductBackground>
+              </div>
+            </div>
+          </div>
+        </Block>
+
+        <Block title="Progress">
+          <div className="flex w-full min-w-0 flex-col gap-6">
+            <div className="w-full max-w-md space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">labelVariant=&quot;scale&quot;</code>{' '}
+                · <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;60&#125;</code>
+              </p>
+              <Progress value={60} className="w-full" labelVariant="scale" />
+            </div>
+            <div className="w-full max-w-md space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">labelVariant=&quot;scale&quot;</code>{' '}
+                · <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">max=&#123;50&#125; scaleEndLabel=&quot;50&quot;</code>
+              </p>
+              <Progress
+                value={33}
+                max={50}
+                className="w-full"
+                labelVariant="scale"
+                scaleEndLabel="50"
+              />
+            </div>
+            <div className="w-full max-w-md space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">labelVariant=&quot;complete-left&quot;</code>{' '}
+                · <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;72&#125;</code>
+              </p>
+              <Progress value={72} className="w-full" labelVariant="complete-left" />
+            </div>
+            <div className="flex flex-wrap items-end gap-8">
+              <div className="w-44 space-y-2">
+                <p className="text-xs font-medium text-muted-foreground">
+                  <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">labelVariant=&quot;none&quot;</code> (default) ·{' '}
+                  <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;100&#125;</code>
+                </p>
+                <Progress value={100} className="w-full" />
+              </div>
+              <div className="w-44 space-y-2">
+                <p className="text-xs font-medium text-muted-foreground">
+                  Indeterminate · omit <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value</code>
+                </p>
+                <Progress className="w-full" />
+              </div>
+            </div>
+          </div>
+        </Block>
+
+        <Block title="Stepper" id="stepper">
+          <div className="flex w-full min-w-0 flex-col gap-8">
+            <div className="w-full space-y-3">
+              <p className="text-xs font-medium text-muted-foreground">
+                Step circles · <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">data-state</code>
+              </p>
+              <div className="flex flex-wrap items-end gap-10">
+                <div className="flex flex-col items-center gap-2">
+                  <StepperIndicator forceState="complete" />
+                  <code className="text-[10px] text-muted-foreground">complete</code>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <StepperIndicator forceState="active" stepDisplay={2} />
+                  <code className="text-[10px] text-muted-foreground">active</code>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <StepperIndicator forceState="upcoming" stepDisplay={3} />
+                  <code className="text-[10px] text-muted-foreground">upcoming</code>
+                </div>
+              </div>
+              <p className="text-[11px] text-muted-foreground">
+                Static preview:{' '}
+                <code className="rounded bg-muted px-1 py-0.5 font-mono text-[10px]">forceState</code>
+              </p>
+            </div>
+            <div className="w-full max-w-2xl space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;1&#125;</code>{' '}
+                · static (
+                <a
+                  href="https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?node-id=3452-4369"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-2 hover:no-underline"
+                >
+                  Figma
+                </a>
+                )
+              </p>
+              <Stepper value={1}>
+                <StepperList>
+                  <StepperItem>
+                    <StepperTrigger>
+                      <StepperIndicator />
+                      <StepperTitle>Account</StepperTitle>
+                      <StepperDescription>Sign up</StepperDescription>
+                    </StepperTrigger>
+                  </StepperItem>
+                  <StepperSeparator />
+                  <StepperItem>
+                    <StepperTrigger>
+                      <StepperIndicator />
+                      <StepperTitle>Workspace</StepperTitle>
+                      <StepperDescription>Set up team</StepperDescription>
+                    </StepperTrigger>
+                  </StepperItem>
+                  <StepperSeparator />
+                  <StepperItem>
+                    <StepperTrigger>
+                      <StepperIndicator />
+                      <StepperTitle>Done</StepperTitle>
+                      <StepperDescription>Finish</StepperDescription>
+                    </StepperTrigger>
+                  </StepperItem>
+                </StepperList>
+              </Stepper>
+            </div>
+            <div className="w-full max-w-2xl space-y-3">
+              <p className="text-xs font-medium text-muted-foreground">
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">onValueChange</code>{' '}
+                · click current or previous step
+              </p>
+              <Stepper value={stepperStep} onValueChange={setStepperStep}>
+                <StepperList>
+                  <StepperItem>
+                    <StepperTrigger>
+                      <StepperIndicator />
+                      <StepperTitle>Details</StepperTitle>
+                    </StepperTrigger>
+                  </StepperItem>
+                  <StepperSeparator />
+                  <StepperItem>
+                    <StepperTrigger>
+                      <StepperIndicator />
+                      <StepperTitle>Review</StepperTitle>
+                    </StepperTrigger>
+                  </StepperItem>
+                  <StepperSeparator />
+                  <StepperItem>
+                    <StepperTrigger>
+                      <StepperIndicator />
+                      <StepperTitle>Submit</StepperTitle>
+                    </StepperTrigger>
+                  </StepperItem>
+                </StepperList>
+              </Stepper>
+              <div className="flex gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  disabled={stepperStep <= 0}
+                  onClick={() => setStepperStep((s) => Math.max(0, s - 1))}
+                >
+                  Back
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  disabled={stepperStep >= 2}
+                  onClick={() => setStepperStep((s) => Math.min(2, s + 1))}
+                >
+                  Next
+                </Button>
               </div>
             </div>
           </div>

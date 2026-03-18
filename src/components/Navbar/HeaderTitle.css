@@ -1,0 +1,41 @@
+/**
+ * 32px title token — not Tailwind-generated so demo (source alias) always picks it up.
+ */
+[data-slot='header-title'] {
+  margin: 0;
+  font: var(--typography-header2);
+  letter-spacing: var(--typography-header2-letter-spacing);
+  color: var(--foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/** 16px secondary line — Body2 token */
+[data-slot='header-secondary'] {
+  margin: 0;
+  max-width: 100%;
+  font: var(--typography-body2);
+  color: var(--muted-foreground);
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+[data-slot='header-secondary'][data-lines='2'] {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+[data-slot='header-text-group'] {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: var(--spacing-2);
+}

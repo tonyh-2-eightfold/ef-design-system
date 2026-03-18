@@ -67,15 +67,15 @@
 }
 
 .btn--destructive {
-  background: var(--color-background1-red);
+  background: rgba(255, 198, 198, 1);
   color: var(--color-primary-red);
 }
 .btn--destructive:hover:not(:disabled) {
-  background: var(--color-bg-default);
+  background: rgba(255, 175, 175, 1);
   color: var(--color-primary-red);
 }
 .btn--destructive:active:not(:disabled) {
-  background: var(--color-background2-red);
+  background: rgba(248, 150, 150, 1);
   color: var(--color-primary-red);
 }
 

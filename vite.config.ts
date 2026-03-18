@@ -20,6 +20,7 @@ export default defineConfig({
         'react/jsx-runtime',
         '@radix-ui/react-dialog',
         '@radix-ui/react-dropdown-menu',
+        '@radix-ui/react-progress',
         '@radix-ui/react-select',
         '@radix-ui/react-slot',
         '@radix-ui/react-tabs',

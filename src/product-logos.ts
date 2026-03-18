@@ -3,9 +3,9 @@
  * Serve the `public/` folder from your app (or copy into your public dir)
  * so these paths resolve.
  *
- * Multiple products are supported (Career Hub, Campaigns, Talent Acquisition, etc.).
- * The current product and nav tabs are determined by user/persona: pass productName,
- * productIconSrc, and tabs according to the active user's product and permissions.
+ * **Primary navbar products** (Octuple): **Talent Acquisition** and **Career Hub**.
+ * Additional `ProductLogoId` values exist for logos where apps need other products.
+ * Pass productName, productIconSrc, and tabs from the active user’s product and persona.
  */
 
 /** Path to the main Eightfold (EF) brand logo for use in Navbar logoSrc. */
@@ -24,6 +24,10 @@ export interface NavbarProductConfig {
 }
 
 export type ProductLogoSize = 'small' | 'medium'
+
+/** The two primary Navbar product variants. */
+export const PRIMARY_NAVBAR_PRODUCT_IDS = ['talent-acquisition', 'career-hub'] as const
+export type PrimaryNavbarProductId = (typeof PRIMARY_NAVBAR_PRODUCT_IDS)[number]
 
 export type ProductLogoId =
   | 'campaigns'

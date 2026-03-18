@@ -68,7 +68,7 @@ export interface NavbarProps {
   homePath?: string
   /** Logo image src */
   logoSrc?: string
-  /** Current product name (e.g. "Career Hub"). One of multiple products; set from user/persona. */
+  /** Current product name. Primary variants: **Talent Acquisition**, **Career Hub** (`PrimaryNavbarProductId`). */
   productName?: string
   /** Current product icon src. Use getNavbarProductConfig(productId) for design system assets. */
   productIconSrc?: string

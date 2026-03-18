@@ -19,6 +19,7 @@
 @import '../components/Input/Input.css';
 @import '../components/NavigationMenu/NavigationMenu.css';
 @import '../components/Navbar/Navbar.css';
+@import '../components/Navbar/HeaderTitle.css';
 @import '../components/Tag/Tag.css';
 @import '../components/Badge/Badge.css';
 @import '../components/InsightCard/InsightCard.css';
@@ -26,3 +27,5 @@
 @import '../components/ProjectObjectCard/ProjectObjectCard.css';
 @import '../components/PeopleObjectCard/PeopleObjectCard.css';
 @import '../components/MentorInsightCard/MentorInsightCard.css';
+@import '../components/Stepper/StepperIndicator.css';
+@import '../components/Stepper/StepperConnector.css';

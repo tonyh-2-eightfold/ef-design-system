@@ -1,5 +1,5 @@
 import { Component, useEffect, useState } from 'react'
-import { Menu, Palette, LayoutGrid } from 'lucide-react'
+import { Menu, Palette, LayoutGrid, PanelTop } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
   Table,
@@ -9,10 +9,20 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { Navbar } from '@tonyh-2-eightfold/ef-design-system'
+import {
+  Navbar,
+  Header,
+  HeaderGroup,
+  HeaderTitle,
+  HeaderToolbar,
+  HeaderTextGroup,
+  HeaderSecondary,
+  ProductBackground,
+} from '@tonyh-2-eightfold/ef-design-system'
 import {
   EIGHTFOLD_LOGO_PATH,
   getNavbarProductConfig,
+  PRIMARY_NAVBAR_PRODUCT_IDS,
   EMPLOYEE_NON_MANAGER_TABS,
   EMPLOYEE_AVATAR_MENU_ITEMS,
   MANAGER_TABS,
@@ -24,6 +34,17 @@ import {
   SPACING_TOKENS,
   CORNER_RADIUS_TOKENS,
 } from '@tonyh-2-eightfold/ef-design-system'
+
+type PrimaryNavbarProductId = (typeof PRIMARY_NAVBAR_PRODUCT_IDS)[number]
+import { Button } from '@/components/ui/button'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
 import { UICatalog } from './UICatalog'
 
 /** shadcn components shown in UICatalog; id slug used for scroll target */
@@ -54,6 +75,7 @@ const SHADCN_COMPONENTS = [
   'Pagination',
   'Popover',
   'Progress',
+  'Stepper',
   'Radio Group',
   'Resizable',
   'Scroll Area',
@@ -96,6 +118,7 @@ const SIDEBAR_GROUPS = [
     label: 'Components',
     items: [
       { id: 'navbar', label: 'Navbar', icon: Menu },
+      { id: 'header', label: 'Header', icon: PanelTop },
       ...SHADCN_COMPONENTS.map((label) => ({
         id: `ui-${slug(label)}` as const,
         label,
@@ -534,10 +557,8 @@ function TokensShowcase({ scrollToId }: { scrollToId?: string }) {
   )
 }
 
-type ProductId = 'career-hub' | 'talent-acquisition'
-
 const NAVBAR_PRODUCTS: {
-  id: ProductId
+  id: PrimaryNavbarProductId
   label: string
   personas: {
     id: string
@@ -572,8 +593,326 @@ const NAVBAR_PRODUCTS: {
   },
 ]
 
+function HeaderShowcase() {
+  const specRows = [
+    {
+      label: 'Talent Acquisition',
+      prop: 'variant="talent-acquisition"',
+      height: '—',
+      note: 'Blue rule; chSize ignored',
+    },
+    {
+      label: 'Career Hub · profile',
+      prop: 'chSize="profile"',
+      height: '408px',
+      note: 'Profile / hero',
+    },
+    {
+      label: 'Career Hub · parent',
+      prop: 'chSize="parent" (default)',
+      height: '160px',
+      note: 'Section pages',
+    },
+    {
+      label: 'Career Hub · child',
+      prop: 'chSize="child"',
+      height: '116px',
+      note: 'Nested / detail',
+    },
+  ] as const
+
+  return (
+    <div className="mx-auto max-w-6xl space-y-10 pb-8">
+      <header className="border-b border-border pb-6">
+        <h2 className="scroll-mt-20 text-2xl font-semibold tracking-tight text-foreground">Header</h2>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+          Page bar under the Navbar. <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">HeaderTitle</code>{' '}
+          uses <code className="rounded bg-muted px-1 py-0.5 font-mono text-[11px]">--typography-header2</code> (32px).
+          Stack title + <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">HeaderSecondary</code> in{' '}
+          <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">HeaderTextGroup</code> (left-aligned); secondary
+          uses <code className="rounded bg-muted px-1 py-0.5 font-mono text-[11px]">--typography-body2</code> (16px). Toolbar
+          horizontal inset is <code className="rounded bg-muted px-1 py-0.5 font-mono text-[11px]">--spacing-12</code> (24px).
+          Use <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">variant</code> for product chrome; Career Hub{' '}
+          <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">chSize</code> sets toolbar height only. For full-width
+          hero or page wash, use{' '}
+          <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ProductBackground</code> with the same{' '}
+          <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">variant</code> (see UI Catalog).
+        </p>
+      </header>
+
+      <section className="space-y-4" aria-labelledby="header-product-bg">
+        <div>
+          <h3 id="header-product-bg" className="text-base font-semibold text-foreground">
+            ProductBackground
+          </h3>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Gradients → CH chevrons → photo (<code className="rounded bg-muted px-1 font-mono text-[10px]">src</code>). Full
+            matrix in UI Catalog.
+          </p>
+        </div>
+        <div className="space-y-3 rounded-lg border border-border bg-muted/20 p-4">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Gradients</p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <ProductBackground variant="talent-acquisition" className="min-h-24 overflow-hidden rounded-md border border-border">
+              <div className="flex min-h-24 items-center px-[var(--spacing-12)] text-sm font-medium text-foreground">
+                TA gradient
+              </div>
+            </ProductBackground>
+            <ProductBackground variant="career-hub" className="min-h-24 overflow-hidden rounded-md border border-border">
+              <div className="flex min-h-24 items-center px-[var(--spacing-12)] text-sm font-medium text-foreground">
+                CH gradient
+              </div>
+            </ProductBackground>
+          </div>
+        </div>
+        <div className="space-y-3 rounded-lg border border-border bg-muted/20 p-4">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">CH chevrons</p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <ProductBackground
+              variant="career-hub"
+              chevronsVariant="default"
+              className="min-h-24 overflow-hidden rounded-md border border-border"
+            >
+              <div className="flex min-h-24 items-center px-[var(--spacing-12)] text-sm font-medium text-foreground">
+                Default
+              </div>
+            </ProductBackground>
+            <ProductBackground
+              variant="career-hub"
+              chevronsVariant="profile"
+              className="min-h-32 overflow-hidden rounded-md border border-border sm:col-span-2"
+            >
+              <div className="flex min-h-32 items-end px-[var(--spacing-12)] pb-4 text-sm font-medium text-foreground">
+                Profile
+              </div>
+            </ProductBackground>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="header-spec">
+        <h3 id="header-spec" className="sr-only">
+          API summary
+        </h3>
+        <div className="overflow-hidden rounded-xl border border-border">
+          <div className="border-b border-border bg-muted/50 px-4 py-2.5">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Quick reference</p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[520px] text-left text-sm">
+              <thead>
+                <tr className="border-b border-border bg-muted/20 text-xs text-muted-foreground">
+                  <th className="px-4 py-2 font-medium">Variant</th>
+                  <th className="px-4 py-2 font-medium">Props</th>
+                  <th className="px-4 py-2 font-medium">Toolbar height</th>
+                  <th className="px-4 py-2 font-medium">Use</th>
+                </tr>
+              </thead>
+              <tbody>
+                {specRows.map((row) => (
+                  <tr key={row.label} className="border-b border-border/80 last:border-0">
+                    <td className="px-4 py-2.5 font-medium text-foreground">{row.label}</td>
+                    <td className="px-4 py-2.5 font-mono text-xs text-foreground">{row.prop}</td>
+                    <td className="px-4 py-2.5 tabular-nums text-muted-foreground">{row.height}</td>
+                    <td className="px-4 py-2.5 text-muted-foreground">{row.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <div>
+          <h3 className="text-base font-semibold text-foreground">Talent Acquisition</h3>
+          <p className="mt-0.5 text-xs text-muted-foreground">Single bar height (~60px); link-primary styling on breadcrumbs in context.</p>
+        </div>
+        <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border bg-muted/40 px-4 py-2.5">
+            <code className="font-mono text-xs text-foreground">variant=&quot;talent-acquisition&quot;</code>
+          </div>
+          <Header variant="talent-acquisition">
+            <HeaderToolbar>
+              <HeaderGroup className="min-w-0 flex-1 flex-col items-stretch gap-2 md:flex-row md:items-center">
+                <HeaderTextGroup className="md:mr-4">
+                  <HeaderTitle>Open requisitions</HeaderTitle>
+                  <HeaderSecondary>Engineering · 12 open roles</HeaderSecondary>
+                </HeaderTextGroup>
+                <Breadcrumb>
+                  <BreadcrumbList>
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="#">Positions</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbPage>Engineering</BreadcrumbPage>
+                    </BreadcrumbItem>
+                  </BreadcrumbList>
+                </Breadcrumb>
+              </HeaderGroup>
+              <HeaderGroup className="shrink-0">
+                <Button type="button" size="sm" variant="outline">
+                  Filters
+                </Button>
+                <Button type="button" size="sm">
+                  Post job
+                </Button>
+              </HeaderGroup>
+            </HeaderToolbar>
+          </Header>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <div>
+          <h3 className="text-base font-semibold text-foreground">Career Hub</h3>
+          <p className="mt-0.5 text-xs text-muted-foreground">
+            Same <code className="rounded bg-muted px-1 font-mono text-[11px]">variant=&quot;career-hub&quot;</code> — pick{' '}
+            <code className="rounded bg-muted px-1 font-mono text-[11px]">chSize</code> for profile, parent, or child.
+          </p>
+        </div>
+        <div className="flex flex-col gap-5">
+          {(
+            [
+              {
+                key: 'profile',
+                title: 'Profile',
+                height: '408px',
+                code: 'chSize="profile"',
+                header: (
+                  <Header variant="career-hub" chSize="profile">
+                    <HeaderToolbar>
+                      <HeaderGroup className="min-w-0 flex-1 flex-col items-start justify-center gap-2">
+                        <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                          Profile header
+                        </p>
+                        <HeaderTextGroup>
+                          <HeaderTitle>Avery Chen</HeaderTitle>
+                          <HeaderSecondary>Senior Engineer · San Francisco</HeaderSecondary>
+                        </HeaderTextGroup>
+                      </HeaderGroup>
+                      <HeaderGroup className="shrink-0 self-center">
+                        <Button type="button" size="sm" variant="outline">
+                          Message
+                        </Button>
+                        <Button type="button" size="sm">
+                          Connect
+                        </Button>
+                      </HeaderGroup>
+                    </HeaderToolbar>
+                  </Header>
+                ),
+              },
+              {
+                key: 'parent',
+                title: 'Parent',
+                height: '160px',
+                code: 'chSize="parent"',
+                header: (
+                  <Header variant="career-hub" chSize="parent">
+                    <HeaderToolbar>
+                      <HeaderGroup className="min-w-0 flex-1 flex-col items-start justify-center gap-1.5">
+                        <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                          Parent header
+                        </p>
+                        <div className="flex min-w-0 w-full flex-col gap-2 md:flex-row md:items-center md:gap-4">
+                          <HeaderTextGroup>
+                            <HeaderTitle className="shrink-0">My learning goals</HeaderTitle>
+                            <HeaderSecondary data-lines="2">
+                              Track progress and add new goals anytime
+                            </HeaderSecondary>
+                          </HeaderTextGroup>
+                          <Breadcrumb>
+                            <BreadcrumbList>
+                              <BreadcrumbItem>
+                                <BreadcrumbLink href="#">Career Hub</BreadcrumbLink>
+                              </BreadcrumbItem>
+                              <BreadcrumbSeparator />
+                              <BreadcrumbItem>
+                                <BreadcrumbPage>Goals</BreadcrumbPage>
+                              </BreadcrumbItem>
+                            </BreadcrumbList>
+                          </Breadcrumb>
+                        </div>
+                      </HeaderGroup>
+                      <HeaderGroup className="shrink-0 self-center">
+                        <Button type="button" size="sm" variant="secondary">
+                          Share
+                        </Button>
+                        <Button type="button" size="sm">
+                          Add goal
+                        </Button>
+                      </HeaderGroup>
+                    </HeaderToolbar>
+                  </Header>
+                ),
+              },
+              {
+                key: 'child',
+                title: 'Child',
+                height: '116px',
+                code: 'chSize="child"',
+                header: (
+                  <Header variant="career-hub" chSize="child">
+                    <HeaderToolbar>
+                      <HeaderGroup className="min-w-0 flex-1 flex-col items-start justify-center gap-1">
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                          Child header
+                        </p>
+                        <div className="flex min-w-0 w-full flex-wrap items-start gap-x-3 gap-y-1">
+                          <HeaderTextGroup className="min-w-0 max-w-full sm:max-w-md">
+                            <HeaderTitle className="max-w-full">Complete skills assessment</HeaderTitle>
+                            <HeaderSecondary>Due in 5 days · Goals</HeaderSecondary>
+                          </HeaderTextGroup>
+                          <Breadcrumb>
+                            <BreadcrumbList>
+                              <BreadcrumbItem>
+                                <BreadcrumbLink href="#">Goals</BreadcrumbLink>
+                              </BreadcrumbItem>
+                              <BreadcrumbSeparator />
+                              <BreadcrumbItem>
+                                <BreadcrumbPage>Detail</BreadcrumbPage>
+                              </BreadcrumbItem>
+                            </BreadcrumbList>
+                          </Breadcrumb>
+                        </div>
+                      </HeaderGroup>
+                      <HeaderGroup className="shrink-0 self-center">
+                        <Button type="button" size="sm" variant="ghost">
+                          Back
+                        </Button>
+                      </HeaderGroup>
+                    </HeaderToolbar>
+                  </Header>
+                ),
+              },
+            ] as const
+          ).map((item) => (
+            <div
+              key={item.key}
+              className="flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm"
+            >
+              <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-border bg-muted/40 px-4 py-2.5">
+                <div>
+                  <p className="text-sm font-semibold text-foreground">{item.title}</p>
+                  <code className="mt-0.5 block font-mono text-[11px] text-muted-foreground">{item.code}</code>
+                </div>
+                <span className="rounded-md bg-background px-2 py-0.5 font-mono text-xs text-foreground ring-1 ring-border">
+                  {item.height}
+                </span>
+              </div>
+              <div className="min-h-0 flex-1">{item.header}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  )
+}
+
 function NavbarShowcase() {
-  const [productId, setProductId] = useState<ProductId>('career-hub')
+  const [productId, setProductId] = useState<PrimaryNavbarProductId>('career-hub')
   const [personaId, setPersonaId] = useState<string>('employee')
 
   const product = NAVBAR_PRODUCTS.find((p) => p.id === productId) ?? NAVBAR_PRODUCTS[0]
@@ -581,7 +920,7 @@ function NavbarShowcase() {
 
   const productConfig = getNavbarProductConfig(productId)
 
-  const handleProductChange = (nextProductId: ProductId) => {
+  const handleProductChange = (nextProductId: PrimaryNavbarProductId) => {
     setProductId(nextProductId)
     const nextProduct = NAVBAR_PRODUCTS.find((p) => p.id === nextProductId) ?? NAVBAR_PRODUCTS[0]
     setPersonaId(nextProduct.personas[0].id)
@@ -602,7 +941,7 @@ function NavbarShowcase() {
             <select
               id="navbar-product"
               value={productId}
-              onChange={(e) => handleProductChange(e.target.value as ProductId)}
+              onChange={(e) => handleProductChange(e.target.value as PrimaryNavbarProductId)}
               className="rounded-md border border-border bg-background px-3 py-1.5 text-sm text-foreground"
             >
               {NAVBAR_PRODUCTS.map((p) => (
@@ -675,6 +1014,13 @@ class PageErrorBoundary extends Component<
 
 function DemoContent({ page }: { page: string }) {
   if ((TOKEN_SECTION_IDS as readonly string[]).includes(page)) return <TokensShowcase scrollToId={page} />
+  if (page === 'header') {
+    return (
+      <PageErrorBoundary>
+        <HeaderShowcase />
+      </PageErrorBoundary>
+    )
+  }
   if (page === 'navbar') {
     if (typeof Navbar !== 'function') {
       return (
@@ -706,6 +1052,10 @@ function titleFromSlug(slug: string) {
 
 const PAGE_TITLES: Record<string, { title: string; description: string }> = {
   navbar: { title: 'Navbar', description: 'App shell with tabs, search, and avatar menu.' },
+  header: {
+    title: 'Header',
+    description: 'Talent Acquisition & Career Hub variants — page bar below Navbar.',
+  },
 }
 
 const TOKENS_DESCRIPTION = 'Typography, spacing, corner radius, and color tokens from Octuple DS Theme 2.'

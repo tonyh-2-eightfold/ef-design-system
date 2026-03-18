@@ -116,6 +116,9 @@
   --color-border-default: rgba(217, 220, 225, 1);
   --color-input-ink: rgba(105, 113, 127, 1);
   /* Button primary */
+  /* Stepper horizontal connector (between steps); Octuple progress blue */
+  --stepper-connector-active: rgba(44, 140, 201, 1);
+
   --color-button-primary-bg: rgba(176, 243, 254, 1);
   --color-button-primary-bg-hover: rgba(235, 253, 255, 1);
   --color-button-primary-bg-pressed: rgba(142, 232, 248, 1);
@@ -130,4 +133,9 @@
   /* Button outline */
   --color-button-outline-border: rgba(25, 153, 172, 1);
   --color-button-outline-hover-bg: rgba(235, 253, 255, 1);
+
+  /* Career Hub Header — fixed toolbar height, width 100% of parent */
+  --header-career-hub-parent-height: 160px;
+  --header-career-hub-child-height: 116px;
+  --header-career-hub-profile-height: 408px;
 }

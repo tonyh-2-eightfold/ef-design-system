@@ -6,5 +6,5 @@ export {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@tonyh-2-eightfold/ef-design-system'
-export type { BreadcrumbLinkProps } from '@tonyh-2-eightfold/ef-design-system'
+} from './Breadcrumb'
+export type { BreadcrumbLinkProps } from './Breadcrumb'

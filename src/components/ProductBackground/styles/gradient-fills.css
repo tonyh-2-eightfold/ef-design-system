@@ -1,0 +1,20 @@
+/**
+ * Token gradients when fill is not photo or Career Hub chevrons.
+ */
+[data-slot='product-background'][data-variant='talent-acquisition']
+  [data-slot='product-background-fill']:not([data-has-image]):not([data-ch-chevrons]) {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-background2-blue) 0%,
+    var(--background) 100%
+  );
+}
+
+[data-slot='product-background'][data-variant='career-hub']
+  [data-slot='product-background-fill']:not([data-has-image]):not([data-ch-chevrons]) {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-background1-grey) 0%,
+    var(--color-background2-grey) 100%
+  );
+}

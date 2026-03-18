@@ -1,0 +1,17 @@
+/**
+ * Progress — Octuple DS Theme 2 (Figma node 3693-5068).
+ * Indeterminate motion for Radix data-state="indeterminate".
+ */
+[data-slot='progress'][data-state='indeterminate'] [data-slot='progress-indicator'] {
+  width: 36%;
+  animation: ef-progress-indeterminate 1.35s ease-in-out infinite;
+}
+
+@keyframes ef-progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(280%);
+  }
+}
