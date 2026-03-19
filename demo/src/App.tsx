@@ -1,4 +1,4 @@
-import { Component, useEffect, useState } from 'react'
+import { Component, useEffect, useState, type ReactNode } from 'react'
 import { Menu, Palette, LayoutGrid, PanelTop } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
@@ -593,6 +593,50 @@ const NAVBAR_PRODUCTS: {
   },
 ]
 
+/** Card: CH chevron background + in-flow Navbar + layered Header (demo shell only). */
+function CareerHubAssembledBlock({
+  eyebrow,
+  chevronsVariant,
+  header,
+}: {
+  eyebrow: { title: string; code: string; height: string }
+  chevronsVariant: 'profile' | 'default'
+  header: ReactNode
+}) {
+  const product = getNavbarProductConfig('career-hub')
+  return (
+    <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-border bg-muted/40 px-4 py-2.5">
+        <div>
+          <p className="text-sm font-semibold text-foreground">{eyebrow.title}</p>
+          <code className="mt-0.5 block font-mono text-[11px] text-muted-foreground">{eyebrow.code}</code>
+        </div>
+        <span className="rounded-md bg-background px-2 py-0.5 font-mono text-xs text-foreground ring-1 ring-border">
+          {eyebrow.height}
+        </span>
+      </div>
+      <ProductBackground variant="career-hub" chevronsVariant={chevronsVariant} className="relative min-h-0">
+        <div className="header-assembled-ch-shell flex min-h-0 flex-col">
+          <Navbar
+            logoSrc={EIGHTFOLD_LOGO_PATH}
+            productName={product.productName}
+            productIconSrc={product.productIconSrc}
+            tabs={EMPLOYEE_NON_MANAGER_TABS}
+            avatarMenuItems={EMPLOYEE_AVATAR_MENU_ITEMS}
+            actionButtons={[]}
+            user={{
+              name: 'Avery Chen',
+              avatarType: 'initials',
+              avatarInitials: 'AC',
+            }}
+          />
+          {header}
+        </div>
+      </ProductBackground>
+    </div>
+  )
+}
+
 function HeaderShowcase() {
   const specRows = [
     {
@@ -633,7 +677,12 @@ function HeaderShowcase() {
           uses <code className="rounded bg-muted px-1 py-0.5 font-mono text-[11px]">--typography-body2</code> (16px). Toolbar
           horizontal inset is <code className="rounded bg-muted px-1 py-0.5 font-mono text-[11px]">--spacing-12</code> (24px).
           Use <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">variant</code> for product chrome; Career Hub{' '}
-          <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">chSize</code> sets toolbar height only. For full-width
+          <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">chSize</code> sets toolbar height;{' '}
+          <code className="rounded bg-muted px-1 py-0.5 font-mono text-[11px]">overlayBackground</code> makes the bar transparent
+          over <code className="rounded bg-muted px-1 font-mono text-[11px]">ProductBackground</code>. Top-right actions
+          use <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">HeaderToolbar</code>{' '}
+          <code className="rounded bg-muted px-1 py-0.5 font-mono text-[11px]">actions=…</code> (or <code className="rounded bg-muted px-1 font-mono text-[11px]">HeaderActions</code>
+          ) with the same 24px top inset as the title group. For full-width
           hero or page wash, use{' '}
           <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">ProductBackground</code> with the same{' '}
           <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">variant</code> (see UI Catalog).
@@ -733,8 +782,19 @@ function HeaderShowcase() {
             <code className="font-mono text-xs text-foreground">variant=&quot;talent-acquisition&quot;</code>
           </div>
           <Header variant="talent-acquisition">
-            <HeaderToolbar>
-              <HeaderGroup className="min-w-0 flex-1 flex-col items-stretch gap-2 md:flex-row md:items-center">
+            <HeaderToolbar
+              actions={
+                <>
+                  <Button type="button" size="sm" variant="outline">
+                    Filters
+                  </Button>
+                  <Button type="button" size="sm">
+                    Post job
+                  </Button>
+                </>
+              }
+            >
+              <HeaderGroup className="min-w-0 flex-1 flex-col items-stretch gap-2 md:flex-row md:items-start">
                 <HeaderTextGroup className="md:mr-4">
                   <HeaderTitle>Open requisitions</HeaderTitle>
                   <HeaderSecondary>Engineering · 12 open roles</HeaderSecondary>
@@ -750,14 +810,6 @@ function HeaderShowcase() {
                     </BreadcrumbItem>
                   </BreadcrumbList>
                 </Breadcrumb>
-              </HeaderGroup>
-              <HeaderGroup className="shrink-0">
-                <Button type="button" size="sm" variant="outline">
-                  Filters
-                </Button>
-                <Button type="button" size="sm">
-                  Post job
-                </Button>
               </HeaderGroup>
             </HeaderToolbar>
           </Header>
@@ -782,23 +834,23 @@ function HeaderShowcase() {
                 code: 'chSize="profile"',
                 header: (
                   <Header variant="career-hub" chSize="profile">
-                    <HeaderToolbar>
-                      <HeaderGroup className="min-w-0 flex-1 flex-col items-start justify-center gap-2">
-                        <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                          Profile header
-                        </p>
+                    <HeaderToolbar
+                      actions={
+                        <>
+                          <Button type="button" size="sm" variant="outline">
+                            Message
+                          </Button>
+                          <Button type="button" size="sm">
+                            Connect
+                          </Button>
+                        </>
+                      }
+                    >
+                      <HeaderGroup className="min-w-0 flex-1">
                         <HeaderTextGroup>
                           <HeaderTitle>Avery Chen</HeaderTitle>
                           <HeaderSecondary>Senior Engineer · San Francisco</HeaderSecondary>
                         </HeaderTextGroup>
-                      </HeaderGroup>
-                      <HeaderGroup className="shrink-0 self-center">
-                        <Button type="button" size="sm" variant="outline">
-                          Message
-                        </Button>
-                        <Button type="button" size="sm">
-                          Connect
-                        </Button>
                       </HeaderGroup>
                     </HeaderToolbar>
                   </Header>
@@ -811,38 +863,25 @@ function HeaderShowcase() {
                 code: 'chSize="parent"',
                 header: (
                   <Header variant="career-hub" chSize="parent">
-                    <HeaderToolbar>
-                      <HeaderGroup className="min-w-0 flex-1 flex-col items-start justify-center gap-1.5">
-                        <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                          Parent header
-                        </p>
-                        <div className="flex min-w-0 w-full flex-col gap-2 md:flex-row md:items-center md:gap-4">
-                          <HeaderTextGroup>
-                            <HeaderTitle className="shrink-0">My learning goals</HeaderTitle>
-                            <HeaderSecondary data-lines="2">
-                              Track progress and add new goals anytime
-                            </HeaderSecondary>
-                          </HeaderTextGroup>
-                          <Breadcrumb>
-                            <BreadcrumbList>
-                              <BreadcrumbItem>
-                                <BreadcrumbLink href="#">Career Hub</BreadcrumbLink>
-                              </BreadcrumbItem>
-                              <BreadcrumbSeparator />
-                              <BreadcrumbItem>
-                                <BreadcrumbPage>Goals</BreadcrumbPage>
-                              </BreadcrumbItem>
-                            </BreadcrumbList>
-                          </Breadcrumb>
-                        </div>
-                      </HeaderGroup>
-                      <HeaderGroup className="shrink-0 self-center">
-                        <Button type="button" size="sm" variant="secondary">
-                          Share
-                        </Button>
-                        <Button type="button" size="sm">
-                          Add goal
-                        </Button>
+                    <HeaderToolbar
+                      actions={
+                        <>
+                          <Button type="button" size="sm" variant="secondary">
+                            Share
+                          </Button>
+                          <Button type="button" size="sm">
+                            Add goal
+                          </Button>
+                        </>
+                      }
+                    >
+                      <HeaderGroup className="min-w-0 flex-1">
+                        <HeaderTextGroup>
+                          <HeaderTitle className="shrink-0">My learning goals</HeaderTitle>
+                          <HeaderSecondary data-lines="2">
+                            Track progress and add new goals anytime
+                          </HeaderSecondary>
+                        </HeaderTextGroup>
                       </HeaderGroup>
                     </HeaderToolbar>
                   </Header>
@@ -855,33 +894,18 @@ function HeaderShowcase() {
                 code: 'chSize="child"',
                 header: (
                   <Header variant="career-hub" chSize="child">
-                    <HeaderToolbar>
-                      <HeaderGroup className="min-w-0 flex-1 flex-col items-start justify-center gap-1">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                          Child header
-                        </p>
-                        <div className="flex min-w-0 w-full flex-wrap items-start gap-x-3 gap-y-1">
-                          <HeaderTextGroup className="min-w-0 max-w-full sm:max-w-md">
-                            <HeaderTitle className="max-w-full">Complete skills assessment</HeaderTitle>
-                            <HeaderSecondary>Due in 5 days · Goals</HeaderSecondary>
-                          </HeaderTextGroup>
-                          <Breadcrumb>
-                            <BreadcrumbList>
-                              <BreadcrumbItem>
-                                <BreadcrumbLink href="#">Goals</BreadcrumbLink>
-                              </BreadcrumbItem>
-                              <BreadcrumbSeparator />
-                              <BreadcrumbItem>
-                                <BreadcrumbPage>Detail</BreadcrumbPage>
-                              </BreadcrumbItem>
-                            </BreadcrumbList>
-                          </Breadcrumb>
-                        </div>
-                      </HeaderGroup>
-                      <HeaderGroup className="shrink-0 self-center">
+                    <HeaderToolbar
+                      actions={
                         <Button type="button" size="sm" variant="ghost">
                           Back
                         </Button>
+                      }
+                    >
+                      <HeaderGroup className="min-w-0 flex-1">
+                        <HeaderTextGroup className="min-w-0 max-w-full sm:max-w-md">
+                          <HeaderTitle className="max-w-full">Complete skills assessment</HeaderTitle>
+                          <HeaderSecondary>Due in 5 days · Goals</HeaderSecondary>
+                        </HeaderTextGroup>
                       </HeaderGroup>
                     </HeaderToolbar>
                   </Header>
@@ -905,6 +929,116 @@ function HeaderShowcase() {
               <div className="min-h-0 flex-1">{item.header}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="space-y-4" aria-labelledby="header-assembled-ch">
+        <div>
+          <h3 id="header-assembled-ch" className="text-base font-semibold text-foreground">
+            Fully assembled · Career Hub
+          </h3>
+          <p className="mt-1 max-w-3xl text-xs text-muted-foreground">
+            <code className="rounded bg-muted px-1 font-mono text-[11px]">ProductBackground</code> (chevrons, top-aligned
+            art) with the{' '}
+            <code className="rounded bg-muted px-1 font-mono text-[11px]">Navbar</code> and{' '}
+            <code className="rounded bg-muted px-1 font-mono text-[11px]">Header</code> uses{' '}
+            <code className="rounded bg-muted px-1 font-mono text-[10px]">overlayBackground</code> so the chevron wash
+            shows through; Navbar uses <code className="rounded bg-muted px-1 font-mono text-[10px]">position:relative</code>{' '}
+            in this preview only (
+            <code className="rounded bg-muted px-1 font-mono text-[10px]">.header-assembled-ch-shell</code> in the demo).
+          </p>
+        </div>
+        <div className="flex flex-col gap-6">
+          <CareerHubAssembledBlock
+            eyebrow={{
+              title: 'Profile',
+              code: 'chevronsVariant="profile" · chSize="profile"',
+              height: '60px nav + 408px header',
+            }}
+            chevronsVariant="profile"
+            header={
+              <Header variant="career-hub" chSize="profile" overlayBackground className="relative z-[5]">
+                <HeaderToolbar
+                  actions={
+                    <>
+                      <Button type="button" size="sm" variant="outline">
+                        Message
+                      </Button>
+                      <Button type="button" size="sm">
+                        Connect
+                      </Button>
+                    </>
+                  }
+                >
+                  <HeaderGroup className="min-w-0 flex-1">
+                    <HeaderTextGroup>
+                      <HeaderTitle>Avery Chen</HeaderTitle>
+                      <HeaderSecondary>Senior Engineer · San Francisco</HeaderSecondary>
+                    </HeaderTextGroup>
+                  </HeaderGroup>
+                </HeaderToolbar>
+              </Header>
+            }
+          />
+          <CareerHubAssembledBlock
+            eyebrow={{
+              title: 'Parent',
+              code: 'chevronsVariant="default" · chSize="parent"',
+              height: '60px nav + 160px header',
+            }}
+            chevronsVariant="default"
+            header={
+              <Header variant="career-hub" chSize="parent" overlayBackground className="relative z-[5]">
+                <HeaderToolbar
+                  actions={
+                    <>
+                      <Button type="button" size="sm" variant="secondary">
+                        Share
+                      </Button>
+                      <Button type="button" size="sm">
+                        Add goal
+                      </Button>
+                    </>
+                  }
+                >
+                  <HeaderGroup className="min-w-0 flex-1">
+                    <HeaderTextGroup>
+                      <HeaderTitle className="shrink-0">My learning goals</HeaderTitle>
+                      <HeaderSecondary data-lines="2">
+                        Track progress and add new goals anytime
+                      </HeaderSecondary>
+                    </HeaderTextGroup>
+                  </HeaderGroup>
+                </HeaderToolbar>
+              </Header>
+            }
+          />
+          <CareerHubAssembledBlock
+            eyebrow={{
+              title: 'Child',
+              code: 'chevronsVariant="default" · chSize="child"',
+              height: '60px nav + 116px header',
+            }}
+            chevronsVariant="default"
+            header={
+              <Header variant="career-hub" chSize="child" overlayBackground className="relative z-[5]">
+                <HeaderToolbar
+                  actions={
+                    <Button type="button" size="sm" variant="ghost">
+                      Back
+                    </Button>
+                  }
+                >
+                  <HeaderGroup className="min-w-0 flex-1">
+                    <HeaderTextGroup className="min-w-0 max-w-full sm:max-w-md">
+                      <HeaderTitle className="max-w-full">Complete skills assessment</HeaderTitle>
+                      <HeaderSecondary>Due in 5 days · Goals</HeaderSecondary>
+                    </HeaderTextGroup>
+                  </HeaderGroup>
+                </HeaderToolbar>
+              </Header>
+            }
+          />
         </div>
       </section>
     </div>

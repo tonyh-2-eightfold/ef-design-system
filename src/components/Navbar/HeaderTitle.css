@@ -36,6 +36,26 @@
   min-width: 0;
   flex-direction: column;
   align-items: flex-start;
+  align-self: flex-start;
   text-align: left;
   gap: var(--spacing-2);
+  /** 24px from header toolbar top; top + left aligned */
+  padding-top: var(--spacing-12);
+}
+
+/** Top-right actions: same 24px top inset as title group; pushed right via margin-left auto */
+[data-slot='header-actions'] {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--spacing-4); /* ~Tailwind gap-2 (8px) */
+  align-self: flex-start;
+  margin-left: auto;
+  padding-top: var(--spacing-12);
+}
+
+@media (min-width: 768px) {
+  [data-slot='header-actions'] {
+    gap: var(--spacing-6); /* ~md:gap-3 (12px) */
+  }
 }

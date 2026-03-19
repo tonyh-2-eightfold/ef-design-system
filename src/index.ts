@@ -122,13 +122,19 @@ export type {
 export { Navbar } from './components/Navbar/Navbar'
 export {
   Header,
+  HeaderActions,
   HeaderGroup,
   HeaderTitle,
   HeaderToolbar,
   HeaderTextGroup,
   HeaderSecondary,
 } from './components/Navbar/Header'
-export type { CareerHubHeaderSize, HeaderProps, HeaderVariant } from './components/Navbar/Header'
+export type {
+  CareerHubHeaderSize,
+  HeaderProps,
+  HeaderToolbarProps,
+  HeaderVariant,
+} from './components/Navbar/Header'
 
 export { ProductBackground } from './components/ProductBackground'
 export type {

@@ -34,6 +34,11 @@ export interface HeaderProps
    * **profile** uses `--header-career-hub-profile-height` (default 408px). Ignored for Talent Acquisition.
    */
   chSize?: CareerHubHeaderSize
+  /**
+   * Career Hub only. When `true`, the header bar is transparent so a **`ProductBackground`** (or other wash)
+   * behind it shows through fully. Border-bottom is unchanged for separation from page content.
+   */
+  overlayBackground?: boolean
 }
 
 /**
@@ -42,7 +47,10 @@ export interface HeaderProps
  * - **career-hub**: muted bar; use **chSize** `profile` | `parent` | `child`.
  */
 const Header = React.forwardRef<HTMLElement, HeaderProps>(
-  ({ className, variant, chSize = 'parent', sticky = false, ...props }, ref) => {
+  (
+    { className, variant, chSize = 'parent', sticky = false, overlayBackground = false, ...props },
+    ref
+  ) => {
     const v = variant ?? 'career-hub'
     const chrome: React.ContextType<typeof HeaderChromeContext> = {
       variant: v,
@@ -57,11 +65,19 @@ const Header = React.forwardRef<HTMLElement, HeaderProps>(
           data-ch-size={v === 'career-hub' ? chSize : undefined}
           className={cn(
             headerRootVariants({ variant: v }),
+            overlayBackground && v === 'career-hub' && '!bg-transparent',
+            sticky && 'sticky top-0 z-30',
             sticky &&
-              'sticky top-0 z-30 backdrop-blur-sm supports-[backdrop-filter]:bg-[var(--background)]/95',
+              !(overlayBackground && v === 'career-hub') &&
+              'backdrop-blur-sm supports-[backdrop-filter]:bg-[var(--background)]/95',
             v === 'career-hub' &&
               sticky &&
+              !(overlayBackground && v === 'career-hub') &&
               'supports-[backdrop-filter]:bg-[var(--color-background1-grey)]/80',
+            sticky &&
+              overlayBackground &&
+              v === 'career-hub' &&
+              'supports-[backdrop-filter]:bg-transparent',
             className
           )}
           {...props}
@@ -72,23 +88,31 @@ const Header = React.forwardRef<HTMLElement, HeaderProps>(
 )
 Header.displayName = 'Header'
 
+export interface HeaderToolbarProps extends React.ComponentPropsWithoutRef<'div'> {
+  /**
+   * Top-right action row (buttons, menus). Uses the same **24px** top padding as `HeaderTextGroup`
+   * (`--spacing-12`). Renders after `children` with `margin-left: auto`.
+   */
+  actions?: React.ReactNode
+}
+
 /** Career Hub toolbar: fixed height, `w-full` (variable width = container). */
 const toolbarCareerHub = {
   profile:
-    'h-[var(--header-career-hub-profile-height)] min-h-[var(--header-career-hub-profile-height)] flex-wrap content-center gap-y-3 py-4 pl-[var(--spacing-12)] pr-[var(--spacing-12)] md:py-6 md:gap-5',
+    'h-[var(--header-career-hub-profile-height)] min-h-[var(--header-career-hub-profile-height)] flex-wrap items-start content-start gap-y-3 pb-4 pl-[var(--spacing-12)] pr-[var(--spacing-12)] md:pb-6 md:gap-5',
   parent:
-    'h-[var(--header-career-hub-parent-height)] min-h-[var(--header-career-hub-parent-height)] gap-4 pl-[var(--spacing-12)] pr-[var(--spacing-12)]',
+    'h-[var(--header-career-hub-parent-height)] min-h-[var(--header-career-hub-parent-height)] items-start gap-4 pl-[var(--spacing-12)] pr-[var(--spacing-12)]',
   child:
-    'h-[var(--header-career-hub-child-height)] min-h-[var(--header-career-hub-child-height)] gap-3 py-2 pl-[var(--spacing-12)] pr-[var(--spacing-12)]',
+    'h-[var(--header-career-hub-child-height)] min-h-[var(--header-career-hub-child-height)] items-start gap-3 pb-2 pl-[var(--spacing-12)] pr-[var(--spacing-12)]',
 } as const
 
-const HeaderToolbar = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
-  ({ className, ...props }, ref) => {
+const HeaderToolbar = React.forwardRef<HTMLDivElement, HeaderToolbarProps>(
+  ({ className, actions, children, ...props }, ref) => {
     const { variant, careerHubSize } = useHeaderChrome()
     const ta =
-      'flex min-h-12 w-full max-w-[100vw] items-center gap-3 py-2 pl-[var(--spacing-12)] pr-[var(--spacing-12)] md:h-[var(--navbar-height,3.75rem)] md:gap-4 md:py-0'
+      'flex min-h-12 w-full max-w-[100vw] items-start gap-3 py-0 pl-[var(--spacing-12)] pr-[var(--spacing-12)] md:h-[var(--navbar-height,3.75rem)] md:gap-4'
     const ch = cn(
-      'flex w-full max-w-[100vw] items-center',
+      'flex w-full max-w-[100vw] items-start',
       toolbarCareerHub[careerHubSize]
     )
     return (
@@ -97,11 +121,22 @@ const HeaderToolbar = React.forwardRef<HTMLDivElement, React.ComponentPropsWitho
         data-slot="header-toolbar"
         className={cn(variant === 'talent-acquisition' ? ta : ch, className)}
         {...props}
-      />
+      >
+        {children}
+        {actions != null ? <div data-slot="header-actions">{actions}</div> : null}
+      </div>
     )
   }
 )
 HeaderToolbar.displayName = 'HeaderToolbar'
+
+/** Composable alternative to `HeaderToolbar` `actions` prop; same layout and 24px top padding. */
+const HeaderActions = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} data-slot="header-actions" className={cn(className)} {...props} />
+  )
+)
+HeaderActions.displayName = 'HeaderActions'
 
 const HeaderGroup = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
   ({ className, ...props }, ref) => (
@@ -138,4 +173,12 @@ const HeaderSecondary = React.forwardRef<HTMLParagraphElement, React.ComponentPr
 )
 HeaderSecondary.displayName = 'HeaderSecondary'
 
-export { Header, HeaderGroup, HeaderTitle, HeaderToolbar, HeaderTextGroup, HeaderSecondary }
+export {
+  Header,
+  HeaderActions,
+  HeaderGroup,
+  HeaderTitle,
+  HeaderToolbar,
+  HeaderTextGroup,
+  HeaderSecondary,
+}

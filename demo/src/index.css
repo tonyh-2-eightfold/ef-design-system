@@ -438,6 +438,18 @@ a.project-object-card {
   right: 8px;
 }
 
+/**
+ * Header page: Career Hub navbar + header stacked on ProductBackground.
+ * Navbar defaults to position:fixed (viewport); here it stays in flow over the wash.
+ */
+.header-assembled-ch-shell .navbar {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  z-index: 10;
+}
+
 /* Force main page scrollbar hidden (last so it wins) */
 html,
 body,

@@ -46,9 +46,10 @@ export function resolveProductBackgroundFillLayer(
       fillStyle: {
         backgroundColor: 'var(--color-background1-grey)',
         backgroundImage: chevronArtDataUrl(options.chevronsVariant),
+        /** Fill the whole slot (e.g. navbar + header): scale up like object-fit: cover; anchor top-right. */
         backgroundPosition: 'right top',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '100% auto',
+        backgroundSize: 'cover',
       },
     }
   }
