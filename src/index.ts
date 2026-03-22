@@ -82,6 +82,15 @@ export type { NavigationMenuVariant } from './components/NavigationMenu/Navigati
 export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants } from './components/Tabs/Tabs'
 
 export {
+  DataTable,
+  DataTableHeader,
+  DataTableBody,
+  DataTableRow,
+  DataTableHead,
+  DataTableCell,
+} from './components/DataTable/DataTable'
+
+export {
   Select,
   SelectContent,
   SelectGroup,
