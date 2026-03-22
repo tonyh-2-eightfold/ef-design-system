@@ -93,6 +93,12 @@ import {
   ButtonDropdown,
   DropdownMenu as DSDropdownMenu,
   ProductBackground,
+  DataTable,
+  DataTableHeader,
+  DataTableBody,
+  DataTableRow,
+  DataTableHead,
+  DataTableCell,
 } from '@tonyh-2-eightfold/ef-design-system'
 import { Label } from '@/components/ui/label'
 import {
@@ -1507,6 +1513,43 @@ export function UICatalog({
               </TableRow>
             </TableBody>
           </Table>
+        </Block>
+
+        <Block title="Data Table" id="data-table">
+          <DataTable>
+            <DataTableHeader>
+              <DataTableRow>
+                <DataTableHead>Department</DataTableHead>
+                <DataTableHead align="right">Headcount</DataTableHead>
+                <DataTableHead metric>AI Readiness</DataTableHead>
+                <DataTableHead>Status</DataTableHead>
+                <DataTableHead shrink>Actions</DataTableHead>
+              </DataTableRow>
+            </DataTableHeader>
+            <DataTableBody>
+              <DataTableRow onClick={() => {}}>
+                <DataTableCell className="font-semibold">Engineering</DataTableCell>
+                <DataTableCell align="right" numeric>2,100</DataTableCell>
+                <DataTableCell metric>35%</DataTableCell>
+                <DataTableCell><Badge variant="secondary">On track</Badge></DataTableCell>
+                <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
+              </DataTableRow>
+              <DataTableRow variant="warn" onClick={() => {}}>
+                <DataTableCell className="font-semibold">Sales</DataTableCell>
+                <DataTableCell align="right" numeric>1,240</DataTableCell>
+                <DataTableCell metric>12%</DataTableCell>
+                <DataTableCell><Badge variant="destructive">Immediate action</Badge></DataTableCell>
+                <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
+              </DataTableRow>
+              <DataTableRow onClick={() => {}}>
+                <DataTableCell className="font-semibold">Marketing</DataTableCell>
+                <DataTableCell align="right" numeric>610</DataTableCell>
+                <DataTableCell metric>23%</DataTableCell>
+                <DataTableCell><Badge variant="outline">Monitor closely</Badge></DataTableCell>
+                <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
+              </DataTableRow>
+            </DataTableBody>
+          </DataTable>
         </Block>
 
         <Block title="Tabs">
