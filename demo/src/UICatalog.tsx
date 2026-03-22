@@ -1520,7 +1520,7 @@ export function UICatalog({
             <DataTableHeader>
               <DataTableRow>
                 <DataTableHead>Department</DataTableHead>
-                <DataTableHead align="right">Headcount</DataTableHead>
+                <DataTableHead numeric>Headcount</DataTableHead>
                 <DataTableHead metric>AI Readiness</DataTableHead>
                 <DataTableHead>Status</DataTableHead>
                 <DataTableHead shrink>Actions</DataTableHead>

@@ -72,23 +72,28 @@ function DataTableRow({
 
 function DataTableHead({
   className,
-  align = 'left',
+  align,
+  numeric,
   metric,
   shrink,
   ...props
 }: React.ComponentProps<'th'> & {
+  /** Column alignment. Defaults to 'left'; numeric columns default to 'right'. */
   align?: 'left' | 'right'
+  /** Right-aligns header (shorthand for align="right") */
+  numeric?: boolean
   /** Min-width for metric/progress bar columns */
   metric?: boolean
   /** Collapse width for action columns */
   shrink?: boolean
 }) {
+  const resolvedAlign = align ?? (numeric ? 'right' : 'left')
   return (
     <th
       data-slot="data-table-head"
       className={cn(
-        'px-5 py-2.5 font-[var(--typography-caption-semibold)] text-[color:#64748b] uppercase tracking-[0.05em] text-xs font-semibold bg-[#f8fafc] whitespace-nowrap',
-        align === 'right' && 'text-right',
+        'px-5 py-2.5 text-left font-[var(--typography-caption-semibold)] text-[color:#64748b] uppercase tracking-[0.05em] text-xs font-semibold bg-[#f8fafc] whitespace-nowrap',
+        resolvedAlign === 'right' && 'text-right',
         metric && 'min-w-[108px]',
         shrink && 'w-[1%] pl-3 pr-5',
         className,
