@@ -1,6 +1,6 @@
 {
   "name": "@tonyh-2-eightfold/ef-design-system",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "workspaces": ["demo"],
   "main": "./dist/index.js",
