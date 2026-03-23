@@ -1,0 +1,8 @@
+/* Override Navbar fixed positioning inside the shell so it flows with the header */
+.career-hub-shell .navbar {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  z-index: 10;
+}

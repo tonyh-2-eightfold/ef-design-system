@@ -189,5 +189,8 @@ export {
   TALENT_ACQUISITION_SEARCH_PLACEHOLDER,
 } from './navbar-tabs'
 
+export { CareerHubShell } from './components/CareerHubShell'
+export type { CareerHubShellProps } from './components/CareerHubShell'
+
 export { SPACING_TOKENS, CORNER_RADIUS_TOKENS } from './tokens'
 export type { SpacingKey, CornerRadiusKey } from './tokens'
