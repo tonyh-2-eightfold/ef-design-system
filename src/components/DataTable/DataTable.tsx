@@ -3,8 +3,16 @@ import { cn } from '../../lib/utils'
 
 /* ─── DataTable (scroll wrapper + table) ─── */
 
-function DataTable({ className, children, ...props }: React.ComponentProps<'table'>) {
-  return (
+function DataTable({
+  className,
+  bordered,
+  children,
+  ...props
+}: React.ComponentProps<'table'> & {
+  /** Wrap in a rounded border container */
+  bordered?: boolean
+}) {
+  const table = (
     <div data-slot="data-table-scroll" className="relative w-full overflow-x-auto [-webkit-overflow-scrolling:touch]">
       <table
         data-slot="data-table"
@@ -13,6 +21,12 @@ function DataTable({ className, children, ...props }: React.ComponentProps<'tabl
       >
         {children}
       </table>
+    </div>
+  )
+  if (!bordered) return table
+  return (
+    <div data-slot="data-table-bordered" className="rounded-xl border border-[#e5e7eb] bg-white overflow-hidden">
+      {table}
     </div>
   )
 }
