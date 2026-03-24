@@ -71,7 +71,7 @@ function DataTableRow({
       data-slot="data-table-row"
       className={cn(
         'border-b border-[#f1f5f9] transition-colors',
-        variant === 'warn' && 'bg-[#fffefb]',
+        variant === 'warn' && '',
         onClick && 'cursor-pointer hover:bg-[#fafbff]',
         !onClick && 'hover:bg-muted/50',
         className,
