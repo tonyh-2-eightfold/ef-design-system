@@ -2022,7 +2022,7 @@ function vr({
       "data-slot": "data-table-row",
       className: b(
         "border-b border-[#f1f5f9] transition-colors",
-        t === "warn" && "bg-[#fffbeb]",
+        t === "warn" && "bg-[#fffef7]",
         n && "cursor-pointer hover:bg-[#fafbff]",
         !n && "hover:bg-muted/50",
         e
