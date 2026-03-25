@@ -1,0 +1,138 @@
+/* Dialog — Octuple DS Theme 2 */
+
+.ef-dialog__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.ef-dialog__overlay[data-state='open'] {
+  animation: ef-dialog-fade-in 200ms ease-out;
+}
+
+.ef-dialog__overlay[data-state='closed'] {
+  animation: ef-dialog-fade-out 200ms ease-in;
+}
+
+.ef-dialog__content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 2rem);
+  max-width: 480px;
+  max-height: calc(100vh - 4rem);
+  transform: translate(-50%, -50%);
+  border: 1px solid #D9DCE1;
+  border-radius: var(--radius-5, 12px);
+  background: #FFFFFF;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  padding: 24px;
+  gap: 16px;
+  outline: none;
+}
+
+.ef-dialog__content[data-state='open'] {
+  animation: ef-dialog-zoom-in 200ms ease-out;
+}
+
+.ef-dialog__content[data-state='closed'] {
+  animation: ef-dialog-zoom-out 200ms ease-in;
+}
+
+.ef-dialog__close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-1, 4px);
+  background: none;
+  color: #4F5666;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.ef-dialog__close-btn:hover {
+  opacity: 1;
+}
+
+.ef-dialog__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 32px; /* space for close button */
+}
+
+.ef-dialog__title {
+  font: var(--typography-header4);
+  color: #1A212E;
+  margin: 0;
+}
+
+.ef-dialog__description {
+  font: var(--typography-body2);
+  color: #4F5666;
+  margin: 0;
+}
+
+.ef-dialog__stepper {
+  padding: 4px 0;
+}
+
+.ef-dialog__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.ef-dialog__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+/* Animations */
+@keyframes ef-dialog-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ef-dialog-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes ef-dialog-zoom-in {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes ef-dialog-zoom-out {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+}
+
+/* sr-only utility for close button */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

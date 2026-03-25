@@ -129,6 +129,22 @@ export type {
   StepperSeparatorProps,
 } from './components/Stepper'
 
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogBody,
+  DialogOverlay,
+  DialogPortal,
+  DialogStepper,
+  DialogTitle,
+  DialogTrigger,
+} from './components/Dialog/Dialog'
+export type { DialogContentProps, DialogStepperStep } from './components/Dialog/Dialog'
+
 export { NumberBadge } from './components/NumberBadge/NumberBadge'
 export type { NumberBadgeProps, NumberBadgeColor, NumberBadgeSize } from './components/NumberBadge/NumberBadge'
 
