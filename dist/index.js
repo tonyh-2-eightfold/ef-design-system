@@ -2663,7 +2663,7 @@ function Cn({
     const j = h.chevron && h.subItems && h.subItems.length > 0;
     if (h.path && j) {
       const $ = i === h.path || h.subItems.some((z) => z.path === i);
-      return /* @__PURE__ */ p("li", { className: "navbar__tab-dropdown-wrap", style: { listStyle: "none" }, children: [
+      return /* @__PURE__ */ p("li", { className: "nav-menu__item navbar__tab-dropdown-wrap", children: [
         /* @__PURE__ */ p("button", { className: `navbar__tab navbar__tab--dropdown ${$ ? "navbar__tab--active" : ""}`, type: "button", children: [
           /* @__PURE__ */ a("span", { className: "navbar__tab-label", children: h.label }),
           /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", style: { fontSize: 16, marginLeft: 2 }, children: "expand_more" })

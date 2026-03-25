@@ -64,7 +64,7 @@ export function Navbar({
     if (tab.path && hasSubmenu) {
       const isActive = activePath === tab.path || tab.subItems!.some((s) => s.path === activePath)
       return (
-        <li key={tab.id} className="navbar__tab-dropdown-wrap" style={{ listStyle: 'none' }}>
+        <li key={tab.id} className="nav-menu__item navbar__tab-dropdown-wrap">
           <button className={`navbar__tab navbar__tab--dropdown ${isActive ? 'navbar__tab--active' : ''}`} type="button">
             <span className="navbar__tab-label">{tab.label}</span>
             <span className="material-symbols-outlined navbar__tab-chevron" style={{ fontSize: 16, marginLeft: 2 }}>expand_more</span>
