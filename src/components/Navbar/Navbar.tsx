@@ -64,7 +64,7 @@ export function Navbar({
     if (tab.path && hasSubmenu) {
       const isActive = activePath === tab.path || tab.subItems!.some((s) => s.path === activePath)
       return (
-        <NavigationMenuItem key={tab.id} className="navbar__tab-dropdown-wrap">
+        <li key={tab.id} className="navbar__tab-dropdown-wrap" style={{ listStyle: 'none' }}>
           <button className={`navbar__tab navbar__tab--dropdown ${isActive ? 'navbar__tab--active' : ''}`} type="button">
             <span className="navbar__tab-label">{tab.label}</span>
             <span className="material-symbols-outlined navbar__tab-chevron" style={{ fontSize: 16, marginLeft: 2 }}>expand_more</span>
@@ -76,17 +76,9 @@ export function Navbar({
                   {item.label}
                 </Link>
               ))}
-              {tab.path && !tab.hideViewAll && (
-                <>
-                  <div className="navbar__tab-menu-divider" />
-                  <Link to={tab.path} className="nav-menu__link navbar__tab-menu-item navbar__tab-menu-item--view-all">
-                    View all
-                  </Link>
-                </>
-              )}
             </div>
           </div>
-        </NavigationMenuItem>
+        </li>
       )
     }
     if (tab.path) {

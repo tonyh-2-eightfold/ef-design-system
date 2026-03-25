@@ -1,15 +1,15 @@
-import { jsxs as p, Fragment as P, jsx as a } from "react/jsx-runtime";
+import { jsxs as p, Fragment as O, jsx as a } from "react/jsx-runtime";
 import * as l from "react";
 import B, { isValidElement as he, cloneElement as be, forwardRef as St, useState as Re } from "react";
 import { Slot as ge, createSlot as se } from "@radix-ui/react-slot";
-import { cva as te } from "class-variance-authority";
+import { cva as ee } from "class-variance-authority";
 import { clsx as Rt } from "clsx";
 import { twMerge as Tt } from "tailwind-merge";
-import * as O from "@radix-ui/react-dropdown-menu";
+import * as D from "@radix-ui/react-dropdown-menu";
 import * as Te from "@radix-ui/react-toggle-group";
 import * as It from "react-dom";
 import Lt, { createPortal as Pt } from "react-dom";
-import * as ae from "@radix-ui/react-tabs";
+import * as te from "@radix-ui/react-tabs";
 import { Check as Dt, ChevronDown as He, ChevronUp as Ot } from "lucide-react";
 import * as I from "@radix-ui/react-select";
 import * as le from "@radix-ui/react-progress";
@@ -18,7 +18,7 @@ import { CORNER_RADIUS_TOKENS as Hr, SPACING_TOKENS as Ur } from "./tokens.js";
 function b(...e) {
   return Tt(Rt(e));
 }
-const At = te("btn", {
+const At = ee("btn", {
   variants: {
     variant: {
       default: "btn--default",
@@ -62,7 +62,7 @@ function jt({
   children: s,
   ...c
 }) {
-  const m = r ? ge : "button", h = o != null || i != null || d != null ? /* @__PURE__ */ p(P, { children: [
+  const m = r ? ge : "button", v = o != null || i != null || d != null ? /* @__PURE__ */ p(O, { children: [
     o != null && Ie(o, "inline-start"),
     s,
     d != null && /* @__PURE__ */ a("span", { className: "btn__badge", "data-slot": "button-badge", children: d > 99 ? "99+" : d }),
@@ -76,13 +76,13 @@ function jt({
       "data-size": n,
       className: b(At({ variant: t, size: n, className: e })),
       ...c,
-      children: h
+      children: v
     }
   );
 }
 function Vt(e) {
   return /* @__PURE__ */ a(
-    O.Root,
+    D.Root,
     {
       "data-slot": "dropdown-menu",
       ...e
@@ -91,7 +91,7 @@ function Vt(e) {
 }
 function Ft(e) {
   return /* @__PURE__ */ a(
-    O.Trigger,
+    D.Trigger,
     {
       "data-slot": "dropdown-menu-trigger",
       ...e
@@ -99,7 +99,7 @@ function Ft(e) {
   );
 }
 function Bt(e) {
-  return /* @__PURE__ */ a(O.Portal, { ...e });
+  return /* @__PURE__ */ a(D.Portal, { ...e });
 }
 function zt({
   className: e,
@@ -107,8 +107,8 @@ function zt({
   align: n = "start",
   ...r
 }) {
-  return /* @__PURE__ */ a(O.Portal, { children: /* @__PURE__ */ a(
-    O.Content,
+  return /* @__PURE__ */ a(D.Portal, { children: /* @__PURE__ */ a(
+    D.Content,
     {
       "data-slot": "dropdown-menu-content",
       sideOffset: t,
@@ -123,7 +123,7 @@ function $t({
   ...t
 }) {
   return /* @__PURE__ */ a(
-    O.Item,
+    D.Item,
     {
       "data-slot": "dropdown-menu-item",
       className: b(e),
@@ -136,7 +136,7 @@ function Ht({
   ...t
 }) {
   return /* @__PURE__ */ a(
-    O.Separator,
+    D.Separator,
     {
       "data-slot": "dropdown-menu-separator",
       className: b(e),
@@ -144,7 +144,7 @@ function Ht({
     }
   );
 }
-const re = Object.assign(Vt, {
+const ne = Object.assign(Vt, {
   Trigger: Ft,
   Portal: Bt,
   Content: zt,
@@ -162,9 +162,9 @@ function Gn({
   sideOffset: s = 4
 }) {
   const c = o ?? /* @__PURE__ */ a(jt, { variant: n, size: r, ...i, children: e });
-  return /* @__PURE__ */ p(re, { children: [
-    /* @__PURE__ */ a(re.Trigger, { asChild: !0, children: c }),
-    /* @__PURE__ */ a(re.Content, { align: d, sideOffset: s, children: t })
+  return /* @__PURE__ */ p(ne, { children: [
+    /* @__PURE__ */ a(ne.Trigger, { asChild: !0, children: c }),
+    /* @__PURE__ */ a(ne.Content, { align: d, sideOffset: s, children: t })
   ] });
 }
 const Ut = St(function({
@@ -178,7 +178,7 @@ const Ut = St(function({
   disabled: c,
   type: m = "text",
   ...u
-}, h) {
+}, v) {
   const f = [
     "input",
     `input--${t}`,
@@ -192,7 +192,7 @@ const Ut = St(function({
     /* @__PURE__ */ a(
       "input",
       {
-        ref: h,
+        ref: v,
         type: m,
         className: "input__field",
         disabled: c,
@@ -311,7 +311,7 @@ function Zn({
         if (!Zt(c)) return c;
         const m = c.props.value;
         if (m == null) return c;
-        const { leadingIcon: u, trailingIcon: h } = c.props;
+        const { leadingIcon: u, trailingIcon: v } = c.props;
         return /* @__PURE__ */ p(
           Te.Item,
           {
@@ -321,7 +321,7 @@ function Zn({
             children: [
               u != null && /* @__PURE__ */ a("span", { "data-icon": "inline-start", children: u }),
               c.props.children,
-              h != null && /* @__PURE__ */ a("span", { "data-icon": "inline-end", children: h })
+              v != null && /* @__PURE__ */ a("span", { "data-icon": "inline-end", children: v })
             ]
           },
           m
@@ -330,7 +330,7 @@ function Zn({
     }
   );
 }
-const Wt = te("badge", {
+const Wt = ee("badge", {
   variants: {
     variant: {
       default: "badge--default",
@@ -368,7 +368,7 @@ function Wn({
   children: d,
   ...s
 }) {
-  const c = r ? ge : "span", m = r ? d : /* @__PURE__ */ p(P, { children: [
+  const c = r ? ge : "span", m = r ? d : /* @__PURE__ */ p(O, { children: [
     o != null && Pe(o, "inline-start"),
     d,
     i != null && Pe(i, "inline-end")
@@ -475,7 +475,7 @@ function aa({
   textColor: c = "#3B2600",
   buttonLabel: m,
   buttonHref: u = "#",
-  children: h,
+  children: v,
   fixedSize: f = !0,
   LinkComponent: g = ta
 }) {
@@ -501,7 +501,7 @@ function aa({
           /* @__PURE__ */ a("div", { className: "insight-card__icon-wrap", "aria-hidden": !0, children: /* @__PURE__ */ a("span", { className: "material-symbols-outlined insight-card__icon", children: o }) })
         ] }),
         r && /* @__PURE__ */ a("span", { className: "insight-card__recommended", children: r }),
-        /* @__PURE__ */ a("div", { className: "insight-card__content", children: h }),
+        /* @__PURE__ */ a("div", { className: "insight-card__content", children: v }),
         /* @__PURE__ */ a(g, { to: u, className: "insight-card__btn", children: m })
       ]
     }
@@ -537,7 +537,7 @@ function ar({
       ] })
     ] }),
     /* @__PURE__ */ a("div", { className: "course-object-card__divider", "aria-hidden": !0 }),
-    /* @__PURE__ */ a("div", { className: "object-card-bottom-bar", children: /* @__PURE__ */ a("div", { className: "object-card-bottom-bar__content", children: e.completedBy && e.completedBy.length > 0 && /* @__PURE__ */ p(P, { children: [
+    /* @__PURE__ */ a("div", { className: "object-card-bottom-bar", children: /* @__PURE__ */ a("div", { className: "object-card-bottom-bar__content", children: e.completedBy && e.completedBy.length > 0 && /* @__PURE__ */ p(O, { children: [
       r ? r({ avatarUrls: e.completedBy }) : /* @__PURE__ */ a("div", { className: "course-object-card__facepile", children: e.completedBy.map((s, c) => /* @__PURE__ */ a("img", { src: s, alt: "", className: "course-object-card__facepile-avatar" }, c)) }),
       /* @__PURE__ */ a("span", { className: "course-object-card__completed-text", children: "completed this" })
     ] }) }) })
@@ -588,9 +588,9 @@ function nr({
         ] })
       ] })
     ] }),
-    r && /* @__PURE__ */ p(P, { children: [
+    r && /* @__PURE__ */ p(O, { children: [
       /* @__PURE__ */ a("div", { className: "project-object-card__divider", "aria-hidden": !0 }),
-      /* @__PURE__ */ a("div", { className: "object-card-bottom-bar", children: /* @__PURE__ */ a("div", { className: "object-card-bottom-bar__content", children: e.contributedBy && e.contributedBy.length > 0 && /* @__PURE__ */ p(P, { children: [
+      /* @__PURE__ */ a("div", { className: "object-card-bottom-bar", children: /* @__PURE__ */ a("div", { className: "object-card-bottom-bar__content", children: e.contributedBy && e.contributedBy.length > 0 && /* @__PURE__ */ p(O, { children: [
         o ? o({ avatarUrls: e.contributedBy }) : /* @__PURE__ */ a("div", { className: "project-object-card__facepile", children: e.contributedBy.map((c, m) => /* @__PURE__ */ a("img", { src: c, alt: "", className: "project-object-card__facepile-avatar" }, m)) }),
         /* @__PURE__ */ a("span", { className: "project-object-card__contributed-text", children: "contributors" })
       ] }) }) })
@@ -612,7 +612,7 @@ function rr({
   renderAvatar: r,
   LinkComponent: o = ia
 }) {
-  const i = o, d = /* @__PURE__ */ p(P, { children: [
+  const i = o, d = /* @__PURE__ */ p(O, { children: [
     /* @__PURE__ */ p("div", { className: "people-object-card__banner", children: [
       /* @__PURE__ */ a("div", { className: "people-object-card__tag-wrap", children: /* @__PURE__ */ a(_e, { icon: "person", variant: "orange", size: "small", children: "People" }) }),
       /* @__PURE__ */ p("div", { className: "people-object-card__banner-actions", children: [
@@ -696,16 +696,16 @@ function Ge(e, t = []) {
   function r(i, d) {
     const s = l.createContext(d), c = n.length;
     n = [...n, d];
-    const m = (h) => {
-      const { scope: f, children: g, ..._ } = h, N = f?.[e]?.[c] || s, w = l.useMemo(() => _, Object.values(_));
+    const m = (v) => {
+      const { scope: f, children: g, ..._ } = v, N = f?.[e]?.[c] || s, w = l.useMemo(() => _, Object.values(_));
       return /* @__PURE__ */ a(N.Provider, { value: w, children: g });
     };
     m.displayName = i + "Provider";
-    function u(h, f) {
+    function u(v, f) {
       const g = f?.[e]?.[c] || s, _ = l.useContext(g);
       if (_) return _;
       if (d !== void 0) return d;
-      throw new Error(`\`${h}\` must be used within \`${i}\``);
+      throw new Error(`\`${v}\` must be used within \`${i}\``);
     }
     return [m, u];
   }
@@ -731,8 +731,8 @@ function sa(...e) {
     }));
     return function(i) {
       const d = r.reduce((s, { useScope: c, scopeName: m }) => {
-        const h = c(i)[`__scope${m}`];
-        return { ...s, ...h };
+        const v = c(i)[`__scope${m}`];
+        return { ...s, ...v };
       }, {});
       return l.useMemo(() => ({ [`__scope${t.scopeName}`]: d }), [d]);
     };
@@ -763,7 +763,7 @@ var la = [
   "span",
   "svg",
   "ul"
-], D = la.reduce((e, t) => {
+], P = la.reduce((e, t) => {
   const n = se(`Primitive.${t}`), r = l.forwardRef((o, i) => {
     const { asChild: d, ...s } = o, c = d ? n : t;
     return typeof window < "u" && (window[/* @__PURE__ */ Symbol.for("radix-ui")] = !0), /* @__PURE__ */ a(c, { ...s, ref: i });
@@ -789,17 +789,17 @@ function Ke({
   {
     const u = l.useRef(e !== void 0);
     l.useEffect(() => {
-      const h = u.current;
-      h !== s && console.warn(
-        `${r} is changing from ${h ? "controlled" : "uncontrolled"} to ${s ? "controlled" : "uncontrolled"}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`
+      const v = u.current;
+      v !== s && console.warn(
+        `${r} is changing from ${v ? "controlled" : "uncontrolled"} to ${s ? "controlled" : "uncontrolled"}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`
       ), u.current = s;
     }, [s, r]);
   }
   const m = l.useCallback(
     (u) => {
       if (s) {
-        const h = ua(u) ? u(e) : u;
-        h !== e && d.current?.(h);
+        const v = ua(u) ? u(e) : u;
+        v !== e && d.current?.(v);
       } else
         i(u);
     },
@@ -884,7 +884,7 @@ function va(e) {
   }, [e, c]), H(() => {
     if (t) {
       let m;
-      const u = t.ownerDocument.defaultView ?? window, h = (g) => {
+      const u = t.ownerDocument.defaultView ?? window, v = (g) => {
         const N = Y(r.current).includes(CSS.escape(g.animationName));
         if (g.target === t && N && (c("ANIMATION_END"), !o.current)) {
           const w = t.style.animationFillMode;
@@ -895,8 +895,8 @@ function va(e) {
       }, f = (g) => {
         g.target === t && (i.current = Y(r.current));
       };
-      return t.addEventListener("animationstart", f), t.addEventListener("animationcancel", h), t.addEventListener("animationend", h), () => {
-        u.clearTimeout(m), t.removeEventListener("animationstart", f), t.removeEventListener("animationcancel", h), t.removeEventListener("animationend", h);
+      return t.addEventListener("animationstart", f), t.addEventListener("animationcancel", v), t.addEventListener("animationend", v), () => {
+        u.clearTimeout(m), t.removeEventListener("animationstart", f), t.removeEventListener("animationcancel", v), t.removeEventListener("animationend", v);
       };
     } else
       c("ANIMATION_END");
@@ -938,12 +938,12 @@ function qe(e) {
     }
   );
   m.displayName = s;
-  const u = e + "CollectionItemSlot", h = "data-radix-collection-item", f = se(u), g = B.forwardRef(
+  const u = e + "CollectionItemSlot", v = "data-radix-collection-item", f = se(u), g = B.forwardRef(
     (N, w) => {
       const { scope: M, children: E, ...y } = N, C = B.useRef(null), x = F(w, C), S = i(u, M);
       return B.useEffect(() => (S.itemMap.set(C, { ref: C, ...y }), () => {
         S.itemMap.delete(C);
-      })), /* @__PURE__ */ a(f, { [h]: "", ref: x, children: E });
+      })), /* @__PURE__ */ a(f, { [v]: "", ref: x, children: E });
     }
   );
   g.displayName = u;
@@ -952,7 +952,7 @@ function qe(e) {
     return B.useCallback(() => {
       const E = w.collectionRef.current;
       if (!E) return [];
-      const y = Array.from(E.querySelectorAll(`[${h}]`));
+      const y = Array.from(E.querySelectorAll(`[${v}]`));
       return Array.from(w.itemMap.values()).sort(
         (S, k) => y.indexOf(S.ref.current) - y.indexOf(k.ref.current)
       );
@@ -993,12 +993,12 @@ var Na = "DismissableLayer", de = "dismissableLayer.update", ya = "dismissableLa
       onInteractOutside: d,
       onDismiss: s,
       ...c
-    } = e, m = l.useContext(Ye), [u, h] = l.useState(null), f = u?.ownerDocument ?? globalThis?.document, [, g] = l.useState({}), _ = F(t, (k) => h(k)), N = Array.from(m.layers), [w] = [...m.layersWithOutsidePointerEventsDisabled].slice(-1), M = N.indexOf(w), E = u ? N.indexOf(u) : -1, y = m.layersWithOutsidePointerEventsDisabled.size > 0, C = E >= M, x = Ea((k) => {
-      const L = k.target, R = [...m.branches].some((v) => v.contains(L));
+    } = e, m = l.useContext(Ye), [u, v] = l.useState(null), f = u?.ownerDocument ?? globalThis?.document, [, g] = l.useState({}), _ = F(t, (k) => v(k)), N = Array.from(m.layers), [w] = [...m.layersWithOutsidePointerEventsDisabled].slice(-1), M = N.indexOf(w), E = u ? N.indexOf(u) : -1, y = m.layersWithOutsidePointerEventsDisabled.size > 0, C = E >= M, x = Ea((k) => {
+      const L = k.target, R = [...m.branches].some((h) => h.contains(L));
       !C || R || (o?.(k), d?.(k), k.defaultPrevented || s?.());
     }, f), S = Ma((k) => {
       const L = k.target;
-      [...m.branches].some((v) => v.contains(L)) || (i?.(k), d?.(k), k.defaultPrevented || s?.());
+      [...m.branches].some((h) => h.contains(L)) || (i?.(k), d?.(k), k.defaultPrevented || s?.());
     }, f);
     return _a((k) => {
       E === m.layers.size - 1 && (r?.(k), !k.defaultPrevented && s && (k.preventDefault(), s()));
@@ -1013,7 +1013,7 @@ var Na = "DismissableLayer", de = "dismissableLayer.update", ya = "dismissableLa
       const k = () => g({});
       return document.addEventListener(de, k), () => document.removeEventListener(de, k);
     }, []), /* @__PURE__ */ a(
-      D.div,
+      P.div,
       {
         ...c,
         ref: _,
@@ -1040,7 +1040,7 @@ var Ca = "DismissableLayerBranch", xa = l.forwardRef((e, t) => {
       return n.branches.add(i), () => {
         n.branches.delete(i);
       };
-  }, [n.branches]), /* @__PURE__ */ a(D.div, { ...e, ref: o });
+  }, [n.branches]), /* @__PURE__ */ a(P.div, { ...e, ref: o });
 });
 xa.displayName = Ca;
 function Ea(e, t = globalThis?.document) {
@@ -1113,7 +1113,7 @@ var Sa = Object.freeze({
   wordWrap: "normal"
 }), Ra = "VisuallyHidden", Je = l.forwardRef(
   (e, t) => /* @__PURE__ */ a(
-    D.span,
+    P.span,
     {
       ...e,
       ref: t,
@@ -1137,11 +1137,11 @@ var Ta = Je, U = "NavigationMenu", [Ne, et, Ia] = qe(U), [ue, La, Pa] = qe(U), [
       orientation: c = "horizontal",
       dir: m,
       ...u
-    } = e, [h, f] = l.useState(null), g = F(t, (R) => f(R)), _ = pa(m), N = l.useRef(0), w = l.useRef(0), M = l.useRef(0), [E, y] = l.useState(!0), [C, x] = Ke({
+    } = e, [v, f] = l.useState(null), g = F(t, (R) => f(R)), _ = pa(m), N = l.useRef(0), w = l.useRef(0), M = l.useRef(0), [E, y] = l.useState(!0), [C, x] = Ke({
       prop: r,
       onChange: (R) => {
-        const v = R !== "", j = s > 0;
-        v ? (window.clearTimeout(M.current), j && y(!1)) : (window.clearTimeout(M.current), M.current = window.setTimeout(
+        const h = R !== "", j = s > 0;
+        h ? (window.clearTimeout(M.current), j && y(!1)) : (window.clearTimeout(M.current), M.current = window.setTimeout(
           () => y(!0),
           s
         )), o?.(R);
@@ -1173,7 +1173,7 @@ var Ta = Je, U = "NavigationMenu", [Ne, et, Ia] = qe(U), [ue, La, Pa] = qe(U), [
         value: C,
         dir: _,
         orientation: c,
-        rootNavigationMenu: h,
+        rootNavigationMenu: v,
         onTriggerEnter: (R) => {
           window.clearTimeout(N.current), E ? L(R) : k(R);
         },
@@ -1183,11 +1183,11 @@ var Ta = Je, U = "NavigationMenu", [Ne, et, Ia] = qe(U), [ue, La, Pa] = qe(U), [
         onContentEnter: () => window.clearTimeout(w.current),
         onContentLeave: S,
         onItemSelect: (R) => {
-          x((v) => v === R ? "" : R);
+          x((h) => h === R ? "" : R);
         },
         onItemDismiss: () => x(""),
         children: /* @__PURE__ */ a(
-          D.nav,
+          P.nav,
           {
             "aria-label": "Main",
             "data-orientation": c,
@@ -1225,10 +1225,10 @@ var me = "NavigationMenuSub", ja = l.forwardRef(
         dir: c.dir,
         orientation: d,
         rootNavigationMenu: c.rootNavigationMenu,
-        onTriggerEnter: (h) => u(h),
-        onItemSelect: (h) => u(h),
+        onTriggerEnter: (v) => u(v),
+        onItemSelect: (v) => u(v),
         onItemDismiss: () => u(""),
-        children: /* @__PURE__ */ a(D.div, { "data-orientation": d, ...s, ref: t })
+        children: /* @__PURE__ */ a(P.div, { "data-orientation": d, ...s, ref: t })
       }
     );
   }
@@ -1246,7 +1246,7 @@ var at = (e) => {
     onItemSelect: c,
     onItemDismiss: m,
     onTriggerEnter: u,
-    onTriggerLeave: h,
+    onTriggerLeave: v,
     onContentEnter: f,
     onContentLeave: g
   } = e, [_, N] = l.useState(null), [w, M] = l.useState(/* @__PURE__ */ new Map()), [E, y] = l.useState(null);
@@ -1266,7 +1266,7 @@ var at = (e) => {
       indicatorTrack: E,
       onIndicatorTrackChange: y,
       onTriggerEnter: V(u),
-      onTriggerLeave: V(h),
+      onTriggerLeave: V(v),
       onContentEnter: V(f),
       onContentLeave: V(g),
       onItemSelect: V(c),
@@ -1282,15 +1282,15 @@ var at = (e) => {
   );
 }, nt = "NavigationMenuList", rt = l.forwardRef(
   (e, t) => {
-    const { __scopeNavigationMenu: n, ...r } = e, o = A(nt, n), i = /* @__PURE__ */ a(D.ul, { "data-orientation": o.orientation, ...r, ref: t });
-    return /* @__PURE__ */ a(D.div, { style: { position: "relative" }, ref: o.onIndicatorTrackChange, children: /* @__PURE__ */ a(Ne.Slot, { scope: n, children: o.isRootMenu ? /* @__PURE__ */ a(pt, { asChild: !0, children: i }) : i }) });
+    const { __scopeNavigationMenu: n, ...r } = e, o = A(nt, n), i = /* @__PURE__ */ a(P.ul, { "data-orientation": o.orientation, ...r, ref: t });
+    return /* @__PURE__ */ a(P.div, { style: { position: "relative" }, ref: o.onIndicatorTrackChange, children: /* @__PURE__ */ a(Ne.Slot, { scope: n, children: o.isRootMenu ? /* @__PURE__ */ a(pt, { asChild: !0, children: i }) : i }) });
   }
 );
 rt.displayName = nt;
 var ot = "NavigationMenuItem", [Va, it] = ye(ot), st = l.forwardRef(
   (e, t) => {
     const { __scopeNavigationMenu: n, value: r, ...o } = e, i = We(), d = r || i || "LEGACY_REACT_AUTO_VALUE", s = l.useRef(null), c = l.useRef(null), m = l.useRef(null), u = l.useRef(() => {
-    }), h = l.useRef(!1), f = l.useCallback((_ = "start") => {
+    }), v = l.useRef(!1), f = l.useCallback((_ = "start") => {
       if (s.current) {
         u.current();
         const N = fe(s.current);
@@ -1310,22 +1310,22 @@ var ot = "NavigationMenuItem", [Va, it] = ye(ot), st = l.forwardRef(
         triggerRef: c,
         contentRef: s,
         focusProxyRef: m,
-        wasEscapeCloseRef: h,
+        wasEscapeCloseRef: v,
         onEntryKeyDown: f,
         onFocusProxyEnter: f,
         onRootContentClose: g,
         onContentFocusOutside: g,
-        children: /* @__PURE__ */ a(D.li, { ...o, ref: t })
+        children: /* @__PURE__ */ a(P.li, { ...o, ref: t })
       }
     );
   }
 );
 st.displayName = ot;
 var pe = "NavigationMenuTrigger", lt = l.forwardRef((e, t) => {
-  const { __scopeNavigationMenu: n, disabled: r, ...o } = e, i = A(pe, e.__scopeNavigationMenu), d = it(pe, e.__scopeNavigationMenu), s = l.useRef(null), c = F(s, d.triggerRef, t), m = vt(i.baseId, d.value), u = ht(i.baseId, d.value), h = l.useRef(!1), f = l.useRef(!1), g = d.value === i.value;
-  return /* @__PURE__ */ p(P, { children: [
+  const { __scopeNavigationMenu: n, disabled: r, ...o } = e, i = A(pe, e.__scopeNavigationMenu), d = it(pe, e.__scopeNavigationMenu), s = l.useRef(null), c = F(s, d.triggerRef, t), m = vt(i.baseId, d.value), u = ht(i.baseId, d.value), v = l.useRef(!1), f = l.useRef(!1), g = d.value === i.value;
+  return /* @__PURE__ */ p(O, { children: [
     /* @__PURE__ */ a(Ne.ItemSlot, { scope: n, value: d.value, children: /* @__PURE__ */ a(ft, { asChild: !0, children: /* @__PURE__ */ a(
-      D.button,
+      P.button,
       {
         id: m,
         disabled: r,
@@ -1340,14 +1340,14 @@ var pe = "NavigationMenuTrigger", lt = l.forwardRef((e, t) => {
         }),
         onPointerMove: T(
           e.onPointerMove,
-          J(() => {
-            r || f.current || d.wasEscapeCloseRef.current || h.current || (i.onTriggerEnter(d.value), h.current = !0);
+          Q(() => {
+            r || f.current || d.wasEscapeCloseRef.current || v.current || (i.onTriggerEnter(d.value), v.current = !0);
           })
         ),
         onPointerLeave: T(
           e.onPointerLeave,
-          J(() => {
-            r || (i.onTriggerLeave(), h.current = !1);
+          Q(() => {
+            r || (i.onTriggerLeave(), v.current = !1);
           })
         ),
         onClick: T(e.onClick, () => {
@@ -1359,7 +1359,7 @@ var pe = "NavigationMenuTrigger", lt = l.forwardRef((e, t) => {
         })
       }
     ) }) }),
-    g && /* @__PURE__ */ p(P, { children: [
+    g && /* @__PURE__ */ p(O, { children: [
       /* @__PURE__ */ a(
         Ta,
         {
@@ -1381,7 +1381,7 @@ var Fa = "NavigationMenuLink", je = "navigationMenu.linkSelect", ct = l.forwardR
   (e, t) => {
     const { __scopeNavigationMenu: n, active: r, onSelect: o, ...i } = e;
     return /* @__PURE__ */ a(ft, { asChild: !0, children: /* @__PURE__ */ a(
-      D.a,
+      P.a,
       {
         "data-active": r ? "" : void 0,
         "aria-current": r ? "page" : void 0,
@@ -1395,7 +1395,7 @@ var Fa = "NavigationMenuLink", je = "navigationMenu.linkSelect", ct = l.forwardR
               cancelable: !0
             });
             if (s.addEventListener(je, (m) => o?.(m), { once: !0 }), ce(s, c), !c.defaultPrevented && !d.metaKey) {
-              const m = new CustomEvent(Q, {
+              const m = new CustomEvent(X, {
                 bubbles: !0,
                 cancelable: !0
               });
@@ -1420,7 +1420,7 @@ Ba.displayName = we;
 var za = l.forwardRef((e, t) => {
   const { __scopeNavigationMenu: n, ...r } = e, o = A(we, n), i = et(n), [d, s] = l.useState(
     null
-  ), [c, m] = l.useState(null), u = o.orientation === "horizontal", h = !!o.value;
+  ), [c, m] = l.useState(null), u = o.orientation === "horizontal", v = !!o.value;
   l.useEffect(() => {
     const _ = i().find((N) => N.value === o.value)?.ref.current;
     _ && s(_);
@@ -1432,10 +1432,10 @@ var za = l.forwardRef((e, t) => {
     });
   };
   return ve(d, f), ve(o.indicatorTrack, f), c ? /* @__PURE__ */ a(
-    D.div,
+    P.div,
     {
       "aria-hidden": !0,
-      "data-state": h ? "visible" : "hidden",
+      "data-state": v ? "visible" : "hidden",
       "data-orientation": o.orientation,
       ...r,
       ref: t,
@@ -1473,7 +1473,7 @@ var za = l.forwardRef((e, t) => {
       onPointerEnter: T(e.onPointerEnter, o.onContentEnter),
       onPointerLeave: T(
         e.onPointerLeave,
-        J(o.onContentLeave)
+        Q(o.onContentLeave)
       ),
       style: {
         // Prevent interaction when animating out
@@ -1492,7 +1492,7 @@ var $a = l.forwardRef((e, t) => {
       ...e
     });
   }, [e, t, r]), H(() => () => o(e.value), [e.value, o]), null;
-}), Q = "navigationMenu.rootContentDismiss", ut = l.forwardRef((e, t) => {
+}), X = "navigationMenu.rootContentDismiss", ut = l.forwardRef((e, t) => {
   const {
     __scopeNavigationMenu: n,
     value: r,
@@ -1502,18 +1502,18 @@ var $a = l.forwardRef((e, t) => {
     onRootContentClose: s,
     onContentFocusOutside: c,
     ...m
-  } = e, u = A(K, n), h = l.useRef(null), f = F(h, t), g = vt(u.baseId, r), _ = ht(u.baseId, r), N = et(n), w = l.useRef(null), { onItemDismiss: M } = u;
+  } = e, u = A(K, n), v = l.useRef(null), f = F(v, t), g = vt(u.baseId, r), _ = ht(u.baseId, r), N = et(n), w = l.useRef(null), { onItemDismiss: M } = u;
   l.useEffect(() => {
-    const y = h.current;
+    const y = v.current;
     if (u.isRootMenu && y) {
       const C = () => {
         M(), s(), y.contains(document.activeElement) && o.current?.focus();
       };
-      return y.addEventListener(Q, C), () => y.removeEventListener(Q, C);
+      return y.addEventListener(X, C), () => y.removeEventListener(X, C);
     }
   }, [u.isRootMenu, e.value, o, M, s]);
   const E = l.useMemo(() => {
-    const C = N().map((v) => v.value);
+    const C = N().map((h) => h.value);
     u.dir === "rtl" && C.reverse();
     const x = C.indexOf(u.value), S = C.indexOf(u.previousValue), k = r === u.value, L = S === C.indexOf(r);
     if (!k && !L) return w.current;
@@ -1537,11 +1537,11 @@ var $a = l.forwardRef((e, t) => {
       ref: f,
       disableOutsidePointerEvents: !1,
       onDismiss: () => {
-        const y = new Event(Q, {
+        const y = new Event(X, {
           bubbles: !0,
           cancelable: !0
         });
-        h.current?.dispatchEvent(y);
+        v.current?.dispatchEvent(y);
       },
       onFocusOutside: T(e.onFocusOutside, (y) => {
         c();
@@ -1555,8 +1555,8 @@ var $a = l.forwardRef((e, t) => {
       onKeyDown: T(e.onKeyDown, (y) => {
         const C = y.altKey || y.ctrlKey || y.metaKey;
         if (y.key === "Tab" && !C) {
-          const S = fe(y.currentTarget), k = document.activeElement, L = S.findIndex((j) => j === k), v = y.shiftKey ? S.slice(0, L).reverse() : S.slice(L + 1, S.length);
-          xe(v) ? y.preventDefault() : i.current?.focus();
+          const S = fe(y.currentTarget), k = document.activeElement, L = S.findIndex((j) => j === k), h = y.shiftKey ? S.slice(0, L).reverse() : S.slice(L + 1, S.length);
+          xe(h) ? y.preventDefault() : i.current?.focus();
         }
       }),
       onEscapeKeyDown: T(e.onEscapeKeyDown, (y) => {
@@ -1573,11 +1573,11 @@ var Ha = l.forwardRef((e, t) => {
   const { __scopeNavigationMenu: n, children: r, ...o } = e, i = A(Ce, n), d = F(t, i.onViewportChange), s = Aa(
     K,
     e.__scopeNavigationMenu
-  ), [c, m] = l.useState(null), [u, h] = l.useState(null), f = c ? c?.width + "px" : void 0, g = c ? c?.height + "px" : void 0, _ = !!i.value, N = _ ? i.value : i.previousValue;
+  ), [c, m] = l.useState(null), [u, v] = l.useState(null), f = c ? c?.width + "px" : void 0, g = c ? c?.height + "px" : void 0, _ = !!i.value, N = _ ? i.value : i.previousValue;
   return ve(u, () => {
     u && m({ width: u.offsetWidth, height: u.offsetHeight });
   }), /* @__PURE__ */ a(
-    D.div,
+    P.div,
     {
       "data-state": Ee(_),
       "data-orientation": i.orientation,
@@ -1591,7 +1591,7 @@ var Ha = l.forwardRef((e, t) => {
         ...o.style
       },
       onPointerEnter: T(e.onPointerEnter, i.onContentEnter),
-      onPointerLeave: T(e.onPointerLeave, J(i.onContentLeave)),
+      onPointerLeave: T(e.onPointerLeave, Q(i.onContentLeave)),
       children: Array.from(s.items).map(([M, { ref: E, forceMount: y, ...C }]) => {
         const x = N === M;
         return /* @__PURE__ */ a(q, { present: y || x, children: /* @__PURE__ */ a(
@@ -1599,7 +1599,7 @@ var Ha = l.forwardRef((e, t) => {
           {
             ...C,
             ref: Ze(E, (S) => {
-              x && S && h(S);
+              x && S && v(S);
             })
           }
         ) }, M);
@@ -1609,22 +1609,22 @@ var Ha = l.forwardRef((e, t) => {
 }), Ua = "FocusGroup", pt = l.forwardRef(
   (e, t) => {
     const { __scopeNavigationMenu: n, ...r } = e, o = A(Ua, n);
-    return /* @__PURE__ */ a(ue.Provider, { scope: n, children: /* @__PURE__ */ a(ue.Slot, { scope: n, children: /* @__PURE__ */ a(D.div, { dir: o.dir, ...r, ref: t }) }) });
+    return /* @__PURE__ */ a(ue.Provider, { scope: n, children: /* @__PURE__ */ a(ue.Slot, { scope: n, children: /* @__PURE__ */ a(P.div, { dir: o.dir, ...r, ref: t }) }) });
   }
 ), Ve = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"], Ga = "FocusGroupItem", ft = l.forwardRef(
   (e, t) => {
     const { __scopeNavigationMenu: n, ...r } = e, o = La(n), i = A(Ga, n);
     return /* @__PURE__ */ a(ue.ItemSlot, { scope: n, children: /* @__PURE__ */ a(
-      D.button,
+      P.button,
       {
         ...r,
         ref: t,
         onKeyDown: T(e.onKeyDown, (d) => {
           if (["Home", "End", ...Ve].includes(d.key)) {
-            let c = o().map((h) => h.ref.current);
+            let c = o().map((v) => v.ref.current);
             if ([i.dir === "rtl" ? "ArrowRight" : "ArrowLeft", "ArrowUp", "End"].includes(d.key) && c.reverse(), Ve.includes(d.key)) {
-              const h = c.indexOf(d.currentTarget);
-              c = c.slice(h + 1);
+              const v = c.indexOf(d.currentTarget);
+              c = c.slice(v + 1);
             }
             setTimeout(() => xe(c)), d.preventDefault();
           }
@@ -1680,7 +1680,7 @@ function vt(e, t) {
 function ht(e, t) {
   return `${e}-content-${t}`;
 }
-function J(e) {
+function Q(e) {
   return (t) => t.pointerType === "mouse" ? e(t) : void 0;
 }
 var Za = tt, Wa = rt, qa = st, Ya = lt, Xa = ct, Fe = dt, Qa = mt;
@@ -1721,7 +1721,7 @@ function en({
   );
 }
 const Me = l.createContext(null);
-function X({
+function re({
   className: e,
   ...t
 }) {
@@ -1750,7 +1750,7 @@ function ir({
   ref: c,
   ...m
 }) {
-  const u = l.useContext(Me), h = l.useCallback(
+  const u = l.useContext(Me), v = l.useCallback(
     (f) => {
       u && (u.current = f), typeof c == "function" ? c(f) : c && (c.current = f);
     },
@@ -1761,7 +1761,7 @@ function ir({
     {
       "data-slot": "navigation-menu-trigger",
       className: b("nav-menu__trigger", e),
-      ref: h,
+      ref: v,
       onPointerMoveCapture: (f) => {
         oe(f), i?.(f);
       },
@@ -1788,7 +1788,7 @@ function sr({
   forceMount: n,
   ...r
 }) {
-  const o = l.useContext(bt), i = l.useContext(Me), d = l.useRef(null), [s, c] = l.useState({}), [m, u] = l.useState(!1), h = l.useCallback(() => {
+  const o = l.useContext(bt), i = l.useContext(Me), d = l.useRef(null), [s, c] = l.useState({}), [m, u] = l.useState(!1), v = l.useCallback(() => {
     const f = i?.current;
     if (!f) return;
     const g = f.getBoundingClientRect(), _ = f.closest?.(".navbar"), N = _ ? _.getBoundingClientRect().bottom + 2 : g.bottom + 2;
@@ -1805,26 +1805,26 @@ function sr({
     if (o || !i) return;
     const f = d.current, g = i.current, _ = () => {
       const w = g?.getAttribute?.("aria-expanded") === "true", M = f?.querySelector?.('[data-state="open"]') != null || f?.firstElementChild?.getAttribute?.("data-state") === "open", E = w || M;
-      u(E), E && h();
+      u(E), E && v();
     };
     if (_(), !g && !f) return;
     const N = new MutationObserver(_);
     return g && N.observe(g, { attributes: !0, attributeFilter: ["aria-expanded"] }), f && N.observe(f, { attributes: !0, attributeFilter: ["data-state"], subtree: !0 }), () => N.disconnect();
-  }, [o, i, h]), l.useEffect(() => {
+  }, [o, i, v]), l.useEffect(() => {
     if (!m || o) return;
-    h();
-    const f = requestAnimationFrame(() => h());
-    return window.addEventListener("scroll", h, !0), window.addEventListener("resize", h), () => {
-      cancelAnimationFrame(f), window.removeEventListener("scroll", h, !0), window.removeEventListener("resize", h);
+    v();
+    const f = requestAnimationFrame(() => v());
+    return window.addEventListener("scroll", v, !0), window.addEventListener("resize", v), () => {
+      cancelAnimationFrame(f), window.removeEventListener("scroll", v, !0), window.removeEventListener("resize", v);
     };
-  }, [m, o, h]), o ? /* @__PURE__ */ a(
+  }, [m, o, v]), o ? /* @__PURE__ */ a(
     Fe,
     {
       "data-slot": "navigation-menu-content",
       className: b("nav-menu__content", e),
       ...r
     }
-  ) : /* @__PURE__ */ p(P, { children: [
+  ) : /* @__PURE__ */ p(O, { children: [
     /* @__PURE__ */ a("div", { ref: d, style: { display: "contents" }, "aria-hidden": !0, children: /* @__PURE__ */ a(
       Fe,
       {
@@ -1891,7 +1891,7 @@ function lr({
   ...n
 }) {
   return /* @__PURE__ */ a(
-    ae.Root,
+    te.Root,
     {
       "data-slot": "tabs",
       "data-orientation": t,
@@ -1904,7 +1904,7 @@ function lr({
     }
   );
 }
-const an = te(
+const an = ee(
   "group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none",
   {
     variants: {
@@ -1924,7 +1924,7 @@ function cr({
   ...n
 }) {
   return /* @__PURE__ */ a(
-    ae.List,
+    te.List,
     {
       "data-slot": "tabs-list",
       "data-variant": t,
@@ -1941,7 +1941,7 @@ function dr({
   ...o
 }) {
   return /* @__PURE__ */ p(
-    ae.Trigger,
+    te.Trigger,
     {
       "data-slot": "tabs-trigger",
       className: b(
@@ -1965,7 +1965,7 @@ function ur({
   ...t
 }) {
   return /* @__PURE__ */ a(
-    ae.Content,
+    te.Content,
     {
       "data-slot": "tabs-content",
       className: b("flex-1 outline-none", e),
@@ -2268,11 +2268,11 @@ const un = l.forwardRef(
     value: c,
     max: m = 100,
     ...u
-  }, h) => {
+  }, v) => {
     const f = typeof c == "number" && !Number.isNaN(c) ? c : null, g = typeof m == "number" && m > 0 ? m : 100, _ = f != null ? Math.min(100, Math.max(0, f / g * 100)) : 0, N = d ?? (f != null ? String(Math.min(100, Math.max(0, Math.round(f / g * 100)))) : "…"), w = s ?? dn(f, g), M = r === "scale" || r === "complete-left" || t != null, E = /* @__PURE__ */ a(
       le.Root,
       {
-        ref: h,
+        ref: v,
         "data-slot": "progress",
         className: b(cn, M ? void 0 : e),
         value: f,
@@ -2374,7 +2374,7 @@ const un = l.forwardRef(
 );
 un.displayName = le.Root.displayName;
 const ke = l.createContext(null);
-function ne() {
+function ae() {
   const e = l.useContext(ke);
   if (!e) throw new Error("Stepper components must be used within <Stepper>");
   return e;
@@ -2401,7 +2401,7 @@ const mn = l.forwardRef(
 mn.displayName = "Stepper";
 const Nt = l.forwardRef(
   ({ className: e, segmentIndex: t, style: n, children: r, ...o }, i) => {
-    const { value: d } = ne(), s = l.useContext(gt), c = typeof s == "number" ? s : t ?? 0, m = Number(d), u = Number.isFinite(m) && m > Number(c);
+    const { value: d } = ae(), s = l.useContext(gt), c = typeof s == "number" ? s : t ?? 0, m = Number(d), u = Number.isFinite(m) && m > Number(c);
     return /* @__PURE__ */ p(
       "li",
       {
@@ -2480,7 +2480,7 @@ const vn = l.forwardRef(
 vn.displayName = "StepperList";
 const hn = l.forwardRef(
   ({ className: e, step: t, children: n, ...r }, o) => {
-    const i = t ?? 0, { value: d } = ne(), s = i < d ? "complete" : i === d ? "active" : "upcoming";
+    const i = t ?? 0, { value: d } = ae(), s = i < d ? "complete" : i === d ? "active" : "upcoming";
     return /* @__PURE__ */ a(Se.Provider, { value: i, children: /* @__PURE__ */ a(
       "li",
       {
@@ -2500,7 +2500,7 @@ const hn = l.forwardRef(
 hn.displayName = "StepperItem";
 const bn = "group/stepper-trigger flex w-full max-w-[10rem] flex-col items-center gap-2 rounded-md text-center", gn = l.forwardRef(
   ({ className: e, type: t = "button", disabled: n, onClick: r, children: o, ...i }, d) => {
-    const { value: s, onValueChange: c } = ne(), m = _t(), u = c != null && !n && m <= s, h = b(
+    const { value: s, onValueChange: c } = ae(), m = _t(), u = c != null && !n && m <= s, v = b(
       bn,
       u && "cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-background hover:opacity-90",
       !c && "cursor-default",
@@ -2516,7 +2516,7 @@ const bn = "group/stepper-trigger flex w-full max-w-[10rem] flex-col items-cente
         "aria-current": m === s ? "step" : void 0,
         disabled: n ?? m > s,
         className: b(
-          h,
+          v,
           "disabled:pointer-events-none disabled:opacity-100"
         ),
         onClick: (f) => {
@@ -2530,7 +2530,7 @@ const bn = "group/stepper-trigger flex w-full max-w-[10rem] flex-col items-cente
       {
         "data-slot": "stepper-trigger",
         "aria-current": m === s ? "step" : void 0,
-        className: h,
+        className: v,
         ...i,
         children: o
       }
@@ -2582,7 +2582,7 @@ const _n = l.forwardRef(
       throw new Error(
         "StepperIndicator must be inside StepperItem, or pass forceState for a static preview."
       );
-    const c = d, m = s.value, u = c < m ? "complete" : c === m ? "active" : "upcoming", h = t ?? c + 1, f = u === "complete";
+    const c = d, m = s.value, u = c < m ? "complete" : c === m ? "active" : "upcoming", v = t ?? c + 1, f = u === "complete";
     return /* @__PURE__ */ a(
       "div",
       {
@@ -2591,7 +2591,7 @@ const _n = l.forwardRef(
         "data-state": u,
         className: b(ze(u), e),
         ...o,
-        children: r ?? (f ? /* @__PURE__ */ a($e, {}) : h)
+        children: r ?? (f ? /* @__PURE__ */ a($e, {}) : v)
       }
     );
   }
@@ -2599,7 +2599,7 @@ const _n = l.forwardRef(
 _n.displayName = "StepperIndicator";
 const Nn = l.forwardRef(
   ({ className: e, ...t }, n) => {
-    const r = _t(), { value: o } = ne(), i = r === o, d = r < o;
+    const r = _t(), { value: o } = ae(), i = r === o, d = r < o;
     return /* @__PURE__ */ a(
       "span",
       {
@@ -2652,48 +2652,42 @@ function Cn({
   productName: c = "Career Hub",
   productIconSrc: m = "/career-hub-icon.svg",
   hideProductIcon: u = !1,
-  searchPlaceholder: h = "Type to search",
+  searchPlaceholder: v = "Type to search",
   onSearchChange: f,
   onSearchIconClick: g,
   actionButtons: _ = [],
   LinkComponent: N = wn,
   NavLinkComponent: w
 }) {
-  const [M, E] = Re(!1), [y, C] = Re(!1), x = N, S = i === "/profile", k = n.avatarType === "photo" && n.avatarPhotoSrc ? n.avatarPhotoSrc.replace("w=200&h=200", "w=80&h=80") : null, L = (v) => {
-    const j = v.chevron && v.subItems && v.subItems.length > 0;
-    if (v.path && j) {
-      const $ = i === v.path || v.subItems.some((z) => z.path === i);
-      return /* @__PURE__ */ p(X, { className: "navbar__tab-dropdown-wrap", children: [
+  const [M, E] = Re(!1), [y, C] = Re(!1), x = N, S = i === "/profile", k = n.avatarType === "photo" && n.avatarPhotoSrc ? n.avatarPhotoSrc.replace("w=200&h=200", "w=80&h=80") : null, L = (h) => {
+    const j = h.chevron && h.subItems && h.subItems.length > 0;
+    if (h.path && j) {
+      const $ = i === h.path || h.subItems.some((z) => z.path === i);
+      return /* @__PURE__ */ p("li", { className: "navbar__tab-dropdown-wrap", style: { listStyle: "none" }, children: [
         /* @__PURE__ */ p("button", { className: `navbar__tab navbar__tab--dropdown ${$ ? "navbar__tab--active" : ""}`, type: "button", children: [
-          /* @__PURE__ */ a("span", { className: "navbar__tab-label", children: v.label }),
+          /* @__PURE__ */ a("span", { className: "navbar__tab-label", children: h.label }),
           /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", style: { fontSize: 16, marginLeft: 2 }, children: "expand_more" })
         ] }),
-        /* @__PURE__ */ a("div", { className: "navbar__tab-hover-menu", children: /* @__PURE__ */ p("div", { className: "navbar__tab-menu-inner", children: [
-          v.subItems.map((z) => /* @__PURE__ */ a(x, { to: z.path, className: "nav-menu__link navbar__tab-menu-item", children: z.label }, z.path)),
-          v.path && !v.hideViewAll && /* @__PURE__ */ p(P, { children: [
-            /* @__PURE__ */ a("div", { className: "navbar__tab-menu-divider" }),
-            /* @__PURE__ */ a(x, { to: v.path, className: "nav-menu__link navbar__tab-menu-item navbar__tab-menu-item--view-all", children: "View all" })
-          ] })
-        ] }) })
-      ] }, v.id);
+        /* @__PURE__ */ a("div", { className: "navbar__tab-hover-menu", children: /* @__PURE__ */ a("div", { className: "navbar__tab-menu-inner", children: h.subItems.map((z) => /* @__PURE__ */ a(x, { to: z.path, className: "nav-menu__link navbar__tab-menu-item", children: z.label }, z.path)) }) })
+      ] }, h.id);
     }
-    if (v.path) {
-      const $ = w && w !== N, z = i === v.path || v.path === "/" && !i;
-      return $ ? /* @__PURE__ */ a(X, { children: /* @__PURE__ */ a(ie, { asChild: !0, active: z, children: /* @__PURE__ */ a(w, { to: v.path, className: "navbar__tab navbar__tab--link", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
-        v.label,
-        v.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
-      ] }) }) }) }, v.id) : /* @__PURE__ */ a(X, { children: /* @__PURE__ */ a(ie, { asChild: !0, active: z, children: /* @__PURE__ */ a(x, { to: v.path, className: "navbar__tab navbar__tab--link", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
-        v.label,
-        v.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
-      ] }) }) }) }, v.id);
+    if (h.path) {
+      const $ = w && w !== N, z = i === h.path || h.path === "/" && !i;
+      return $ ? /* @__PURE__ */ a(re, { children: /* @__PURE__ */ a(ie, { asChild: !0, active: z, children: /* @__PURE__ */ a(w, { to: h.path, className: "navbar__tab navbar__tab--link", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
+        h.label,
+        h.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
+      ] }) }) }) }, h.id) : /* @__PURE__ */ a(re, { children: /* @__PURE__ */ a(ie, { asChild: !0, active: z, children: /* @__PURE__ */ a(x, { to: h.path, className: "navbar__tab navbar__tab--link", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
+        h.label,
+        h.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
+      ] }) }) }) }, h.id);
     }
-    return /* @__PURE__ */ a(X, { children: /* @__PURE__ */ a(ie, { href: "#", className: "navbar__tab", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
-      v.label,
-      v.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
-    ] }) }) }, v.id);
-  }, R = (v) => v.path ? v.chevron && v.subItems && v.subItems.length > 0 ? /* @__PURE__ */ p("div", { className: "navbar__menu-group", children: [
-    /* @__PURE__ */ a(x, { to: v.path, className: "navbar__menu-link navbar__menu-link--parent", onClick: () => E(!1), children: v.label }),
-    /* @__PURE__ */ a("div", { className: "navbar__menu-sublinks", children: v.subItems.map(($) => /* @__PURE__ */ a(
+    return /* @__PURE__ */ a(re, { children: /* @__PURE__ */ a(ie, { href: "#", className: "navbar__tab", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
+      h.label,
+      h.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
+    ] }) }) }, h.id);
+  }, R = (h) => h.path ? h.chevron && h.subItems && h.subItems.length > 0 ? /* @__PURE__ */ p("div", { className: "navbar__menu-group", children: [
+    /* @__PURE__ */ a(x, { to: h.path, className: "navbar__menu-link navbar__menu-link--parent", onClick: () => E(!1), children: h.label }),
+    /* @__PURE__ */ a("div", { className: "navbar__menu-sublinks", children: h.subItems.map(($) => /* @__PURE__ */ a(
       x,
       {
         to: $.path,
@@ -2703,32 +2697,32 @@ function Cn({
       },
       $.path
     )) })
-  ] }, v.id) : /* @__PURE__ */ p(
+  ] }, h.id) : /* @__PURE__ */ p(
     x,
     {
-      to: v.path,
+      to: h.path,
       className: "navbar__menu-link",
       onClick: () => E(!1),
       children: [
-        v.label,
-        v.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
+        h.label,
+        h.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
       ]
     },
-    v.id
+    h.id
   ) : /* @__PURE__ */ p(
     "a",
     {
       href: "#",
       className: "navbar__menu-link",
       onClick: (j) => {
-        j.preventDefault(), v.onClick?.(), E(!1);
+        j.preventDefault(), h.onClick?.(), E(!1);
       },
       children: [
-        v.label,
-        v.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
+        h.label,
+        h.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
       ]
     },
-    v.id
+    h.id
   );
   return /* @__PURE__ */ p("nav", { className: "navbar", children: [
     /* @__PURE__ */ p("div", { className: "navbar__inner", children: [
@@ -2753,10 +2747,10 @@ function Cn({
               {
                 className: `navbar__product-name ${c.trim().split(/\s+/).length > 1 ? "navbar__product-name--two-lines" : ""}`,
                 children: (() => {
-                  const v = c.trim().split(/\s+/);
-                  return v.length <= 1 ? c : /* @__PURE__ */ p(P, { children: [
-                    /* @__PURE__ */ a("span", { className: "navbar__product-name__line", children: v[0] }),
-                    /* @__PURE__ */ a("span", { className: "navbar__product-name__line", children: v.slice(1).join(" ") })
+                  const h = c.trim().split(/\s+/);
+                  return h.length <= 1 ? c : /* @__PURE__ */ p(O, { children: [
+                    /* @__PURE__ */ a("span", { className: "navbar__product-name__line", children: h[0] }),
+                    /* @__PURE__ */ a("span", { className: "navbar__product-name__line", children: h.slice(1).join(" ") })
                   ] });
                 })()
               }
@@ -2774,9 +2768,9 @@ function Cn({
                 size: "small",
                 shape: "pill",
                 leadingIcon: "search",
-                placeholder: h,
+                placeholder: v,
                 "aria-label": "Search",
-                onChange: (v) => f?.(v.target.value)
+                onChange: (h) => f?.(h.target.value)
               }
             ) }),
             /* @__PURE__ */ a(
@@ -2793,21 +2787,21 @@ function Cn({
           /* @__PURE__ */ a("div", { className: "navbar__divider navbar__divider--vertical" })
         ] }),
         /* @__PURE__ */ p("div", { className: "navbar__right-icons", children: [
-          _.map((v, j) => /* @__PURE__ */ a(
+          _.map((h, j) => /* @__PURE__ */ a(
             "button",
             {
               type: "button",
               className: "navbar__btn navbar__btn--action",
-              "aria-label": v.ariaLabel,
-              onClick: v.onClick,
-              children: v.iconSrc ? /* @__PURE__ */ a("img", { src: v.iconSrc, alt: "", className: "navbar__btn-icon-img", width: 20, height: 20 }) : /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__btn-icon", children: v.icon ?? "circle" })
+              "aria-label": h.ariaLabel,
+              onClick: h.onClick,
+              children: h.iconSrc ? /* @__PURE__ */ a("img", { src: h.iconSrc, alt: "", className: "navbar__btn-icon-img", width: 20, height: 20 }) : /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__btn-icon", children: h.icon ?? "circle" })
             },
             j
           )),
           /* @__PURE__ */ a("button", { type: "button", className: "navbar__btn navbar__btn--menu", "aria-label": "App switcher", children: /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__btn-icon", children: "apps" }) })
         ] }),
-        /* @__PURE__ */ p(O.Root, { children: [
-          /* @__PURE__ */ a(O.Trigger, { asChild: !0, children: /* @__PURE__ */ p("button", { type: "button", className: "navbar__avatar", "aria-label": "Open profile menu", children: [
+        /* @__PURE__ */ p(D.Root, { children: [
+          /* @__PURE__ */ a(D.Trigger, { asChild: !0, children: /* @__PURE__ */ p("button", { type: "button", className: "navbar__avatar", "aria-label": "Open profile menu", children: [
             /* @__PURE__ */ a(
               "span",
               {
@@ -2826,16 +2820,16 @@ function Cn({
             ),
             /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__avatar-caret", "aria-hidden": !0, children: "expand_more" })
           ] }) }),
-          /* @__PURE__ */ a(O.Portal, { children: /* @__PURE__ */ a(O.Content, { className: "navbar__avatar-menu", align: "end", sideOffset: 8, children: /* @__PURE__ */ p("div", { className: "navbar__avatar-menu-inner", children: [
-            t.map((v) => /* @__PURE__ */ a(O.Item, { asChild: !0, children: /* @__PURE__ */ a(
+          /* @__PURE__ */ a(D.Portal, { children: /* @__PURE__ */ a(D.Content, { className: "navbar__avatar-menu", align: "end", sideOffset: 8, children: /* @__PURE__ */ p("div", { className: "navbar__avatar-menu-inner", children: [
+            t.map((h) => /* @__PURE__ */ a(D.Item, { asChild: !0, children: /* @__PURE__ */ a(
               x,
               {
-                to: v.path,
-                className: `navbar__avatar-menu-item ${v.label === "My Profile" && S ? "navbar__avatar-menu-item--active" : ""}`,
-                children: v.label
+                to: h.path,
+                className: `navbar__avatar-menu-item ${h.label === "My Profile" && S ? "navbar__avatar-menu-item--active" : ""}`,
+                children: h.label
               }
-            ) }, v.label)),
-            r.length > 0 && o && /* @__PURE__ */ p(P, { children: [
+            ) }, h.label)),
+            r.length > 0 && o && /* @__PURE__ */ p(O, { children: [
               /* @__PURE__ */ a("div", { className: "navbar__avatar-menu-divider" }),
               /* @__PURE__ */ p("div", { className: "navbar__avatar-menu-switch", children: [
                 /* @__PURE__ */ a(
@@ -2847,15 +2841,15 @@ function Cn({
                     "aria-label": "Switch to"
                   }
                 ),
-                r.map((v) => /* @__PURE__ */ a(O.Item, { asChild: !0, children: /* @__PURE__ */ a(
+                r.map((h) => /* @__PURE__ */ a(D.Item, { asChild: !0, children: /* @__PURE__ */ a(
                   "button",
                   {
                     type: "button",
                     className: "navbar__avatar-menu-option",
-                    onClick: () => o(v.userId),
-                    children: v.label
+                    onClick: () => o(h.userId),
+                    children: h.label
                   }
-                ) }, v.userId))
+                ) }, h.userId))
               ] })
             ] })
           ] }) }) })
@@ -2871,10 +2865,10 @@ function Cn({
             {
               className: `navbar__product-name ${c.trim().split(/\s+/).length > 1 ? "navbar__product-name--two-lines" : ""}`,
               children: (() => {
-                const v = c.trim().split(/\s+/);
-                return v.length <= 1 ? c : /* @__PURE__ */ p(P, { children: [
-                  /* @__PURE__ */ a("span", { className: "navbar__product-name__line", children: v[0] }),
-                  /* @__PURE__ */ a("span", { className: "navbar__product-name__line", children: v.slice(1).join(" ") })
+                const h = c.trim().split(/\s+/);
+                return h.length <= 1 ? c : /* @__PURE__ */ p(O, { children: [
+                  /* @__PURE__ */ a("span", { className: "navbar__product-name__line", children: h[0] }),
+                  /* @__PURE__ */ a("span", { className: "navbar__product-name__line", children: h.slice(1).join(" ") })
                 ] });
               })()
             }
@@ -2893,7 +2887,7 @@ const yt = l.createContext({
 function xn() {
   return l.useContext(yt);
 }
-const En = te(
+const En = ee(
   "w-full shrink-0 border-b border-[transparent] transition-colors",
   {
     variants: {
@@ -3078,7 +3072,7 @@ const Mr = "/eightfold-logo.svg", kr = "/ai-agent.svg", Dn = "/copilot.svg", Sr 
   "talent-design": "Talent Design",
   "talent-flex": "Talent Flex",
   "talent-university": "Talent University"
-}, ee = "/product-logos", W = {
+}, J = "/product-logos", W = {
   campaigns: { small: "campaigns-small.svg", medium: "campaigns-medium.svg" },
   "career-exchange": { small: "career-exchange-small.svg", medium: "career-exchange-medium.svg" },
   "career-hub": { small: "career-hub-small.svg", medium: "career-hub-medium.svg" },
@@ -3090,18 +3084,18 @@ const Mr = "/eightfold-logo.svg", kr = "/ai-agent.svg", Dn = "/copilot.svg", Sr 
   "talent-university": { small: "talent-university-small.svg", medium: "talent-university-medium.svg" }
 };
 function Rr(e, t = "medium") {
-  return `${ee}/${W[e][t]}`;
+  return `${J}/${W[e][t]}`;
 }
 function Tr(e, t = "medium") {
   return {
     productName: On[e],
-    productIconSrc: `${ee}/${W[e][t]}`
+    productIconSrc: `${J}/${W[e][t]}`
   };
 }
 const Ir = Object.keys(W).reduce(
   (e, t) => (e[t] = {
-    small: `${ee}/${W[t].small}`,
-    medium: `${ee}/${W[t].medium}`
+    small: `${J}/${W[t].small}`,
+    medium: `${J}/${W[t].medium}`
   }, e),
   {}
 ), Lr = [
@@ -3262,7 +3256,7 @@ function Br({
   chevronsVariant: i,
   children: d
 }) {
-  return /* @__PURE__ */ p(P, { children: [
+  return /* @__PURE__ */ p(O, { children: [
     /* @__PURE__ */ a(kt, { variant: "career-hub", chevronsVariant: i ?? (e === "profile" ? "profile" : "default"), children: /* @__PURE__ */ p("div", { className: "career-hub-shell", children: [
       /* @__PURE__ */ a(Cn, { ...o }),
       /* @__PURE__ */ a(wt, { variant: "career-hub", chSize: e, overlayBackground: !0, children: /* @__PURE__ */ a(Ct, { actions: r, children: /* @__PURE__ */ p(Et, { children: [
@@ -3297,7 +3291,7 @@ export {
   hr as DataTableHead,
   pr as DataTableHeader,
   vr as DataTableRow,
-  re as DropdownMenu,
+  ne as DropdownMenu,
   zt as DropdownMenuContent,
   $t as DropdownMenuItem,
   Bt as DropdownMenuPortal,
@@ -3320,7 +3314,7 @@ export {
   Cn as Navbar,
   Ja as NavigationMenu,
   sr as NavigationMenuContent,
-  X as NavigationMenuItem,
+  re as NavigationMenuItem,
   ie as NavigationMenuLink,
   en as NavigationMenuList,
   ir as NavigationMenuTrigger,
