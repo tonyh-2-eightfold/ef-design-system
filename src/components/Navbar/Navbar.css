@@ -50,8 +50,7 @@
   right: 0;
   height: var(--navbar-height);
   z-index: 1000;
-  overflow-x: hidden; /* right side never overflows viewport */
-  overflow-y: visible; /* allow tab dropdown to extend below navbar without scrollbar or clipping */
+  overflow: visible; /* allow tab dropdowns to extend below navbar */
 }
 
 .navbar__inner {
