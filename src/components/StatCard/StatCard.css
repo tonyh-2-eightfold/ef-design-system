@@ -1,0 +1,272 @@
+/* StatCard — Octuple DS Theme 2
+   Figma node 7988-23990 */
+
+.stat-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+  font-family: var(--font-family, sans-serif);
+}
+
+/* ---- Sizes ---- */
+.stat-card--lg {
+  padding: 21px 32px 21px 16px;
+  border-radius: var(--radius-9, 40px);
+}
+
+.stat-card--md {
+  padding: 17px 12px;
+  border-radius: var(--radius-8, 24px);
+}
+
+.stat-card--sm {
+  padding: 9px 8px;
+  border-radius: var(--radius-6, 16px);
+  gap: 8px;
+}
+
+/* ---- Variants ---- */
+.stat-card--outlined {
+  border: 1px solid #D9DCE1;
+  background: #FFFFFF;
+}
+
+.stat-card--filled {
+  border: 1px solid transparent;
+  background: var(--color-grey-10, #F6F7F8);
+}
+
+.stat-card--filled.stat-card--green { background: rgba(220, 252, 231, 0.4); }
+.stat-card--filled.stat-card--red { background: rgba(254, 226, 226, 0.4); }
+.stat-card--filled.stat-card--teal { background: rgba(204, 251, 241, 0.4); }
+.stat-card--filled.stat-card--blue { background: rgba(219, 234, 254, 0.4); }
+.stat-card--filled.stat-card--dark { background: rgba(226, 232, 240, 0.4); }
+
+.stat-card--ghost {
+  border: none;
+}
+
+/* Adjust padding for ghost (no border, so +1px to keep same height) */
+.stat-card--ghost.stat-card--lg { padding: 22px 33px 22px 17px; }
+.stat-card--ghost.stat-card--md { padding: 18px 13px; }
+.stat-card--ghost.stat-card--sm { padding: 10px 9px; }
+
+/* ---- Icon container ---- */
+.stat-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full, 9999px);
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Badge dot on icon */
+.stat-card__badge {
+  position: absolute;
+  border: 2px solid #FFFFFF;
+  border-radius: var(--radius-full, 9999px);
+  box-sizing: border-box;
+}
+
+.stat-card--lg .stat-card__badge {
+  width: 16px;
+  height: 16px;
+  top: 0;
+  right: 0;
+}
+
+.stat-card--md .stat-card__badge {
+  width: 12px;
+  height: 12px;
+  top: -1px;
+  right: -1px;
+}
+
+.stat-card--sm .stat-card__badge {
+  width: 10px;
+  height: 10px;
+  top: -1px;
+  right: -1px;
+}
+
+.stat-card__badge--alert { background: #dc2626; }
+.stat-card__badge--success { background: #16a34a; }
+.stat-card__badge--info { background: #2563eb; }
+
+.stat-card--lg .stat-card__icon {
+  width: 72px;
+  height: 72px;
+}
+
+.stat-card--md .stat-card__icon {
+  width: 36px;
+  height: 36px;
+}
+
+.stat-card--sm .stat-card__icon {
+  width: 28px;
+  height: 28px;
+}
+
+.stat-card__icon .material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.stat-card--lg .stat-card__icon .material-symbols-outlined {
+  font-size: 32px;
+}
+
+.stat-card--md .stat-card__icon .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.stat-card--sm .stat-card__icon .material-symbols-outlined {
+  font-size: 16px;
+}
+
+/* ---- Text ---- */
+.stat-card__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.stat-card__label {
+  color: #4F5666;
+}
+
+.stat-card--lg .stat-card__label {
+  font: var(--typography-body2);
+}
+
+.stat-card--md .stat-card__label {
+  font: var(--typography-caption);
+}
+
+.stat-card--sm .stat-card__label {
+  font: var(--typography-caption);
+  font-size: 10px;
+}
+
+.stat-card__value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.stat-card__value {
+  color: #1A212E;
+  font-weight: 700;
+}
+
+.stat-card--lg .stat-card__value {
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.stat-card--md .stat-card__value {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.stat-card--sm .stat-card__value {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.stat-card__pct {
+  color: #4F5666;
+}
+
+.stat-card--lg .stat-card__pct {
+  font: var(--typography-body2);
+}
+
+.stat-card--md .stat-card__pct {
+  font: var(--typography-caption);
+}
+
+.stat-card--sm .stat-card__pct {
+  font: var(--typography-caption);
+  font-size: 10px;
+}
+
+/* ---- Color variants — icon bg + icon color ---- */
+.stat-card--green .stat-card__icon {
+  background: rgba(220, 252, 231, 0.6);
+  color: #16a34a;
+}
+
+.stat-card--grey .stat-card__icon {
+  background: rgba(243, 244, 246, 0.8);
+  color: #4F5666;
+}
+
+.stat-card--red .stat-card__icon {
+  background: rgba(254, 226, 226, 0.6);
+  color: #dc2626;
+}
+
+.stat-card--teal .stat-card__icon {
+  background: rgba(204, 251, 241, 0.6);
+  color: #0d9488;
+}
+
+.stat-card--blue .stat-card__icon {
+  background: rgba(219, 234, 254, 0.6);
+  color: #2563eb;
+}
+
+.stat-card--dark .stat-card__icon {
+  background: rgba(226, 232, 240, 0.6);
+  color: #334155;
+}
+
+/* ---- Stat Card Group ---- */
+.stat-card-group {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #D9DCE1;
+  background: #FFFFFF;
+  box-sizing: border-box;
+}
+
+.stat-card-group--lg {
+  border-radius: var(--radius-9, 40px);
+  padding: 0 16px;
+}
+
+.stat-card-group--md {
+  border-radius: var(--radius-8, 24px);
+  padding: 0 8px;
+}
+
+.stat-card-group--sm {
+  border-radius: var(--radius-6, 16px);
+  padding: 0 4px;
+}
+
+/* Cards inside a group render as ghost */
+.stat-card-group .stat-card {
+  border: none;
+  background: none;
+  border-radius: 0;
+}
+
+.stat-card-group__divider {
+  width: 1px;
+  align-self: stretch;
+  margin: 16px 8px;
+  background: #D9DCE1;
+  flex-shrink: 0;
+}
+
+.stat-card-group--md .stat-card-group__divider {
+  margin: 12px 6px;
+}
+
+.stat-card-group--sm .stat-card-group__divider {
+  margin: 8px 4px;
+}

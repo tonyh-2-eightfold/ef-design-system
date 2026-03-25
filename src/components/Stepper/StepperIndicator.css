@@ -1,3 +1,7 @@
 [data-slot='stepper-indicator'][data-state='upcoming'] {
   border: 2px dashed rgba(25, 153, 172, 1);
 }
+
+[data-size='sm'] [data-slot='stepper-indicator'][data-state='upcoming'] {
+  border-width: 1.5px;
+}

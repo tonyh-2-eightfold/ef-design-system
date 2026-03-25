@@ -4,15 +4,20 @@ import { useItemStep, useStepper } from './stepper-context'
 
 export interface StepperTriggerProps extends React.ComponentPropsWithoutRef<'button'> {}
 
-const triggerClassName =
-  'group/stepper-trigger flex w-full max-w-[10rem] flex-col items-center gap-2 rounded-md text-center'
-
 const StepperTrigger = React.forwardRef<HTMLButtonElement, StepperTriggerProps>(
   ({ className, type = 'button', disabled, onClick, children, ...props }, ref) => {
-    const { value, onValueChange } = useStepper()
+    const { value, onValueChange, size } = useStepper()
     const step = useItemStep()
     const canNavigate =
       onValueChange != null && !disabled && step <= value
+    const sm = size === 'sm'
+
+    const triggerClassName = cn(
+      'group/stepper-trigger flex rounded-md',
+      sm
+        ? 'w-auto flex-row items-center gap-2 text-left'
+        : 'w-full max-w-[10rem] flex-col items-center gap-2 text-center'
+    )
 
     const cls = cn(
       triggerClassName,

@@ -1,9 +1,12 @@
 import * as React from 'react'
 
+export type StepperSize = 'default' | 'sm'
+
 export type StepperContextValue = {
   /** 0-based index of the active step */
   value: number
   onValueChange?: (step: number) => void
+  size: StepperSize
 }
 
 export const StepperContext = React.createContext<StepperContextValue | null>(null)

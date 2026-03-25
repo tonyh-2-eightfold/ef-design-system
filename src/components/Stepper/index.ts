@@ -1,5 +1,6 @@
 export { Stepper } from './Stepper'
 export type { StepperProps } from './Stepper'
+export type { StepperSize } from './stepper-context'
 
 export { StepperList } from './StepperList'
 export type { StepperListProps } from './StepperList'

@@ -1,0 +1,5 @@
+/* Tabs — active badge styling */
+[data-slot="tabs-trigger"][data-state="active"] [data-slot="tabs-badge"] {
+  background-color: var(--color-background2-blue, #BCE4FF) !important;
+  color: var(--color-secondary-blue) !important;
+}

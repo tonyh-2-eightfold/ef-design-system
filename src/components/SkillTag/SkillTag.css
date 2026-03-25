@@ -1,61 +1,251 @@
-/* Skill tag – matches Octuple spec (Default skill.svg) */
+/* SkillTag — Octuple DS Theme 2
+   Figma skill tag component with variants, sizes, actions, trends */
+
 .skill-tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  font: var(--typography-button3);
-  border-radius: 6px;
   border: 1px solid #D9DCE1;
+  box-sizing: border-box;
+  font-family: var(--font-family, sans-serif);
+  vertical-align: middle;
 }
 
-.skill-tag--selected {
+/* ---- Sizes ---- */
+.skill-tag--sm {
+  height: 28px;
+  padding: 0 10px;
+  font: var(--typography-caption);
+  font-size: 12px;
+  border-radius: var(--radius-1, 4px);
+  gap: 4px;
+}
+
+.skill-tag--md {
+  height: 36px;
+  padding: 0 12px;
+  font: var(--typography-button3);
+  border-radius: var(--radius-2, 6px);
+  gap: 6px;
+}
+
+.skill-tag--lg {
+  height: 44px;
+  padding: 0 16px;
+  font: var(--typography-body2);
+  border-radius: var(--radius-3, 8px);
+  gap: 8px;
+}
+
+/* ---- Variants ---- */
+.skill-tag--default {
   background: #FFFFFF;
   color: #4F5666;
 }
 
-.skill-tag__remove {
+.skill-tag--matched {
+  background: #F0FDF4;
+  border-color: #86EFAC;
+  color: #166534;
+}
+
+.skill-tag--highlighted {
+  background: #FEFCE8;
+  border-color: #FDE68A;
+  color: #854D0E;
+}
+
+/* ---- Leading icons (matched check, highlighted star) ---- */
+.skill-tag__leading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full, 9999px);
+  flex-shrink: 0;
+}
+
+.skill-tag--sm .skill-tag__leading {
+  width: 18px;
+  height: 18px;
+}
+
+.skill-tag--md .skill-tag__leading {
+  width: 22px;
+  height: 22px;
+}
+
+.skill-tag--lg .skill-tag__leading {
+  width: 26px;
+  height: 26px;
+}
+
+.skill-tag__leading--matched {
+  background: rgba(187, 247, 208, 0.8);
+  color: #16a34a;
+}
+
+.skill-tag__leading--highlighted {
+  background: rgba(254, 240, 138, 0.8);
+  color: #CA8A04;
+}
+
+/* ---- Label ---- */
+.skill-tag__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* ---- Trend indicators ---- */
+.skill-tag__trend {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full, 9999px);
+  flex-shrink: 0;
+}
+
+.skill-tag__trend--exceed {
+  background: rgba(220, 252, 231, 0.8);
+  color: #16a34a;
+}
+
+.skill-tag__trend--meet {
+  background: rgba(254, 249, 195, 0.8);
+  color: #CA8A04;
+}
+
+.skill-tag__trend--below {
+  background: rgba(254, 226, 226, 0.8);
+  color: #dc2626;
+}
+
+.skill-tag__trend--upskilling {
+  background: rgba(254, 249, 195, 0.6);
+  color: #CA8A04;
+  margin-left: -4px;
+}
+
+/* ---- Action buttons ---- */
+.skill-tag__action-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   margin: 0;
-  margin-left: 2px;
   border: none;
-  background: #F6F7F8;
-  color: #343C4C;
+  background: none;
+  color: #4F5666;
   cursor: pointer;
-  border-radius: 14px;
+  flex-shrink: 0;
+  transition: color 0.15s, background 0.15s;
+  border-radius: var(--radius-full, 9999px);
+}
+
+/* Action button circular container sizes */
+.skill-tag--sm .skill-tag__action-btn {
+  width: 20px;
+  height: 20px;
+}
+
+.skill-tag--md .skill-tag__action-btn {
+  width: 24px;
+  height: 24px;
+}
+
+.skill-tag--lg .skill-tag__action-btn {
   width: 28px;
   height: 28px;
 }
 
-.skill-tag__remove:hover {
-  background: #E8EAED;
+.skill-tag__action-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #1A212E;
 }
 
-.skill-tag__remove .material-symbols-outlined {
-  font-size: 16px !important;
+/* Endorse button is wider to hold icon + count */
+.skill-tag__action-btn--endorse {
+  border-radius: var(--radius-5, 12px);
+  gap: 2px;
+  width: auto !important;
+  padding: 0 6px;
 }
 
-.skill-tag--addable {
-  background: #F6F7F8;
+.skill-tag--sm .skill-tag__action-btn--endorse {
+  padding: 0 4px;
+  height: 20px;
+}
+
+.skill-tag--lg .skill-tag__action-btn--endorse {
+  padding: 0 8px;
+  height: 28px;
+}
+
+/* Active state for save/endorse (filled icons) */
+.skill-tag--active .skill-tag__action-btn {
+  color: #1A212E;
+}
+
+/* Endorse count pill */
+.skill-tag__endorse-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
   color: #4F5666;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  background: var(--color-grey-10, #F6F7F8);
+  border-radius: var(--radius-full, 9999px);
+  tabular-nums: true;
 }
 
-.skill-tag--addable:hover {
-  background: #E8EAED;
-  border-color: #1999AC;
-  color: #146DA6;
+.skill-tag--sm .skill-tag__endorse-count {
+  font-size: 9px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
 }
 
-.skill-tag__action {
-  font-size: 16px !important;
-  color: #343C4C;
+.skill-tag--md .skill-tag__endorse-count {
+  font-size: 10px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
 }
 
-.skill-tag--addable:hover .skill-tag__action {
-  color: #146DA6;
+.skill-tag--lg .skill-tag__endorse-count {
+  font-size: 11px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+}
+
+/* Active endorse count gets darker bg */
+.skill-tag--active .skill-tag__endorse-count {
+  background: rgba(0, 0, 0, 0.08);
+  color: #1A212E;
+}
+
+/* Highlighted variant action colors */
+.skill-tag--highlighted .skill-tag__action-btn {
+  color: #854D0E;
+}
+
+.skill-tag--highlighted .skill-tag__action-btn:hover {
+  background: rgba(202, 138, 4, 0.1);
+  color: #713F12;
+}
+
+.skill-tag--highlighted .skill-tag__endorse-count {
+  background: rgba(254, 240, 138, 0.6);
+  color: #854D0E;
+}
+
+/* Matched variant action colors */
+.skill-tag--matched .skill-tag__action-btn {
+  color: #166534;
+}
+
+.skill-tag--matched .skill-tag__action-btn:hover {
+  background: rgba(22, 163, 74, 0.1);
+  color: #14532D;
 }

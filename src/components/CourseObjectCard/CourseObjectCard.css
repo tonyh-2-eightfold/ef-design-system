@@ -200,3 +200,22 @@ a.course-object-card:hover {
   font: var(--typography-caption-medium);
   color: #4F5666;
 }
+
+.course-object-card .object-card-bottom-bar:has(.course-object-card__bottom-buttons) {
+  place-items: stretch;
+}
+
+.course-object-card .object-card-bottom-bar__content:has(.course-object-card__bottom-buttons) {
+  width: 100%;
+}
+
+.course-object-card__bottom-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.course-object-card__bottom-buttons > * {
+  flex: 1;
+}

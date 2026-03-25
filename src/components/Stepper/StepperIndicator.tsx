@@ -2,6 +2,7 @@ import * as React from 'react'
 import { cn } from '../../lib/utils'
 import './StepperIndicator.css'
 import { ItemStepContext, StepperContext } from './stepper-context'
+import type { StepperSize } from './stepper-context'
 
 export type StepperIndicatorState = 'complete' | 'active' | 'upcoming'
 
@@ -19,25 +20,29 @@ export interface StepperIndicatorProps extends React.ComponentPropsWithoutRef<'d
 const primaryBtnIndicator =
   'bg-[var(--color-button-primary-bg)] text-[var(--color-button-primary-text)]'
 
-function indicatorClassName(state: StepperIndicatorState) {
+function indicatorClassName(state: StepperIndicatorState, size: StepperSize = 'default') {
+  const sm = size === 'sm'
   return cn(
-    'flex size-8 shrink-0 items-center justify-center rounded-[var(--radius-full)] text-xs font-semibold tabular-nums transition-colors',
-    state === 'complete' && cn(primaryBtnIndicator, '[&_.material-symbols-outlined]:text-[18px] [&_.material-symbols-outlined]:leading-none'),
+    'flex shrink-0 items-center justify-center rounded-[var(--radius-full)] font-semibold tabular-nums transition-colors',
+    sm ? 'size-6 text-[10px]' : 'size-8 text-xs',
+    state === 'complete' && cn(primaryBtnIndicator, sm ? '[&_.material-symbols-outlined]:text-[14px] [&_.material-symbols-outlined]:leading-none' : '[&_.material-symbols-outlined]:text-[18px] [&_.material-symbols-outlined]:leading-none'),
     state === 'active' &&
       cn(
         primaryBtnIndicator,
-        'ring-2 ring-[var(--color-button-primary-bg)] ring-offset-2 ring-offset-background'
+        sm
+          ? 'ring-[1.5px] ring-[var(--color-button-primary-bg)] ring-offset-[1.5px] ring-offset-background'
+          : 'ring-2 ring-[var(--color-button-primary-bg)] ring-offset-2 ring-offset-background'
       ),
     state === 'upcoming' &&
       'bg-[rgba(235,253,255,0.6)] text-[var(--muted-foreground)]'
   )
 }
 
-function CompleteCheckIcon() {
+function CompleteCheckIcon({ sm }: { sm?: boolean }) {
   return (
     <span
       className="material-symbols-outlined font-normal"
-      style={{ fontSize: '18px', fontVariationSettings: "'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24" }}
+      style={{ fontSize: sm ? '14px' : '18px', fontVariationSettings: "'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24" }}
       aria-hidden
     >
       check
@@ -49,6 +54,8 @@ const StepperIndicator = React.forwardRef<HTMLDivElement, StepperIndicatorProps>
   ({ className, stepDisplay, forceState, children, ...props }, ref) => {
     const itemStep = React.useContext(ItemStepContext)
     const stepper = React.useContext(StepperContext)
+    const size = stepper?.size ?? 'default'
+    const sm = size === 'sm'
 
     if (forceState != null) {
       const n = stepDisplay ?? 1
@@ -58,10 +65,10 @@ const StepperIndicator = React.forwardRef<HTMLDivElement, StepperIndicatorProps>
           ref={ref}
           data-slot="stepper-indicator"
           data-state={forceState}
-          className={cn(indicatorClassName(forceState), className)}
+          className={cn(indicatorClassName(forceState, size), className)}
           {...props}
         >
-          {children ?? (showCheck ? <CompleteCheckIcon /> : n)}
+          {children ?? (showCheck ? <CompleteCheckIcon sm={sm} /> : n)}
         </div>
       )
     }
@@ -84,10 +91,10 @@ const StepperIndicator = React.forwardRef<HTMLDivElement, StepperIndicatorProps>
         ref={ref}
         data-slot="stepper-indicator"
         data-state={state}
-        className={cn(indicatorClassName(state), className)}
+        className={cn(indicatorClassName(state, size), className)}
         {...props}
       >
-        {children ?? (showCheck ? <CompleteCheckIcon /> : n)}
+        {children ?? (showCheck ? <CompleteCheckIcon sm={sm} /> : n)}
       </div>
     )
   }

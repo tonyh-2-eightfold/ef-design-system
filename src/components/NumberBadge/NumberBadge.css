@@ -1,0 +1,98 @@
+/* NumberBadge — Octuple DS Theme 2
+   Colored number pills in 3 sizes × 12 colors */
+
+.number-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full, 9999px);
+  font-family: var(--font-family, sans-serif);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  box-sizing: border-box;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* ---- Sizes ---- */
+.number-badge--sm {
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  font-size: 10px;
+}
+
+.number-badge--md {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  font-size: 11px;
+}
+
+.number-badge--lg {
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  font-size: 12px;
+}
+
+/* ---- Colors ---- */
+.number-badge--red {
+  background: rgba(254, 202, 202, 0.7);
+  color: #b91c1c;
+}
+
+.number-badge--orange {
+  background: rgba(254, 215, 170, 0.7);
+  color: #c2410c;
+}
+
+.number-badge--amber {
+  background: rgba(253, 230, 138, 0.7);
+  color: #b45309;
+}
+
+.number-badge--yellow {
+  background: rgba(254, 249, 195, 0.8);
+  color: #a16207;
+}
+
+.number-badge--lime {
+  background: rgba(217, 249, 157, 0.7);
+  color: #4d7c0f;
+}
+
+.number-badge--teal {
+  background: rgba(153, 246, 228, 0.5);
+  color: #0f766e;
+}
+
+.number-badge--mint {
+  background: rgba(167, 243, 208, 0.6);
+  color: #047857;
+}
+
+.number-badge--sky {
+  background: rgba(186, 230, 253, 0.6);
+  color: #0369a1;
+}
+
+.number-badge--blue {
+  background: rgba(191, 219, 254, 0.6);
+  color: #1d4ed8;
+}
+
+.number-badge--purple {
+  background: rgba(216, 180, 254, 0.5);
+  color: #7c3aed;
+}
+
+.number-badge--pink {
+  background: rgba(249, 168, 212, 0.5);
+  color: #be185d;
+}
+
+.number-badge--grey {
+  background: rgba(229, 231, 235, 0.7);
+  color: #4b5563;
+}

@@ -29,3 +29,6 @@
 @import '../components/MentorInsightCard/MentorInsightCard.css';
 @import '../components/Stepper/StepperIndicator.css';
 @import '../components/Stepper/StepperConnector.css';
+@import '../components/NumberBadge/NumberBadge.css';
+@import '../components/StatCard/StatCard.css';
+@import '../components/Tabs/Tabs.css';

@@ -22,7 +22,7 @@ export { Pill } from './components/Pill/Pill'
 export type { PillProps, PillVariant, PillSize } from './components/Pill/Pill'
 
 export { SkillTag } from './components/SkillTag/SkillTag'
-export type { SkillTagProps, SkillTagVariant } from './components/SkillTag/SkillTag'
+export type { SkillTagProps, SkillTagVariant, SkillTagSize, SkillTagAction, SkillTagTrend } from './components/SkillTag/SkillTag'
 
 export { Tag, TagGroup } from './components/Tag'
 export type { TagProps, TagSize, TagVariant, TagGroupProps, TagGroupType } from './components/Tag'
@@ -51,6 +51,7 @@ export { CourseObjectCard } from './components/CourseObjectCard/CourseObjectCard
 export type {
   CourseObjectCardProps,
   CourseObjectCardFacepileProps,
+  CourseObjectCardBottomBar,
 } from './components/CourseObjectCard/CourseObjectCard'
 
 export { ProjectObjectCard } from './components/ProjectObjectCard/ProjectObjectCard'
@@ -127,6 +128,14 @@ export type {
   StepperDescriptionProps,
   StepperSeparatorProps,
 } from './components/Stepper'
+
+export { NumberBadge } from './components/NumberBadge/NumberBadge'
+export type { NumberBadgeProps, NumberBadgeColor, NumberBadgeSize } from './components/NumberBadge/NumberBadge'
+
+export { StatCard } from './components/StatCard/StatCard'
+export type { StatCardProps, StatCardColor, StatCardSize, StatCardVariant, StatCardBadge } from './components/StatCard/StatCard'
+export { StatCardGroup } from './components/StatCard/StatCardGroup'
+export type { StatCardGroupProps } from './components/StatCard/StatCardGroup'
 
 export { Navbar } from './components/Navbar/Navbar'
 export {

@@ -6,5 +6,5 @@
 }
 
 [data-ef-stepper-connector-bar][data-filled='false'] {
-  background-color: var(--muted) !important;
+  background-color: rgba(44, 140, 201, 0.25) !important;
 }

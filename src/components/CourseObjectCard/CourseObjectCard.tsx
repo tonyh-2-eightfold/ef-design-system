@@ -1,4 +1,5 @@
 import { Pill } from '../Pill/Pill'
+import { OpenTo } from '../OpenTo/OpenTo'
 import './ObjectCardBottomBar.css'
 import './CourseObjectCard.css'
 
@@ -6,12 +7,19 @@ export interface CourseObjectCardFacepileProps {
   avatarUrls: string[]
 }
 
+export type CourseObjectCardBottomBar =
+  | { type: 'none' }
+  | { type: 'completedBy'; avatars: string[] }
+  | { type: 'openTo'; items: ('mentoring' | 'coffee' | 'project')[] }
+  | { type: 'buttons'; children: React.ReactNode }
+
 export interface CourseObjectCardProps {
   course: {
     title: string
     provider?: string
     duration?: string
     skills?: string[]
+    /** @deprecated Use `bottomBar={{ type: 'completedBy', avatars }}` instead */
     completedBy?: string[]
   }
   href?: string
@@ -19,6 +27,16 @@ export interface CourseObjectCardProps {
   /** Render the "completed by" facepile (e.g. AvatarGroup). When provided, replaces the default img stack. */
   renderFacepile?: (props: CourseObjectCardFacepileProps) => React.ReactNode
   LinkComponent?: React.ComponentType<{ to: string; children: React.ReactNode; className?: string }>
+  /**
+   * Bottom bar variant:
+   * - `none` — hides divider and bottom bar
+   * - `completedBy` — facepile + "completed this" text
+   * - `openTo` — "Open to" with icons (mentoring, coffee, project)
+   * - `buttons` — render custom button children (use small variant)
+   *
+   * Falls back to legacy `course.completedBy` if not set.
+   */
+  bottomBar?: CourseObjectCardBottomBar
 }
 
 function DefaultLink({ to, children, className }: { to: string; children: React.ReactNode; className?: string }) {
@@ -35,8 +53,18 @@ export function CourseObjectCard({
   showBookmark = true,
   renderFacepile,
   LinkComponent = DefaultLink,
+  bottomBar: bottomBarProp,
 }: CourseObjectCardProps) {
   const Link = LinkComponent
+
+  // Resolve bottom bar — prefer explicit prop, fall back to legacy completedBy
+  const bottomBar: CourseObjectCardBottomBar | undefined = bottomBarProp
+    ?? (course.completedBy && course.completedBy.length > 0
+      ? { type: 'completedBy', avatars: course.completedBy }
+      : undefined)
+
+  const showBottom = bottomBar && bottomBar.type !== 'none'
+
   const content = (
     <div className="course-object-card__inner">
       <div className="course-object-card__banner">
@@ -74,25 +102,37 @@ export function CourseObjectCard({
           </div>
         )}
       </div>
-      <div className="course-object-card__divider" aria-hidden />
-      <div className="object-card-bottom-bar">
-        <div className="object-card-bottom-bar__content">
-          {course.completedBy && course.completedBy.length > 0 && (
-            <>
-              {renderFacepile ? (
-                renderFacepile({ avatarUrls: course.completedBy })
-              ) : (
-                <div className="course-object-card__facepile">
-                  {course.completedBy.map((avatarSrc, i) => (
-                    <img key={i} src={avatarSrc} alt="" className="course-object-card__facepile-avatar" />
-                  ))}
+      {showBottom && (
+        <>
+          <div className="course-object-card__divider" aria-hidden />
+          <div className="object-card-bottom-bar">
+            <div className="object-card-bottom-bar__content">
+              {bottomBar.type === 'completedBy' && (
+                <>
+                  {renderFacepile ? (
+                    renderFacepile({ avatarUrls: bottomBar.avatars })
+                  ) : (
+                    <div className="course-object-card__facepile">
+                      {bottomBar.avatars.map((avatarSrc, i) => (
+                        <img key={i} src={avatarSrc} alt="" className="course-object-card__facepile-avatar" />
+                      ))}
+                    </div>
+                  )}
+                  <span className="course-object-card__completed-text">completed this</span>
+                </>
+              )}
+              {bottomBar.type === 'openTo' && (
+                <OpenTo items={bottomBar.items} labelAsButton={false} />
+              )}
+              {bottomBar.type === 'buttons' && (
+                <div className="course-object-card__bottom-buttons">
+                  {bottomBar.children}
                 </div>
               )}
-              <span className="course-object-card__completed-text">completed this</span>
-            </>
-          )}
-        </div>
-      </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   )
 

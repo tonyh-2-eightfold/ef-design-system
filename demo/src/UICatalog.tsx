@@ -90,6 +90,10 @@ import {
   ProjectObjectCard,
   PeopleObjectCard,
   MentorInsightCard,
+  NumberBadge,
+  SkillTag,
+  StatCard,
+  StatCardGroup,
   ButtonDropdown,
   DropdownMenu as DSDropdownMenu,
   ProductBackground,
@@ -690,70 +694,413 @@ export function UICatalog({
           </div>
         </Block>
 
+        <Block title="Number Badge" id="number-badge">
+          <div className="flex w-full min-w-0 flex-col gap-6">
+            <div className="w-full space-y-3">
+              <p className="text-xs font-medium text-muted-foreground">Colors × Sizes</p>
+              <table className="text-xs">
+                <thead>
+                  <tr className="text-muted-foreground">
+                    <th className="pr-6 pb-2 text-left font-medium"></th>
+                    <th className="pr-6 pb-2 text-center font-medium">sm</th>
+                    <th className="pr-6 pb-2 text-center font-medium">md</th>
+                    <th className="pb-2 text-center font-medium">lg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(['red', 'orange', 'amber', 'yellow', 'lime', 'teal', 'mint', 'sky', 'blue', 'purple', 'pink', 'grey'] as const).map(color => (
+                    <tr key={color}>
+                      <td className="pr-6 py-1.5 text-muted-foreground font-medium">{color}</td>
+                      <td className="pr-6 py-1.5 text-center"><NumberBadge value={8} color={color} size="sm" /></td>
+                      <td className="pr-6 py-1.5 text-center"><NumberBadge value={8} color={color} size="md" /></td>
+                      <td className="py-1.5 text-center"><NumberBadge value={8} color={color} size="lg" /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </Block>
+
+        <Block title="Skill Tag" id="skill-tag">
+          <div className="flex w-full min-w-0 flex-col gap-8">
+            {/* Sizes × Variants */}
+            <div className="w-full space-y-3">
+              <p className="text-xs font-medium text-muted-foreground">Variants × Sizes</p>
+              <table className="text-xs">
+                <thead>
+                  <tr className="text-muted-foreground">
+                    <th className="pr-4 pb-2 text-left font-medium"></th>
+                    <th className="pr-4 pb-2 text-left font-medium">Default</th>
+                    <th className="pr-4 pb-2 text-left font-medium">w/ endorse</th>
+                    <th className="pr-4 pb-2 text-left font-medium">w/ save</th>
+                    <th className="pr-4 pb-2 text-left font-medium">Matched</th>
+                    <th className="pr-4 pb-2 text-left font-medium">Highlighted</th>
+                    <th className="pr-4 pb-2 text-left font-medium">Highlighted + endorse</th>
+                    <th className="pb-2 text-left font-medium">Highlighted + save</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="pr-4 py-2 text-muted-foreground font-medium">Small</td>
+                    <td className="pr-4 py-2"><SkillTag size="sm">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="sm" action="endorse" endorseCount={8}>Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="sm" action="save">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="sm" variant="matched">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="sm" variant="highlighted">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="sm" variant="highlighted" action="endorse" endorseCount={8}>Time travel</SkillTag></td>
+                    <td className="py-2"><SkillTag size="sm" variant="highlighted" action="save">Time travel</SkillTag></td>
+                  </tr>
+                  <tr>
+                    <td className="pr-4 py-2 text-muted-foreground font-medium">Medium</td>
+                    <td className="pr-4 py-2"><SkillTag size="md">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="md" action="endorse" endorseCount={8}>Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="md" action="save">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="md" variant="matched">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="md" variant="highlighted">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="md" variant="highlighted" action="endorse" endorseCount={8}>Time travel</SkillTag></td>
+                    <td className="py-2"><SkillTag size="md" variant="highlighted" action="save">Time travel</SkillTag></td>
+                  </tr>
+                  <tr>
+                    <td className="pr-4 py-2 text-muted-foreground font-medium">Large</td>
+                    <td className="pr-4 py-2"><SkillTag size="lg">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="lg" action="endorse" endorseCount={8}>Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="lg" action="save">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="lg" variant="matched">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="lg" variant="highlighted">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="lg" variant="highlighted" action="endorse" endorseCount={8}>Time travel</SkillTag></td>
+                    <td className="py-2"><SkillTag size="lg" variant="highlighted" action="save">Time travel</SkillTag></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Trends */}
+            <div className="w-full space-y-3">
+              <p className="text-xs font-medium text-muted-foreground">Trends</p>
+              <table className="text-xs">
+                <thead>
+                  <tr className="text-muted-foreground">
+                    <th className="pr-4 pb-2 text-left font-medium"></th>
+                    <th className="pr-4 pb-2 text-left font-medium">Exceed</th>
+                    <th className="pr-4 pb-2 text-left font-medium">Meet</th>
+                    <th className="pr-4 pb-2 text-left font-medium">Below</th>
+                    <th className="pr-4 pb-2 text-left font-medium">Exceed + Upskilling</th>
+                    <th className="pr-4 pb-2 text-left font-medium">Meet + Upskilling</th>
+                    <th className="pb-2 text-left font-medium">Below + Upskilling</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="pr-4 py-2 text-muted-foreground font-medium">Small</td>
+                    <td className="pr-4 py-2"><SkillTag size="sm" trend="exceed">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="sm" trend="meet">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="sm" trend="below">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="sm" trend="exceed" upskilling>Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="sm" trend="meet" upskilling>Time travel</SkillTag></td>
+                    <td className="py-2"><SkillTag size="sm" trend="below" upskilling>Time travel</SkillTag></td>
+                  </tr>
+                  <tr>
+                    <td className="pr-4 py-2 text-muted-foreground font-medium">Medium</td>
+                    <td className="pr-4 py-2"><SkillTag size="md" trend="exceed">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="md" trend="meet">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="md" trend="below">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="md" trend="exceed" upskilling>Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="md" trend="meet" upskilling>Time travel</SkillTag></td>
+                    <td className="py-2"><SkillTag size="md" trend="below" upskilling>Time travel</SkillTag></td>
+                  </tr>
+                  <tr>
+                    <td className="pr-4 py-2 text-muted-foreground font-medium">Large</td>
+                    <td className="pr-4 py-2"><SkillTag size="lg" trend="exceed">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="lg" trend="meet">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="lg" trend="below">Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="lg" trend="exceed" upskilling>Time travel</SkillTag></td>
+                    <td className="pr-4 py-2"><SkillTag size="lg" trend="meet" upskilling>Time travel</SkillTag></td>
+                    <td className="py-2"><SkillTag size="lg" trend="below" upskilling>Time travel</SkillTag></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Actions: before/after */}
+            <div className="w-full space-y-3">
+              <p className="text-xs font-medium text-muted-foreground">Actions · before / after</p>
+              <table className="text-xs">
+                <thead>
+                  <tr className="text-muted-foreground">
+                    <th className="pr-6 pb-2 text-left font-medium"></th>
+                    <th className="pr-6 pb-2 text-left font-medium">Before</th>
+                    <th className="pb-2 text-left font-medium">After</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="pr-6 py-2 text-muted-foreground font-medium">Add</td>
+                    <td className="pr-6 py-2"><SkillTag action="add">Time travel</SkillTag></td>
+                    <td className="py-2"><SkillTag action="add" active>Time travel</SkillTag></td>
+                  </tr>
+                  <tr>
+                    <td className="pr-6 py-2 text-muted-foreground font-medium">Save</td>
+                    <td className="pr-6 py-2"><SkillTag action="save">Time travel</SkillTag></td>
+                    <td className="py-2"><SkillTag action="save" active>Time travel</SkillTag></td>
+                  </tr>
+                  <tr>
+                    <td className="pr-6 py-2 text-muted-foreground font-medium">Endorse</td>
+                    <td className="pr-6 py-2"><SkillTag action="endorse" endorseCount={8}>Time travel</SkillTag></td>
+                    <td className="py-2"><SkillTag action="endorse" endorseCount={8} active>Time travel</SkillTag></td>
+                  </tr>
+                  <tr>
+                    <td className="pr-6 py-2 text-muted-foreground font-medium">Highlighted + Save</td>
+                    <td className="pr-6 py-2"><SkillTag variant="highlighted" action="save">Time travel</SkillTag></td>
+                    <td className="py-2"><SkillTag variant="highlighted" action="save" active>Time travel</SkillTag></td>
+                  </tr>
+                  <tr>
+                    <td className="pr-6 py-2 text-muted-foreground font-medium">Highlighted + Endorse</td>
+                    <td className="pr-6 py-2"><SkillTag variant="highlighted" action="endorse" endorseCount={8}>Time travel</SkillTag></td>
+                    <td className="py-2"><SkillTag variant="highlighted" action="endorse" endorseCount={8} active>Time travel</SkillTag></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </Block>
+
+        <Block title="Stat Card" id="stat-card">
+          <div className="flex w-full min-w-0 flex-col gap-8">
+            {/* Outlined (default) */}
+            <div className="w-full space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                Outlined{' '}
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">variant="outlined"</code>
+              </p>
+              <div className="flex flex-wrap items-start gap-4">
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="green" size="lg" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="grey" size="lg" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="red" size="lg" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="teal" size="lg" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="blue" size="lg" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="dark" size="lg" />
+              </div>
+            </div>
+
+            {/* Filled */}
+            <div className="w-full space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                Filled{' '}
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">variant="filled"</code>
+              </p>
+              <div className="flex flex-wrap items-start gap-4">
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="green" size="lg" variant="filled" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="grey" size="lg" variant="filled" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="red" size="lg" variant="filled" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="teal" size="lg" variant="filled" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="blue" size="lg" variant="filled" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="dark" size="lg" variant="filled" />
+              </div>
+            </div>
+
+            {/* Ghost */}
+            <div className="w-full space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                Ghost{' '}
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">variant="ghost"</code>
+              </p>
+              <div className="flex flex-wrap items-start gap-4">
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="green" size="lg" variant="ghost" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="red" size="lg" variant="ghost" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="blue" size="lg" variant="ghost" />
+              </div>
+            </div>
+
+            {/* Icon badge */}
+            <div className="w-full space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                Icon badge{' '}
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">iconBadge</code>
+              </p>
+              <div className="flex flex-wrap items-start gap-4">
+                <StatCard icon="person" label="Alert" value={2} pct="5%" color="grey" size="lg" iconBadge="alert" />
+                <StatCard icon="person" label="Success" value={2} pct="5%" color="grey" size="lg" iconBadge="success" />
+                <StatCard icon="person" label="Info" value={2} pct="5%" color="grey" size="lg" iconBadge="info" />
+                <StatCard icon="person" label="Alert" value={2} pct="5%" color="grey" size="md" iconBadge="alert" />
+                <StatCard icon="person" label="Alert" value={2} pct="5%" color="grey" size="sm" iconBadge="alert" />
+              </div>
+            </div>
+
+            {/* Sizes */}
+            <div className="w-full space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                Sizes
+              </p>
+              <div className="flex flex-wrap items-end gap-4">
+                <div className="flex flex-col items-center gap-2">
+                  <StatCard icon="person" label="Label" value={2} pct="5%" color="green" size="lg" />
+                  <code className="text-[10px] text-muted-foreground">lg</code>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <StatCard icon="person" label="Label" value={2} pct="5%" color="green" size="md" />
+                  <code className="text-[10px] text-muted-foreground">md</code>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <StatCard icon="person" label="Label" value={2} pct="5%" color="green" size="sm" />
+                  <code className="text-[10px] text-muted-foreground">sm</code>
+                </div>
+              </div>
+            </div>
+
+            {/* Group */}
+            <div className="w-full space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                Group{' '}
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">StatCardGroup</code>
+              </p>
+              <StatCardGroup size="lg">
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="grey" size="lg" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="grey" size="lg" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="grey" size="lg" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="grey" size="lg" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="grey" size="lg" />
+                <StatCard icon="person" label="Label" value={2} pct="5%" color="grey" size="lg" />
+              </StatCardGroup>
+            </div>
+          </div>
+        </Block>
+
         <Block title="Object Cards" id="object-cards" plain>
           <p className="w-full text-sm text-muted-foreground">
-            CourseObjectCard, ProjectObjectCard, PeopleObjectCard — Octuple DS Theme 2 (Figma). Object cards for course, project, and people.
+            CourseObjectCard, ProjectObjectCard, PeopleObjectCard — Octuple DS Theme 2 (Figma).
           </p>
-          <div className="flex flex-wrap items-start gap-6">
-            <CourseObjectCard
-              course={{
-                title: 'Introduction to React',
-                provider: 'Acme Learning',
-                duration: '4h',
-                skills: ['React', 'JavaScript'],
-                completedBy: [
-                  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop&crop=face',
-                  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&h=96&fit=crop&crop=face',
-                  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&h=96&fit=crop&crop=face',
-                ],
-              }}
-              href="#"
-              renderFacepile={({ avatarUrls }: { avatarUrls: string[] }) => {
-                const display = avatarUrls.slice(0, 3)
-                const extra = avatarUrls.length - display.length
-                return (
-                  <AvatarGroup size="sm">
-                    {display.map((src: string, i: number) => (
-                      <Avatar key={i}>
-                        <AvatarImage src={src} alt="" />
-                        <AvatarFallback>{String(i + 1)}</AvatarFallback>
-                      </Avatar>
-                    ))}
-                    {extra > 0 && <AvatarGroupCount>+{extra}</AvatarGroupCount>}
-                  </AvatarGroup>
-                )
-              }}
-            />
-            <ProjectObjectCard
-              project={{
-                title: 'Platform migration',
-                owner: 'Engineering',
-                status: '3 hrs/week',
-                skills: ['React', 'Node'],
-                projectManager: {
+
+          <div className="w-full space-y-2">
+            <p className="text-xs font-medium text-muted-foreground">
+              Course card · <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">bottomBar</code> variants
+            </p>
+            <div className="flex flex-wrap items-start gap-6">
+              {/* completedBy */}
+              <div className="flex flex-col items-center gap-2">
+                <CourseObjectCard
+                  course={{
+                    title: 'Introduction to React',
+                    provider: 'Acme Learning',
+                    duration: '4h',
+                    skills: ['React', 'JavaScript'],
+                  }}
+                  bottomBar={{
+                    type: 'completedBy',
+                    avatars: [
+                      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop&crop=face',
+                      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&h=96&fit=crop&crop=face',
+                      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&h=96&fit=crop&crop=face',
+                    ],
+                  }}
+                  href="#"
+                  renderFacepile={({ avatarUrls }: { avatarUrls: string[] }) => {
+                    const display = avatarUrls.slice(0, 3)
+                    const extra = avatarUrls.length - display.length
+                    return (
+                      <AvatarGroup size="sm">
+                        {display.map((src: string, i: number) => (
+                          <Avatar key={i}>
+                            <AvatarImage src={src} alt="" />
+                            <AvatarFallback>{String(i + 1)}</AvatarFallback>
+                          </Avatar>
+                        ))}
+                        {extra > 0 && <AvatarGroupCount>+{extra}</AvatarGroupCount>}
+                      </AvatarGroup>
+                    )
+                  }}
+                />
+                <code className="text-[10px] text-muted-foreground">completedBy</code>
+              </div>
+
+              {/* openTo */}
+              <div className="flex flex-col items-center gap-2">
+                <CourseObjectCard
+                  course={{
+                    title: 'AI Prompt Engineering',
+                    provider: 'Acme Learning',
+                    duration: '2h',
+                    skills: ['AI', 'Prompting'],
+                  }}
+                  bottomBar={{ type: 'openTo', items: ['mentoring', 'coffee'] }}
+                  href="#"
+                />
+                <code className="text-[10px] text-muted-foreground">openTo</code>
+              </div>
+
+              {/* buttons */}
+              <div className="flex flex-col items-center gap-2">
+                <CourseObjectCard
+                  course={{
+                    title: 'Advanced TypeScript',
+                    provider: 'Acme Learning',
+                    duration: '6h',
+                    skills: ['TypeScript', 'Node'],
+                  }}
+                  bottomBar={{
+                    type: 'buttons',
+                    children: (
+                      <Button variant="outline" size="xs">Not started</Button>
+                    ),
+                  }}
+                  href="#"
+                />
+                <code className="text-[10px] text-muted-foreground">buttons</code>
+              </div>
+
+              {/* none */}
+              <div className="flex flex-col items-center gap-2">
+                <CourseObjectCard
+                  course={{
+                    title: 'Data Visualization',
+                    provider: 'Acme Learning',
+                    duration: '3h',
+                    skills: ['D3', 'Charts'],
+                  }}
+                  bottomBar={{ type: 'none' }}
+                  href="#"
+                />
+                <code className="text-[10px] text-muted-foreground">none</code>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full space-y-2">
+            <p className="text-xs font-medium text-muted-foreground">
+              Project · People
+            </p>
+            <div className="flex flex-wrap items-start gap-6">
+              <ProjectObjectCard
+                project={{
+                  title: 'Platform migration',
+                  owner: 'Engineering',
+                  status: '3 hrs/week',
+                  skills: ['React', 'Node'],
+                  projectManager: {
+                    name: 'Jordan Lee',
+                    avatarSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&crop=face',
+                  },
+                }}
+                href="#"
+                showBottomBar={false}
+              />
+              <PeopleObjectCard
+                person={{
                   name: 'Jordan Lee',
-                  avatarSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&crop=face',
-                },
-              }}
-              href="#"
-              showBottomBar={false}
-            />
-            <PeopleObjectCard
-              person={{
-                name: 'Jordan Lee',
-                title: 'Senior Engineer',
-                email: 'jordan.lee@example.com',
-                avatarSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
-                openTo: 'mentoring',
-              }}
-              href="#"
-              renderAvatar={({ src, alt, fallback }: { src: string; alt: string; fallback: string }) => (
-                <Avatar size="2xl" className="people-object-card__avatar">
-                  <AvatarImage src={src} alt={alt} />
-                  <AvatarFallback>{fallback}</AvatarFallback>
-                </Avatar>
-              )}
-            />
+                  title: 'Senior Engineer',
+                  email: 'jordan.lee@example.com',
+                  avatarSrc: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
+                  openTo: 'mentoring',
+                }}
+                href="#"
+                renderAvatar={({ src, alt, fallback }: { src: string; alt: string; fallback: string }) => (
+                  <Avatar size="2xl" className="people-object-card__avatar">
+                    <AvatarImage src={src} alt={alt} />
+                    <AvatarFallback>{fallback}</AvatarFallback>
+                  </Avatar>
+                )}
+              />
+            </div>
           </div>
         </Block>
 
@@ -1184,10 +1531,11 @@ export function UICatalog({
         </Block>
 
         <Block title="Stepper" id="stepper">
-          <div className="flex w-full min-w-0 flex-col gap-8">
+          <div className="flex w-full min-w-0 flex-col gap-10">
+            {/* Indicator states */}
             <div className="w-full space-y-3">
               <p className="text-xs font-medium text-muted-foreground">
-                Step circles · <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">data-state</code>
+                Indicator states
               </p>
               <div className="flex flex-wrap items-end gap-10">
                 <div className="flex flex-col items-center gap-2">
@@ -1203,24 +1551,12 @@ export function UICatalog({
                   <code className="text-[10px] text-muted-foreground">upcoming</code>
                 </div>
               </div>
-              <p className="text-[11px] text-muted-foreground">
-                Static preview:{' '}
-                <code className="rounded bg-muted px-1 py-0.5 font-mono text-[10px]">forceState</code>
-              </p>
             </div>
+
+            {/* Default */}
             <div className="w-full max-w-2xl space-y-2">
               <p className="text-xs font-medium text-muted-foreground">
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;1&#125;</code>{' '}
-                · static (
-                <a
-                  href="https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?node-id=3452-4369"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-2 hover:no-underline"
-                >
-                  Figma
-                </a>
-                )
+                Default
               </p>
               <Stepper value={1}>
                 <StepperList>
@@ -1250,10 +1586,51 @@ export function UICatalog({
                 </StepperList>
               </Stepper>
             </div>
+
+            {/* Small · right label */}
+            <div className="w-full max-w-2xl space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                Small · right label{' '}
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">size="sm"</code>
+              </p>
+              <Stepper value={1} size="sm">
+                <StepperList>
+                  <StepperItem>
+                    <StepperTrigger>
+                      <StepperIndicator />
+                      <StepperTitle>Assign</StepperTitle>
+                    </StepperTrigger>
+                  </StepperItem>
+                  <StepperSeparator />
+                  <StepperItem>
+                    <StepperTrigger>
+                      <StepperIndicator />
+                      <StepperTitle>Scope</StepperTitle>
+                    </StepperTrigger>
+                  </StepperItem>
+                  <StepperSeparator />
+                  <StepperItem>
+                    <StepperTrigger>
+                      <StepperIndicator />
+                      <StepperTitle>Channels</StepperTitle>
+                    </StepperTrigger>
+                  </StepperItem>
+                  <StepperSeparator />
+                  <StepperItem>
+                    <StepperTrigger>
+                      <StepperIndicator />
+                      <StepperTitle>Review</StepperTitle>
+                    </StepperTrigger>
+                  </StepperItem>
+                </StepperList>
+              </Stepper>
+            </div>
+
+            {/* Interactive */}
             <div className="w-full max-w-2xl space-y-3">
               <p className="text-xs font-medium text-muted-foreground">
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">onValueChange</code>{' '}
-                · click current or previous step
+                Interactive{' '}
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">onValueChange</code>
               </p>
               <Stepper value={stepperStep} onValueChange={setStepperStep}>
                 <StepperList>
@@ -1584,7 +1961,19 @@ export function UICatalog({
               </div>
             </div>
             <div>
-              <p className="mb-2 text-xs font-medium text-muted-foreground">With icon and badge</p>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Default (pill) with badge</p>
+              <Tabs defaultValue="t1">
+                <TabsList>
+                  <TabsTrigger value="t1" badge={8}>Tab</TabsTrigger>
+                  <TabsTrigger value="t2" badge={8}>Tab</TabsTrigger>
+                  <TabsTrigger value="t3">Tab</TabsTrigger>
+                  <TabsTrigger value="t4">Tab</TabsTrigger>
+                  <TabsTrigger value="t5">Tab</TabsTrigger>
+                </TabsList>
+              </Tabs>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Line with icon and badge</p>
               <Tabs defaultValue="inbox">
                 <TabsList variant="line">
                   <TabsTrigger value="inbox" leadingIcon={<Inbox />} badge={3}>Inbox</TabsTrigger>

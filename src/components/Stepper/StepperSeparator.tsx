@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { cn } from '../../lib/utils'
 import { StepperConnectorSegmentContext, useStepper } from './stepper-context'
+import type { StepperSize } from './stepper-context'
 import './StepperConnector.css'
 
 export interface StepperSeparatorProps extends React.ComponentPropsWithoutRef<'li'> {
@@ -10,10 +11,11 @@ export interface StepperSeparatorProps extends React.ComponentPropsWithoutRef<'l
 
 const StepperSeparator = React.forwardRef<HTMLLIElement, StepperSeparatorProps>(
   ({ className, segmentIndex: segmentIndexProp, style, children, ...props }, ref) => {
-    const { value } = useStepper()
+    const { value, size } = useStepper()
     const ctxSeg = React.useContext(StepperConnectorSegmentContext)
     const segmentIndex =
       typeof ctxSeg === 'number' ? ctxSeg : segmentIndexProp ?? 0
+    const sm = size === 'sm'
 
     const v = Number(value)
     const filled = Number.isFinite(v) && v > Number(segmentIndex)
@@ -26,7 +28,8 @@ const StepperSeparator = React.forwardRef<HTMLLIElement, StepperSeparatorProps>(
         data-state={filled ? 'filled' : 'upcoming'}
         aria-hidden
         className={cn(
-          'mx-1 mt-4 flex min-h-px min-w-[1rem] flex-1 list-none items-center self-start p-0',
+          'flex min-h-px min-w-[1rem] flex-1 list-none items-center self-start p-0',
+          sm ? 'mx-0.5 mt-3' : 'mx-1 mt-4',
           className
         )}
         style={style}
@@ -34,7 +37,7 @@ const StepperSeparator = React.forwardRef<HTMLLIElement, StepperSeparatorProps>(
         <span
           data-ef-stepper-connector-bar
           data-filled={filled ? 'true' : 'false'}
-          className="box-border block h-px w-full min-w-[1rem] shrink-0 rounded-full"
+          className="box-border block h-[2px] w-full min-w-[1rem] shrink-0 rounded-full"
         />
         {children}
       </li>
