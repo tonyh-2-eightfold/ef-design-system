@@ -297,7 +297,7 @@
 /* Canonical overlay: matches dropdown-menu (rounded-md, p-1, popover, shadow-md) */
 .navbar__tab-menu {
   min-width: 8rem;
-  padding: 0;
+  padding: 8px 0 0;
   background: transparent;
   border: none;
 }
