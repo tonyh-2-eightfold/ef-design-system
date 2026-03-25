@@ -294,24 +294,39 @@
   font-family: inherit;
 }
 
-/* Canonical overlay: matches dropdown-menu (rounded-md, p-1, popover, shadow-md) */
-.navbar__tab-menu {
-  min-width: 8rem;
-  padding: 12px 0 0;
-  background: transparent;
-  border: none;
+/* CSS hover dropdown — replaces Radix NavigationMenu for reliability */
+.navbar__tab-dropdown-wrap {
   position: relative;
 }
 
-/* Invisible hover bridge — extends the hover zone above and to the sides of the dropdown */
-.navbar__tab-menu::before {
-  content: '';
+.navbar__tab-hover-menu {
+  display: none;
   position: absolute;
-  top: -20px;
-  left: -20px;
-  right: -20px;
-  height: 32px;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  min-width: 12rem;
+  padding-top: 4px;
+}
+
+.navbar__tab-dropdown-wrap:hover .navbar__tab-hover-menu {
+  display: block;
+}
+
+.navbar__tab-chevron {
+  transition: transform 0.15s ease;
+}
+
+.navbar__tab-dropdown-wrap:hover .navbar__tab-chevron {
+  transform: rotate(180deg);
+}
+
+/* Legacy Radix menu — kept for backward compat */
+.navbar__tab-menu {
+  min-width: 8rem;
+  padding: 0;
   background: transparent;
+  border: none;
 }
 
 .navbar__tab-menu-inner {

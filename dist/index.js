@@ -2,14 +2,14 @@ import { jsxs as p, Fragment as P, jsx as a } from "react/jsx-runtime";
 import * as l from "react";
 import B, { isValidElement as he, cloneElement as be, forwardRef as St, useState as Re } from "react";
 import { Slot as ge, createSlot as se } from "@radix-ui/react-slot";
-import { cva as ae } from "class-variance-authority";
+import { cva as te } from "class-variance-authority";
 import { clsx as Rt } from "clsx";
 import { twMerge as Tt } from "tailwind-merge";
 import * as O from "@radix-ui/react-dropdown-menu";
 import * as Te from "@radix-ui/react-toggle-group";
 import * as It from "react-dom";
 import Lt, { createPortal as Pt } from "react-dom";
-import * as ne from "@radix-ui/react-tabs";
+import * as ae from "@radix-ui/react-tabs";
 import { Check as Dt, ChevronDown as He, ChevronUp as Ot } from "lucide-react";
 import * as I from "@radix-ui/react-select";
 import * as le from "@radix-ui/react-progress";
@@ -18,7 +18,7 @@ import { CORNER_RADIUS_TOKENS as Hr, SPACING_TOKENS as Ur } from "./tokens.js";
 function b(...e) {
   return Tt(Rt(e));
 }
-const At = ae("btn", {
+const At = te("btn", {
   variants: {
     variant: {
       default: "btn--default",
@@ -101,7 +101,7 @@ function Ft(e) {
 function Bt(e) {
   return /* @__PURE__ */ a(O.Portal, { ...e });
 }
-function $t({
+function zt({
   className: e,
   sideOffset: t = 4,
   align: n = "start",
@@ -118,7 +118,7 @@ function $t({
     }
   ) });
 }
-function zt({
+function $t({
   className: e,
   ...t
 }) {
@@ -144,14 +144,14 @@ function Ht({
     }
   );
 }
-const oe = Object.assign(Vt, {
+const re = Object.assign(Vt, {
   Trigger: Ft,
   Portal: Bt,
-  Content: $t,
-  Item: zt,
+  Content: zt,
+  Item: $t,
   Separator: Ht
 });
-function Zn({
+function Gn({
   children: e,
   menu: t,
   variant: n = "outline",
@@ -162,9 +162,9 @@ function Zn({
   sideOffset: s = 4
 }) {
   const c = o ?? /* @__PURE__ */ a(jt, { variant: n, size: r, ...i, children: e });
-  return /* @__PURE__ */ p(oe, { children: [
-    /* @__PURE__ */ a(oe.Trigger, { asChild: !0, children: c }),
-    /* @__PURE__ */ a(oe.Content, { align: d, sideOffset: s, children: t })
+  return /* @__PURE__ */ p(re, { children: [
+    /* @__PURE__ */ a(re.Trigger, { asChild: !0, children: c }),
+    /* @__PURE__ */ a(re.Content, { align: d, sideOffset: s, children: t })
   ] });
 }
 const Ut = St(function({
@@ -219,7 +219,7 @@ function _e({ icon: e, children: t, variant: n = "neutral", size: r = "medium", 
     t
   ] });
 }
-function Wn({ children: e, variant: t = "selected", onRemove: n, onAdd: r, className: o = "" }) {
+function Kn({ children: e, variant: t = "selected", onRemove: n, onAdd: r, className: o = "" }) {
   const i = `skill-tag skill-tag--${t} ${o}`.trim();
   return t === "addable" ? /* @__PURE__ */ p("button", { type: "button", className: i, onClick: r, children: [
     e,
@@ -287,7 +287,7 @@ function Kt(e) {
 function Zt(e) {
   return B.isValidElement(e) && typeof e.type != "string" && (e.type === Gt || e.type.displayName === "Tag");
 }
-function qn({
+function Zn({
   type: e = "single",
   value: t,
   onValueChange: n,
@@ -330,7 +330,7 @@ function qn({
     }
   );
 }
-const Wt = ae("badge", {
+const Wt = te("badge", {
   variants: {
     variant: {
       default: "badge--default",
@@ -358,7 +358,7 @@ function Pe(e, t) {
     "data-icon": t
   }) : /* @__PURE__ */ a("span", { "data-icon": t, style: { display: "inline-flex" }, children: e });
 }
-function Yn({
+function Wn({
   className: e,
   variant: t = "default",
   size: n = "24",
@@ -386,7 +386,7 @@ function Yn({
   );
 }
 const qt = "m-0 flex list-none flex-wrap items-center gap-1 p-0 break-words sm:gap-1", Yt = "inline-flex items-center gap-1", Ue = "rounded-sm text-[length:14px] font-semibold leading-[1.43] text-[var(--color-blue-70)] no-underline transition-colors hover:text-[var(--color-blue-80)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-background", Xt = "text-[length:14px] font-medium leading-[1.43] text-[var(--foreground)]", Qt = "inline-flex size-5 shrink-0 select-none items-center justify-center text-center text-[20px] font-normal leading-none text-[var(--color-grey-60)] [&>svg]:size-5 [&>svg]:shrink-0";
-function Xn({ className: e, ...t }) {
+function qn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "nav",
     {
@@ -397,16 +397,16 @@ function Xn({ className: e, ...t }) {
     }
   );
 }
-function Qn({ className: e, ...t }) {
+function Yn({ className: e, ...t }) {
   return /* @__PURE__ */ a("ol", { "data-slot": "breadcrumb-list", className: b(qt, e), ...t });
 }
-function Jn({ className: e, ...t }) {
+function Xn({ className: e, ...t }) {
   return /* @__PURE__ */ a("li", { "data-slot": "breadcrumb-item", className: b(Yt, e), ...t });
 }
-function er({ asChild: e, className: t, ...n }) {
+function Qn({ asChild: e, className: t, ...n }) {
   return /* @__PURE__ */ a(e ? ge : "a", { "data-slot": "breadcrumb-link", className: b(Ue, t), ...n });
 }
-function tr({ className: e, ...t }) {
+function Jn({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "span",
     {
@@ -419,7 +419,7 @@ function tr({ className: e, ...t }) {
     }
   );
 }
-function ar({ children: e, className: t, ...n }) {
+function er({ children: e, className: t, ...n }) {
   return /* @__PURE__ */ a(
     "li",
     {
@@ -432,7 +432,7 @@ function ar({ children: e, className: t, ...n }) {
     }
   );
 }
-function nr({ className: e, children: t, ...n }) {
+function tr({ className: e, children: t, ...n }) {
   return /* @__PURE__ */ a(
     "span",
     {
@@ -510,7 +510,7 @@ function aa({
 function na({ to: e, children: t, className: n }) {
   return /* @__PURE__ */ a("a", { href: e, className: n, children: t });
 }
-function rr({
+function ar({
   course: e,
   href: t = "#",
   showBookmark: n = !0,
@@ -547,7 +547,7 @@ function rr({
 function ra({ to: e, children: t, className: n }) {
   return /* @__PURE__ */ a("a", { href: e, className: n, children: t });
 }
-function or({
+function nr({
   project: e,
   href: t = "#",
   showBookmark: n = !0,
@@ -605,7 +605,7 @@ function oa(e) {
 function ia({ to: e, children: t, className: n }) {
   return /* @__PURE__ */ a("a", { href: e, className: n, children: t });
 }
-function ir({
+function rr({
   person: e,
   href: t = "#",
   showBookmark: n = !0,
@@ -644,7 +644,7 @@ const G = {
   buttonLabel: "Explore Mentors",
   buttonHref: "#"
 };
-function sr({
+function or({
   title: e = G.title,
   badge: t = G.badge,
   description: n = G.description,
@@ -853,11 +853,11 @@ function pa(e) {
 function fa(e, t) {
   return l.useReducer((n, r) => t[n][r] ?? n, e);
 }
-var Y = (e) => {
+var q = (e) => {
   const { present: t, children: n } = e, r = va(t), o = typeof n == "function" ? n({ present: r.isPresent }) : l.Children.only(n), i = F(r.ref, ha(o));
   return typeof n == "function" || r.isPresent ? l.cloneElement(o, { ref: i }) : null;
 };
-Y.displayName = "Presence";
+q.displayName = "Presence";
 function va(e) {
   const [t, n] = l.useState(), r = l.useRef(null), o = l.useRef(e), i = l.useRef("none"), d = e ? "mounted" : "unmounted", [s, c] = fa(d, {
     mounted: {
@@ -873,19 +873,19 @@ function va(e) {
     }
   });
   return l.useEffect(() => {
-    const m = X(r.current);
+    const m = Y(r.current);
     i.current = s === "mounted" ? m : "none";
   }, [s]), H(() => {
     const m = r.current, u = o.current;
     if (u !== e) {
-      const f = i.current, g = X(m);
+      const f = i.current, g = Y(m);
       e ? c("MOUNT") : g === "none" || m?.display === "none" ? c("UNMOUNT") : c(u && f !== g ? "ANIMATION_OUT" : "UNMOUNT"), o.current = e;
     }
   }, [e, c]), H(() => {
     if (t) {
       let m;
       const u = t.ownerDocument.defaultView ?? window, h = (g) => {
-        const N = X(r.current).includes(CSS.escape(g.animationName));
+        const N = Y(r.current).includes(CSS.escape(g.animationName));
         if (g.target === t && N && (c("ANIMATION_END"), !o.current)) {
           const w = t.style.animationFillMode;
           t.style.animationFillMode = "forwards", m = u.setTimeout(() => {
@@ -893,7 +893,7 @@ function va(e) {
           });
         }
       }, f = (g) => {
-        g.target === t && (i.current = X(r.current));
+        g.target === t && (i.current = Y(r.current));
       };
       return t.addEventListener("animationstart", f), t.addEventListener("animationcancel", h), t.addEventListener("animationend", h), () => {
         u.clearTimeout(m), t.removeEventListener("animationstart", f), t.removeEventListener("animationcancel", h), t.removeEventListener("animationend", h);
@@ -907,7 +907,7 @@ function va(e) {
     }, [])
   };
 }
-function X(e) {
+function Y(e) {
   return e?.animationName || "none";
 }
 function ha(e) {
@@ -1340,13 +1340,13 @@ var pe = "NavigationMenuTrigger", lt = l.forwardRef((e, t) => {
         }),
         onPointerMove: T(
           e.onPointerMove,
-          ee(() => {
+          J(() => {
             r || f.current || d.wasEscapeCloseRef.current || h.current || (i.onTriggerEnter(d.value), h.current = !0);
           })
         ),
         onPointerLeave: T(
           e.onPointerLeave,
-          ee(() => {
+          J(() => {
             r || (i.onTriggerLeave(), h.current = !1);
           })
         ),
@@ -1395,7 +1395,7 @@ var Fa = "NavigationMenuLink", je = "navigationMenu.linkSelect", ct = l.forwardR
               cancelable: !0
             });
             if (s.addEventListener(je, (m) => o?.(m), { once: !0 }), ce(s, c), !c.defaultPrevented && !d.metaKey) {
-              const m = new CustomEvent(J, {
+              const m = new CustomEvent(Q, {
                 bubbles: !0,
                 cancelable: !0
               });
@@ -1412,12 +1412,12 @@ ct.displayName = Fa;
 var we = "NavigationMenuIndicator", Ba = l.forwardRef((e, t) => {
   const { forceMount: n, ...r } = e, o = A(we, e.__scopeNavigationMenu), i = !!o.value;
   return o.indicatorTrack ? Lt.createPortal(
-    /* @__PURE__ */ a(Y, { present: n || i, children: /* @__PURE__ */ a($a, { ...r, ref: t }) }),
+    /* @__PURE__ */ a(q, { present: n || i, children: /* @__PURE__ */ a(za, { ...r, ref: t }) }),
     o.indicatorTrack
   ) : null;
 });
 Ba.displayName = we;
-var $a = l.forwardRef((e, t) => {
+var za = l.forwardRef((e, t) => {
   const { __scopeNavigationMenu: n, ...r } = e, o = A(we, n), i = et(n), [d, s] = l.useState(
     null
   ), [c, m] = l.useState(null), u = o.orientation === "horizontal", h = !!o.value;
@@ -1464,7 +1464,7 @@ var $a = l.forwardRef((e, t) => {
     onRootContentClose: i.onRootContentClose,
     ...r
   };
-  return o.viewport ? /* @__PURE__ */ a(za, { forceMount: n, ...c, ref: d }) : /* @__PURE__ */ a(Y, { present: n || s, children: /* @__PURE__ */ a(
+  return o.viewport ? /* @__PURE__ */ a($a, { forceMount: n, ...c, ref: d }) : /* @__PURE__ */ a(q, { present: n || s, children: /* @__PURE__ */ a(
     ut,
     {
       "data-state": Ee(s),
@@ -1473,7 +1473,7 @@ var $a = l.forwardRef((e, t) => {
       onPointerEnter: T(e.onPointerEnter, o.onContentEnter),
       onPointerLeave: T(
         e.onPointerLeave,
-        ee(o.onContentLeave)
+        J(o.onContentLeave)
       ),
       style: {
         // Prevent interaction when animating out
@@ -1484,7 +1484,7 @@ var $a = l.forwardRef((e, t) => {
   ) });
 });
 dt.displayName = K;
-var za = l.forwardRef((e, t) => {
+var $a = l.forwardRef((e, t) => {
   const n = A(K, e.__scopeNavigationMenu), { onViewportContentChange: r, onViewportContentRemove: o } = n;
   return H(() => {
     r(e.value, {
@@ -1492,7 +1492,7 @@ var za = l.forwardRef((e, t) => {
       ...e
     });
   }, [e, t, r]), H(() => () => o(e.value), [e.value, o]), null;
-}), J = "navigationMenu.rootContentDismiss", ut = l.forwardRef((e, t) => {
+}), Q = "navigationMenu.rootContentDismiss", ut = l.forwardRef((e, t) => {
   const {
     __scopeNavigationMenu: n,
     value: r,
@@ -1509,7 +1509,7 @@ var za = l.forwardRef((e, t) => {
       const C = () => {
         M(), s(), y.contains(document.activeElement) && o.current?.focus();
       };
-      return y.addEventListener(J, C), () => y.removeEventListener(J, C);
+      return y.addEventListener(Q, C), () => y.removeEventListener(Q, C);
     }
   }, [u.isRootMenu, e.value, o, M, s]);
   const E = l.useMemo(() => {
@@ -1537,7 +1537,7 @@ var za = l.forwardRef((e, t) => {
       ref: f,
       disableOutsidePointerEvents: !1,
       onDismiss: () => {
-        const y = new Event(J, {
+        const y = new Event(Q, {
           bubbles: !0,
           cancelable: !0
         });
@@ -1566,7 +1566,7 @@ var za = l.forwardRef((e, t) => {
   ) });
 }), Ce = "NavigationMenuViewport", mt = l.forwardRef((e, t) => {
   const { forceMount: n, ...r } = e, i = !!A(Ce, e.__scopeNavigationMenu).value;
-  return /* @__PURE__ */ a(Y, { present: n || i, children: /* @__PURE__ */ a(Ha, { ...r, ref: t }) });
+  return /* @__PURE__ */ a(q, { present: n || i, children: /* @__PURE__ */ a(Ha, { ...r, ref: t }) });
 });
 mt.displayName = Ce;
 var Ha = l.forwardRef((e, t) => {
@@ -1591,10 +1591,10 @@ var Ha = l.forwardRef((e, t) => {
         ...o.style
       },
       onPointerEnter: T(e.onPointerEnter, i.onContentEnter),
-      onPointerLeave: T(e.onPointerLeave, ee(i.onContentLeave)),
+      onPointerLeave: T(e.onPointerLeave, J(i.onContentLeave)),
       children: Array.from(s.items).map(([M, { ref: E, forceMount: y, ...C }]) => {
         const x = N === M;
-        return /* @__PURE__ */ a(Y, { present: y || x, children: /* @__PURE__ */ a(
+        return /* @__PURE__ */ a(q, { present: y || x, children: /* @__PURE__ */ a(
           ut,
           {
             ...C,
@@ -1680,7 +1680,7 @@ function vt(e, t) {
 function ht(e, t) {
   return `${e}-content-${t}`;
 }
-function ee(e) {
+function J(e) {
   return (t) => t.pointerType === "mouse" ? e(t) : void 0;
 }
 var Za = tt, Wa = rt, qa = st, Ya = lt, Xa = ct, Fe = dt, Qa = mt;
@@ -1702,7 +1702,7 @@ function Ja({
       ...o,
       children: [
         t,
-        n && /* @__PURE__ */ a(nn, {})
+        n && /* @__PURE__ */ a(tn, {})
       ]
     }
   ) });
@@ -1721,7 +1721,7 @@ function en({
   );
 }
 const Me = l.createContext(null);
-function Q({
+function X({
   className: e,
   ...t
 }) {
@@ -1735,10 +1735,10 @@ function Q({
     }
   ) });
 }
-function ie(e) {
+function oe(e) {
   e.preventDefault();
 }
-function tn({
+function ir({
   className: e,
   children: t,
   onPointerMove: n,
@@ -1763,13 +1763,13 @@ function tn({
       className: b("nav-menu__trigger", e),
       ref: h,
       onPointerMoveCapture: (f) => {
-        ie(f), i?.(f);
+        oe(f), i?.(f);
       },
       onPointerLeaveCapture: (f) => {
-        ie(f), d?.(f);
+        oe(f), d?.(f);
       },
       onPointerEnterCapture: (f) => {
-        ie(f), s?.(f);
+        oe(f), s?.(f);
       },
       onPointerMove: n,
       onPointerLeave: r,
@@ -1782,7 +1782,7 @@ function tn({
     }
   );
 }
-function an({
+function sr({
   className: e,
   children: t,
   forceMount: n,
@@ -1855,7 +1855,7 @@ function an({
     )
   ] });
 }
-function nn({
+function tn({
   className: e,
   ...t
 }) {
@@ -1868,7 +1868,7 @@ function nn({
     }
   ) });
 }
-function W({
+function ie({
   className: e,
   active: t,
   children: n,
@@ -1891,7 +1891,7 @@ function lr({
   ...n
 }) {
   return /* @__PURE__ */ a(
-    ne.Root,
+    ae.Root,
     {
       "data-slot": "tabs",
       "data-orientation": t,
@@ -1904,7 +1904,7 @@ function lr({
     }
   );
 }
-const rn = ae(
+const an = te(
   "group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col data-[variant=line]:rounded-none",
   {
     variants: {
@@ -1924,11 +1924,11 @@ function cr({
   ...n
 }) {
   return /* @__PURE__ */ a(
-    ne.List,
+    ae.List,
     {
       "data-slot": "tabs-list",
       "data-variant": t,
-      className: b(rn({ variant: t }), e),
+      className: b(an({ variant: t }), e),
       ...n
     }
   );
@@ -1941,7 +1941,7 @@ function dr({
   ...o
 }) {
   return /* @__PURE__ */ p(
-    ne.Trigger,
+    ae.Trigger,
     {
       "data-slot": "tabs-trigger",
       className: b(
@@ -1965,7 +1965,7 @@ function ur({
   ...t
 }) {
   return /* @__PURE__ */ a(
-    ne.Content,
+    ae.Content,
     {
       "data-slot": "tabs-content",
       className: b("flex-1 outline-none", e),
@@ -2092,15 +2092,15 @@ function Nr({
 }) {
   return /* @__PURE__ */ a(I.Value, { "data-slot": "select-value", ...e });
 }
-const on = {
+const nn = {
   default: "border-transparent bg-[rgba(235,247,255,1)] text-[var(--color-button-primary-text)] hover:bg-[rgba(220,240,255,1)] focus-visible:bg-[rgba(220,240,255,1)] data-[placeholder]:text-[var(--color-button-primary-text)]/70 [&_svg]:opacity-80",
   primary: "border-transparent bg-[var(--color-button-primary-bg)] text-[var(--color-button-primary-text)] hover:bg-[var(--color-button-primary-bg-hover)] focus-visible:bg-[var(--color-button-primary-bg-hover)] data-[placeholder]:text-[var(--color-button-primary-text)] [&_svg]:opacity-80",
   secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:bg-secondary/80 dark:hover:bg-secondary/80 dark:focus-visible:bg-secondary/80 data-[placeholder]:text-secondary-foreground/70 [&_svg]:text-secondary-foreground/80",
   outline: "border border-input bg-transparent text-foreground hover:bg-accent/50 focus-visible:bg-accent/50 dark:bg-input/30 dark:hover:bg-input/50 dark:focus-visible:bg-input/50 data-[placeholder]:text-muted-foreground [&_svg]:text-muted-foreground"
-}, sn = {
+}, rn = {
   default: "h-9 min-h-9 px-3 py-2 [&_svg]:size-4",
   sm: "h-8 min-h-8 px-2.5 py-1.5 [&_svg]:size-3.5"
-}, ln = {
+}, on = {
   default: void 0,
   sm: { height: 32, minHeight: 32, paddingTop: 6, paddingBottom: 6, paddingLeft: 10, paddingRight: 10, fontSize: "0.75rem" }
 };
@@ -2118,11 +2118,11 @@ function yr({
       "data-slot": "select-trigger",
       "data-size": i,
       "data-variant": n,
-      style: ln[i],
+      style: on[i],
       className: b(
         "flex w-fit items-center justify-between gap-2 rounded-[var(--radius-8)] border whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-        sn[i],
-        on[n],
+        rn[i],
+        nn[n],
         e
       ),
       ...o,
@@ -2153,7 +2153,7 @@ function wr({
       align: r,
       ...o,
       children: [
-        /* @__PURE__ */ a(cn, {}),
+        /* @__PURE__ */ a(sn, {}),
         /* @__PURE__ */ a(
           I.Viewport,
           {
@@ -2164,7 +2164,7 @@ function wr({
             children: t
           }
         ),
-        /* @__PURE__ */ a(dn, {})
+        /* @__PURE__ */ a(ln, {})
       ]
     }
   ) });
@@ -2223,7 +2223,7 @@ function Er({
     }
   );
 }
-function cn({
+function sn({
   className: e,
   ...t
 }) {
@@ -2237,7 +2237,7 @@ function cn({
     }
   );
 }
-function dn({
+function ln({
   className: e,
   ...t
 }) {
@@ -2251,11 +2251,11 @@ function dn({
     }
   );
 }
-const un = "relative box-border h-1.5 w-full overflow-hidden rounded-[var(--radius-full)] border border-solid border-[rgba(44,140,201,1)] bg-[rgba(235,253,255,1)]";
-function mn(e, t) {
+const cn = "relative box-border h-1.5 w-full overflow-hidden rounded-[var(--radius-full)] border border-solid border-[rgba(44,140,201,1)] bg-[rgba(235,253,255,1)]";
+function dn(e, t) {
   return e == null ? "…" : `${Math.min(100, Math.max(0, Math.round(e / t * 100)))}% complete`;
 }
-const pn = l.forwardRef(
+const un = l.forwardRef(
   ({
     className: e,
     label: t,
@@ -2269,12 +2269,12 @@ const pn = l.forwardRef(
     max: m = 100,
     ...u
   }, h) => {
-    const f = typeof c == "number" && !Number.isNaN(c) ? c : null, g = typeof m == "number" && m > 0 ? m : 100, _ = f != null ? Math.min(100, Math.max(0, f / g * 100)) : 0, N = d ?? (f != null ? String(Math.min(100, Math.max(0, Math.round(f / g * 100)))) : "…"), w = s ?? mn(f, g), M = r === "scale" || r === "complete-left" || t != null, E = /* @__PURE__ */ a(
+    const f = typeof c == "number" && !Number.isNaN(c) ? c : null, g = typeof m == "number" && m > 0 ? m : 100, _ = f != null ? Math.min(100, Math.max(0, f / g * 100)) : 0, N = d ?? (f != null ? String(Math.min(100, Math.max(0, Math.round(f / g * 100)))) : "…"), w = s ?? dn(f, g), M = r === "scale" || r === "complete-left" || t != null, E = /* @__PURE__ */ a(
       le.Root,
       {
         ref: h,
         "data-slot": "progress",
-        className: b(un, M ? void 0 : e),
+        className: b(cn, M ? void 0 : e),
         value: f,
         max: g,
         ...u,
@@ -2372,9 +2372,9 @@ const pn = l.forwardRef(
     );
   }
 );
-pn.displayName = le.Root.displayName;
+un.displayName = le.Root.displayName;
 const ke = l.createContext(null);
-function re() {
+function ne() {
   const e = l.useContext(ke);
   if (!e) throw new Error("Stepper components must be used within <Stepper>");
   return e;
@@ -2385,7 +2385,7 @@ function _t() {
   if (e == null) throw new Error("StepperItem subcomponents must be inside <StepperItem>");
   return e;
 }
-const fn = l.forwardRef(
+const mn = l.forwardRef(
   ({ className: e, value: t, onValueChange: n, children: r, ...o }, i) => /* @__PURE__ */ a(ke.Provider, { value: { value: t, onValueChange: n }, children: /* @__PURE__ */ a(
     "nav",
     {
@@ -2398,10 +2398,10 @@ const fn = l.forwardRef(
     }
   ) })
 );
-fn.displayName = "Stepper";
+mn.displayName = "Stepper";
 const Nt = l.forwardRef(
   ({ className: e, segmentIndex: t, style: n, children: r, ...o }, i) => {
-    const { value: d } = re(), s = l.useContext(gt), c = typeof s == "number" ? s : t ?? 0, m = Number(d), u = Number.isFinite(m) && m > Number(c);
+    const { value: d } = ne(), s = l.useContext(gt), c = typeof s == "number" ? s : t ?? 0, m = Number(d), u = Number.isFinite(m) && m > Number(c);
     return /* @__PURE__ */ p(
       "li",
       {
@@ -2431,20 +2431,20 @@ const Nt = l.forwardRef(
   }
 );
 Nt.displayName = "StepperSeparator";
-function vn(e) {
+function pn(e) {
   if (!l.isValidElement(e)) return !1;
   const t = e.type;
   return t === Nt || t?.displayName === "StepperSeparator";
 }
-function hn(e) {
+function fn(e) {
   return l.isValidElement(e) && e.type.displayName === "StepperItem";
 }
-const bn = l.forwardRef(
+const vn = l.forwardRef(
   ({ className: e, children: t, ...n }, r) => {
     const o = [];
     let i = 0, d = 0;
     return l.Children.forEach(t, (s) => {
-      if (vn(s)) {
+      if (pn(s)) {
         const c = d++;
         o.push(
           /* @__PURE__ */ a(gt.Provider, { value: c, children: l.cloneElement(s, {
@@ -2454,7 +2454,7 @@ const bn = l.forwardRef(
         );
         return;
       }
-      if (hn(s)) {
+      if (fn(s)) {
         const c = i++;
         o.push(
           l.cloneElement(s, {
@@ -2477,10 +2477,10 @@ const bn = l.forwardRef(
     );
   }
 );
-bn.displayName = "StepperList";
-const gn = l.forwardRef(
+vn.displayName = "StepperList";
+const hn = l.forwardRef(
   ({ className: e, step: t, children: n, ...r }, o) => {
-    const i = t ?? 0, { value: d } = re(), s = i < d ? "complete" : i === d ? "active" : "upcoming";
+    const i = t ?? 0, { value: d } = ne(), s = i < d ? "complete" : i === d ? "active" : "upcoming";
     return /* @__PURE__ */ a(Se.Provider, { value: i, children: /* @__PURE__ */ a(
       "li",
       {
@@ -2497,11 +2497,11 @@ const gn = l.forwardRef(
     ) });
   }
 );
-gn.displayName = "StepperItem";
-const _n = "group/stepper-trigger flex w-full max-w-[10rem] flex-col items-center gap-2 rounded-md text-center", Nn = l.forwardRef(
+hn.displayName = "StepperItem";
+const bn = "group/stepper-trigger flex w-full max-w-[10rem] flex-col items-center gap-2 rounded-md text-center", gn = l.forwardRef(
   ({ className: e, type: t = "button", disabled: n, onClick: r, children: o, ...i }, d) => {
-    const { value: s, onValueChange: c } = re(), m = _t(), u = c != null && !n && m <= s, h = b(
-      _n,
+    const { value: s, onValueChange: c } = ne(), m = _t(), u = c != null && !n && m <= s, h = b(
+      bn,
       u && "cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-background hover:opacity-90",
       !c && "cursor-default",
       c && m > s && "cursor-default",
@@ -2537,9 +2537,9 @@ const _n = "group/stepper-trigger flex w-full max-w-[10rem] flex-col items-cente
     );
   }
 );
-Nn.displayName = "StepperTrigger";
+gn.displayName = "StepperTrigger";
 const Be = "bg-[var(--color-button-primary-bg)] text-[var(--color-button-primary-text)]";
-function $e(e) {
+function ze(e) {
   return b(
     "flex size-8 shrink-0 items-center justify-center rounded-[var(--radius-full)] text-xs font-semibold tabular-nums transition-colors",
     e === "complete" && b(Be, "[&_.material-symbols-outlined]:text-[18px] [&_.material-symbols-outlined]:leading-none"),
@@ -2550,7 +2550,7 @@ function $e(e) {
     e === "upcoming" && "bg-[rgba(235,253,255,0.6)] text-[var(--muted-foreground)]"
   );
 }
-function ze() {
+function $e() {
   return /* @__PURE__ */ a(
     "span",
     {
@@ -2561,7 +2561,7 @@ function ze() {
     }
   );
 }
-const yn = l.forwardRef(
+const _n = l.forwardRef(
   ({ className: e, stepDisplay: t, forceState: n, children: r, ...o }, i) => {
     const d = l.useContext(Se), s = l.useContext(ke);
     if (n != null) {
@@ -2572,9 +2572,9 @@ const yn = l.forwardRef(
           ref: i,
           "data-slot": "stepper-indicator",
           "data-state": n,
-          className: b($e(n), e),
+          className: b(ze(n), e),
           ...o,
-          children: r ?? (_ ? /* @__PURE__ */ a(ze, {}) : g)
+          children: r ?? (_ ? /* @__PURE__ */ a($e, {}) : g)
         }
       );
     }
@@ -2589,17 +2589,17 @@ const yn = l.forwardRef(
         ref: i,
         "data-slot": "stepper-indicator",
         "data-state": u,
-        className: b($e(u), e),
+        className: b(ze(u), e),
         ...o,
-        children: r ?? (f ? /* @__PURE__ */ a(ze, {}) : h)
+        children: r ?? (f ? /* @__PURE__ */ a($e, {}) : h)
       }
     );
   }
 );
-yn.displayName = "StepperIndicator";
-const wn = l.forwardRef(
+_n.displayName = "StepperIndicator";
+const Nn = l.forwardRef(
   ({ className: e, ...t }, n) => {
-    const r = _t(), { value: o } = re(), i = r === o, d = r < o;
+    const r = _t(), { value: o } = ne(), i = r === o, d = r < o;
     return /* @__PURE__ */ a(
       "span",
       {
@@ -2616,8 +2616,8 @@ const wn = l.forwardRef(
     );
   }
 );
-wn.displayName = "StepperTitle";
-const Cn = l.forwardRef(
+Nn.displayName = "StepperTitle";
+const yn = l.forwardRef(
   ({ className: e, ...t }, n) => /* @__PURE__ */ a(
     "span",
     {
@@ -2631,8 +2631,8 @@ const Cn = l.forwardRef(
     }
   )
 );
-Cn.displayName = "StepperDescription";
-function xn({
+yn.displayName = "StepperDescription";
+function wn({
   to: e,
   children: t,
   className: n,
@@ -2640,7 +2640,7 @@ function xn({
 }) {
   return /* @__PURE__ */ a("a", { href: e, className: n, onClick: r, children: t });
 }
-function En({
+function Cn({
   tabs: e,
   avatarMenuItems: t,
   user: n,
@@ -2656,49 +2656,52 @@ function En({
   onSearchChange: f,
   onSearchIconClick: g,
   actionButtons: _ = [],
-  LinkComponent: N = xn,
+  LinkComponent: N = wn,
   NavLinkComponent: w
 }) {
   const [M, E] = Re(!1), [y, C] = Re(!1), x = N, S = i === "/profile", k = n.avatarType === "photo" && n.avatarPhotoSrc ? n.avatarPhotoSrc.replace("w=200&h=200", "w=80&h=80") : null, L = (v) => {
     const j = v.chevron && v.subItems && v.subItems.length > 0;
     if (v.path && j) {
-      const z = i === v.path || v.subItems.some(($) => $.path === i);
-      return /* @__PURE__ */ p(Q, { children: [
-        /* @__PURE__ */ a(tn, { className: `navbar__tab navbar__tab--dropdown ${z ? "navbar__tab--active" : ""}`, children: /* @__PURE__ */ a("span", { className: "navbar__tab-label", children: v.label }) }),
-        /* @__PURE__ */ a(an, { className: "navbar__tab-menu", children: /* @__PURE__ */ p("div", { className: "navbar__tab-menu-inner", children: [
-          v.subItems.map(($) => /* @__PURE__ */ a(W, { asChild: !0, children: /* @__PURE__ */ a(x, { to: $.path, className: "navbar__tab-menu-item", children: $.label }) }, $.path)),
+      const $ = i === v.path || v.subItems.some((z) => z.path === i);
+      return /* @__PURE__ */ p(X, { className: "navbar__tab-dropdown-wrap", children: [
+        /* @__PURE__ */ p("button", { className: `navbar__tab navbar__tab--dropdown ${$ ? "navbar__tab--active" : ""}`, type: "button", children: [
+          /* @__PURE__ */ a("span", { className: "navbar__tab-label", children: v.label }),
+          /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", style: { fontSize: 16, marginLeft: 2 }, children: "expand_more" })
+        ] }),
+        /* @__PURE__ */ a("div", { className: "navbar__tab-hover-menu", children: /* @__PURE__ */ p("div", { className: "navbar__tab-menu-inner", children: [
+          v.subItems.map((z) => /* @__PURE__ */ a(x, { to: z.path, className: "nav-menu__link navbar__tab-menu-item", children: z.label }, z.path)),
           v.path && !v.hideViewAll && /* @__PURE__ */ p(P, { children: [
             /* @__PURE__ */ a("div", { className: "navbar__tab-menu-divider" }),
-            /* @__PURE__ */ a(W, { asChild: !0, children: /* @__PURE__ */ a(x, { to: v.path, className: "navbar__tab-menu-item navbar__tab-menu-item--view-all", children: "View all" }) })
+            /* @__PURE__ */ a(x, { to: v.path, className: "nav-menu__link navbar__tab-menu-item navbar__tab-menu-item--view-all", children: "View all" })
           ] })
         ] }) })
       ] }, v.id);
     }
     if (v.path) {
-      const z = w && w !== N, $ = i === v.path || v.path === "/" && !i;
-      return z ? /* @__PURE__ */ a(Q, { children: /* @__PURE__ */ a(W, { asChild: !0, active: $, children: /* @__PURE__ */ a(w, { to: v.path, className: "navbar__tab navbar__tab--link", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
+      const $ = w && w !== N, z = i === v.path || v.path === "/" && !i;
+      return $ ? /* @__PURE__ */ a(X, { children: /* @__PURE__ */ a(ie, { asChild: !0, active: z, children: /* @__PURE__ */ a(w, { to: v.path, className: "navbar__tab navbar__tab--link", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
         v.label,
         v.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
-      ] }) }) }) }, v.id) : /* @__PURE__ */ a(Q, { children: /* @__PURE__ */ a(W, { asChild: !0, active: $, children: /* @__PURE__ */ a(x, { to: v.path, className: "navbar__tab navbar__tab--link", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
+      ] }) }) }) }, v.id) : /* @__PURE__ */ a(X, { children: /* @__PURE__ */ a(ie, { asChild: !0, active: z, children: /* @__PURE__ */ a(x, { to: v.path, className: "navbar__tab navbar__tab--link", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
         v.label,
         v.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
       ] }) }) }) }, v.id);
     }
-    return /* @__PURE__ */ a(Q, { children: /* @__PURE__ */ a(W, { href: "#", className: "navbar__tab", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
+    return /* @__PURE__ */ a(X, { children: /* @__PURE__ */ a(ie, { href: "#", className: "navbar__tab", children: /* @__PURE__ */ p("span", { className: "navbar__tab-label", children: [
       v.label,
       v.chevron && /* @__PURE__ */ a("span", { className: "material-symbols-outlined navbar__tab-chevron", "aria-hidden": !0, children: "expand_more" })
     ] }) }) }, v.id);
   }, R = (v) => v.path ? v.chevron && v.subItems && v.subItems.length > 0 ? /* @__PURE__ */ p("div", { className: "navbar__menu-group", children: [
     /* @__PURE__ */ a(x, { to: v.path, className: "navbar__menu-link navbar__menu-link--parent", onClick: () => E(!1), children: v.label }),
-    /* @__PURE__ */ a("div", { className: "navbar__menu-sublinks", children: v.subItems.map((z) => /* @__PURE__ */ a(
+    /* @__PURE__ */ a("div", { className: "navbar__menu-sublinks", children: v.subItems.map(($) => /* @__PURE__ */ a(
       x,
       {
-        to: z.path,
+        to: $.path,
         className: "navbar__menu-link navbar__menu-link--sub",
         onClick: () => E(!1),
-        children: z.label
+        children: $.label
       },
-      z.path
+      $.path
     )) })
   ] }, v.id) : /* @__PURE__ */ p(
     x,
@@ -2887,10 +2890,10 @@ const yt = l.createContext({
   variant: "career-hub",
   careerHubSize: "parent"
 });
-function Mn() {
+function xn() {
   return l.useContext(yt);
 }
-const kn = ae(
+const En = te(
   "w-full shrink-0 border-b border-[transparent] transition-colors",
   {
     variants: {
@@ -2917,7 +2920,7 @@ const kn = ae(
         "data-variant": s,
         "data-ch-size": s === "career-hub" ? n : void 0,
         className: b(
-          kn({ variant: s }),
+          En({ variant: s }),
           o && s === "career-hub" && "!bg-transparent",
           r && "sticky top-0 z-30",
           r && !(o && s === "career-hub") && "backdrop-blur-sm supports-[backdrop-filter]:bg-[var(--background)]/95",
@@ -2931,15 +2934,15 @@ const kn = ae(
   }
 );
 wt.displayName = "Header";
-const Sn = {
+const Mn = {
   profile: "h-[var(--header-career-hub-profile-height)] min-h-[var(--header-career-hub-profile-height)] flex-wrap items-start content-start gap-y-3 pb-4 pl-[var(--spacing-12)] pr-[var(--spacing-12)] md:pb-6 md:gap-5",
   parent: "h-[var(--header-career-hub-parent-height)] min-h-[var(--header-career-hub-parent-height)] items-start gap-4 pl-[var(--spacing-12)] pr-[var(--spacing-12)]",
   child: "h-[var(--header-career-hub-child-height)] min-h-[var(--header-career-hub-child-height)] items-start gap-3 pb-2 pl-[var(--spacing-12)] pr-[var(--spacing-12)]"
 }, Ct = l.forwardRef(
   ({ className: e, actions: t, children: n, ...r }, o) => {
-    const { variant: i, careerHubSize: d } = Mn(), s = "flex min-h-12 w-full max-w-[100vw] items-start gap-3 py-0 pl-[var(--spacing-12)] pr-[var(--spacing-12)] md:h-[var(--navbar-height,3.75rem)] md:gap-4", c = b(
+    const { variant: i, careerHubSize: d } = xn(), s = "flex min-h-12 w-full max-w-[100vw] items-start gap-3 py-0 pl-[var(--spacing-12)] pr-[var(--spacing-12)] md:h-[var(--navbar-height,3.75rem)] md:gap-4", c = b(
       "flex w-full max-w-[100vw] items-start",
-      Sn[d]
+      Mn[d]
     );
     return /* @__PURE__ */ p(
       "div",
@@ -2957,11 +2960,11 @@ const Sn = {
   }
 );
 Ct.displayName = "HeaderToolbar";
-const Rn = l.forwardRef(
+const kn = l.forwardRef(
   ({ className: e, ...t }, n) => /* @__PURE__ */ a("div", { ref: n, "data-slot": "header-actions", className: b(e), ...t })
 );
-Rn.displayName = "HeaderActions";
-const Tn = l.forwardRef(
+kn.displayName = "HeaderActions";
+const Sn = l.forwardRef(
   ({ className: e, ...t }, n) => /* @__PURE__ */ a(
     "div",
     {
@@ -2972,7 +2975,7 @@ const Tn = l.forwardRef(
     }
   )
 );
-Tn.displayName = "HeaderGroup";
+Sn.displayName = "HeaderGroup";
 const xt = l.forwardRef(
   ({ className: e, ...t }, n) => /* @__PURE__ */ a("h1", { ref: n, "data-slot": "header-title", className: b(e), ...t })
 );
@@ -2985,20 +2988,20 @@ const Mt = l.forwardRef(
   ({ className: e, ...t }, n) => /* @__PURE__ */ a("p", { ref: n, "data-slot": "header-secondary", className: b(e), ...t })
 );
 Mt.displayName = "HeaderSecondary";
-const In = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="540" viewBox="0 0 1440 540" fill="none"><g clip-path="url(#ef_ch_prof)"><rect width="1440" height="540" fill="white"/><path d="M760 77.8125L860 20V120L760 177.812V77.8125Z" fill="#C15151"/><path d="M960 77.8125L860 20V120L960 177.812V77.8125Z" fill="#F29D31"/><path d="M1060 251.25L1160 193.438V293.438L1060 351.25V251.25Z" fill="#69717F"/><path d="M1260 251.25L1160 193.438V293.438L1260 351.25V251.25Z" fill="#2DB3C7"/><path d="M1160 -6.5625L1060 -64.375V35.625L1160 93.4375V-6.5625Z" fill="#F29D31"/><path d="M1360 93.4375L1260 35.625V135.625L1360 193.438V93.4375Z" fill="#F29D31"/><path d="M960 -22.1875L860 -80V20L960 77.8125V-22.1875Z" fill="#2DB3C7"/><path d="M1460 351.25L1360 293.438V393.438L1460 451.25V351.25Z" fill="#858B98"/><path d="M1460 451.25L1360 393.438V493.438L1460 551.25V451.25Z" fill="#2DB3C7"/><path d="M1460 251.25L1360 193.438V293.438L1460 351.25V251.25Z" fill="#E46F6F"/><path d="M1160 -6.5625L1260 -64.375V35.625L1160 93.4375V-6.5625Z" fill="#1999AC"/><path d="M1160 93.4375L1260 35.625V135.625L1160 193.438V93.4375Z" fill="#69717F"/><path d="M1360 -6.5625L1460 -64.375V35.625L1360 93.4375V-6.5625Z" fill="#1999AC"/><path d="M1360 93.4375L1460 35.625V135.625L1360 193.438V93.4375Z" fill="#69717F"/><path d="M1060 35.625L960 -22.1875V77.8125L1060 135.625V35.625Z" fill="#E46F6F"/></g><defs><clipPath id="ef_ch_prof"><rect width="1440" height="540" fill="white"/></clipPath></defs></svg>', Ln = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="292" viewBox="0 0 1440 292" fill="none"><g clip-path="url(#ef_ch_def)"><rect width="1440" height="292" fill="white"/><path d="M760 80.8585L860 20.7829V124.697L760 184.773V80.8585Z" fill="#C15151"/><path d="M960 80.8585L860 20.7829V124.697L960 184.773V80.8585Z" fill="#F29D31"/><path d="M1060 261.085L1160 201.01V304.924L1060 365V261.085Z" fill="#69717F"/><path d="M1260 261.085L1160 201.01V304.924L1260 365V261.085Z" fill="#2DB3C7"/><path d="M1160 -6.8194L1060 -66.895V37.0196L1160 97.0952V-6.8194Z" fill="#F29D31"/><path d="M1360 97.0952L1260 37.0196V140.934L1360 201.01V97.0952Z" fill="#F29D31"/><path d="M960 -23.056L860 -83.1317V20.7829L960 80.8586V-23.056Z" fill="#2DB3C7"/><path d="M1460 261.085L1360 201.01V304.924L1460 365V261.085Z" fill="#E46F6F"/><path d="M1160 -6.8194L1260 -66.895V37.0196L1160 97.0952V-6.8194Z" fill="#1999AC"/><path d="M1160 97.0952L1260 37.0196V140.934L1160 201.01V97.0952Z" fill="#69717F"/><path d="M1360 -6.8194L1460 -66.895V37.0196L1360 97.0952V-6.8194Z" fill="#1999AC"/><path d="M1360 97.0952L1460 37.0196V140.934L1360 201.01V97.0952Z" fill="#69717F"/><path d="M1060 37.0196L960 -23.0561V80.8585L1060 140.934V37.0196Z" fill="#E46F6F"/></g><defs><clipPath id="ef_ch_def"><rect width="1440" height="292" fill="white"/></clipPath></defs></svg>';
-function Pn(e) {
-  return `url("data:image/svg+xml,${encodeURIComponent(e === "profile" ? In : Ln)}")`;
+const Rn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="540" viewBox="0 0 1440 540" fill="none"><g clip-path="url(#ef_ch_prof)"><rect width="1440" height="540" fill="white"/><path d="M760 77.8125L860 20V120L760 177.812V77.8125Z" fill="#C15151"/><path d="M960 77.8125L860 20V120L960 177.812V77.8125Z" fill="#F29D31"/><path d="M1060 251.25L1160 193.438V293.438L1060 351.25V251.25Z" fill="#69717F"/><path d="M1260 251.25L1160 193.438V293.438L1260 351.25V251.25Z" fill="#2DB3C7"/><path d="M1160 -6.5625L1060 -64.375V35.625L1160 93.4375V-6.5625Z" fill="#F29D31"/><path d="M1360 93.4375L1260 35.625V135.625L1360 193.438V93.4375Z" fill="#F29D31"/><path d="M960 -22.1875L860 -80V20L960 77.8125V-22.1875Z" fill="#2DB3C7"/><path d="M1460 351.25L1360 293.438V393.438L1460 451.25V351.25Z" fill="#858B98"/><path d="M1460 451.25L1360 393.438V493.438L1460 551.25V451.25Z" fill="#2DB3C7"/><path d="M1460 251.25L1360 193.438V293.438L1460 351.25V251.25Z" fill="#E46F6F"/><path d="M1160 -6.5625L1260 -64.375V35.625L1160 93.4375V-6.5625Z" fill="#1999AC"/><path d="M1160 93.4375L1260 35.625V135.625L1160 193.438V93.4375Z" fill="#69717F"/><path d="M1360 -6.5625L1460 -64.375V35.625L1360 93.4375V-6.5625Z" fill="#1999AC"/><path d="M1360 93.4375L1460 35.625V135.625L1360 193.438V93.4375Z" fill="#69717F"/><path d="M1060 35.625L960 -22.1875V77.8125L1060 135.625V35.625Z" fill="#E46F6F"/></g><defs><clipPath id="ef_ch_prof"><rect width="1440" height="540" fill="white"/></clipPath></defs></svg>', Tn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="292" viewBox="0 0 1440 292" fill="none"><g clip-path="url(#ef_ch_def)"><rect width="1440" height="292" fill="white"/><path d="M760 80.8585L860 20.7829V124.697L760 184.773V80.8585Z" fill="#C15151"/><path d="M960 80.8585L860 20.7829V124.697L960 184.773V80.8585Z" fill="#F29D31"/><path d="M1060 261.085L1160 201.01V304.924L1060 365V261.085Z" fill="#69717F"/><path d="M1260 261.085L1160 201.01V304.924L1260 365V261.085Z" fill="#2DB3C7"/><path d="M1160 -6.8194L1060 -66.895V37.0196L1160 97.0952V-6.8194Z" fill="#F29D31"/><path d="M1360 97.0952L1260 37.0196V140.934L1360 201.01V97.0952Z" fill="#F29D31"/><path d="M960 -23.056L860 -83.1317V20.7829L960 80.8586V-23.056Z" fill="#2DB3C7"/><path d="M1460 261.085L1360 201.01V304.924L1460 365V261.085Z" fill="#E46F6F"/><path d="M1160 -6.8194L1260 -66.895V37.0196L1160 97.0952V-6.8194Z" fill="#1999AC"/><path d="M1160 97.0952L1260 37.0196V140.934L1160 201.01V97.0952Z" fill="#69717F"/><path d="M1360 -6.8194L1460 -66.895V37.0196L1360 97.0952V-6.8194Z" fill="#1999AC"/><path d="M1360 97.0952L1460 37.0196V140.934L1360 201.01V97.0952Z" fill="#69717F"/><path d="M1060 37.0196L960 -23.0561V80.8585L1060 140.934V37.0196Z" fill="#E46F6F"/></g><defs><clipPath id="ef_ch_def"><rect width="1440" height="292" fill="white"/></clipPath></defs></svg>';
+function In(e) {
+  return `url("data:image/svg+xml,${encodeURIComponent(e === "profile" ? Rn : Tn)}")`;
 }
-function Dn(e) {
+function Ln(e) {
   return e === "talent-acquisition" ? "linear-gradient(180deg, color-mix(in srgb, var(--color-background2-blue) 50%, transparent) 0%, var(--background) 92%)" : "linear-gradient(180deg, color-mix(in srgb, var(--color-background1-grey) 65%, transparent) 0%, var(--color-background2-grey) 95%)";
 }
-function On(e, t) {
+function Pn(e, t) {
   const n = !!t.src?.trim(), r = e === "career-hub" && !n && t.chevronsVariant != null;
   return n && t.src ? {
     hasImage: !0,
     isChevrons: !1,
     fillStyle: {
-      backgroundImage: t.imageScrim ? `${Dn(e)}, url(${t.src})` : `url(${t.src})`,
+      backgroundImage: t.imageScrim ? `${Ln(e)}, url(${t.src})` : `url(${t.src})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat"
@@ -3008,7 +3011,7 @@ function On(e, t) {
     isChevrons: !0,
     fillStyle: {
       backgroundColor: "var(--color-background1-grey)",
-      backgroundImage: Pn(t.chevronsVariant),
+      backgroundImage: In(t.chevronsVariant),
       /** Fill the whole slot (e.g. navbar + header): scale up like object-fit: cover; anchor top-right. */
       backgroundPosition: "right top",
       backgroundRepeat: "no-repeat",
@@ -3030,7 +3033,7 @@ const kt = l.forwardRef(
     children: i,
     ...d
   }, s) => {
-    const { fillStyle: c, hasImage: m, isChevrons: u } = On(t, {
+    const { fillStyle: c, hasImage: m, isChevrons: u } = Pn(t, {
       src: n,
       imageScrim: r,
       chevronsVariant: o
@@ -3065,7 +3068,7 @@ const kt = l.forwardRef(
   }
 );
 kt.displayName = "ProductBackground";
-const Mr = "/eightfold-logo.svg", kr = "/ai-agent.svg", An = "/copilot.svg", Sr = ["talent-acquisition", "career-hub"], jn = {
+const Mr = "/eightfold-logo.svg", kr = "/ai-agent.svg", Dn = "/copilot.svg", Sr = ["talent-acquisition", "career-hub"], On = {
   campaigns: "Campaigns",
   "career-exchange": "Career Exchange",
   "career-hub": "Career Hub",
@@ -3075,7 +3078,7 @@ const Mr = "/eightfold-logo.svg", kr = "/ai-agent.svg", An = "/copilot.svg", Sr 
   "talent-design": "Talent Design",
   "talent-flex": "Talent Flex",
   "talent-university": "Talent University"
-}, te = "/product-logos", q = {
+}, ee = "/product-logos", W = {
   campaigns: { small: "campaigns-small.svg", medium: "campaigns-medium.svg" },
   "career-exchange": { small: "career-exchange-small.svg", medium: "career-exchange-medium.svg" },
   "career-hub": { small: "career-hub-small.svg", medium: "career-hub-medium.svg" },
@@ -3087,18 +3090,18 @@ const Mr = "/eightfold-logo.svg", kr = "/ai-agent.svg", An = "/copilot.svg", Sr 
   "talent-university": { small: "talent-university-small.svg", medium: "talent-university-medium.svg" }
 };
 function Rr(e, t = "medium") {
-  return `${te}/${q[e][t]}`;
+  return `${ee}/${W[e][t]}`;
 }
 function Tr(e, t = "medium") {
   return {
-    productName: jn[e],
-    productIconSrc: `${te}/${q[e][t]}`
+    productName: On[e],
+    productIconSrc: `${ee}/${W[e][t]}`
   };
 }
-const Ir = Object.keys(q).reduce(
+const Ir = Object.keys(W).reduce(
   (e, t) => (e[t] = {
-    small: `${te}/${q[t].small}`,
-    medium: `${te}/${q[t].medium}`
+    small: `${ee}/${W[t].small}`,
+    medium: `${ee}/${W[t].medium}`
   }, e),
   {}
 ), Lr = [
@@ -3246,7 +3249,7 @@ const Ir = Object.keys(q).reduce(
     ]
   }
 ], Vr = "Search for positions or candidates", Fr = [
-  { iconSrc: An, ariaLabel: "Copilot" },
+  { iconSrc: Dn, ariaLabel: "Copilot" },
   { icon: "work_outline", ariaLabel: "Talent" },
   { icon: "notifications", ariaLabel: "Notifications" }
 ];
@@ -3261,7 +3264,7 @@ function Br({
 }) {
   return /* @__PURE__ */ p(P, { children: [
     /* @__PURE__ */ a(kt, { variant: "career-hub", chevronsVariant: i ?? (e === "profile" ? "profile" : "default"), children: /* @__PURE__ */ p("div", { className: "career-hub-shell", children: [
-      /* @__PURE__ */ a(En, { ...o }),
+      /* @__PURE__ */ a(Cn, { ...o }),
       /* @__PURE__ */ a(wt, { variant: "career-hub", chSize: e, overlayBackground: !0, children: /* @__PURE__ */ a(Ct, { actions: r, children: /* @__PURE__ */ p(Et, { children: [
         /* @__PURE__ */ a(xt, { children: t }),
         n && /* @__PURE__ */ a(Mt, { children: n })
@@ -3272,31 +3275,31 @@ function Br({
 }
 export {
   kr as AI_AGENT_LOGO_PATH,
-  Yn as Badge,
-  Xn as Breadcrumb,
-  nr as BreadcrumbEllipsis,
-  Jn as BreadcrumbItem,
-  er as BreadcrumbLink,
-  Qn as BreadcrumbList,
-  tr as BreadcrumbPage,
-  ar as BreadcrumbSeparator,
+  Wn as Badge,
+  qn as Breadcrumb,
+  tr as BreadcrumbEllipsis,
+  Xn as BreadcrumbItem,
+  Qn as BreadcrumbLink,
+  Yn as BreadcrumbList,
+  Jn as BreadcrumbPage,
+  er as BreadcrumbSeparator,
   jt as Button,
-  Zn as ButtonDropdown,
+  Gn as ButtonDropdown,
   Or as CAREER_HUB_CHRO_TABS,
   Ar as CAREER_HUB_HRBP_TABS,
-  An as COPILOT_LOGO_PATH,
+  Dn as COPILOT_LOGO_PATH,
   Hr as CORNER_RADIUS_TOKENS,
   Br as CareerHubShell,
-  rr as CourseObjectCard,
+  ar as CourseObjectCard,
   mr as DataTable,
   fr as DataTableBody,
   br as DataTableCell,
   hr as DataTableHead,
   pr as DataTableHeader,
   vr as DataTableRow,
-  oe as DropdownMenu,
-  $t as DropdownMenuContent,
-  zt as DropdownMenuItem,
+  re as DropdownMenu,
+  zt as DropdownMenuContent,
+  $t as DropdownMenuItem,
   Bt as DropdownMenuPortal,
   Ht as DropdownMenuSeparator,
   Ft as DropdownMenuTrigger,
@@ -3304,8 +3307,8 @@ export {
   Lr as EMPLOYEE_AVATAR_MENU_ITEMS,
   Pr as EMPLOYEE_NON_MANAGER_TABS,
   wt as Header,
-  Rn as HeaderActions,
-  Tn as HeaderGroup,
+  kn as HeaderActions,
+  Sn as HeaderGroup,
   Mt as HeaderSecondary,
   Et as HeaderTextGroup,
   xt as HeaderTitle,
@@ -3313,43 +3316,43 @@ export {
   Ut as Input,
   aa as InsightCard,
   Dr as MANAGER_TABS,
-  sr as MentorInsightCard,
-  En as Navbar,
+  or as MentorInsightCard,
+  Cn as Navbar,
   Ja as NavigationMenu,
-  an as NavigationMenuContent,
-  Q as NavigationMenuItem,
-  W as NavigationMenuLink,
+  sr as NavigationMenuContent,
+  X as NavigationMenuItem,
+  ie as NavigationMenuLink,
   en as NavigationMenuList,
-  tn as NavigationMenuTrigger,
-  nn as NavigationMenuViewport,
+  ir as NavigationMenuTrigger,
+  tn as NavigationMenuViewport,
   ea as OpenTo,
   Sr as PRIMARY_NAVBAR_PRODUCT_IDS,
-  jn as PRODUCT_NAMES,
-  ir as PeopleObjectCard,
+  On as PRODUCT_NAMES,
+  rr as PeopleObjectCard,
   _e as Pill,
   kt as ProductBackground,
-  pn as Progress,
-  or as ProjectObjectCard,
+  un as Progress,
+  nr as ProjectObjectCard,
   Ur as SPACING_TOKENS,
   gr as Select,
   wr as SelectContent,
   _r as SelectGroup,
   xr as SelectItem,
   Cr as SelectLabel,
-  dn as SelectScrollDownButton,
-  cn as SelectScrollUpButton,
+  ln as SelectScrollDownButton,
+  sn as SelectScrollUpButton,
   Er as SelectSeparator,
   yr as SelectTrigger,
   Nr as SelectValue,
-  Wn as SkillTag,
-  fn as Stepper,
-  Cn as StepperDescription,
-  yn as StepperIndicator,
-  gn as StepperItem,
-  bn as StepperList,
+  Kn as SkillTag,
+  mn as Stepper,
+  yn as StepperDescription,
+  _n as StepperIndicator,
+  hn as StepperItem,
+  vn as StepperList,
   Nt as StepperSeparator,
-  wn as StepperTitle,
-  Nn as StepperTrigger,
+  Nn as StepperTitle,
+  gn as StepperTrigger,
   Fr as TALENT_ACQUISITION_ACTION_BUTTONS,
   jr as TALENT_ACQUISITION_RECRUITER_TABS,
   Vr as TALENT_ACQUISITION_SEARCH_PLACEHOLDER,
@@ -3358,11 +3361,11 @@ export {
   cr as TabsList,
   dr as TabsTrigger,
   Gt as Tag,
-  qn as TagGroup,
+  Zn as TagGroup,
   Wt as badgeVariants,
   At as buttonVariants,
   Tr as getNavbarProductConfig,
   Rr as getProductLogoPath,
   Ir as productLogos,
-  rn as tabsListVariants
+  an as tabsListVariants
 };
