@@ -243,7 +243,7 @@ export function Navbar({
               </span>
             </div>
           </Link>
-          <NavigationMenu viewport={false} variant="underline" className="navbar__tabs">
+          <NavigationMenu viewport={false} variant="underline" className="navbar__tabs" delayDuration={400} skipDelayDuration={200}>
             <NavigationMenuList className="navbar__tabs-list">
               {tabs.map(renderDesktopTab)}
             </NavigationMenuList>
