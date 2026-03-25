@@ -50,7 +50,8 @@
   right: 0;
   height: var(--navbar-height);
   z-index: 1000;
-  overflow: visible; /* allow tab dropdowns to extend below navbar */
+  overflow-x: clip; /* prevent horizontal overflow without creating scroll context */
+  overflow-y: visible; /* allow tab dropdowns to extend below navbar */
 }
 
 .navbar__inner {
