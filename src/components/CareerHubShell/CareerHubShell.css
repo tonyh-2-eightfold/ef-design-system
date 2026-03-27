@@ -4,5 +4,8 @@
   top: auto;
   left: auto;
   right: auto;
-  z-index: 10;
+  z-index: 9999;
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
 }

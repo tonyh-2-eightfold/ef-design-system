@@ -64,20 +64,26 @@ export function Navbar({
     if (tab.path && hasSubmenu) {
       const isActive = activePath === tab.path || tab.subItems!.some((s) => s.path === activePath)
       return (
-        <li key={tab.id} className="nav-menu__item navbar__tab-dropdown-wrap">
-          <button className={`navbar__tab navbar__tab--dropdown ${isActive ? 'navbar__tab--active' : ''}`} type="button">
-            <span className="navbar__tab-label">{tab.label}</span>
-            <span className="material-symbols-outlined navbar__tab-chevron" style={{ fontSize: 16, marginLeft: 2 }}>expand_more</span>
-          </button>
-          <div className="navbar__tab-hover-menu">
-            <div className="navbar__tab-menu-inner">
-              {tab.subItems!.map((item) => (
-                <Link key={item.path} to={item.path} className="nav-menu__link navbar__tab-menu-item">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
+        <li key={tab.id} className="nav-menu__item">
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger asChild>
+              <button className={`navbar__tab navbar__tab--dropdown ${isActive ? 'navbar__tab--active' : ''}`} type="button">
+                <span className="navbar__tab-label">{tab.label}</span>
+                <span className="material-symbols-outlined navbar__tab-chevron" style={{ fontSize: 16, marginLeft: 2 }}>expand_more</span>
+              </button>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content className="navbar__tab-menu-inner" align="start" sideOffset={4} style={{ zIndex: 99999 }}>
+                {tab.subItems!.map((item) => (
+                  <DropdownMenu.Item key={item.path} asChild>
+                    <Link to={item.path} className="nav-menu__link navbar__tab-menu-item">
+                      {item.label}
+                    </Link>
+                  </DropdownMenu.Item>
+                ))}
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
         </li>
       )
     }

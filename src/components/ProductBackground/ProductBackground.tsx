@@ -5,7 +5,7 @@ import type { ProductBackgroundProps } from './product-background.types'
 import './styles/gradient-fills.css'
 
 /**
- * Product chrome backgrounds: **TA** / **CH** token gradients, **CH chevron** art, or **photo** + scrim.
+ * Product chrome backgrounds: **TA** / **CH** token gradients, **CH chevron** art, **hexagon** art, or **photo** + scrim.
  */
 const ProductBackground = React.forwardRef<HTMLDivElement, ProductBackgroundProps>(
   (
@@ -15,15 +15,17 @@ const ProductBackground = React.forwardRef<HTMLDivElement, ProductBackgroundProp
       src,
       imageScrim = true,
       chevronsVariant,
+      hexagonsVariant,
       children,
       ...props
     },
     ref
   ) => {
-    const { fillStyle, hasImage, isChevrons } = resolveProductBackgroundFillLayer(variant, {
+    const { fillStyle, hasImage, isChevrons, isHexagons } = resolveProductBackgroundFillLayer(variant, {
       src,
       imageScrim,
       chevronsVariant,
+      hexagonsVariant,
     })
 
     return (
@@ -39,13 +41,14 @@ const ProductBackground = React.forwardRef<HTMLDivElement, ProductBackgroundProp
           data-slot="product-background-fill"
           {...(hasImage ? { 'data-has-image': '' } : {})}
           {...(isChevrons ? { 'data-ch-chevrons': '' } : {})}
+          {...(isHexagons ? { 'data-hexagons': '' } : {})}
           className={cn(
             'pointer-events-none absolute inset-0 -z-10',
-            (hasImage || isChevrons) && 'min-h-full min-w-full'
+            (hasImage || isChevrons || isHexagons) && 'min-h-full min-w-full'
           )}
           style={fillStyle}
         />
-        <div className="relative z-0 min-h-0">{children}</div>
+        <div className="relative min-h-0">{children}</div>
       </div>
     )
   }
