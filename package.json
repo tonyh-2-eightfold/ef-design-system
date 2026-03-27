@@ -23,7 +23,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "pack:tarball": "npm run build && npm pack --pack-destination .",
     "demo": "npm run build && cd demo && npm run dev",
     "demo:dev": "cd demo && npm run dev",
