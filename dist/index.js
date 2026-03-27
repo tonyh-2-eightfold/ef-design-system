@@ -3583,14 +3583,13 @@ function io({
   hexagonsVariant: c,
   children: s
 }) {
+  const l = i ?? (e === "profile" ? "profile" : "default");
   return /* @__PURE__ */ p(I, { children: [
-    /* @__PURE__ */ a(Tt, { variant: "career-hub", ...c ? { hexagonsVariant: c } : { chevronsVariant: i ?? (e === "profile" ? "profile" : "default") }, children: /* @__PURE__ */ p("div", { className: "career-hub-shell", children: [
-      /* @__PURE__ */ a(Vn, { ...o }),
-      /* @__PURE__ */ a(Et, { variant: "career-hub", chSize: e, overlayBackground: !0, children: /* @__PURE__ */ a(St, { actions: r, children: /* @__PURE__ */ p(Vt, { children: [
-        /* @__PURE__ */ a(Rt, { children: t }),
-        n && /* @__PURE__ */ a(It, { children: n })
-      ] }) }) })
-    ] }) }),
+    /* @__PURE__ */ a("div", { className: "career-hub-shell", children: /* @__PURE__ */ a(Vn, { ...o }) }),
+    /* @__PURE__ */ a(Tt, { variant: "career-hub", ...c ? { hexagonsVariant: c } : { chevronsVariant: l }, children: /* @__PURE__ */ a("div", { className: "career-hub-shell", children: /* @__PURE__ */ a(Et, { variant: "career-hub", chSize: e, overlayBackground: !0, children: /* @__PURE__ */ a(St, { actions: r, children: /* @__PURE__ */ p(Vt, { children: [
+      /* @__PURE__ */ a(Rt, { children: t }),
+      n && /* @__PURE__ */ a(It, { children: n })
+    ] }) }) }) }) }),
     s
   ] });
 }

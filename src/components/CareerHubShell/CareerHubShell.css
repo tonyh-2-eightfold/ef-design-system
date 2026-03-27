@@ -1,11 +1,16 @@
-/* Override Navbar fixed positioning inside the shell so it flows with the header */
+/* Keep Navbar fixed at top of viewport */
 .career-hub-shell .navbar {
-  position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 9999;
   overflow: visible !important;
   overflow-x: visible !important;
   overflow-y: visible !important;
+}
+
+/* Reserve space for the fixed navbar */
+.career-hub-shell:first-child {
+  height: var(--navbar-height, 60px);
 }

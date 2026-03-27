@@ -10,7 +10,7 @@ import {
 import { ProductBackground } from '../ProductBackground'
 import type { NavbarProps } from '../Navbar/Navbar.types'
 import type { CareerHubHeaderSize } from '../Navbar/header-types'
-import type { CareerHubChevronsVariant } from '../ProductBackground'
+import type { CareerHubChevronsVariant, HexagonVariant } from '../ProductBackground'
 import './CareerHubShell.css'
 
 export interface CareerHubShellProps {
@@ -26,6 +26,8 @@ export interface CareerHubShellProps {
   navbarProps: NavbarProps
   /** Override chevrons variant. Defaults based on chSize: profile → 'profile', others → 'default'. */
   chevronsVariant?: CareerHubChevronsVariant
+  /** Use hexagon background instead of chevrons. When set, overrides chevronsVariant. */
+  hexagonsVariant?: HexagonVariant
   /** Page content rendered below the header. */
   children?: React.ReactNode
 }
@@ -53,6 +55,7 @@ export function CareerHubShell({
   actions,
   navbarProps,
   chevronsVariant,
+  hexagonsVariant,
   children,
 }: CareerHubShellProps) {
   const resolvedChevrons: CareerHubChevronsVariant =
@@ -60,9 +63,11 @@ export function CareerHubShell({
 
   return (
     <>
-      <ProductBackground variant="career-hub" chevronsVariant={resolvedChevrons}>
+      <div className="career-hub-shell">
+        <Navbar {...navbarProps} />
+      </div>
+      <ProductBackground variant="career-hub" {...(hexagonsVariant ? { hexagonsVariant } : { chevronsVariant: resolvedChevrons })}>
         <div className="career-hub-shell">
-          <Navbar {...navbarProps} />
           <Header variant="career-hub" chSize={chSize} overlayBackground>
             <HeaderToolbar actions={actions}>
               <HeaderTextGroup>
