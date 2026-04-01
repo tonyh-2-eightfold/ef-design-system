@@ -1453,7 +1453,39 @@ export function UICatalog({
 
             <div className="space-y-3 rounded-xl border border-border bg-card/50 p-4 shadow-sm">
               <h4 className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                3 · Photo + scrim
+                3 · Hexagons
+              </h4>
+              <p className="text-xs text-muted-foreground">
+                <code className="rounded bg-muted px-1 font-mono text-[10px]">hexagonsVariant=&quot;default&quot;</code> (toolbar) ·{' '}
+                <code className="rounded bg-muted px-1 font-mono text-[10px]">&quot;profile&quot;</code> (hero).
+              </p>
+              <div className="grid gap-4 md:grid-cols-2">
+                <ProductBackground
+                  variant="career-hub"
+                  hexagonsVariant="default"
+                  className="min-h-32 rounded-lg border border-border"
+                >
+                  <div className="flex min-h-32 flex-col justify-end p-5">
+                    <p className="text-sm font-semibold text-foreground">Hexagons · default</p>
+                    <p className="text-xs text-muted-foreground">292px art</p>
+                  </div>
+                </ProductBackground>
+                <ProductBackground
+                  variant="career-hub"
+                  hexagonsVariant="profile"
+                  className="min-h-48 rounded-lg border border-border md:min-h-56"
+                >
+                  <div className="flex min-h-48 flex-col justify-end p-5 md:min-h-56">
+                    <p className="text-sm font-semibold text-foreground">Hexagons · profile</p>
+                    <p className="text-xs text-muted-foreground">540px art</p>
+                  </div>
+                </ProductBackground>
+              </div>
+            </div>
+
+            <div className="space-y-3 rounded-xl border border-border bg-card/50 p-4 shadow-sm">
+              <h4 className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                4 · Photo + scrim
               </h4>
               <p className="text-xs text-muted-foreground">
                 <code className="rounded bg-muted px-1 font-mono text-[10px]">src</code> wins; optional{' '}

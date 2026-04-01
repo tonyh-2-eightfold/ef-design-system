@@ -483,14 +483,14 @@ function rr({
     }
   );
 }
-const ra = "m-0 flex list-none flex-wrap items-center gap-1 p-0 break-words sm:gap-1", oa = "inline-flex items-center gap-1", Ue = "rounded-sm text-[length:14px] font-semibold leading-[1.43] text-[var(--color-blue-70)] no-underline transition-colors hover:text-[var(--color-blue-80)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-background", ia = "text-[length:14px] font-medium leading-[1.43] text-[var(--foreground)]", sa = "inline-flex size-5 shrink-0 select-none items-center justify-center text-center text-[20px] font-normal leading-none text-[var(--color-grey-60)] [&>svg]:size-5 [&>svg]:shrink-0";
+const ra = "m-0 flex list-none flex-wrap items-center gap-0 p-0 break-words", oa = "inline-flex items-center", Ue = "rounded-sm text-[length:14px] font-semibold leading-[1.43] text-[#4f5666] bg-transparent border-none cursor-pointer p-0 no-underline transition-colors hover:text-[#1a212e] hover:underline hover:[text-underline-offset:2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-background", ia = "text-[length:14px] font-bold leading-[1.43] text-[#1a212e]", sa = "inline-flex shrink-0 select-none items-center justify-center text-[#94a3b8] mx-1.5 [&>svg]:w-3.5 [&>svg]:h-3.5 [&>svg]:shrink-0";
 function or({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "nav",
     {
       "aria-label": "breadcrumb",
       "data-slot": "breadcrumb",
-      className: g(e),
+      className: g("flex h-14 w-full items-center", e),
       ...t
     }
   );
@@ -502,7 +502,15 @@ function sr({ className: e, ...t }) {
   return /* @__PURE__ */ a("li", { "data-slot": "breadcrumb-item", className: g(oa, e), ...t });
 }
 function lr({ asChild: e, className: t, ...n }) {
-  return /* @__PURE__ */ a(e ? be : "a", { "data-slot": "breadcrumb-link", className: g(Ue, t), ...n });
+  return /* @__PURE__ */ a(
+    e ? be : "button",
+    {
+      "data-slot": "breadcrumb-link",
+      type: e ? void 0 : "button",
+      className: g(Ue, t),
+      ...n
+    }
+  );
 }
 function cr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
@@ -526,7 +534,7 @@ function dr({ children: e, className: t, ...n }) {
       "aria-hidden": "true",
       className: g(sa, t),
       ...n,
-      children: e ?? "/"
+      children: e ?? /* @__PURE__ */ a("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", children: /* @__PURE__ */ a("path", { d: "m9 18 6-6-6-6" }) })
     }
   );
 }
