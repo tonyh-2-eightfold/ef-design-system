@@ -2096,7 +2096,7 @@ function Lr({
     "table",
     {
       "data-slot": "data-table",
-      className: g("w-full border-collapse text-sm", e),
+      className: g("min-w-full border-collapse text-sm", e),
       ...r,
       children: n
     }
