@@ -963,16 +963,16 @@ function ya(e) {
   const t = d.useContext(Na);
   return e || t || "ltr";
 }
-function La(e, t) {
+function wa(e, t) {
   return d.useReducer((n, r) => t[n][r] ?? n, e);
 }
 var q = (e) => {
-  const { present: t, children: n } = e, r = wa(t), o = typeof n == "function" ? n({ present: r.isPresent }) : d.Children.only(n), i = B(r.ref, Ca(o));
+  const { present: t, children: n } = e, r = La(t), o = typeof n == "function" ? n({ present: r.isPresent }) : d.Children.only(n), i = B(r.ref, Ca(o));
   return typeof n == "function" || r.isPresent ? d.cloneElement(o, { ref: i }) : null;
 };
 q.displayName = "Presence";
-function wa(e) {
-  const [t, n] = d.useState(), r = d.useRef(null), o = d.useRef(e), i = d.useRef("none"), c = e ? "mounted" : "unmounted", [s, l] = La(c, {
+function La(e) {
+  const [t, n] = d.useState(), r = d.useRef(null), o = d.useRef(e), i = d.useRef("none"), c = e ? "mounted" : "unmounted", [s, l] = wa(c, {
     mounted: {
       UNMOUNT: "unmounted",
       ANIMATION_OUT: "unmountSuspended"
@@ -1040,22 +1040,22 @@ function Xe(e) {
     t,
     { collectionRef: { current: null }, itemMap: /* @__PURE__ */ new Map() }
   ), c = (N) => {
-    const { scope: y, children: M } = N, x = Z.useRef(null), L = Z.useRef(/* @__PURE__ */ new Map()).current;
-    return /* @__PURE__ */ a(o, { scope: y, itemMap: L, collectionRef: x, children: M });
+    const { scope: y, children: M } = N, x = Z.useRef(null), w = Z.useRef(/* @__PURE__ */ new Map()).current;
+    return /* @__PURE__ */ a(o, { scope: y, itemMap: w, collectionRef: x, children: M });
   };
   c.displayName = t;
   const s = e + "CollectionSlot", l = se(s), m = Z.forwardRef(
     (N, y) => {
-      const { scope: M, children: x } = N, L = i(s, M), w = B(y, L.collectionRef);
-      return /* @__PURE__ */ a(l, { ref: w, children: x });
+      const { scope: M, children: x } = N, w = i(s, M), L = B(y, w.collectionRef);
+      return /* @__PURE__ */ a(l, { ref: L, children: x });
     }
   );
   m.displayName = s;
   const u = e + "CollectionItemSlot", h = "data-radix-collection-item", f = se(u), b = Z.forwardRef(
     (N, y) => {
-      const { scope: M, children: x, ...L } = N, w = Z.useRef(null), C = B(y, w), E = i(u, M);
-      return Z.useEffect(() => (E.itemMap.set(w, { ref: w, ...L }), () => {
-        E.itemMap.delete(w);
+      const { scope: M, children: x, ...w } = N, L = Z.useRef(null), C = B(y, L), E = i(u, M);
+      return Z.useEffect(() => (E.itemMap.set(L, { ref: L, ...w }), () => {
+        E.itemMap.delete(L);
       })), /* @__PURE__ */ a(f, { [h]: "", ref: C, children: x });
     }
   );
@@ -1065,9 +1065,9 @@ function Xe(e) {
     return Z.useCallback(() => {
       const x = y.collectionRef.current;
       if (!x) return [];
-      const L = Array.from(x.querySelectorAll(`[${h}]`));
+      const w = Array.from(x.querySelectorAll(`[${h}]`));
       return Array.from(y.itemMap.values()).sort(
-        (E, k) => L.indexOf(E.ref.current) - L.indexOf(k.ref.current)
+        (E, k) => w.indexOf(E.ref.current) - w.indexOf(k.ref.current)
       );
     }, [y.collectionRef, y.itemMap]);
   }
@@ -1106,9 +1106,9 @@ var Ea = "DismissableLayer", de = "dismissableLayer.update", Sa = "dismissableLa
       onInteractOutside: c,
       onDismiss: s,
       ...l
-    } = e, m = d.useContext(Qe), [u, h] = d.useState(null), f = u?.ownerDocument ?? globalThis?.document, [, b] = d.useState({}), _ = B(t, (k) => h(k)), N = Array.from(m.layers), [y] = [...m.layersWithOutsidePointerEventsDisabled].slice(-1), M = N.indexOf(y), x = u ? N.indexOf(u) : -1, L = m.layersWithOutsidePointerEventsDisabled.size > 0, w = x >= M, C = Ta((k) => {
+    } = e, m = d.useContext(Qe), [u, h] = d.useState(null), f = u?.ownerDocument ?? globalThis?.document, [, b] = d.useState({}), _ = B(t, (k) => h(k)), N = Array.from(m.layers), [y] = [...m.layersWithOutsidePointerEventsDisabled].slice(-1), M = N.indexOf(y), x = u ? N.indexOf(u) : -1, w = m.layersWithOutsidePointerEventsDisabled.size > 0, L = x >= M, C = Ta((k) => {
       const P = k.target, S = [...m.branches].some((v) => v.contains(P));
-      !w || S || (o?.(k), c?.(k), k.defaultPrevented || s?.());
+      !L || S || (o?.(k), c?.(k), k.defaultPrevented || s?.());
     }, f), E = Pa((k) => {
       const P = k.target;
       [...m.branches].some((v) => v.contains(P)) || (i?.(k), c?.(k), k.defaultPrevented || s?.());
@@ -1131,7 +1131,7 @@ var Ea = "DismissableLayer", de = "dismissableLayer.update", Sa = "dismissableLa
         ...l,
         ref: _,
         style: {
-          pointerEvents: L ? w ? "auto" : "none" : void 0,
+          pointerEvents: w ? L ? "auto" : "none" : void 0,
           ...e.style
         },
         onFocusCapture: V(e.onFocusCapture, E.onFocusCapture),
@@ -1250,12 +1250,12 @@ var Oa = tt, U = "NavigationMenu", [Ne, at, ja] = Xe(U), [ue, Ba, Za] = Xe(U), [
       orientation: l = "horizontal",
       dir: m,
       ...u
-    } = e, [h, f] = d.useState(null), b = B(t, (S) => f(S)), _ = ya(m), N = d.useRef(0), y = d.useRef(0), M = d.useRef(0), [x, L] = d.useState(!0), [w, C] = We({
+    } = e, [h, f] = d.useState(null), b = B(t, (S) => f(S)), _ = ya(m), N = d.useRef(0), y = d.useRef(0), M = d.useRef(0), [x, w] = d.useState(!0), [L, C] = We({
       prop: r,
       onChange: (S) => {
         const v = S !== "", O = s > 0;
-        v ? (window.clearTimeout(M.current), O && L(!1)) : (window.clearTimeout(M.current), M.current = window.setTimeout(
-          () => L(!0),
+        v ? (window.clearTimeout(M.current), O && w(!1)) : (window.clearTimeout(M.current), M.current = window.setTimeout(
+          () => w(!0),
           s
         )), o?.(S);
       },
@@ -1270,11 +1270,11 @@ var Oa = tt, U = "NavigationMenu", [Ne, at, ja] = Xe(U), [ue, Ba, Za] = Xe(U), [
       [C]
     ), P = d.useCallback(
       (S) => {
-        w === S ? window.clearTimeout(y.current) : N.current = window.setTimeout(() => {
+        L === S ? window.clearTimeout(y.current) : N.current = window.setTimeout(() => {
           window.clearTimeout(y.current), C(S);
         }, c);
       },
-      [w, C, c]
+      [L, C, c]
     );
     return d.useEffect(() => () => {
       window.clearTimeout(N.current), window.clearTimeout(y.current), window.clearTimeout(M.current);
@@ -1283,7 +1283,7 @@ var Oa = tt, U = "NavigationMenu", [Ne, at, ja] = Xe(U), [ue, Ba, Za] = Xe(U), [
       {
         scope: n,
         isRootMenu: !0,
-        value: w,
+        value: L,
         dir: _,
         orientation: l,
         rootNavigationMenu: h,
@@ -1362,7 +1362,7 @@ var rt = (e) => {
     onTriggerLeave: h,
     onContentEnter: f,
     onContentLeave: b
-  } = e, [_, N] = d.useState(null), [y, M] = d.useState(/* @__PURE__ */ new Map()), [x, L] = d.useState(null);
+  } = e, [_, N] = d.useState(null), [y, M] = d.useState(/* @__PURE__ */ new Map()), [x, w] = d.useState(null);
   return /* @__PURE__ */ a(
     za,
     {
@@ -1377,18 +1377,18 @@ var rt = (e) => {
       viewport: _,
       onViewportChange: N,
       indicatorTrack: x,
-      onIndicatorTrackChange: L,
+      onIndicatorTrackChange: w,
       onTriggerEnter: j(u),
       onTriggerLeave: j(h),
       onContentEnter: j(f),
       onContentLeave: j(b),
       onItemSelect: j(l),
       onItemDismiss: j(m),
-      onViewportContentChange: d.useCallback((w, C) => {
-        M((E) => (E.set(w, C), new Map(E)));
+      onViewportContentChange: d.useCallback((L, C) => {
+        M((E) => (E.set(L, C), new Map(E)));
       }, []),
-      onViewportContentRemove: d.useCallback((w) => {
-        M((C) => C.has(w) ? (C.delete(w), new Map(C)) : C);
+      onViewportContentRemove: d.useCallback((L) => {
+        M((C) => C.has(L) ? (C.delete(L), new Map(C)) : C);
       }, []),
       children: /* @__PURE__ */ a(Ne.Provider, { scope: t, children: /* @__PURE__ */ a($a, { scope: t, items: y, children: c }) })
     }
@@ -1522,16 +1522,16 @@ var Ka = "NavigationMenuLink", Oe = "navigationMenu.linkSelect", ut = d.forwardR
   }
 );
 ut.displayName = Ka;
-var Le = "NavigationMenuIndicator", Wa = d.forwardRef((e, t) => {
-  const { forceMount: n, ...r } = e, o = F(Le, e.__scopeNavigationMenu), i = !!o.value;
+var we = "NavigationMenuIndicator", Wa = d.forwardRef((e, t) => {
+  const { forceMount: n, ...r } = e, o = F(we, e.__scopeNavigationMenu), i = !!o.value;
   return o.indicatorTrack ? Ot.createPortal(
     /* @__PURE__ */ a(q, { present: n || i, children: /* @__PURE__ */ a(qa, { ...r, ref: t }) }),
     o.indicatorTrack
   ) : null;
 });
-Wa.displayName = Le;
+Wa.displayName = we;
 var qa = d.forwardRef((e, t) => {
-  const { __scopeNavigationMenu: n, ...r } = e, o = F(Le, n), i = at(n), [c, s] = d.useState(
+  const { __scopeNavigationMenu: n, ...r } = e, o = F(we, n), i = at(n), [c, s] = d.useState(
     null
   ), [l, m] = d.useState(null), u = o.orientation === "horizontal", h = !!o.value;
   d.useEffect(() => {
@@ -1617,18 +1617,18 @@ var Ya = d.forwardRef((e, t) => {
     ...m
   } = e, u = F(K, n), h = d.useRef(null), f = B(h, t), b = vt(u.baseId, r), _ = bt(u.baseId, r), N = at(n), y = d.useRef(null), { onItemDismiss: M } = u;
   d.useEffect(() => {
-    const L = h.current;
-    if (u.isRootMenu && L) {
-      const w = () => {
-        M(), s(), L.contains(document.activeElement) && o.current?.focus();
+    const w = h.current;
+    if (u.isRootMenu && w) {
+      const L = () => {
+        M(), s(), w.contains(document.activeElement) && o.current?.focus();
       };
-      return L.addEventListener(X, w), () => L.removeEventListener(X, w);
+      return w.addEventListener(X, L), () => w.removeEventListener(X, L);
     }
   }, [u.isRootMenu, e.value, o, M, s]);
   const x = d.useMemo(() => {
-    const w = N().map((v) => v.value);
-    u.dir === "rtl" && w.reverse();
-    const C = w.indexOf(u.value), E = w.indexOf(u.previousValue), k = r === u.value, P = E === w.indexOf(r);
+    const L = N().map((v) => v.value);
+    u.dir === "rtl" && L.reverse();
+    const C = L.indexOf(u.value), E = L.indexOf(u.previousValue), k = r === u.value, P = E === L.indexOf(r);
     if (!k && !P) return y.current;
     const S = (() => {
       if (C !== E) {
@@ -1650,40 +1650,40 @@ var Ya = d.forwardRef((e, t) => {
       ref: f,
       disableOutsidePointerEvents: !1,
       onDismiss: () => {
-        const L = new Event(X, {
+        const w = new Event(X, {
           bubbles: !0,
           cancelable: !0
         });
-        h.current?.dispatchEvent(L);
+        h.current?.dispatchEvent(w);
       },
-      onFocusOutside: V(e.onFocusOutside, (L) => {
+      onFocusOutside: V(e.onFocusOutside, (w) => {
         l();
-        const w = L.target;
-        u.rootNavigationMenu?.contains(w) && L.preventDefault();
+        const L = w.target;
+        u.rootNavigationMenu?.contains(L) && w.preventDefault();
       }),
-      onPointerDownOutside: V(e.onPointerDownOutside, (L) => {
-        const w = L.target, C = N().some((k) => k.ref.current?.contains(w)), E = u.isRootMenu && u.viewport?.contains(w);
-        (C || E || !u.isRootMenu) && L.preventDefault();
+      onPointerDownOutside: V(e.onPointerDownOutside, (w) => {
+        const L = w.target, C = N().some((k) => k.ref.current?.contains(L)), E = u.isRootMenu && u.viewport?.contains(L);
+        (C || E || !u.isRootMenu) && w.preventDefault();
       }),
-      onKeyDown: V(e.onKeyDown, (L) => {
-        const w = L.altKey || L.ctrlKey || L.metaKey;
-        if (L.key === "Tab" && !w) {
-          const E = fe(L.currentTarget), k = document.activeElement, P = E.findIndex((O) => O === k), v = L.shiftKey ? E.slice(0, P).reverse() : E.slice(P + 1, E.length);
-          Ce(v) ? L.preventDefault() : i.current?.focus();
+      onKeyDown: V(e.onKeyDown, (w) => {
+        const L = w.altKey || w.ctrlKey || w.metaKey;
+        if (w.key === "Tab" && !L) {
+          const E = fe(w.currentTarget), k = document.activeElement, P = E.findIndex((O) => O === k), v = w.shiftKey ? E.slice(0, P).reverse() : E.slice(P + 1, E.length);
+          Ce(v) ? w.preventDefault() : i.current?.focus();
         }
       }),
-      onEscapeKeyDown: V(e.onEscapeKeyDown, (L) => {
+      onEscapeKeyDown: V(e.onEscapeKeyDown, (w) => {
         c.current = !0;
       })
     }
   ) });
-}), we = "NavigationMenuViewport", ft = d.forwardRef((e, t) => {
-  const { forceMount: n, ...r } = e, i = !!F(we, e.__scopeNavigationMenu).value;
+}), Le = "NavigationMenuViewport", ft = d.forwardRef((e, t) => {
+  const { forceMount: n, ...r } = e, i = !!F(Le, e.__scopeNavigationMenu).value;
   return /* @__PURE__ */ a(q, { present: n || i, children: /* @__PURE__ */ a(Xa, { ...r, ref: t }) });
 });
-ft.displayName = we;
+ft.displayName = Le;
 var Xa = d.forwardRef((e, t) => {
-  const { __scopeNavigationMenu: n, children: r, ...o } = e, i = F(we, n), c = B(t, i.onViewportChange), s = Ha(
+  const { __scopeNavigationMenu: n, children: r, ...o } = e, i = F(Le, n), c = B(t, i.onViewportChange), s = Ha(
     K,
     e.__scopeNavigationMenu
   ), [l, m] = d.useState(null), [u, h] = d.useState(null), f = l ? l?.width + "px" : void 0, b = l ? l?.height + "px" : void 0, _ = !!i.value, N = _ ? i.value : i.previousValue;
@@ -1705,12 +1705,12 @@ var Xa = d.forwardRef((e, t) => {
       },
       onPointerEnter: V(e.onPointerEnter, i.onContentEnter),
       onPointerLeave: V(e.onPointerLeave, Q(i.onContentLeave)),
-      children: Array.from(s.items).map(([M, { ref: x, forceMount: L, ...w }]) => {
+      children: Array.from(s.items).map(([M, { ref: x, forceMount: w, ...L }]) => {
         const C = N === M;
-        return /* @__PURE__ */ a(q, { present: L || C, children: /* @__PURE__ */ a(
+        return /* @__PURE__ */ a(q, { present: w || C, children: /* @__PURE__ */ a(
           pt,
           {
-            ...w,
+            ...L,
             ref: qe(x, (E) => {
               C && E && h(E);
             })
@@ -2086,7 +2086,7 @@ function yr({
     }
   );
 }
-function Lr({
+function wr({
   className: e,
   bordered: t,
   children: n,
@@ -2103,7 +2103,7 @@ function Lr({
   ) });
   return t ? /* @__PURE__ */ a("div", { "data-slot": "data-table-bordered", className: "rounded-xl border border-[#e5e7eb] bg-white overflow-hidden", children: o }) : o;
 }
-function wr({ className: e, ...t }) {
+function Lr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "thead",
     {
@@ -2408,7 +2408,7 @@ const _n = d.forwardRef(
     if (!M)
       return x;
     if (r === "scale") {
-      const L = Math.min(100, Math.max(0, _)), w = f === null;
+      const w = Math.min(100, Math.max(0, _)), L = f === null;
       return /* @__PURE__ */ p(
         "div",
         {
@@ -2431,11 +2431,11 @@ const _n = d.forwardRef(
                     {
                       "data-slot": "progress-current-cluster",
                       className: "absolute bottom-0 z-10 flex items-baseline gap-1.5 whitespace-nowrap text-xs text-muted-foreground",
-                      style: w ? {
+                      style: L ? {
                         left: "50%",
                         transform: "translateX(-50%)"
                       } : {
-                        left: `${L}%`,
+                        left: `${w}%`,
                         transform: "translateX(-100%)"
                       },
                       children: /* @__PURE__ */ a("span", { className: "tabular-nums", "data-slot": "progress-current-value", children: N })
@@ -2498,7 +2498,7 @@ function yt() {
   if (e == null) throw new Error("StepperItem subcomponents must be inside <StepperItem>");
   return e;
 }
-const Lt = d.forwardRef(
+const wt = d.forwardRef(
   ({ className: e, value: t, onValueChange: n, size: r = "default", children: o, ...i }, c) => /* @__PURE__ */ a(ke.Provider, { value: { value: t, onValueChange: n, size: r }, children: /* @__PURE__ */ a(
     "nav",
     {
@@ -2512,7 +2512,7 @@ const Lt = d.forwardRef(
     }
   ) })
 );
-Lt.displayName = "Stepper";
+wt.displayName = "Stepper";
 const Se = d.forwardRef(
   ({ className: e, segmentIndex: t, style: n, children: r, ...o }, i) => {
     const { value: c, size: s } = ae(), l = d.useContext(Nt), m = typeof l == "number" ? l : t ?? 0, u = s === "sm", h = Number(c), f = Number.isFinite(h) && h > Number(m);
@@ -2554,7 +2554,7 @@ function Nn(e) {
 function yn(e) {
   return d.isValidElement(e) && e.type.displayName === "StepperItem";
 }
-const wt = d.forwardRef(
+const Lt = d.forwardRef(
   ({ className: e, children: t, ...n }, r) => {
     const o = [];
     let i = 0, c = 0;
@@ -2592,7 +2592,7 @@ const wt = d.forwardRef(
     );
   }
 );
-wt.displayName = "StepperList";
+Lt.displayName = "StepperList";
 const Ct = d.forwardRef(
   ({ className: e, step: t, children: n, ...r }, o) => {
     const i = t ?? 0, { value: c, size: s } = ae(), l = i < c ? "complete" : i === c ? "active" : "upcoming", m = s === "sm";
@@ -2614,7 +2614,7 @@ const Ct = d.forwardRef(
   }
 );
 Ct.displayName = "StepperItem";
-const Ln = d.forwardRef(
+const wn = d.forwardRef(
   ({ className: e, type: t = "button", disabled: n, onClick: r, children: o, ...i }, c) => {
     const { value: s, onValueChange: l, size: m } = ae(), u = yt(), h = l != null && !n && u <= s, b = g(
       "group/stepper-trigger flex rounded-md",
@@ -2656,7 +2656,7 @@ const Ln = d.forwardRef(
     );
   }
 );
-Ln.displayName = "StepperTrigger";
+wn.displayName = "StepperTrigger";
 const Ze = "bg-[var(--color-button-primary-bg)] text-[var(--color-button-primary-text)]";
 function ze(e, t = "default") {
   const n = t === "sm";
@@ -2739,7 +2739,7 @@ const Mt = d.forwardRef(
   }
 );
 Mt.displayName = "StepperTitle";
-const wn = d.forwardRef(
+const Ln = d.forwardRef(
   ({ className: e, ...t }, n) => /* @__PURE__ */ a(
     "span",
     {
@@ -2753,7 +2753,7 @@ const wn = d.forwardRef(
     }
   )
 );
-wn.displayName = "StepperDescription";
+Ln.displayName = "StepperDescription";
 function Dr({ ...e }) {
   return /* @__PURE__ */ a(A.Root, { "data-slot": "dialog", ...e });
 }
@@ -2817,7 +2817,7 @@ function Br({ className: e, ...t }) {
   );
 }
 function Zr({ steps: e, currentStep: t = 0, className: n }) {
-  return /* @__PURE__ */ a(Lt, { value: t, size: "sm", className: g("ef-dialog__stepper", n), children: /* @__PURE__ */ a(wt, { children: e.map((r, o) => /* @__PURE__ */ p(d.Fragment, { children: [
+  return /* @__PURE__ */ a(wt, { value: t, size: "sm", className: g("ef-dialog__stepper", n), children: /* @__PURE__ */ a(Lt, { children: e.map((r, o) => /* @__PURE__ */ p(d.Fragment, { children: [
     o > 0 && /* @__PURE__ */ a(Se, {}),
     /* @__PURE__ */ p(Ct, { children: [
       /* @__PURE__ */ a(xt, {}),
@@ -2974,7 +2974,7 @@ function Vn({
   LinkComponent: N = Rn,
   NavLinkComponent: y
 }) {
-  const [M, x] = Re(!1), [L, w] = Re(!1), C = N, E = i === "/profile", k = n.avatarType === "photo" && n.avatarPhotoSrc ? n.avatarPhotoSrc.replace("w=200&h=200", "w=80&h=80") : null, P = (v) => {
+  const [M, x] = Re(!1), [w, L] = Re(!1), C = N, E = i === "/profile", k = n.avatarType === "photo" && n.avatarPhotoSrc ? n.avatarPhotoSrc.replace("w=200&h=200", "w=80&h=80") : null, P = (v) => {
     const O = v.chevron && v.subItems && v.subItems.length > 0;
     if (v.path && O) {
       const $ = i === v.path || v.subItems.some((z) => z.path === i);
@@ -3122,13 +3122,13 @@ function Vn({
               {
                 className: `navbar__avatar-inner ${n.avatarColor ? "navbar__avatar-inner--colored" : ""}`,
                 style: n.avatarColor ? { backgroundColor: n.avatarColor } : void 0,
-                children: L || !k ? /* @__PURE__ */ a("span", { className: "navbar__avatar-initials", children: n.avatarInitials ?? "?" }) : /* @__PURE__ */ a(
+                children: w || !k ? /* @__PURE__ */ a("span", { className: "navbar__avatar-initials", children: n.avatarInitials ?? "?" }) : /* @__PURE__ */ a(
                   "img",
                   {
                     src: k,
                     alt: "",
                     className: "navbar__avatar-img",
-                    onError: () => w(!0)
+                    onError: () => L(!0)
                   }
                 )
               }
@@ -3491,7 +3491,8 @@ const Xr = Object.keys(W).reduce(
     ]
   },
   { id: "people", label: "People", path: "/people" },
-  { id: "my-team", label: "My team", path: "/my-team" }
+  { id: "my-team", label: "My team", path: "/my-team" },
+  { id: "workforce", label: "Workforce Readiness", path: "/workforce" }
 ], to = [
   { id: "home", label: "Home", path: "/" },
   { id: "my-activity", label: "My activity", path: "/my-activity" },
@@ -3619,11 +3620,11 @@ export {
   co as CORNER_RADIUS_TOKENS,
   io as CareerHubShell,
   mr as CourseObjectCard,
-  Lr as DataTable,
+  wr as DataTable,
   Cr as DataTableBody,
   kr as DataTableCell,
   Mr as DataTableHead,
-  wr as DataTableHeader,
+  Lr as DataTableHeader,
   xr as DataTableRow,
   Dr as Dialog,
   zr as DialogBody,
@@ -3688,14 +3689,14 @@ export {
   Jt as SkillTag,
   En as StatCard,
   Sn as StatCardGroup,
-  Lt as Stepper,
-  wn as StepperDescription,
+  wt as Stepper,
+  Ln as StepperDescription,
   xt as StepperIndicator,
   Ct as StepperItem,
-  wt as StepperList,
+  Lt as StepperList,
   Se as StepperSeparator,
   Mt as StepperTitle,
-  Ln as StepperTrigger,
+  wn as StepperTrigger,
   oo as TALENT_ACQUISITION_ACTION_BUTTONS,
   no as TALENT_ACQUISITION_RECRUITER_TABS,
   ro as TALENT_ACQUISITION_SEARCH_PLACEHOLDER,

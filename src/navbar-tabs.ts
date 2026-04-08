@@ -73,6 +73,7 @@ export const MANAGER_TABS: NavbarTab[] = [
   },
   { id: 'people', label: 'People', path: '/people' },
   { id: 'my-team', label: 'My team', path: '/my-team' },
+  { id: 'workforce', label: 'Workforce Readiness', path: '/workforce' },
 ]
 
 /** Career Hub – CHRO persona: Home, My activity, People, My team, Workforce Readiness, Insights, More (Goals, Career navigator, Marketplace) */
