@@ -16,6 +16,7 @@ const ProductBackground = React.forwardRef<HTMLDivElement, ProductBackgroundProp
       imageScrim = true,
       chevronsVariant,
       hexagonsVariant,
+      blueHexagonsVariant,
       children,
       ...props
     },
@@ -26,6 +27,7 @@ const ProductBackground = React.forwardRef<HTMLDivElement, ProductBackgroundProp
       imageScrim,
       chevronsVariant,
       hexagonsVariant,
+      blueHexagonsVariant,
     })
 
     return (

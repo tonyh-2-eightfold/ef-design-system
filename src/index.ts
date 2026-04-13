@@ -172,6 +172,7 @@ export type {
 
 export { ProductBackground } from './components/ProductBackground'
 export type {
+  BlueHexagonVariant,
   CareerHubChevronsVariant,
   ProductBackgroundProps,
   ProductBackgroundVariant,

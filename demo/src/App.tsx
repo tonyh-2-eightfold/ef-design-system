@@ -569,6 +569,7 @@ const NAVBAR_PRODUCTS: {
     tabs: typeof EMPLOYEE_NON_MANAGER_TABS
     searchPlaceholder?: string
     actionButtons: typeof TALENT_ACQUISITION_ACTION_BUTTONS
+    user?: { name: string; avatarType: 'photo' | 'initials'; avatarPhotoSrc?: string; avatarInitials?: string; avatarColor?: string }
   }[]
 }[] = [
   {
@@ -576,7 +577,7 @@ const NAVBAR_PRODUCTS: {
     label: 'Career Hub',
     personas: [
       { id: 'employee', label: 'Employee (non-manager)', tabs: EMPLOYEE_NON_MANAGER_TABS, actionButtons: [] },
-      { id: 'manager', label: 'Manager', tabs: MANAGER_TABS, actionButtons: [] },
+      { id: 'manager', label: 'Manager', tabs: MANAGER_TABS, actionButtons: [], user: { name: 'Dana Tanaka', avatarType: 'photo', avatarPhotoSrc: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face' } },
       { id: 'chro', label: 'CHRO', tabs: CAREER_HUB_CHRO_TABS, actionButtons: [] },
       { id: 'hrbp', label: 'HRBP', tabs: CAREER_HUB_HRBP_TABS, actionButtons: [] },
     ],
@@ -1115,7 +1116,7 @@ function NavbarShowcase() {
             avatarMenuItems={EMPLOYEE_AVATAR_MENU_ITEMS}
             searchPlaceholder={persona.searchPlaceholder}
             actionButtons={persona.actionButtons}
-            user={{
+            user={persona.user ?? {
               name: 'Demo User',
               avatarType: 'initials',
               avatarInitials: 'DU',

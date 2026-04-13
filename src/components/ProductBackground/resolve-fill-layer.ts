@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { chevronArtDataUrl, type CareerHubChevronsVariant } from './career-hub/chevron-art'
 import { hexagonArtDataUrl, type HexagonVariant } from './career-hub/hexagon-art'
+import { blueHexagonArtDataUrl, type BlueHexagonVariant } from './career-hub/blue-hexagon-art'
 import { photoScrimGradient } from './photo-scrim'
 import type { ProductBackgroundVariant } from './product-background.types'
 
@@ -21,12 +22,14 @@ export function resolveProductBackgroundFillLayer(
     imageScrim: boolean
     chevronsVariant?: CareerHubChevronsVariant
     hexagonsVariant?: HexagonVariant
+    blueHexagonsVariant?: BlueHexagonVariant
   }
 ): ProductBackgroundFillLayer {
   const hasImage = Boolean(options.src?.trim())
-  const isHexagons = !hasImage && options.hexagonsVariant != null
+  const isBlueHexagons = !hasImage && options.blueHexagonsVariant != null
+  const isHexagons = !hasImage && !isBlueHexagons && options.hexagonsVariant != null
   const isChevrons =
-    variant === 'career-hub' && !hasImage && !isHexagons && options.chevronsVariant != null
+    variant === 'career-hub' && !hasImage && !isHexagons && !isBlueHexagons && options.chevronsVariant != null
 
   if (hasImage && options.src) {
     return {
@@ -40,6 +43,20 @@ export function resolveProductBackgroundFillLayer(
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+      },
+    }
+  }
+
+  if (isBlueHexagons && options.blueHexagonsVariant) {
+    return {
+      hasImage: false,
+      isChevrons: false,
+      isHexagons: true,
+      fillStyle: {
+        backgroundImage: blueHexagonArtDataUrl(options.blueHexagonsVariant),
+        backgroundPosition: 'right top',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
       },
     }
   }
