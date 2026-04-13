@@ -699,44 +699,123 @@ function HeaderShowcase() {
             ProductBackground
           </h3>
           <p className="mt-1 text-xs text-muted-foreground">
-            Gradients → CH chevrons → photo (<code className="rounded bg-muted px-1 font-mono text-[10px]">src</code>). Full
-            matrix in UI Catalog.
+            All background variants — gradients, chevrons, hexagons, blue hexagons, and photo (
+            <code className="rounded bg-muted px-1 font-mono text-[10px]">src</code>).
           </p>
         </div>
-        <div className="space-y-3 rounded-lg border border-border bg-muted/20 p-4">
+
+        {/* Gradients */}
+        <div className="space-y-2">
           <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Gradients</p>
           <div className="grid gap-3 sm:grid-cols-2">
-            <ProductBackground variant="talent-acquisition" className="min-h-24 overflow-hidden rounded-md border border-border">
-              <div className="flex min-h-24 items-center px-[var(--spacing-12)] text-sm font-medium text-foreground">
-                TA gradient
+            <ProductBackground variant="talent-acquisition" className="min-h-20 overflow-hidden rounded-md border border-border">
+              <div className="flex min-h-20 items-center px-[var(--spacing-12)] text-sm font-medium text-foreground">
+                talent-acquisition
               </div>
             </ProductBackground>
-            <ProductBackground variant="career-hub" className="min-h-24 overflow-hidden rounded-md border border-border">
-              <div className="flex min-h-24 items-center px-[var(--spacing-12)] text-sm font-medium text-foreground">
-                CH gradient
+            <ProductBackground variant="career-hub" className="min-h-20 overflow-hidden rounded-md border border-border">
+              <div className="flex min-h-20 items-center px-[var(--spacing-12)] text-sm font-medium text-foreground">
+                career-hub
               </div>
             </ProductBackground>
           </div>
         </div>
-        <div className="space-y-3 rounded-lg border border-border bg-muted/20 p-4">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">CH chevrons</p>
+
+        {/* Chevrons */}
+        <div className="space-y-2">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Chevrons</p>
           <div className="grid gap-3 sm:grid-cols-2">
             <ProductBackground
               variant="career-hub"
               chevronsVariant="default"
-              className="min-h-24 overflow-hidden rounded-md border border-border"
+              className="min-h-36 overflow-hidden rounded-md border border-border"
             >
-              <div className="flex min-h-24 items-center px-[var(--spacing-12)] text-sm font-medium text-foreground">
-                Default
+              <div className="flex min-h-36 items-end px-[var(--spacing-12)] pb-3 text-sm font-medium text-foreground">
+                default
               </div>
             </ProductBackground>
             <ProductBackground
               variant="career-hub"
               chevronsVariant="profile"
-              className="min-h-32 overflow-hidden rounded-md border border-border sm:col-span-2"
+              className="min-h-36 overflow-hidden rounded-md border border-border"
             >
-              <div className="flex min-h-32 items-end px-[var(--spacing-12)] pb-4 text-sm font-medium text-foreground">
-                Profile
+              <div className="flex min-h-36 items-end px-[var(--spacing-12)] pb-3 text-sm font-medium text-foreground">
+                profile
+              </div>
+            </ProductBackground>
+          </div>
+        </div>
+
+        {/* Hexagons */}
+        <div className="space-y-2">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Hexagons</p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <ProductBackground
+              variant="career-hub"
+              hexagonsVariant="default"
+              className="min-h-36 overflow-hidden rounded-md border border-border"
+            >
+              <div className="flex min-h-36 items-end px-[var(--spacing-12)] pb-3 text-sm font-medium text-foreground">
+                default
+              </div>
+            </ProductBackground>
+            <ProductBackground
+              variant="career-hub"
+              hexagonsVariant="profile"
+              className="min-h-[200px] overflow-hidden rounded-md border border-border"
+            >
+              <div className="flex min-h-[200px] items-end px-[var(--spacing-12)] pb-3 text-sm font-medium text-foreground">
+                profile
+              </div>
+            </ProductBackground>
+          </div>
+        </div>
+
+        {/* Blue Hexagons */}
+        <div className="space-y-2">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Blue Hexagons</p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <ProductBackground
+              variant="career-hub"
+              blueHexagonsVariant="default"
+              className="min-h-36 overflow-hidden rounded-md border border-border"
+            >
+              <div className="flex min-h-36 items-end px-[var(--spacing-12)] pb-3 text-sm font-medium text-foreground">
+                default
+              </div>
+            </ProductBackground>
+            <ProductBackground
+              variant="career-hub"
+              blueHexagonsVariant="profile"
+              className="min-h-[200px] overflow-hidden rounded-md border border-border"
+            >
+              <div className="flex min-h-[200px] items-end px-[var(--spacing-12)] pb-3 text-sm font-medium text-foreground">
+                profile
+              </div>
+            </ProductBackground>
+          </div>
+        </div>
+
+        {/* Waves */}
+        <div className="space-y-2">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Waves</p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <ProductBackground
+              variant="career-hub"
+              wavesVariant="default"
+              className="min-h-36 overflow-hidden rounded-md border border-border"
+            >
+              <div className="flex min-h-36 items-end px-[var(--spacing-12)] pb-3 text-sm font-medium text-foreground">
+                default
+              </div>
+            </ProductBackground>
+            <ProductBackground
+              variant="career-hub"
+              wavesVariant="profile"
+              className="min-h-[200px] overflow-hidden rounded-md border border-border"
+            >
+              <div className="flex min-h-[200px] items-end px-[var(--spacing-12)] pb-3 text-sm font-medium text-foreground">
+                profile
               </div>
             </ProductBackground>
           </div>

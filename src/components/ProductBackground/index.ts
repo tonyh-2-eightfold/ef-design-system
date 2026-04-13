@@ -5,4 +5,5 @@ export type {
   HexagonVariant,
   ProductBackgroundProps,
   ProductBackgroundVariant,
+  WaveVariant,
 } from './product-background.types'

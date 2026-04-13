@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import { chevronArtDataUrl, type CareerHubChevronsVariant } from './career-hub/chevron-art'
 import { hexagonArtDataUrl, type HexagonVariant } from './career-hub/hexagon-art'
 import { blueHexagonArtDataUrl, type BlueHexagonVariant } from './career-hub/blue-hexagon-art'
+import { waveArtDataUrl, type WaveVariant } from './career-hub/wave-art'
 import { photoScrimGradient } from './photo-scrim'
 import type { ProductBackgroundVariant } from './product-background.types'
 
@@ -23,13 +24,15 @@ export function resolveProductBackgroundFillLayer(
     chevronsVariant?: CareerHubChevronsVariant
     hexagonsVariant?: HexagonVariant
     blueHexagonsVariant?: BlueHexagonVariant
+    wavesVariant?: WaveVariant
   }
 ): ProductBackgroundFillLayer {
   const hasImage = Boolean(options.src?.trim())
-  const isBlueHexagons = !hasImage && options.blueHexagonsVariant != null
-  const isHexagons = !hasImage && !isBlueHexagons && options.hexagonsVariant != null
+  const isWaves = !hasImage && options.wavesVariant != null
+  const isBlueHexagons = !hasImage && !isWaves && options.blueHexagonsVariant != null
+  const isHexagons = !hasImage && !isWaves && !isBlueHexagons && options.hexagonsVariant != null
   const isChevrons =
-    variant === 'career-hub' && !hasImage && !isHexagons && !isBlueHexagons && options.chevronsVariant != null
+    variant === 'career-hub' && !hasImage && !isWaves && !isHexagons && !isBlueHexagons && options.chevronsVariant != null
 
   if (hasImage && options.src) {
     return {
@@ -43,6 +46,20 @@ export function resolveProductBackgroundFillLayer(
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+      },
+    }
+  }
+
+  if (isWaves && options.wavesVariant) {
+    return {
+      hasImage: false,
+      isChevrons: false,
+      isHexagons: true,
+      fillStyle: {
+        backgroundImage: waveArtDataUrl(options.wavesVariant),
+        backgroundPosition: 'right top',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
       },
     }
   }

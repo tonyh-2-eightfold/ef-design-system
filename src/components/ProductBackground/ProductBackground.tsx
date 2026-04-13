@@ -17,6 +17,7 @@ const ProductBackground = React.forwardRef<HTMLDivElement, ProductBackgroundProp
       chevronsVariant,
       hexagonsVariant,
       blueHexagonsVariant,
+      wavesVariant,
       children,
       ...props
     },
@@ -28,6 +29,7 @@ const ProductBackground = React.forwardRef<HTMLDivElement, ProductBackgroundProp
       chevronsVariant,
       hexagonsVariant,
       blueHexagonsVariant,
+      wavesVariant,
     })
 
     return (

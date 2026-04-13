@@ -176,6 +176,7 @@ export type {
   CareerHubChevronsVariant,
   ProductBackgroundProps,
   ProductBackgroundVariant,
+  WaveVariant,
 } from './components/ProductBackground'
 export type {
   NavbarProps,
