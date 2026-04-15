@@ -16,7 +16,7 @@ function DataTable({
     <div data-slot="data-table-scroll" className="relative w-full overflow-x-auto [-webkit-overflow-scrolling:touch]">
       <table
         data-slot="data-table"
-        className={cn('w-full border-collapse text-sm', className)}
+        className={cn('min-w-full border-collapse text-sm', className)}
         {...props}
       >
         {children}
