@@ -59,6 +59,13 @@ body::-webkit-scrollbar {
   height: 0;
 }
 
+/* Canonical shadcn base: default border color to --border, not currentColor */
+@layer base {
+  *, ::before, ::after {
+    border-color: var(--color-border);
+  }
+}
+
 /* Base — shadcn-style docs */
 html {
   -webkit-font-smoothing: antialiased;

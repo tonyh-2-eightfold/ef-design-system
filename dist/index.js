@@ -14,7 +14,7 @@ import { Check as jt, ChevronDown as He, ChevronUp as Zt } from "lucide-react";
 import * as T from "@radix-ui/react-select";
 import * as le from "@radix-ui/react-progress";
 import * as D from "@radix-ui/react-dialog";
-import { CORNER_RADIUS_TOKENS as go, SPACING_TOKENS as vo } from "./tokens.js";
+import { CORNER_RADIUS_TOKENS as _o, SPACING_TOKENS as yo } from "./tokens.js";
 function g(...e) {
   return At(Dt(e));
 }
@@ -151,7 +151,7 @@ const ne = Object.assign(Ht, {
   Item: Wt,
   Separator: qt
 });
-function lr({
+function ur({
   children: e,
   menu: t,
   variant: n = "outline",
@@ -385,7 +385,7 @@ function ta(e) {
 function aa(e) {
   return Z.isValidElement(e) && typeof e.type != "string" && (e.type === ea || e.type.displayName === "Tag");
 }
-function cr({
+function pr({
   type: e = "single",
   value: t,
   onValueChange: n,
@@ -456,7 +456,7 @@ function Pe(e, t) {
     "data-icon": t
   }) : /* @__PURE__ */ a("span", { "data-icon": t, style: { display: "inline-flex" }, children: e });
 }
-function dr({
+function mr({
   className: e,
   variant: t = "default",
   size: n = "24",
@@ -484,7 +484,7 @@ function dr({
   );
 }
 const ra = "m-0 flex list-none flex-wrap items-center gap-0 p-0 break-words", oa = "inline-flex items-center", Ue = "rounded-sm text-[length:14px] font-semibold leading-[1.43] text-[#4f5666] bg-transparent border-none cursor-pointer p-0 no-underline transition-colors hover:text-[#1a212e] hover:underline hover:[text-underline-offset:2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-background", ia = "text-[length:14px] font-bold leading-[1.43] text-[#1a212e]", sa = "inline-flex shrink-0 select-none items-center justify-center text-[#94a3b8] mx-1.5 [&>svg]:w-3.5 [&>svg]:h-3.5 [&>svg]:shrink-0";
-function ur({ className: e, ...t }) {
+function fr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "nav",
     {
@@ -495,13 +495,13 @@ function ur({ className: e, ...t }) {
     }
   );
 }
-function pr({ className: e, ...t }) {
+function hr({ className: e, ...t }) {
   return /* @__PURE__ */ a("ol", { "data-slot": "breadcrumb-list", className: g(ra, e), ...t });
 }
-function mr({ className: e, ...t }) {
+function gr({ className: e, ...t }) {
   return /* @__PURE__ */ a("li", { "data-slot": "breadcrumb-item", className: g(oa, e), ...t });
 }
-function fr({ asChild: e, className: t, ...n }) {
+function vr({ asChild: e, className: t, ...n }) {
   return /* @__PURE__ */ a(
     e ? be : "button",
     {
@@ -512,7 +512,7 @@ function fr({ asChild: e, className: t, ...n }) {
     }
   );
 }
-function hr({ className: e, ...t }) {
+function br({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "span",
     {
@@ -525,7 +525,7 @@ function hr({ className: e, ...t }) {
     }
   );
 }
-function gr({ children: e, className: t, ...n }) {
+function _r({ children: e, className: t, ...n }) {
   return /* @__PURE__ */ a(
     "li",
     {
@@ -538,7 +538,7 @@ function gr({ children: e, className: t, ...n }) {
     }
   );
 }
-function vr({ className: e, children: t, ...n }) {
+function yr({ className: e, children: t, ...n }) {
   return /* @__PURE__ */ a(
     "span",
     {
@@ -616,7 +616,7 @@ function da({
 function ua({ to: e, children: t, className: n }) {
   return /* @__PURE__ */ a("a", { href: e, className: n, children: t });
 }
-function br({
+function Nr({
   course: e,
   href: t = "#",
   showBookmark: n = !0,
@@ -660,7 +660,7 @@ function br({
 function pa({ to: e, children: t, className: n }) {
   return /* @__PURE__ */ a("a", { href: e, className: n, children: t });
 }
-function _r({
+function Cr({
   project: e,
   href: t = "#",
   showBookmark: n = !0,
@@ -718,7 +718,7 @@ function ma(e) {
 function fa({ to: e, children: t, className: n }) {
   return /* @__PURE__ */ a("a", { href: e, className: n, children: t });
 }
-function yr({
+function Lr({
   person: e,
   href: t = "#",
   showBookmark: n = !0,
@@ -757,7 +757,7 @@ const G = {
   buttonLabel: "Explore Mentors",
   buttonHref: "#"
 };
-function Nr({
+function wr({
   title: e = G.title,
   badge: t = G.badge,
   description: n = G.description,
@@ -1851,7 +1851,7 @@ function re({
 function oe(e) {
   e.preventDefault();
 }
-function Cr({
+function xr({
   className: e,
   children: t,
   onPointerMove: n,
@@ -1895,7 +1895,7 @@ function Cr({
     }
   );
 }
-function Lr({
+function Mr({
   className: e,
   children: t,
   forceMount: n,
@@ -1998,7 +1998,7 @@ function ie({
     }
   );
 }
-function wr({
+function kr({
   className: e,
   orientation: t = "horizontal",
   ...n
@@ -2031,7 +2031,7 @@ const un = ee(
     }
   }
 );
-function xr({
+function Er({
   className: e,
   variant: t = "default",
   ...n
@@ -2046,7 +2046,7 @@ function xr({
     }
   );
 }
-function Mr({
+function Vr({
   className: e,
   leadingIcon: t,
   badge: n,
@@ -2073,7 +2073,7 @@ function Mr({
     }
   );
 }
-function kr({
+function Sr({
   className: e,
   ...t
 }) {
@@ -2086,7 +2086,19 @@ function kr({
     }
   );
 }
-function Er({
+function pn() {
+  return /* @__PURE__ */ m("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": "true", children: [
+    /* @__PURE__ */ a("path", { d: "m7 15 5 5 5-5" }),
+    /* @__PURE__ */ a("path", { d: "m7 9 5-5 5 5" })
+  ] });
+}
+function mn() {
+  return /* @__PURE__ */ a("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": "true", children: /* @__PURE__ */ a("path", { d: "m18 15-6-6-6 6" }) });
+}
+function fn() {
+  return /* @__PURE__ */ a("svg", { width: "14", height: "14", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": "true", children: /* @__PURE__ */ a("path", { d: "m6 9 6 6 6-6" }) });
+}
+function Rr({
   className: e,
   bordered: t,
   children: n,
@@ -2101,9 +2113,9 @@ function Er({
       children: n
     }
   ) });
-  return t ? /* @__PURE__ */ a("div", { "data-slot": "data-table-bordered", className: "rounded-xl border border-[#e5e7eb] bg-white overflow-hidden", children: o }) : o;
+  return t ? /* @__PURE__ */ a("div", { "data-slot": "data-table-bordered", className: "rounded-xl border border-border bg-card overflow-hidden", children: o }) : o;
 }
-function Vr({ className: e, ...t }) {
+function Ir({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "thead",
     {
@@ -2113,7 +2125,7 @@ function Vr({ className: e, ...t }) {
     }
   );
 }
-function Sr({ className: e, ...t }) {
+function Tr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "tbody",
     {
@@ -2123,7 +2135,7 @@ function Sr({ className: e, ...t }) {
     }
   );
 }
-function Rr({
+function Pr({
   className: e,
   variant: t = "default",
   onClick: n,
@@ -2134,10 +2146,10 @@ function Rr({
     {
       "data-slot": "data-table-row",
       className: g(
-        "border-b border-[#f1f5f9] transition-colors",
-        t === "warn" && "",
-        n && "cursor-pointer hover:bg-[#fafbff]",
-        !n && "hover:bg-muted/50",
+        "border-b transition-colors",
+        t === "warn" && "bg-amber-50/60 hover:bg-amber-50",
+        t === "default" && "hover:bg-muted/50",
+        n && "cursor-pointer",
         e
       ),
       onClick: n,
@@ -2145,30 +2157,50 @@ function Rr({
     }
   );
 }
-function Ir({
+function Dr({
   className: e,
   align: t,
   numeric: n,
   metric: r,
   shrink: o,
-  ...i
+  sortable: i,
+  sorted: c,
+  onSort: s,
+  children: l,
+  ...p
 }) {
+  const u = t ?? (n ? "right" : "left"), h = i ? /* @__PURE__ */ m(
+    "button",
+    {
+      type: "button",
+      onClick: s,
+      className: g(
+        "inline-flex items-center gap-1.5 hover:text-foreground transition-colors",
+        c && "text-foreground"
+      ),
+      children: [
+        l,
+        c === "asc" ? /* @__PURE__ */ a(mn, {}) : c === "desc" ? /* @__PURE__ */ a(fn, {}) : /* @__PURE__ */ a(pn, {})
+      ]
+    }
+  ) : l;
   return /* @__PURE__ */ a(
     "th",
     {
       "data-slot": "data-table-head",
       className: g(
-        "px-5 py-2.5 text-left font-[var(--typography-caption-semibold)] text-[color:#64748b] uppercase tracking-[0.05em] text-xs font-semibold bg-[#f8fafc] whitespace-nowrap",
-        (t ?? (n ? "right" : "left")) === "right" && "text-right",
+        "px-5 py-2.5 text-left text-xs font-semibold text-muted-foreground uppercase tracking-[0.05em] bg-muted/50 whitespace-nowrap [&:has([role=checkbox])]:pr-0",
+        u === "right" && "text-right",
         r && "min-w-[108px]",
         o && "w-[1%] pl-3 pr-5",
         e
       ),
-      ...i
+      ...p,
+      children: h
     }
   );
 }
-function Tr({
+function Ar({
   className: e,
   align: t = "left",
   metric: n,
@@ -2180,7 +2212,7 @@ function Tr({
     {
       "data-slot": "data-table-cell",
       className: g(
-        "px-5 py-3 align-middle whitespace-nowrap text-sm text-[#0f172a]",
+        "px-5 py-3 align-middle whitespace-nowrap text-sm text-foreground [&:has([role=checkbox])]:pr-0",
         t === "right" && "text-right",
         n && "min-w-[108px]",
         r && "tabular-nums",
@@ -2190,34 +2222,34 @@ function Tr({
     }
   );
 }
-function Pr({
+function Fr({
   ...e
 }) {
   return /* @__PURE__ */ a(T.Root, { "data-slot": "select", ...e });
 }
-function Dr({
+function Or({
   ...e
 }) {
   return /* @__PURE__ */ a(T.Group, { "data-slot": "select-group", ...e });
 }
-function Ar({
+function Br({
   ...e
 }) {
   return /* @__PURE__ */ a(T.Value, { "data-slot": "select-value", ...e });
 }
-const pn = {
+const hn = {
   default: "border-transparent bg-[rgba(235,247,255,1)] text-[var(--color-button-primary-text)] hover:bg-[rgba(220,240,255,1)] focus-visible:bg-[rgba(220,240,255,1)] data-[placeholder]:text-[var(--color-button-primary-text)]/70 [&_svg]:opacity-80",
   primary: "border-transparent bg-[var(--color-button-primary-bg)] text-[var(--color-button-primary-text)] hover:bg-[var(--color-button-primary-bg-hover)] focus-visible:bg-[var(--color-button-primary-bg-hover)] data-[placeholder]:text-[var(--color-button-primary-text)] [&_svg]:opacity-80",
   secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:bg-secondary/80 dark:hover:bg-secondary/80 dark:focus-visible:bg-secondary/80 data-[placeholder]:text-secondary-foreground/70 [&_svg]:text-secondary-foreground/80",
   outline: "border border-input bg-transparent text-foreground hover:bg-accent/50 focus-visible:bg-accent/50 dark:bg-input/30 dark:hover:bg-input/50 dark:focus-visible:bg-input/50 data-[placeholder]:text-muted-foreground [&_svg]:text-muted-foreground"
-}, mn = {
+}, gn = {
   default: "h-9 min-h-9 px-3 py-2 [&_svg]:size-4",
   sm: "h-8 min-h-8 px-2.5 py-1.5 [&_svg]:size-3.5"
-}, fn = {
+}, vn = {
   default: void 0,
   sm: { height: 32, minHeight: 32, paddingTop: 6, paddingBottom: 6, paddingLeft: 10, paddingRight: 10, fontSize: "0.75rem" }
 };
-function Fr({
+function jr({
   className: e,
   size: t = "default",
   variant: n = "default",
@@ -2231,11 +2263,11 @@ function Fr({
       "data-slot": "select-trigger",
       "data-size": i,
       "data-variant": n,
-      style: fn[i],
+      style: vn[i],
       className: g(
         "flex w-fit items-center justify-between gap-2 rounded-[var(--radius-8)] border whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-        mn[i],
-        pn[n],
+        gn[i],
+        hn[n],
         e
       ),
       ...o,
@@ -2246,7 +2278,7 @@ function Fr({
     }
   );
 }
-function Or({
+function Zr({
   className: e,
   children: t,
   position: n = "item-aligned",
@@ -2266,7 +2298,7 @@ function Or({
       align: r,
       ...o,
       children: [
-        /* @__PURE__ */ a(hn, {}),
+        /* @__PURE__ */ a(bn, {}),
         /* @__PURE__ */ a(
           T.Viewport,
           {
@@ -2277,12 +2309,12 @@ function Or({
             children: t
           }
         ),
-        /* @__PURE__ */ a(gn, {})
+        /* @__PURE__ */ a(_n, {})
       ]
     }
   ) });
 }
-function Br({
+function zr({
   className: e,
   ...t
 }) {
@@ -2295,7 +2327,7 @@ function Br({
     }
   );
 }
-function jr({
+function $r({
   className: e,
   children: t,
   ...n
@@ -2323,7 +2355,7 @@ function jr({
     }
   );
 }
-function Zr({
+function Hr({
   className: e,
   ...t
 }) {
@@ -2336,7 +2368,7 @@ function Zr({
     }
   );
 }
-function hn({
+function bn({
   className: e,
   ...t
 }) {
@@ -2350,7 +2382,7 @@ function hn({
     }
   );
 }
-function gn({
+function _n({
   className: e,
   ...t
 }) {
@@ -2364,11 +2396,11 @@ function gn({
     }
   );
 }
-const vn = "relative box-border h-1.5 w-full overflow-hidden rounded-[var(--radius-full)] border border-solid border-[rgba(44,140,201,1)] bg-[rgba(235,253,255,1)]";
-function bn(e, t) {
+const yn = "relative box-border h-1.5 w-full overflow-hidden rounded-[var(--radius-full)] border border-solid border-[rgba(44,140,201,1)] bg-[rgba(235,253,255,1)]";
+function Nn(e, t) {
   return e == null ? "…" : `${Math.min(100, Math.max(0, Math.round(e / t * 100)))}% complete`;
 }
-const _n = d.forwardRef(
+const Cn = d.forwardRef(
   ({
     className: e,
     label: t,
@@ -2382,12 +2414,12 @@ const _n = d.forwardRef(
     max: p = 100,
     ...u
   }, h) => {
-    const f = typeof l == "number" && !Number.isNaN(l) ? l : null, b = typeof p == "number" && p > 0 ? p : 100, _ = f != null ? Math.min(100, Math.max(0, f / b * 100)) : 0, y = c ?? (f != null ? String(Math.min(100, Math.max(0, Math.round(f / b * 100)))) : "…"), N = s ?? bn(f, b), M = r === "scale" || r === "complete-left" || t != null, x = /* @__PURE__ */ a(
+    const f = typeof l == "number" && !Number.isNaN(l) ? l : null, b = typeof p == "number" && p > 0 ? p : 100, _ = f != null ? Math.min(100, Math.max(0, f / b * 100)) : 0, y = c ?? (f != null ? String(Math.min(100, Math.max(0, Math.round(f / b * 100)))) : "…"), N = s ?? Nn(f, b), M = r === "scale" || r === "complete-left" || t != null, x = /* @__PURE__ */ a(
       le.Root,
       {
         ref: h,
         "data-slot": "progress",
-        className: g(vn, M ? void 0 : e),
+        className: g(yn, M ? void 0 : e),
         value: f,
         max: b,
         ...u,
@@ -2485,7 +2517,7 @@ const _n = d.forwardRef(
     );
   }
 );
-_n.displayName = le.Root.displayName;
+Cn.displayName = le.Root.displayName;
 const ke = d.createContext(null);
 function ae() {
   const e = d.useContext(ke);
@@ -2546,12 +2578,12 @@ const Ve = d.forwardRef(
   }
 );
 Ve.displayName = "StepperSeparator";
-function yn(e) {
+function Ln(e) {
   if (!d.isValidElement(e)) return !1;
   const t = e.type;
   return t === Ve || t?.displayName === "StepperSeparator";
 }
-function Nn(e) {
+function wn(e) {
   return d.isValidElement(e) && e.type.displayName === "StepperItem";
 }
 const Lt = d.forwardRef(
@@ -2559,7 +2591,7 @@ const Lt = d.forwardRef(
     const o = [];
     let i = 0, c = 0;
     return d.Children.forEach(t, (s) => {
-      if (yn(s)) {
+      if (Ln(s)) {
         const l = c++;
         o.push(
           /* @__PURE__ */ a(yt.Provider, { value: l, children: d.cloneElement(s, {
@@ -2569,7 +2601,7 @@ const Lt = d.forwardRef(
         );
         return;
       }
-      if (Nn(s)) {
+      if (wn(s)) {
         const l = i++;
         o.push(
           d.cloneElement(s, {
@@ -2614,7 +2646,7 @@ const wt = d.forwardRef(
   }
 );
 wt.displayName = "StepperItem";
-const Cn = d.forwardRef(
+const xn = d.forwardRef(
   ({ className: e, type: t = "button", disabled: n, onClick: r, children: o, ...i }, c) => {
     const { value: s, onValueChange: l, size: p } = ae(), u = Nt(), h = l != null && !n && u <= s, b = g(
       "group/stepper-trigger flex rounded-md",
@@ -2656,7 +2688,7 @@ const Cn = d.forwardRef(
     );
   }
 );
-Cn.displayName = "StepperTrigger";
+xn.displayName = "StepperTrigger";
 const Ze = "bg-[var(--color-button-primary-bg)] text-[var(--color-button-primary-text)]";
 function ze(e, t = "default") {
   const n = t === "sm";
@@ -2739,7 +2771,7 @@ const Mt = d.forwardRef(
   }
 );
 Mt.displayName = "StepperTitle";
-const Ln = d.forwardRef(
+const Mn = d.forwardRef(
   ({ className: e, ...t }, n) => /* @__PURE__ */ a(
     "span",
     {
@@ -2753,20 +2785,20 @@ const Ln = d.forwardRef(
     }
   )
 );
-Ln.displayName = "StepperDescription";
-function zr({ ...e }) {
+Mn.displayName = "StepperDescription";
+function Ur({ ...e }) {
   return /* @__PURE__ */ a(D.Root, { "data-slot": "dialog", ...e });
 }
-function $r({ ...e }) {
+function Gr({ ...e }) {
   return /* @__PURE__ */ a(D.Trigger, { "data-slot": "dialog-trigger", ...e });
 }
-function wn({ ...e }) {
+function kn({ ...e }) {
   return /* @__PURE__ */ a(D.Portal, { "data-slot": "dialog-portal", ...e });
 }
-function Hr({ ...e }) {
+function Kr({ ...e }) {
   return /* @__PURE__ */ a(D.Close, { "data-slot": "dialog-close", ...e });
 }
-function xn({
+function En({
   className: e,
   ...t
 }) {
@@ -2779,7 +2811,7 @@ function xn({
     }
   );
 }
-function Ur({
+function Wr({
   className: e,
   children: t,
   showCloseButton: n = !0,
@@ -2787,8 +2819,8 @@ function Ur({
   currentStep: o = 0,
   ...i
 }) {
-  return /* @__PURE__ */ m(wn, { children: [
-    /* @__PURE__ */ a(xn, {}),
+  return /* @__PURE__ */ m(kn, { children: [
+    /* @__PURE__ */ a(En, {}),
     /* @__PURE__ */ m(
       D.Content,
       {
@@ -2806,7 +2838,7 @@ function Ur({
     )
   ] });
 }
-function Gr({ className: e, ...t }) {
+function qr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2816,7 +2848,7 @@ function Gr({ className: e, ...t }) {
     }
   );
 }
-function Kr({ steps: e, currentStep: t = 0, className: n }) {
+function Yr({ steps: e, currentStep: t = 0, className: n }) {
   return /* @__PURE__ */ a(Ct, { value: t, size: "sm", className: g("ef-dialog__stepper", n), children: /* @__PURE__ */ a(Lt, { children: e.map((r, o) => /* @__PURE__ */ m(d.Fragment, { children: [
     o > 0 && /* @__PURE__ */ a(Ve, {}),
     /* @__PURE__ */ m(wt, { children: [
@@ -2825,7 +2857,7 @@ function Kr({ steps: e, currentStep: t = 0, className: n }) {
     ] })
   ] }, o)) }) });
 }
-function Wr({ className: e, ...t }) {
+function Xr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2835,7 +2867,7 @@ function Wr({ className: e, ...t }) {
     }
   );
 }
-function qr({ className: e, ...t }) {
+function Qr({ className: e, ...t }) {
   return /* @__PURE__ */ a(
     "div",
     {
@@ -2845,7 +2877,7 @@ function qr({ className: e, ...t }) {
     }
   );
 }
-function Yr({
+function Jr({
   className: e,
   ...t
 }) {
@@ -2858,7 +2890,7 @@ function Yr({
     }
   );
 }
-function Xr({
+function eo({
   className: e,
   ...t
 }) {
@@ -2871,7 +2903,7 @@ function Xr({
     }
   );
 }
-const Mn = d.forwardRef(
+const Vn = d.forwardRef(
   ({ className: e, value: t, color: n = "grey", size: r = "md", ...o }, i) => /* @__PURE__ */ a(
     "span",
     {
@@ -2888,11 +2920,11 @@ const Mn = d.forwardRef(
     }
   )
 );
-Mn.displayName = "NumberBadge";
-function kn(e) {
+Vn.displayName = "NumberBadge";
+function Sn(e) {
   return e === !0 || e === "alert" ? "stat-card__badge--alert" : e === "success" ? "stat-card__badge--success" : e === "info" ? "stat-card__badge--info" : "";
 }
-const En = d.forwardRef(
+const Rn = d.forwardRef(
   ({ className: e, icon: t = "person", label: n, value: r, pct: o, color: i = "grey", size: c = "lg", variant: s = "outlined", iconBadge: l, ...p }, u) => /* @__PURE__ */ m(
     "div",
     {
@@ -2909,7 +2941,7 @@ const En = d.forwardRef(
       children: [
         /* @__PURE__ */ m("div", { className: "stat-card__icon", children: [
           /* @__PURE__ */ a("span", { className: "material-symbols-outlined", "aria-hidden": !0, children: t }),
-          l && /* @__PURE__ */ a("span", { className: g("stat-card__badge", kn(l)), "aria-hidden": !0 })
+          l && /* @__PURE__ */ a("span", { className: g("stat-card__badge", Sn(l)), "aria-hidden": !0 })
         ] }),
         /* @__PURE__ */ m("div", { className: "stat-card__text", children: [
           /* @__PURE__ */ a("span", { className: "stat-card__label", children: n }),
@@ -2926,8 +2958,8 @@ const En = d.forwardRef(
     }
   )
 );
-En.displayName = "StatCard";
-const Vn = d.forwardRef(
+Rn.displayName = "StatCard";
+const In = d.forwardRef(
   ({ className: e, size: t = "lg", children: n, ...r }, o) => /* @__PURE__ */ a(
     "div",
     {
@@ -2946,8 +2978,8 @@ const Vn = d.forwardRef(
     }
   )
 );
-Vn.displayName = "StatCardGroup";
-function Sn({
+In.displayName = "StatCardGroup";
+function Tn({
   to: e,
   children: t,
   className: n,
@@ -2955,7 +2987,7 @@ function Sn({
 }) {
   return /* @__PURE__ */ a("a", { href: e, className: n, onClick: r, children: t });
 }
-function Rn({
+function Pn({
   tabs: e,
   avatarMenuItems: t,
   user: n,
@@ -2971,7 +3003,7 @@ function Rn({
   onSearchChange: f,
   onSearchIconClick: b,
   actionButtons: _ = [],
-  LinkComponent: y = Sn,
+  LinkComponent: y = Tn,
   NavLinkComponent: N
 }) {
   const [M, x] = Se(!1), [C, L] = Se(!1), w = y, E = i === "/profile", k = n.avatarType === "photo" && n.avatarPhotoSrc ? n.avatarPhotoSrc.replace("w=200&h=200", "w=80&h=80") : null, P = (v) => {
@@ -3199,10 +3231,10 @@ const kt = d.createContext({
   variant: "career-hub",
   careerHubSize: "parent"
 });
-function In() {
+function Dn() {
   return d.useContext(kt);
 }
-const Tn = ee(
+const An = ee(
   "w-full shrink-0 border-b border-[transparent] transition-colors",
   {
     variants: {
@@ -3229,7 +3261,7 @@ const Tn = ee(
         "data-variant": s,
         "data-ch-size": s === "career-hub" ? n : void 0,
         className: g(
-          Tn({ variant: s }),
+          An({ variant: s }),
           o && s === "career-hub" && "!bg-transparent",
           r && "sticky top-0 z-30",
           r && !(o && s === "career-hub") && "backdrop-blur-sm supports-[backdrop-filter]:bg-[var(--background)]/95",
@@ -3243,15 +3275,15 @@ const Tn = ee(
   }
 );
 Et.displayName = "Header";
-const Pn = {
+const Fn = {
   profile: "h-[var(--header-career-hub-profile-height)] min-h-[var(--header-career-hub-profile-height)] flex-wrap items-start content-start gap-y-3 pb-4 pl-[var(--spacing-12)] pr-[var(--spacing-12)] md:pb-6 md:gap-5",
   parent: "h-[var(--header-career-hub-parent-height)] min-h-[var(--header-career-hub-parent-height)] items-start gap-4 pl-[var(--spacing-12)] pr-[var(--spacing-12)]",
   child: "h-[var(--header-career-hub-child-height)] min-h-[var(--header-career-hub-child-height)] items-start gap-3 pb-2 pl-[var(--spacing-12)] pr-[var(--spacing-12)]"
 }, Vt = d.forwardRef(
   ({ className: e, actions: t, children: n, ...r }, o) => {
-    const { variant: i, careerHubSize: c } = In(), s = "flex min-h-12 w-full max-w-[100vw] items-start gap-3 py-0 pl-[var(--spacing-12)] pr-[var(--spacing-12)] md:h-[var(--navbar-height,3.75rem)] md:gap-4", l = g(
+    const { variant: i, careerHubSize: c } = Dn(), s = "flex min-h-12 w-full max-w-[100vw] items-start gap-3 py-0 pl-[var(--spacing-12)] pr-[var(--spacing-12)] md:h-[var(--navbar-height,3.75rem)] md:gap-4", l = g(
       "flex w-full max-w-[100vw] items-start",
-      Pn[c]
+      Fn[c]
     );
     return /* @__PURE__ */ m(
       "div",
@@ -3269,11 +3301,11 @@ const Pn = {
   }
 );
 Vt.displayName = "HeaderToolbar";
-const Dn = d.forwardRef(
+const On = d.forwardRef(
   ({ className: e, ...t }, n) => /* @__PURE__ */ a("div", { ref: n, "data-slot": "header-actions", className: g(e), ...t })
 );
-Dn.displayName = "HeaderActions";
-const An = d.forwardRef(
+On.displayName = "HeaderActions";
+const Bn = d.forwardRef(
   ({ className: e, ...t }, n) => /* @__PURE__ */ a(
     "div",
     {
@@ -3284,7 +3316,7 @@ const An = d.forwardRef(
     }
   )
 );
-An.displayName = "HeaderGroup";
+Bn.displayName = "HeaderGroup";
 const St = d.forwardRef(
   ({ className: e, ...t }, n) => /* @__PURE__ */ a("h1", { ref: n, "data-slot": "header-title", className: g(e), ...t })
 );
@@ -3297,33 +3329,33 @@ const It = d.forwardRef(
   ({ className: e, ...t }, n) => /* @__PURE__ */ a("p", { ref: n, "data-slot": "header-secondary", className: g(e), ...t })
 );
 It.displayName = "HeaderSecondary";
-const Fn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="540" viewBox="0 0 1440 540" fill="none"><g clip-path="url(#ef_ch_prof)"><rect width="1440" height="540" fill="white"/><path d="M760 77.8125L860 20V120L760 177.812V77.8125Z" fill="#C15151"/><path d="M960 77.8125L860 20V120L960 177.812V77.8125Z" fill="#F29D31"/><path d="M1060 251.25L1160 193.438V293.438L1060 351.25V251.25Z" fill="#69717F"/><path d="M1260 251.25L1160 193.438V293.438L1260 351.25V251.25Z" fill="#2DB3C7"/><path d="M1160 -6.5625L1060 -64.375V35.625L1160 93.4375V-6.5625Z" fill="#F29D31"/><path d="M1360 93.4375L1260 35.625V135.625L1360 193.438V93.4375Z" fill="#F29D31"/><path d="M960 -22.1875L860 -80V20L960 77.8125V-22.1875Z" fill="#2DB3C7"/><path d="M1460 351.25L1360 293.438V393.438L1460 451.25V351.25Z" fill="#858B98"/><path d="M1460 451.25L1360 393.438V493.438L1460 551.25V451.25Z" fill="#2DB3C7"/><path d="M1460 251.25L1360 193.438V293.438L1460 351.25V251.25Z" fill="#E46F6F"/><path d="M1160 -6.5625L1260 -64.375V35.625L1160 93.4375V-6.5625Z" fill="#1999AC"/><path d="M1160 93.4375L1260 35.625V135.625L1160 193.438V93.4375Z" fill="#69717F"/><path d="M1360 -6.5625L1460 -64.375V35.625L1360 93.4375V-6.5625Z" fill="#1999AC"/><path d="M1360 93.4375L1460 35.625V135.625L1360 193.438V93.4375Z" fill="#69717F"/><path d="M1060 35.625L960 -22.1875V77.8125L1060 135.625V35.625Z" fill="#E46F6F"/></g><defs><clipPath id="ef_ch_prof"><rect width="1440" height="540" fill="white"/></clipPath></defs></svg>', On = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="292" viewBox="0 0 1440 292" fill="none"><g clip-path="url(#ef_ch_def)"><rect width="1440" height="292" fill="white"/><path d="M760 80.8585L860 20.7829V124.697L760 184.773V80.8585Z" fill="#C15151"/><path d="M960 80.8585L860 20.7829V124.697L960 184.773V80.8585Z" fill="#F29D31"/><path d="M1060 261.085L1160 201.01V304.924L1060 365V261.085Z" fill="#69717F"/><path d="M1260 261.085L1160 201.01V304.924L1260 365V261.085Z" fill="#2DB3C7"/><path d="M1160 -6.8194L1060 -66.895V37.0196L1160 97.0952V-6.8194Z" fill="#F29D31"/><path d="M1360 97.0952L1260 37.0196V140.934L1360 201.01V97.0952Z" fill="#F29D31"/><path d="M960 -23.056L860 -83.1317V20.7829L960 80.8586V-23.056Z" fill="#2DB3C7"/><path d="M1460 261.085L1360 201.01V304.924L1460 365V261.085Z" fill="#E46F6F"/><path d="M1160 -6.8194L1260 -66.895V37.0196L1160 97.0952V-6.8194Z" fill="#1999AC"/><path d="M1160 97.0952L1260 37.0196V140.934L1160 201.01V97.0952Z" fill="#69717F"/><path d="M1360 -6.8194L1460 -66.895V37.0196L1360 97.0952V-6.8194Z" fill="#1999AC"/><path d="M1360 97.0952L1460 37.0196V140.934L1360 201.01V97.0952Z" fill="#69717F"/><path d="M1060 37.0196L960 -23.0561V80.8585L1060 140.934V37.0196Z" fill="#E46F6F"/></g><defs><clipPath id="ef_ch_def"><rect width="1440" height="292" fill="white"/></clipPath></defs></svg>';
-function Bn(e) {
-  return `url("data:image/svg+xml,${encodeURIComponent(e === "profile" ? Fn : On)}")`;
-}
-const jn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="540" viewBox="0 0 1440 540" fill="none"><g clip-path="url(#ef_hex_prof)"><rect width="1440" height="540" fill="#ffffff"/><path d="M578.038 175.577V234.422L629 263.845L679.962 234.422V175.577L629 146.154L578.038 175.577Z" stroke="#A9B0F5" stroke-width="2"/><path d="M629 157L587.431 181V229L629 253L670.569 229V181L629 157Z" fill="#A9B0F5"/><path opacity="0.5" d="M629 173L601.287 189V221L629 237L656.713 221V189L629 173Z" fill="#5962B7"/><path d="M835 110L807.287 126V158L835 174L862.713 158V126L835 110Z" fill="#FFA3A3"/><path opacity="0.5" d="M835 121L816.813 131.5V152.5L835 163L853.187 152.5V131.5L835 121Z" fill="#C15151"/><path d="M990 153L913.79 197V285L990 329L1066.21 285V197L990 153Z" fill="#BEC2CA"/><path opacity="0.5" d="M989.5 181L938.838 210.75V270.25L989.5 300L1040.16 270.25V210.75L989.5 181Z" fill="#69717F"/><path d="M1124 139L981.106 221.5V386.5L1124 469L1266.89 386.5V221.5L1124 139Z" fill="#FFA3A3"/><path opacity="0.5" d="M1124 194L1028.74 249V359L1124 414L1219.26 359V249L1124 194Z" fill="#C15151"/><path d="M1285 291L1243.43 315V363L1285 387L1326.57 363V315L1285 291Z" fill="#A9B0F5"/><path opacity="0.5" d="M1285 307L1257.29 323V355L1285 371L1312.71 355V323L1285 307Z" fill="#5962B7"/><path d="M1108 -78L1031.79 -34V54L1108 98L1184.21 54V-34L1108 -78Z" fill="#BEC2CA"/><path opacity="0.5" d="M1107.5 -50L1056.84 -20.25V39.25L1107.5 69L1158.16 39.25V-20.25L1107.5 -50Z" fill="#69717F"/><path d="M1200.59 -181.179V20.1777L1371.5 120.839L1542.41 20.1777V-181.179L1371.5 -281.84L1200.59 -181.179Z" stroke="#BEC2CA" stroke-width="2"/><path d="M1371.5 -251L1222.11 -165V7L1371.5 93L1520.89 7V-165L1371.5 -251Z" fill="#BEC2CA"/><path opacity="0.5" d="M1371.5 -195L1271.47 -137V-21L1371.5 37L1471.53 -21V-137L1371.5 -195Z" fill="#69717F"/><path d="M1315.41 113.32V229.679L1414 287.839L1512.59 229.679V113.32L1414 55.1602L1315.41 113.32Z" stroke="#FFA3A3" stroke-width="2"/><path d="M1414 72L1327.4 122V222L1414 272L1500.6 222V122L1414 72Z" fill="#FFA3A3"/><path opacity="0.5" d="M1414 105L1355.98 138.5V205.5L1414 239L1472.02 205.5V138.5L1414 105Z" fill="#C15151"/><path d="M1363 56L1339.62 69.5V96.5L1363 110L1386.38 96.5V69.5L1363 56Z" fill="#FFCD78"/><path opacity="0.5" d="M1363 65L1347.41 74V92L1363 101L1378.59 92V74L1363 65Z" fill="#C97E19"/><path d="M1321 -50L1279.43 -26V22L1321 46L1362.57 22V-26L1321 -50Z" fill="#A9B0F5"/><path opacity="0.5" d="M1321 -34L1293.29 -18V14L1321 30L1348.71 14V-18L1321 -34Z" fill="#5962B7"/><path d="M756 256L686.718 296V376L756 416L825.282 376V296L756 256Z" fill="#FFCD78"/><path opacity="0.5" d="M756 283L710.101 309.5V362.5L756 389L801.899 362.5V309.5L756 283Z" fill="#C97E19"/><path d="M861.637 -14.9229V40.9219L910 68.8447L958.363 40.9219V-14.9229L910 -42.8457L861.637 -14.9229Z" stroke="#FFCD78" stroke-width="2"/><path d="M910 -29L873.627 -8V34L910 55L946.373 34V-8L910 -29Z" fill="#FFCD78"/><path opacity="0.5" d="M910 -14L886.617 -0.5V26.5L910 40L933.383 26.5V-0.5L910 -14Z" fill="#C97E19"/><path d="M788 155L764.617 168.5V195.5L788 209L811.383 195.5V168.5L788 155Z" fill="#FFCD78"/><path opacity="0.5" d="M788 164L772.412 173V191L788 200L803.588 191V173L788 164Z" fill="#C97E19"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 417.531)" stroke="#BEC2CA" stroke-width="2"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 441.758)" stroke="#BEC2CA" stroke-width="2"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 465.984)" stroke="#BEC2CA" stroke-width="2"/></g><defs><clipPath id="ef_hex_prof"><rect width="1440" height="540" fill="white"/></clipPath></defs></svg>', Zn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="292" viewBox="0 0 1440 292" fill="none"><g clip-path="url(#ef_hex_def)"><rect width="1440" height="292" fill="#ffffff"/><path d="M578.038 175.577V234.422L629 263.845L679.962 234.422V175.577L629 146.154L578.038 175.577Z" stroke="#A9B0F5" stroke-width="2"/><path d="M629 157L587.431 181V229L629 253L670.569 229V181L629 157Z" fill="#A9B0F5"/><path opacity="0.5" d="M629 173L601.287 189V221L629 237L656.713 221V189L629 173Z" fill="#5962B7"/><path d="M835 110L807.287 126V158L835 174L862.713 158V126L835 110Z" fill="#FFA3A3"/><path opacity="0.5" d="M835 121L816.813 131.5V152.5L835 163L853.187 152.5V131.5L835 121Z" fill="#C15151"/><path d="M990 153L913.79 197V285L990 329L1066.21 285V197L990 153Z" fill="#BEC2CA"/><path opacity="0.5" d="M989.5 181L938.838 210.75V270.25L989.5 300L1040.16 270.25V210.75L989.5 181Z" fill="#69717F"/><path d="M1124 139L981.106 221.5V386.5L1124 469L1266.89 386.5V221.5L1124 139Z" fill="#FFA3A3"/><path opacity="0.5" d="M1124 194L1028.74 249V359L1124 414L1219.26 359V249L1124 194Z" fill="#C15151"/><path d="M1285 291L1243.43 315V363L1285 387L1326.57 363V315L1285 291Z" fill="#A9B0F5"/><path d="M1108 -78L1031.79 -34V54L1108 98L1184.21 54V-34L1108 -78Z" fill="#BEC2CA"/><path opacity="0.5" d="M1107.5 -50L1056.84 -20.25V39.25L1107.5 69L1158.16 39.25V-20.25L1107.5 -50Z" fill="#69717F"/><path d="M1200.59 -181.179V20.1777L1371.5 120.839L1542.41 20.1777V-181.179L1371.5 -281.84L1200.59 -181.179Z" stroke="#BEC2CA" stroke-width="2"/><path d="M1371.5 -251L1222.11 -165V7L1371.5 93L1520.89 7V-165L1371.5 -251Z" fill="#BEC2CA"/><path opacity="0.5" d="M1371.5 -195L1271.47 -137V-21L1371.5 37L1471.53 -21V-137L1371.5 -195Z" fill="#69717F"/><path d="M1315.41 113.32V229.679L1414 287.839L1512.59 229.679V113.32L1414 55.1602L1315.41 113.32Z" stroke="#FFA3A3" stroke-width="2"/><path d="M1414 72L1327.4 122V222L1414 272L1500.6 222V122L1414 72Z" fill="#FFA3A3"/><path opacity="0.5" d="M1414 105L1355.98 138.5V205.5L1414 239L1472.02 205.5V138.5L1414 105Z" fill="#C15151"/><path d="M1363 56L1339.62 69.5V96.5L1363 110L1386.38 96.5V69.5L1363 56Z" fill="#FFCD78"/><path opacity="0.5" d="M1363 65L1347.41 74V92L1363 101L1378.59 92V74L1363 65Z" fill="#C97E19"/><path d="M1321 -50L1279.43 -26V22L1321 46L1362.57 22V-26L1321 -50Z" fill="#A9B0F5"/><path opacity="0.5" d="M1321 -34L1293.29 -18V14L1321 30L1348.71 14V-18L1321 -34Z" fill="#5962B7"/><path d="M756 256L686.718 296V376L756 416L825.282 376V296L756 256Z" fill="#FFCD78"/><path opacity="0.5" d="M756 283L710.101 309.5V362.5L756 389L801.899 362.5V309.5L756 283Z" fill="#C97E19"/><path d="M861.637 -14.9229V40.9219L910 68.8447L958.363 40.9219V-14.9229L910 -42.8457L861.637 -14.9229Z" stroke="#FFCD78" stroke-width="2"/><path d="M910 -29L873.627 -8V34L910 55L946.373 34V-8L910 -29Z" fill="#FFCD78"/><path opacity="0.5" d="M910 -14L886.617 -0.5V26.5L910 40L933.383 26.5V-0.5L910 -14Z" fill="#C97E19"/><path d="M788 155L764.617 168.5V195.5L788 209L811.383 195.5V168.5L788 155Z" fill="#FFCD78"/><path opacity="0.5" d="M788 164L772.412 173V191L788 200L803.588 191V173L788 164Z" fill="#C97E19"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 417.531)" stroke="#BEC2CA" stroke-width="2"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 441.758)" stroke="#BEC2CA" stroke-width="2"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 465.984)" stroke="#BEC2CA" stroke-width="2"/></g><defs><clipPath id="ef_hex_def"><rect width="1440" height="292" fill="white"/></clipPath></defs></svg>';
+const jn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="540" viewBox="0 0 1440 540" fill="none"><g clip-path="url(#ef_ch_prof)"><rect width="1440" height="540" fill="white"/><path d="M760 77.8125L860 20V120L760 177.812V77.8125Z" fill="#C15151"/><path d="M960 77.8125L860 20V120L960 177.812V77.8125Z" fill="#F29D31"/><path d="M1060 251.25L1160 193.438V293.438L1060 351.25V251.25Z" fill="#69717F"/><path d="M1260 251.25L1160 193.438V293.438L1260 351.25V251.25Z" fill="#2DB3C7"/><path d="M1160 -6.5625L1060 -64.375V35.625L1160 93.4375V-6.5625Z" fill="#F29D31"/><path d="M1360 93.4375L1260 35.625V135.625L1360 193.438V93.4375Z" fill="#F29D31"/><path d="M960 -22.1875L860 -80V20L960 77.8125V-22.1875Z" fill="#2DB3C7"/><path d="M1460 351.25L1360 293.438V393.438L1460 451.25V351.25Z" fill="#858B98"/><path d="M1460 451.25L1360 393.438V493.438L1460 551.25V451.25Z" fill="#2DB3C7"/><path d="M1460 251.25L1360 193.438V293.438L1460 351.25V251.25Z" fill="#E46F6F"/><path d="M1160 -6.5625L1260 -64.375V35.625L1160 93.4375V-6.5625Z" fill="#1999AC"/><path d="M1160 93.4375L1260 35.625V135.625L1160 193.438V93.4375Z" fill="#69717F"/><path d="M1360 -6.5625L1460 -64.375V35.625L1360 93.4375V-6.5625Z" fill="#1999AC"/><path d="M1360 93.4375L1460 35.625V135.625L1360 193.438V93.4375Z" fill="#69717F"/><path d="M1060 35.625L960 -22.1875V77.8125L1060 135.625V35.625Z" fill="#E46F6F"/></g><defs><clipPath id="ef_ch_prof"><rect width="1440" height="540" fill="white"/></clipPath></defs></svg>', Zn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="292" viewBox="0 0 1440 292" fill="none"><g clip-path="url(#ef_ch_def)"><rect width="1440" height="292" fill="white"/><path d="M760 80.8585L860 20.7829V124.697L760 184.773V80.8585Z" fill="#C15151"/><path d="M960 80.8585L860 20.7829V124.697L960 184.773V80.8585Z" fill="#F29D31"/><path d="M1060 261.085L1160 201.01V304.924L1060 365V261.085Z" fill="#69717F"/><path d="M1260 261.085L1160 201.01V304.924L1260 365V261.085Z" fill="#2DB3C7"/><path d="M1160 -6.8194L1060 -66.895V37.0196L1160 97.0952V-6.8194Z" fill="#F29D31"/><path d="M1360 97.0952L1260 37.0196V140.934L1360 201.01V97.0952Z" fill="#F29D31"/><path d="M960 -23.056L860 -83.1317V20.7829L960 80.8586V-23.056Z" fill="#2DB3C7"/><path d="M1460 261.085L1360 201.01V304.924L1460 365V261.085Z" fill="#E46F6F"/><path d="M1160 -6.8194L1260 -66.895V37.0196L1160 97.0952V-6.8194Z" fill="#1999AC"/><path d="M1160 97.0952L1260 37.0196V140.934L1160 201.01V97.0952Z" fill="#69717F"/><path d="M1360 -6.8194L1460 -66.895V37.0196L1360 97.0952V-6.8194Z" fill="#1999AC"/><path d="M1360 97.0952L1460 37.0196V140.934L1360 201.01V97.0952Z" fill="#69717F"/><path d="M1060 37.0196L960 -23.0561V80.8585L1060 140.934V37.0196Z" fill="#E46F6F"/></g><defs><clipPath id="ef_ch_def"><rect width="1440" height="292" fill="white"/></clipPath></defs></svg>';
 function zn(e) {
   return `url("data:image/svg+xml,${encodeURIComponent(e === "profile" ? jn : Zn)}")`;
 }
-const $n = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="540" viewBox="0 0 1440 540" fill="none"><g clip-path="url(#ef_bhex_prof)"><rect width="1440" height="540" fill="white"/><path d="M488.925 76.1641L601.357 143.335V277.676L488.925 344.847L376.492 277.676V143.335L488.925 76.1641Z" fill="#2C8CC9"/><path d="M964.109 -124.617L1060.84 -66.8124V48.7973L964.109 106.602L867.375 48.7973V-66.8124L964.109 -124.617Z" fill="#2C8CC9"/><path d="M1392.62 -19.25L1480.87 33.4329V138.799L1392.62 191.482L1304.38 138.799V33.4329L1392.62 -19.25Z" fill="#2C8CC9"/><path d="M764.702 260.262L813.635 289.53V348.067L764.702 377.335L715.77 348.067V289.53L764.702 260.262Z" fill="#2C8CC9"/><path d="M1102.71 134.41L1211.74 199.532V329.776L1102.71 394.898L993.668 329.776V199.532L1102.71 134.41Z" fill="#2C8CC9"/><path d="M98.5909 46.6055L167.182 87.581V169.532L98.5909 210.508L30 169.532V87.581L98.5909 46.6055Z" fill="#2C8CC9"/></g><defs><clipPath id="ef_bhex_prof"><rect width="1440" height="540" fill="white"/></clipPath></defs></svg>', Hn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="292" viewBox="0 0 1440 292" fill="none"><g clip-path="url(#ef_bhex_def)"><rect width="1440" height="292" fill="white"/><path d="M355 66.7148L434.5 114.412V209.805L355 257.502L275.5 209.805V114.412L355 66.7148Z" fill="#2C8CC9"/><path d="M691.002 -75.8594L759.402 -34.8131V47.2794L691.002 88.3257L622.602 47.2794V-34.8131L691.002 -75.8594Z" fill="#2C8CC9"/><path d="M1307 153.793L1371.1 192.241V269.138L1307 307.587L1242.9 269.138V192.241L1307 153.793Z" fill="#2C8CC9"/><path d="M994.002 -1.03906L1056.4 36.3702V111.189L994.002 148.598L931.602 111.189V36.3702L994.002 -1.03906Z" fill="#2C8CC9"/><path d="M549.998 197.438L584.598 218.22V259.786L549.998 280.569L515.398 259.786V218.22L549.998 197.438Z" fill="#2C8CC9"/><path d="M788.998 108.07L866.098 154.312V246.796L788.998 293.038L711.898 246.796V154.312L788.998 108.07Z" fill="#2C8CC9"/><path d="M79 45.7227L127.5 74.8187V133.011L79 162.107L30.5 133.011V74.8187L79 45.7227Z" fill="#2C8CC9"/><path d="M1455 5.19531L1488.8 25.4587V65.9854L1455 86.2487L1421.2 65.9854V25.4587L1455 5.19531Z" fill="#2C8CC9"/><path d="M1187 18.7031L1229.4 44.1622V95.0803L1187 120.539L1144.6 95.0803V44.1622L1187 18.7031Z" fill="#2C8CC9"/></g><defs><clipPath id="ef_bhex_def"><rect width="1440" height="292" fill="white"/></clipPath></defs></svg>';
+const $n = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="540" viewBox="0 0 1440 540" fill="none"><g clip-path="url(#ef_hex_prof)"><rect width="1440" height="540" fill="#ffffff"/><path d="M578.038 175.577V234.422L629 263.845L679.962 234.422V175.577L629 146.154L578.038 175.577Z" stroke="#A9B0F5" stroke-width="2"/><path d="M629 157L587.431 181V229L629 253L670.569 229V181L629 157Z" fill="#A9B0F5"/><path opacity="0.5" d="M629 173L601.287 189V221L629 237L656.713 221V189L629 173Z" fill="#5962B7"/><path d="M835 110L807.287 126V158L835 174L862.713 158V126L835 110Z" fill="#FFA3A3"/><path opacity="0.5" d="M835 121L816.813 131.5V152.5L835 163L853.187 152.5V131.5L835 121Z" fill="#C15151"/><path d="M990 153L913.79 197V285L990 329L1066.21 285V197L990 153Z" fill="#BEC2CA"/><path opacity="0.5" d="M989.5 181L938.838 210.75V270.25L989.5 300L1040.16 270.25V210.75L989.5 181Z" fill="#69717F"/><path d="M1124 139L981.106 221.5V386.5L1124 469L1266.89 386.5V221.5L1124 139Z" fill="#FFA3A3"/><path opacity="0.5" d="M1124 194L1028.74 249V359L1124 414L1219.26 359V249L1124 194Z" fill="#C15151"/><path d="M1285 291L1243.43 315V363L1285 387L1326.57 363V315L1285 291Z" fill="#A9B0F5"/><path opacity="0.5" d="M1285 307L1257.29 323V355L1285 371L1312.71 355V323L1285 307Z" fill="#5962B7"/><path d="M1108 -78L1031.79 -34V54L1108 98L1184.21 54V-34L1108 -78Z" fill="#BEC2CA"/><path opacity="0.5" d="M1107.5 -50L1056.84 -20.25V39.25L1107.5 69L1158.16 39.25V-20.25L1107.5 -50Z" fill="#69717F"/><path d="M1200.59 -181.179V20.1777L1371.5 120.839L1542.41 20.1777V-181.179L1371.5 -281.84L1200.59 -181.179Z" stroke="#BEC2CA" stroke-width="2"/><path d="M1371.5 -251L1222.11 -165V7L1371.5 93L1520.89 7V-165L1371.5 -251Z" fill="#BEC2CA"/><path opacity="0.5" d="M1371.5 -195L1271.47 -137V-21L1371.5 37L1471.53 -21V-137L1371.5 -195Z" fill="#69717F"/><path d="M1315.41 113.32V229.679L1414 287.839L1512.59 229.679V113.32L1414 55.1602L1315.41 113.32Z" stroke="#FFA3A3" stroke-width="2"/><path d="M1414 72L1327.4 122V222L1414 272L1500.6 222V122L1414 72Z" fill="#FFA3A3"/><path opacity="0.5" d="M1414 105L1355.98 138.5V205.5L1414 239L1472.02 205.5V138.5L1414 105Z" fill="#C15151"/><path d="M1363 56L1339.62 69.5V96.5L1363 110L1386.38 96.5V69.5L1363 56Z" fill="#FFCD78"/><path opacity="0.5" d="M1363 65L1347.41 74V92L1363 101L1378.59 92V74L1363 65Z" fill="#C97E19"/><path d="M1321 -50L1279.43 -26V22L1321 46L1362.57 22V-26L1321 -50Z" fill="#A9B0F5"/><path opacity="0.5" d="M1321 -34L1293.29 -18V14L1321 30L1348.71 14V-18L1321 -34Z" fill="#5962B7"/><path d="M756 256L686.718 296V376L756 416L825.282 376V296L756 256Z" fill="#FFCD78"/><path opacity="0.5" d="M756 283L710.101 309.5V362.5L756 389L801.899 362.5V309.5L756 283Z" fill="#C97E19"/><path d="M861.637 -14.9229V40.9219L910 68.8447L958.363 40.9219V-14.9229L910 -42.8457L861.637 -14.9229Z" stroke="#FFCD78" stroke-width="2"/><path d="M910 -29L873.627 -8V34L910 55L946.373 34V-8L910 -29Z" fill="#FFCD78"/><path opacity="0.5" d="M910 -14L886.617 -0.5V26.5L910 40L933.383 26.5V-0.5L910 -14Z" fill="#C97E19"/><path d="M788 155L764.617 168.5V195.5L788 209L811.383 195.5V168.5L788 155Z" fill="#FFCD78"/><path opacity="0.5" d="M788 164L772.412 173V191L788 200L803.588 191V173L788 164Z" fill="#C97E19"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 417.531)" stroke="#BEC2CA" stroke-width="2"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 441.758)" stroke="#BEC2CA" stroke-width="2"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 465.984)" stroke="#BEC2CA" stroke-width="2"/></g><defs><clipPath id="ef_hex_prof"><rect width="1440" height="540" fill="white"/></clipPath></defs></svg>', Hn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="292" viewBox="0 0 1440 292" fill="none"><g clip-path="url(#ef_hex_def)"><rect width="1440" height="292" fill="#ffffff"/><path d="M578.038 175.577V234.422L629 263.845L679.962 234.422V175.577L629 146.154L578.038 175.577Z" stroke="#A9B0F5" stroke-width="2"/><path d="M629 157L587.431 181V229L629 253L670.569 229V181L629 157Z" fill="#A9B0F5"/><path opacity="0.5" d="M629 173L601.287 189V221L629 237L656.713 221V189L629 173Z" fill="#5962B7"/><path d="M835 110L807.287 126V158L835 174L862.713 158V126L835 110Z" fill="#FFA3A3"/><path opacity="0.5" d="M835 121L816.813 131.5V152.5L835 163L853.187 152.5V131.5L835 121Z" fill="#C15151"/><path d="M990 153L913.79 197V285L990 329L1066.21 285V197L990 153Z" fill="#BEC2CA"/><path opacity="0.5" d="M989.5 181L938.838 210.75V270.25L989.5 300L1040.16 270.25V210.75L989.5 181Z" fill="#69717F"/><path d="M1124 139L981.106 221.5V386.5L1124 469L1266.89 386.5V221.5L1124 139Z" fill="#FFA3A3"/><path opacity="0.5" d="M1124 194L1028.74 249V359L1124 414L1219.26 359V249L1124 194Z" fill="#C15151"/><path d="M1285 291L1243.43 315V363L1285 387L1326.57 363V315L1285 291Z" fill="#A9B0F5"/><path d="M1108 -78L1031.79 -34V54L1108 98L1184.21 54V-34L1108 -78Z" fill="#BEC2CA"/><path opacity="0.5" d="M1107.5 -50L1056.84 -20.25V39.25L1107.5 69L1158.16 39.25V-20.25L1107.5 -50Z" fill="#69717F"/><path d="M1200.59 -181.179V20.1777L1371.5 120.839L1542.41 20.1777V-181.179L1371.5 -281.84L1200.59 -181.179Z" stroke="#BEC2CA" stroke-width="2"/><path d="M1371.5 -251L1222.11 -165V7L1371.5 93L1520.89 7V-165L1371.5 -251Z" fill="#BEC2CA"/><path opacity="0.5" d="M1371.5 -195L1271.47 -137V-21L1371.5 37L1471.53 -21V-137L1371.5 -195Z" fill="#69717F"/><path d="M1315.41 113.32V229.679L1414 287.839L1512.59 229.679V113.32L1414 55.1602L1315.41 113.32Z" stroke="#FFA3A3" stroke-width="2"/><path d="M1414 72L1327.4 122V222L1414 272L1500.6 222V122L1414 72Z" fill="#FFA3A3"/><path opacity="0.5" d="M1414 105L1355.98 138.5V205.5L1414 239L1472.02 205.5V138.5L1414 105Z" fill="#C15151"/><path d="M1363 56L1339.62 69.5V96.5L1363 110L1386.38 96.5V69.5L1363 56Z" fill="#FFCD78"/><path opacity="0.5" d="M1363 65L1347.41 74V92L1363 101L1378.59 92V74L1363 65Z" fill="#C97E19"/><path d="M1321 -50L1279.43 -26V22L1321 46L1362.57 22V-26L1321 -50Z" fill="#A9B0F5"/><path opacity="0.5" d="M1321 -34L1293.29 -18V14L1321 30L1348.71 14V-18L1321 -34Z" fill="#5962B7"/><path d="M756 256L686.718 296V376L756 416L825.282 376V296L756 256Z" fill="#FFCD78"/><path opacity="0.5" d="M756 283L710.101 309.5V362.5L756 389L801.899 362.5V309.5L756 283Z" fill="#C97E19"/><path d="M861.637 -14.9229V40.9219L910 68.8447L958.363 40.9219V-14.9229L910 -42.8457L861.637 -14.9229Z" stroke="#FFCD78" stroke-width="2"/><path d="M910 -29L873.627 -8V34L910 55L946.373 34V-8L910 -29Z" fill="#FFCD78"/><path opacity="0.5" d="M910 -14L886.617 -0.5V26.5L910 40L933.383 26.5V-0.5L910 -14Z" fill="#C97E19"/><path d="M788 155L764.617 168.5V195.5L788 209L811.383 195.5V168.5L788 155Z" fill="#FFCD78"/><path opacity="0.5" d="M788 164L772.412 173V191L788 200L803.588 191V173L788 164Z" fill="#C97E19"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 417.531)" stroke="#BEC2CA" stroke-width="2"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 441.758)" stroke="#BEC2CA" stroke-width="2"/><line y1="-1" x2="484.534" y2="-1" transform="matrix(-0.866025 -0.5 -0.5 0.866025 1235.67 465.984)" stroke="#BEC2CA" stroke-width="2"/></g><defs><clipPath id="ef_hex_def"><rect width="1440" height="292" fill="white"/></clipPath></defs></svg>';
 function Un(e) {
   return `url("data:image/svg+xml,${encodeURIComponent(e === "profile" ? $n : Hn)}")`;
 }
-const Gn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="292" viewBox="0 0 1440 292" fill="none"><g clip-path="url(#ef_wave_def)"><rect width="1440" height="292" fill="white"/><path d="M 650,12 C 800,-5 980,40 1140,25 C 1280,12 1380,42 1440,48 L 1440,90 C 1380,84 1280,54 1140,67 C 980,82 800,37 650,54 Z" fill="#2DB3C7" opacity="0.9"/><path d="M 720,80 C 870,58 1050,102 1190,88 C 1330,74 1400,108 1440,115 L 1440,158 C 1400,151 1330,121 1190,135 C 1050,149 870,105 720,126 Z" fill="#F29D31" opacity="0.85"/><path d="M 580,144 C 730,120 920,164 1070,150 C 1220,136 1360,168 1440,175 L 1440,218 C 1360,211 1220,179 1070,193 C 920,207 730,163 580,187 Z" fill="#C15151" opacity="0.85"/><path d="M 760,207 C 900,186 1060,222 1200,210 C 1320,200 1400,228 1440,234 L 1440,272 C 1400,266 1320,242 1200,252 C 1060,264 900,228 760,247 Z" fill="#A9B0F5" opacity="0.80"/><path d="M 860,258 C 1000,242 1140,268 1280,258 C 1360,252 1420,270 1440,274 L 1440,292 L 860,292 Z" fill="#FFCD78" opacity="0.75"/></g><defs><clipPath id="ef_wave_def"><rect width="1440" height="292" fill="white"/></clipPath></defs></svg>', Kn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="540" viewBox="0 0 1440 540" fill="none"><g clip-path="url(#ef_wave_prof)"><rect width="1440" height="540" fill="white"/><path d="M 600,22 C 780,2 1000,55 1180,38 C 1320,24 1400,56 1440,65 L 1440,130 C 1400,121 1320,89 1180,103 C 1000,119 780,66 600,85 Z" fill="#2DB3C7" opacity="0.9"/><path d="M 680,142 C 860,114 1080,168 1250,150 C 1360,136 1418,172 1440,180 L 1440,242 C 1418,234 1360,198 1250,216 C 1080,234 860,180 680,207 Z" fill="#F29D31" opacity="0.85"/><path d="M 550,260 C 730,232 960,290 1140,270 C 1300,252 1400,286 1440,295 L 1440,368 C 1400,359 1300,325 1140,343 C 960,363 730,305 550,332 Z" fill="#C15151" opacity="0.85"/><path d="M 640,380 C 820,354 1060,406 1240,388 C 1360,374 1418,405 1440,413 L 1440,480 C 1418,472 1360,441 1240,455 C 1060,473 820,421 640,446 Z" fill="#A9B0F5" opacity="0.80"/><path d="M 780,478 C 960,456 1140,492 1300,479 C 1380,472 1428,488 1440,492 L 1440,540 L 780,540 Z" fill="#FFCD78" opacity="0.75"/></g><defs><clipPath id="ef_wave_prof"><rect width="1440" height="540" fill="white"/></clipPath></defs></svg>';
+const Gn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="540" viewBox="0 0 1440 540" fill="none"><g clip-path="url(#ef_bhex_prof)"><rect width="1440" height="540" fill="white"/><path d="M488.925 76.1641L601.357 143.335V277.676L488.925 344.847L376.492 277.676V143.335L488.925 76.1641Z" fill="#2C8CC9"/><path d="M964.109 -124.617L1060.84 -66.8124V48.7973L964.109 106.602L867.375 48.7973V-66.8124L964.109 -124.617Z" fill="#2C8CC9"/><path d="M1392.62 -19.25L1480.87 33.4329V138.799L1392.62 191.482L1304.38 138.799V33.4329L1392.62 -19.25Z" fill="#2C8CC9"/><path d="M764.702 260.262L813.635 289.53V348.067L764.702 377.335L715.77 348.067V289.53L764.702 260.262Z" fill="#2C8CC9"/><path d="M1102.71 134.41L1211.74 199.532V329.776L1102.71 394.898L993.668 329.776V199.532L1102.71 134.41Z" fill="#2C8CC9"/><path d="M98.5909 46.6055L167.182 87.581V169.532L98.5909 210.508L30 169.532V87.581L98.5909 46.6055Z" fill="#2C8CC9"/></g><defs><clipPath id="ef_bhex_prof"><rect width="1440" height="540" fill="white"/></clipPath></defs></svg>', Kn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="292" viewBox="0 0 1440 292" fill="none"><g clip-path="url(#ef_bhex_def)"><rect width="1440" height="292" fill="white"/><path d="M355 66.7148L434.5 114.412V209.805L355 257.502L275.5 209.805V114.412L355 66.7148Z" fill="#2C8CC9"/><path d="M691.002 -75.8594L759.402 -34.8131V47.2794L691.002 88.3257L622.602 47.2794V-34.8131L691.002 -75.8594Z" fill="#2C8CC9"/><path d="M1307 153.793L1371.1 192.241V269.138L1307 307.587L1242.9 269.138V192.241L1307 153.793Z" fill="#2C8CC9"/><path d="M994.002 -1.03906L1056.4 36.3702V111.189L994.002 148.598L931.602 111.189V36.3702L994.002 -1.03906Z" fill="#2C8CC9"/><path d="M549.998 197.438L584.598 218.22V259.786L549.998 280.569L515.398 259.786V218.22L549.998 197.438Z" fill="#2C8CC9"/><path d="M788.998 108.07L866.098 154.312V246.796L788.998 293.038L711.898 246.796V154.312L788.998 108.07Z" fill="#2C8CC9"/><path d="M79 45.7227L127.5 74.8187V133.011L79 162.107L30.5 133.011V74.8187L79 45.7227Z" fill="#2C8CC9"/><path d="M1455 5.19531L1488.8 25.4587V65.9854L1455 86.2487L1421.2 65.9854V25.4587L1455 5.19531Z" fill="#2C8CC9"/><path d="M1187 18.7031L1229.4 44.1622V95.0803L1187 120.539L1144.6 95.0803V44.1622L1187 18.7031Z" fill="#2C8CC9"/></g><defs><clipPath id="ef_bhex_def"><rect width="1440" height="292" fill="white"/></clipPath></defs></svg>';
 function Wn(e) {
-  return `url("data:image/svg+xml,${encodeURIComponent(e === "profile" ? Kn : Gn)}")`;
+  return `url("data:image/svg+xml,${encodeURIComponent(e === "profile" ? Gn : Kn)}")`;
 }
-function qn(e) {
+const qn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="292" viewBox="0 0 1440 292" fill="none"><g clip-path="url(#ef_wave_def)"><rect width="1440" height="292" fill="white"/><path d="M 650,12 C 800,-5 980,40 1140,25 C 1280,12 1380,42 1440,48 L 1440,90 C 1380,84 1280,54 1140,67 C 980,82 800,37 650,54 Z" fill="#2DB3C7" opacity="0.9"/><path d="M 720,80 C 870,58 1050,102 1190,88 C 1330,74 1400,108 1440,115 L 1440,158 C 1400,151 1330,121 1190,135 C 1050,149 870,105 720,126 Z" fill="#F29D31" opacity="0.85"/><path d="M 580,144 C 730,120 920,164 1070,150 C 1220,136 1360,168 1440,175 L 1440,218 C 1360,211 1220,179 1070,193 C 920,207 730,163 580,187 Z" fill="#C15151" opacity="0.85"/><path d="M 760,207 C 900,186 1060,222 1200,210 C 1320,200 1400,228 1440,234 L 1440,272 C 1400,266 1320,242 1200,252 C 1060,264 900,228 760,247 Z" fill="#A9B0F5" opacity="0.80"/><path d="M 860,258 C 1000,242 1140,268 1280,258 C 1360,252 1420,270 1440,274 L 1440,292 L 860,292 Z" fill="#FFCD78" opacity="0.75"/></g><defs><clipPath id="ef_wave_def"><rect width="1440" height="292" fill="white"/></clipPath></defs></svg>', Yn = '<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="540" viewBox="0 0 1440 540" fill="none"><g clip-path="url(#ef_wave_prof)"><rect width="1440" height="540" fill="white"/><path d="M 600,22 C 780,2 1000,55 1180,38 C 1320,24 1400,56 1440,65 L 1440,130 C 1400,121 1320,89 1180,103 C 1000,119 780,66 600,85 Z" fill="#2DB3C7" opacity="0.9"/><path d="M 680,142 C 860,114 1080,168 1250,150 C 1360,136 1418,172 1440,180 L 1440,242 C 1418,234 1360,198 1250,216 C 1080,234 860,180 680,207 Z" fill="#F29D31" opacity="0.85"/><path d="M 550,260 C 730,232 960,290 1140,270 C 1300,252 1400,286 1440,295 L 1440,368 C 1400,359 1300,325 1140,343 C 960,363 730,305 550,332 Z" fill="#C15151" opacity="0.85"/><path d="M 640,380 C 820,354 1060,406 1240,388 C 1360,374 1418,405 1440,413 L 1440,480 C 1418,472 1360,441 1240,455 C 1060,473 820,421 640,446 Z" fill="#A9B0F5" opacity="0.80"/><path d="M 780,478 C 960,456 1140,492 1300,479 C 1380,472 1428,488 1440,492 L 1440,540 L 780,540 Z" fill="#FFCD78" opacity="0.75"/></g><defs><clipPath id="ef_wave_prof"><rect width="1440" height="540" fill="white"/></clipPath></defs></svg>';
+function Xn(e) {
+  return `url("data:image/svg+xml,${encodeURIComponent(e === "profile" ? Yn : qn)}")`;
+}
+function Qn(e) {
   return e === "talent-acquisition" ? "linear-gradient(180deg, color-mix(in srgb, var(--color-background2-blue) 50%, transparent) 0%, var(--background) 92%)" : "linear-gradient(180deg, color-mix(in srgb, var(--color-background1-grey) 65%, transparent) 0%, var(--color-background2-grey) 95%)";
 }
-function Yn(e, t) {
+function Jn(e, t) {
   const n = !!t.src?.trim(), r = !n && t.wavesVariant != null, o = !n && !r && t.blueHexagonsVariant != null, i = !n && !r && !o && t.hexagonsVariant != null, c = e === "career-hub" && !n && !r && !i && !o && t.chevronsVariant != null;
   return n && t.src ? {
     hasImage: !0,
     isChevrons: !1,
     isHexagons: !1,
     fillStyle: {
-      backgroundImage: t.imageScrim ? `${qn(e)}, url(${t.src})` : `url(${t.src})`,
+      backgroundImage: t.imageScrim ? `${Qn(e)}, url(${t.src})` : `url(${t.src})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat"
@@ -3333,7 +3365,7 @@ function Yn(e, t) {
     isChevrons: !1,
     isHexagons: !0,
     fillStyle: {
-      backgroundImage: Wn(t.wavesVariant),
+      backgroundImage: Xn(t.wavesVariant),
       backgroundPosition: "right top",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover"
@@ -3343,7 +3375,7 @@ function Yn(e, t) {
     isChevrons: !1,
     isHexagons: !0,
     fillStyle: {
-      backgroundImage: Un(t.blueHexagonsVariant),
+      backgroundImage: Wn(t.blueHexagonsVariant),
       backgroundPosition: "right top",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover"
@@ -3353,7 +3385,7 @@ function Yn(e, t) {
     isChevrons: !1,
     isHexagons: !0,
     fillStyle: {
-      backgroundImage: zn(t.hexagonsVariant),
+      backgroundImage: Un(t.hexagonsVariant),
       backgroundPosition: "right top",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover"
@@ -3364,7 +3396,7 @@ function Yn(e, t) {
     isHexagons: !1,
     fillStyle: {
       backgroundColor: "var(--color-background1-grey)",
-      backgroundImage: Bn(t.chevronsVariant),
+      backgroundImage: zn(t.chevronsVariant),
       backgroundPosition: "right top",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover"
@@ -3389,7 +3421,7 @@ const Tt = d.forwardRef(
     children: l,
     ...p
   }, u) => {
-    const { fillStyle: h, hasImage: f, isChevrons: b, isHexagons: _ } = Yn(t, {
+    const { fillStyle: h, hasImage: f, isChevrons: b, isHexagons: _ } = Jn(t, {
       src: n,
       imageScrim: r,
       chevronsVariant: o,
@@ -3428,7 +3460,7 @@ const Tt = d.forwardRef(
   }
 );
 Tt.displayName = "ProductBackground";
-const Qr = "/eightfold-logo.svg", Jr = "/ai-agent.svg", Xn = "/copilot.svg", eo = ["talent-acquisition", "career-hub"], Qn = {
+const to = "/eightfold-logo.svg", ao = "/ai-agent.svg", er = "/copilot.svg", no = ["talent-acquisition", "career-hub"], tr = {
   campaigns: "Campaigns",
   "career-exchange": "Career Exchange",
   "career-hub": "Career Hub",
@@ -3449,27 +3481,27 @@ const Qr = "/eightfold-logo.svg", Jr = "/ai-agent.svg", Xn = "/copilot.svg", eo 
   "talent-flex": { small: "talent-flex-small.svg", medium: "talent-flex-medium.svg" },
   "talent-university": { small: "talent-university-small.svg", medium: "talent-university-medium.svg" }
 };
-function to(e, t = "medium") {
+function ro(e, t = "medium") {
   return `${J}/${W[e][t]}`;
 }
-function ao(e, t = "medium") {
+function oo(e, t = "medium") {
   return {
-    productName: Qn[e],
+    productName: tr[e],
     productIconSrc: `${J}/${W[e][t]}`
   };
 }
-const no = Object.keys(W).reduce(
+const io = Object.keys(W).reduce(
   (e, t) => (e[t] = {
     small: `${J}/${W[t].small}`,
     medium: `${J}/${W[t].medium}`
   }, e),
   {}
-), ro = [
+), so = [
   { label: "My Profile", path: "/profile" },
   { label: "Settings", path: "/settings" },
   { label: "Help", path: "/help" },
   { label: "Sign out", path: "/sign-out" }
-], oo = [
+], lo = [
   { id: "home", label: "Home", path: "/" },
   { id: "goals", label: "Goals", path: "/goals" },
   { id: "career-navigator", label: "Career navigator", path: "/career-navigator" },
@@ -3496,7 +3528,7 @@ const no = Object.keys(W).reduce(
     ]
   },
   { id: "people", label: "People", path: "/people" }
-], io = [
+], co = [
   { id: "home", label: "Home", path: "/" },
   { id: "goals", label: "Goals", path: "/goals" },
   { id: "career-navigator", label: "Career navigator", path: "/career-navigator" },
@@ -3525,7 +3557,7 @@ const no = Object.keys(W).reduce(
   { id: "people", label: "People", path: "/people" },
   { id: "my-team", label: "My team", path: "/my-team" },
   { id: "workforce", label: "Workforce Readiness", path: "/workforce" }
-], so = [
+], uo = [
   { id: "home", label: "Home", path: "/" },
   { id: "my-activity", label: "My activity", path: "/my-activity" },
   { id: "people", label: "People", path: "/people" },
@@ -3544,7 +3576,7 @@ const no = Object.keys(W).reduce(
       { label: "Marketplace", path: "/marketplace" }
     ]
   }
-], lo = [
+], po = [
   { id: "home", label: "Home", path: "/" },
   { id: "my-goals", label: "My goals", path: "/goals" },
   { id: "career-navigator", label: "Career navigator", path: "/career-navigator" },
@@ -3573,7 +3605,7 @@ const no = Object.keys(W).reduce(
   { id: "people", label: "People", path: "/people" },
   { id: "my-team", label: "My team", path: "/my-team" },
   { id: "workforce", label: "Workforce Readiness", path: "/workforce" }
-], co = [
+], mo = [
   { id: "positions", label: "Positions", path: "/positions" },
   {
     id: "talent",
@@ -3609,12 +3641,12 @@ const no = Object.keys(W).reduce(
       { label: "Help", path: "/more/help" }
     ]
   }
-], uo = "Search for positions or candidates", po = [
-  { iconSrc: Xn, ariaLabel: "Copilot" },
+], fo = "Search for positions or candidates", ho = [
+  { iconSrc: er, ariaLabel: "Copilot" },
   { icon: "work_outline", ariaLabel: "Talent" },
   { icon: "notifications", ariaLabel: "Notifications" }
 ];
-function mo({
+function go({
   chSize: e = "parent",
   title: t,
   secondary: n,
@@ -3626,7 +3658,7 @@ function mo({
 }) {
   const l = i ?? (e === "profile" ? "profile" : "default");
   return /* @__PURE__ */ m(I, { children: [
-    /* @__PURE__ */ a("div", { className: "career-hub-shell", children: /* @__PURE__ */ a(Rn, { ...o }) }),
+    /* @__PURE__ */ a("div", { className: "career-hub-shell", children: /* @__PURE__ */ a(Pn, { ...o }) }),
     /* @__PURE__ */ a(Tt, { variant: "career-hub", ...c ? { hexagonsVariant: c } : { chevronsVariant: l }, children: /* @__PURE__ */ a("div", { className: "career-hub-shell", children: /* @__PURE__ */ a(Et, { variant: "career-hub", chSize: e, overlayBackground: !0, children: /* @__PURE__ */ a(Vt, { actions: r, children: /* @__PURE__ */ m(Rt, { children: [
       /* @__PURE__ */ a(St, { children: t }),
       n && /* @__PURE__ */ a(It, { children: n })
@@ -3635,113 +3667,113 @@ function mo({
   ] });
 }
 export {
-  Jr as AI_AGENT_LOGO_PATH,
-  dr as Badge,
-  ur as Breadcrumb,
-  vr as BreadcrumbEllipsis,
-  mr as BreadcrumbItem,
-  fr as BreadcrumbLink,
-  pr as BreadcrumbList,
-  hr as BreadcrumbPage,
-  gr as BreadcrumbSeparator,
+  ao as AI_AGENT_LOGO_PATH,
+  mr as Badge,
+  fr as Breadcrumb,
+  yr as BreadcrumbEllipsis,
+  gr as BreadcrumbItem,
+  vr as BreadcrumbLink,
+  hr as BreadcrumbList,
+  br as BreadcrumbPage,
+  _r as BreadcrumbSeparator,
   $t as Button,
-  lr as ButtonDropdown,
-  so as CAREER_HUB_CHRO_TABS,
-  lo as CAREER_HUB_HRBP_TABS,
-  Xn as COPILOT_LOGO_PATH,
-  go as CORNER_RADIUS_TOKENS,
-  mo as CareerHubShell,
-  br as CourseObjectCard,
-  Er as DataTable,
-  Sr as DataTableBody,
-  Tr as DataTableCell,
-  Ir as DataTableHead,
-  Vr as DataTableHeader,
-  Rr as DataTableRow,
-  zr as Dialog,
-  Wr as DialogBody,
-  Hr as DialogClose,
-  Ur as DialogContent,
-  Xr as DialogDescription,
-  qr as DialogFooter,
-  Gr as DialogHeader,
-  xn as DialogOverlay,
-  wn as DialogPortal,
-  Kr as DialogStepper,
-  Yr as DialogTitle,
-  $r as DialogTrigger,
+  ur as ButtonDropdown,
+  uo as CAREER_HUB_CHRO_TABS,
+  po as CAREER_HUB_HRBP_TABS,
+  er as COPILOT_LOGO_PATH,
+  _o as CORNER_RADIUS_TOKENS,
+  go as CareerHubShell,
+  Nr as CourseObjectCard,
+  Rr as DataTable,
+  Tr as DataTableBody,
+  Ar as DataTableCell,
+  Dr as DataTableHead,
+  Ir as DataTableHeader,
+  Pr as DataTableRow,
+  Ur as Dialog,
+  Xr as DialogBody,
+  Kr as DialogClose,
+  Wr as DialogContent,
+  eo as DialogDescription,
+  Qr as DialogFooter,
+  qr as DialogHeader,
+  En as DialogOverlay,
+  kn as DialogPortal,
+  Yr as DialogStepper,
+  Jr as DialogTitle,
+  Gr as DialogTrigger,
   ne as DropdownMenu,
   Kt as DropdownMenuContent,
   Wt as DropdownMenuItem,
   Gt as DropdownMenuPortal,
   qt as DropdownMenuSeparator,
   Ut as DropdownMenuTrigger,
-  Qr as EIGHTFOLD_LOGO_PATH,
-  ro as EMPLOYEE_AVATAR_MENU_ITEMS,
-  oo as EMPLOYEE_NON_MANAGER_TABS,
+  to as EIGHTFOLD_LOGO_PATH,
+  so as EMPLOYEE_AVATAR_MENU_ITEMS,
+  lo as EMPLOYEE_NON_MANAGER_TABS,
   Et as Header,
-  Dn as HeaderActions,
-  An as HeaderGroup,
+  On as HeaderActions,
+  Bn as HeaderGroup,
   It as HeaderSecondary,
   Rt as HeaderTextGroup,
   St as HeaderTitle,
   Vt as HeaderToolbar,
   Yt as Input,
   da as InsightCard,
-  io as MANAGER_TABS,
-  Nr as MentorInsightCard,
-  Rn as Navbar,
+  co as MANAGER_TABS,
+  wr as MentorInsightCard,
+  Pn as Navbar,
   ln as NavigationMenu,
-  Lr as NavigationMenuContent,
+  Mr as NavigationMenuContent,
   re as NavigationMenuItem,
   ie as NavigationMenuLink,
   cn as NavigationMenuList,
-  Cr as NavigationMenuTrigger,
+  xr as NavigationMenuTrigger,
   dn as NavigationMenuViewport,
-  Mn as NumberBadge,
+  Vn as NumberBadge,
   Ge as OpenTo,
-  eo as PRIMARY_NAVBAR_PRODUCT_IDS,
-  Qn as PRODUCT_NAMES,
-  yr as PeopleObjectCard,
+  no as PRIMARY_NAVBAR_PRODUCT_IDS,
+  tr as PRODUCT_NAMES,
+  Lr as PeopleObjectCard,
   _e as Pill,
   Tt as ProductBackground,
-  _n as Progress,
-  _r as ProjectObjectCard,
-  vo as SPACING_TOKENS,
-  Pr as Select,
-  Or as SelectContent,
-  Dr as SelectGroup,
-  jr as SelectItem,
-  Br as SelectLabel,
-  gn as SelectScrollDownButton,
-  hn as SelectScrollUpButton,
-  Zr as SelectSeparator,
-  Fr as SelectTrigger,
-  Ar as SelectValue,
+  Cn as Progress,
+  Cr as ProjectObjectCard,
+  yo as SPACING_TOKENS,
+  Fr as Select,
+  Zr as SelectContent,
+  Or as SelectGroup,
+  $r as SelectItem,
+  zr as SelectLabel,
+  _n as SelectScrollDownButton,
+  bn as SelectScrollUpButton,
+  Hr as SelectSeparator,
+  jr as SelectTrigger,
+  Br as SelectValue,
   Jt as SkillTag,
-  En as StatCard,
-  Vn as StatCardGroup,
+  Rn as StatCard,
+  In as StatCardGroup,
   Ct as Stepper,
-  Ln as StepperDescription,
+  Mn as StepperDescription,
   xt as StepperIndicator,
   wt as StepperItem,
   Lt as StepperList,
   Ve as StepperSeparator,
   Mt as StepperTitle,
-  Cn as StepperTrigger,
-  po as TALENT_ACQUISITION_ACTION_BUTTONS,
-  co as TALENT_ACQUISITION_RECRUITER_TABS,
-  uo as TALENT_ACQUISITION_SEARCH_PLACEHOLDER,
-  wr as Tabs,
-  kr as TabsContent,
-  xr as TabsList,
-  Mr as TabsTrigger,
+  xn as StepperTrigger,
+  ho as TALENT_ACQUISITION_ACTION_BUTTONS,
+  mo as TALENT_ACQUISITION_RECRUITER_TABS,
+  fo as TALENT_ACQUISITION_SEARCH_PLACEHOLDER,
+  kr as Tabs,
+  Sr as TabsContent,
+  Er as TabsList,
+  Vr as TabsTrigger,
   ea as Tag,
-  cr as TagGroup,
+  pr as TagGroup,
   na as badgeVariants,
   zt as buttonVariants,
-  ao as getNavbarProductConfig,
-  to as getProductLogoPath,
-  no as productLogos,
+  oo as getNavbarProductConfig,
+  ro as getProductLogoPath,
+  io as productLogos,
   un as tabsListVariants
 };

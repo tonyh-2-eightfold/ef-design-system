@@ -1,4 +1,4 @@
-import { Component, useEffect, useState, type ReactNode } from 'react'
+import { Component, Fragment, useEffect, useState, type ReactNode } from 'react'
 import { Menu, Palette, LayoutGrid, PanelTop } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
@@ -302,6 +302,15 @@ function TokensShowcase({ scrollToId }: { scrollToId?: string }) {
             View in Figma →
           </a>
         </p>
+        <div className="mt-4 inline-flex items-baseline gap-3 rounded-lg border border-border bg-muted/30 px-4 py-3">
+          <code className="font-mono text-xs text-muted-foreground">var(--font-family)</code>
+          <span
+            className="text-sm text-foreground"
+            style={{ fontFamily: 'var(--font-family)' } as React.CSSProperties}
+          >
+            Gilroy, Inter, system-ui
+          </span>
+        </div>
         <div className="mt-8 space-y-12">
           {TYPOGRAPHY_GROUPS.map(({ title, tokens }) => (
             <div key={title} className="space-y-4">
@@ -340,6 +349,75 @@ function TokensShowcase({ scrollToId }: { scrollToId?: string }) {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Token reference table */}
+        <div className="mt-12">
+          <h3 className="text-base font-semibold text-foreground">Token reference</h3>
+          <p className="mt-1 text-sm text-muted-foreground">All typography tokens and their raw values.</p>
+          <div className="mt-4 overflow-hidden rounded-xl border border-border">
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-muted/60 hover:bg-muted/60">
+                  <TableHead className="w-[260px]">Token</TableHead>
+                  <TableHead>Preview</TableHead>
+                  <TableHead className="text-right">Size</TableHead>
+                  <TableHead className="text-right">Weight</TableHead>
+                  <TableHead className="text-right">Line&nbsp;height</TableHead>
+                  <TableHead className="text-right">Tracking</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {TYPOGRAPHY_GROUPS.map(({ title, tokens }) => (
+                  <Fragment key={title}>
+                    <TableRow className="bg-muted/30 hover:bg-muted/30">
+                      <TableCell
+                        colSpan={6}
+                        className="py-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground"
+                      >
+                        {title}
+                      </TableCell>
+                    </TableRow>
+                    {tokens.map(({ name, var: varName, letterSpacingVar }) => {
+                      const spec = TYPOGRAPHY_SPECS[name]
+                      return (
+                        <TableRow key={name}>
+                          <TableCell className="font-mono text-xs text-muted-foreground">
+                            {varName}
+                          </TableCell>
+                          <TableCell>
+                            <span
+                              className="text-foreground"
+                              style={{
+                                font: `var(${varName})`,
+                                fontSize: '1.375rem',
+                                lineHeight: '1',
+                                ...(letterSpacingVar ? { letterSpacing: `var(${letterSpacingVar})` } : {}),
+                              } as React.CSSProperties}
+                            >
+                              Aa
+                            </span>
+                          </TableCell>
+                          <TableCell className="text-right tabular-nums text-muted-foreground">
+                            {spec?.size ?? '—'}
+                          </TableCell>
+                          <TableCell className="text-right tabular-nums text-muted-foreground">
+                            {spec?.weight ?? '—'}
+                          </TableCell>
+                          <TableCell className="text-right tabular-nums text-muted-foreground">
+                            {spec?.lineHeight ?? '—'}
+                          </TableCell>
+                          <TableCell className="text-right tabular-nums text-muted-foreground">
+                            {spec?.letterSpacing ?? '—'}
+                          </TableCell>
+                        </TableRow>
+                      )
+                    })}
+                  </Fragment>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         </div>
       </section>
 
@@ -506,20 +584,6 @@ function TokensShowcase({ scrollToId }: { scrollToId?: string }) {
               ))}
             </TableBody>
           </Table>
-        </div>
-        <div className="mt-6 rounded-lg border border-border bg-muted/30 p-4">
-          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            Font family
-          </p>
-          <code className="mt-1 block font-mono text-sm text-foreground">
-            var(--font-family)
-          </code>
-          <p
-            className="mt-3 text-base text-foreground"
-            style={{ fontFamily: 'var(--font-family)' } as React.CSSProperties}
-          >
-            Gilroy, Inter, system-ui
-          </p>
         </div>
       </section>
 

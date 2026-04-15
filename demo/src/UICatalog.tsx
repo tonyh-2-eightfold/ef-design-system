@@ -204,6 +204,8 @@ export function UICatalog({
   const [sheetOpen, setSheetOpen] = useState(false)
   const [sliderVal, setSliderVal] = useState([50])
   const [stepperStep, setStepperStep] = useState(1)
+  const [tableSort, setTableSort] = useState<'asc' | 'desc' | false>(false)
+  const [selectedRows, setSelectedRows] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     if (!scrollToId) return
@@ -1904,61 +1906,130 @@ export function UICatalog({
         </Block>
 
         <Block title="Table">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Value</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell>Alpha</TableCell>
-                <TableCell>1</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Beta</TableCell>
-                <TableCell>2</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+          <div className="w-full overflow-hidden rounded-lg border border-border">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Name</TableHead>
+                  <TableHead>Role</TableHead>
+                  <TableHead>Department</TableHead>
+                  <TableHead className="text-right">Status</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">Alex Chen</TableCell>
+                  <TableCell className="text-muted-foreground">Engineer</TableCell>
+                  <TableCell className="text-muted-foreground">Platform</TableCell>
+                  <TableCell className="text-right text-muted-foreground">Active</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Maria Santos</TableCell>
+                  <TableCell className="text-muted-foreground">Designer</TableCell>
+                  <TableCell className="text-muted-foreground">Product</TableCell>
+                  <TableCell className="text-right text-muted-foreground">Active</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Jordan Lee</TableCell>
+                  <TableCell className="text-muted-foreground">Manager</TableCell>
+                  <TableCell className="text-muted-foreground">People</TableCell>
+                  <TableCell className="text-right text-muted-foreground">On leave</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
         </Block>
 
         <Block title="Data Table" id="data-table">
-          <DataTable>
-            <DataTableHeader>
-              <DataTableRow>
-                <DataTableHead>Department</DataTableHead>
-                <DataTableHead numeric>Headcount</DataTableHead>
-                <DataTableHead metric>AI Readiness</DataTableHead>
-                <DataTableHead>Status</DataTableHead>
-                <DataTableHead shrink>Actions</DataTableHead>
-              </DataTableRow>
-            </DataTableHeader>
-            <DataTableBody>
-              <DataTableRow onClick={() => {}}>
-                <DataTableCell className="font-semibold">Engineering</DataTableCell>
-                <DataTableCell align="right" numeric>2,100</DataTableCell>
-                <DataTableCell metric>35%</DataTableCell>
-                <DataTableCell><Badge variant="secondary">On track</Badge></DataTableCell>
-                <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
-              </DataTableRow>
-              <DataTableRow variant="warn" onClick={() => {}}>
-                <DataTableCell className="font-semibold">Sales</DataTableCell>
-                <DataTableCell align="right" numeric>1,240</DataTableCell>
-                <DataTableCell metric>12%</DataTableCell>
-                <DataTableCell><Badge variant="destructive">Immediate action</Badge></DataTableCell>
-                <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
-              </DataTableRow>
-              <DataTableRow onClick={() => {}}>
-                <DataTableCell className="font-semibold">Marketing</DataTableCell>
-                <DataTableCell align="right" numeric>610</DataTableCell>
-                <DataTableCell metric>23%</DataTableCell>
-                <DataTableCell><Badge variant="outline">Monitor closely</Badge></DataTableCell>
-                <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
-              </DataTableRow>
-            </DataTableBody>
-          </DataTable>
+          <div className="w-full space-y-4">
+            {/* Sort */}
+            <p className="text-xs font-medium text-muted-foreground">Sortable columns</p>
+            <DataTable bordered>
+              <DataTableHeader>
+                <DataTableRow>
+                  <DataTableHead
+                    sortable
+                    sorted={tableSort}
+                    onSort={() => setTableSort(s => s === 'asc' ? 'desc' : s === 'desc' ? false : 'asc')}
+                  >Department</DataTableHead>
+                  <DataTableHead numeric sortable sorted={false} onSort={() => {}}>Headcount</DataTableHead>
+                  <DataTableHead metric>AI Readiness</DataTableHead>
+                  <DataTableHead>Status</DataTableHead>
+                  <DataTableHead shrink>Actions</DataTableHead>
+                </DataTableRow>
+              </DataTableHeader>
+              <DataTableBody>
+                <DataTableRow onClick={() => {}}>
+                  <DataTableCell className="font-semibold">Engineering</DataTableCell>
+                  <DataTableCell align="right" numeric>2,100</DataTableCell>
+                  <DataTableCell metric>35%</DataTableCell>
+                  <DataTableCell><Badge variant="secondary">On track</Badge></DataTableCell>
+                  <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
+                </DataTableRow>
+                <DataTableRow variant="warn" onClick={() => {}}>
+                  <DataTableCell className="font-semibold">Sales</DataTableCell>
+                  <DataTableCell align="right" numeric>1,240</DataTableCell>
+                  <DataTableCell metric>12%</DataTableCell>
+                  <DataTableCell><Badge variant="destructive">Immediate action</Badge></DataTableCell>
+                  <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
+                </DataTableRow>
+                <DataTableRow onClick={() => {}}>
+                  <DataTableCell className="font-semibold">Marketing</DataTableCell>
+                  <DataTableCell align="right" numeric>610</DataTableCell>
+                  <DataTableCell metric>23%</DataTableCell>
+                  <DataTableCell><Badge variant="outline">Monitor closely</Badge></DataTableCell>
+                  <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
+                </DataTableRow>
+              </DataTableBody>
+            </DataTable>
+
+            {/* Checkboxes */}
+            <p className="text-xs font-medium text-muted-foreground">Row selection</p>
+            <DataTable bordered>
+              <DataTableHeader>
+                <DataTableRow>
+                  <DataTableHead className="w-10 px-4">
+                    <input
+                      type="checkbox"
+                      role="checkbox"
+                      className="h-4 w-4 rounded border-border accent-primary cursor-pointer"
+                      checked={selectedRows.size === 3}
+                      onChange={e => setSelectedRows(e.target.checked ? new Set(['eng','sales','mkt']) : new Set())}
+                    />
+                  </DataTableHead>
+                  <DataTableHead>Department</DataTableHead>
+                  <DataTableHead numeric>Headcount</DataTableHead>
+                  <DataTableHead>Status</DataTableHead>
+                </DataTableRow>
+              </DataTableHeader>
+              <DataTableBody>
+                {([
+                  { id: 'eng', dept: 'Engineering', headcount: '2,100', badge: <Badge variant="secondary">On track</Badge> },
+                  { id: 'sales', dept: 'Sales', headcount: '1,240', badge: <Badge variant="destructive">Immediate action</Badge> },
+                  { id: 'mkt', dept: 'Marketing', headcount: '610', badge: <Badge variant="outline">Monitor closely</Badge> },
+                ] as const).map(row => (
+                  <DataTableRow
+                    key={row.id}
+                    onClick={() => setSelectedRows(s => { const n = new Set(s); n.has(row.id) ? n.delete(row.id) : n.add(row.id); return n })}
+                    className={selectedRows.has(row.id) ? 'bg-muted/40' : ''}
+                  >
+                    <DataTableCell className="w-10 px-4">
+                      <input
+                        type="checkbox"
+                        role="checkbox"
+                        className="h-4 w-4 rounded border-border accent-primary cursor-pointer"
+                        checked={selectedRows.has(row.id)}
+                        onChange={() => {}}
+                      />
+                    </DataTableCell>
+                    <DataTableCell className="font-semibold">{row.dept}</DataTableCell>
+                    <DataTableCell align="right" numeric>{row.headcount}</DataTableCell>
+                    <DataTableCell>{row.badge}</DataTableCell>
+                  </DataTableRow>
+                ))}
+              </DataTableBody>
+            </DataTable>
+          </div>
         </Block>
 
         <Block title="Tabs">
