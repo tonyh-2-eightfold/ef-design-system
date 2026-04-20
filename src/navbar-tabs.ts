@@ -14,6 +14,20 @@ export const EMPLOYEE_AVATAR_MENU_ITEMS: NavbarAvatarMenuItem[] = [
   { label: 'Sign out', path: '/sign-out' },
 ]
 
+/**
+ * Shared "My activity" submenu across employee / manager / HRBP personas.
+ * Apps may extend or override these paths to map to their own routes.
+ */
+export const MY_ACTIVITY_SUBITEMS = [
+  { label: 'My Jobs', path: '/my-activity/jobs' },
+  { label: 'My Experts', path: '/my-activity/experts' },
+  { label: 'My Projects', path: '/my-activity/projects' },
+  { label: 'My Courses', path: '/my-activity/courses' },
+  { label: 'My Referrals', path: '/my-activity/referrals' },
+  { label: 'My skill assessment requests', path: '/my-activity/skill-assessments' },
+  { label: 'Development Plan Templates', path: '/my-activity/dev-plan-templates' },
+] as const
+
 /** Employee, non-manager: Home, Goals, Career navigator, Marketplace, My activity, People */
 export const EMPLOYEE_NON_MANAGER_TABS: NavbarTab[] = [
   { id: 'home', label: 'Home', path: '/' },
@@ -35,11 +49,7 @@ export const EMPLOYEE_NON_MANAGER_TABS: NavbarTab[] = [
     label: 'My activity',
     path: '/my-activity',
     chevron: true,
-    subItems: [
-      { label: 'Goals', path: '/my-activity/goals' },
-      { label: 'Learning', path: '/my-activity/learning' },
-      { label: 'Contributions', path: '/my-activity/contributions' },
-    ],
+    subItems: [...MY_ACTIVITY_SUBITEMS],
   },
   { id: 'people', label: 'People', path: '/people' },
 ]
@@ -65,11 +75,7 @@ export const MANAGER_TABS: NavbarTab[] = [
     label: 'My activity',
     path: '/my-activity',
     chevron: true,
-    subItems: [
-      { label: 'Goals', path: '/my-activity/goals' },
-      { label: 'Learning', path: '/my-activity/learning' },
-      { label: 'Contributions', path: '/my-activity/contributions' },
-    ],
+    subItems: [...MY_ACTIVITY_SUBITEMS],
   },
   { id: 'people', label: 'People', path: '/people' },
   { id: 'my-team', label: 'My team', path: '/my-team' },
@@ -119,11 +125,7 @@ export const CAREER_HUB_HRBP_TABS: NavbarTab[] = [
     label: 'My activity',
     path: '/my-activity',
     chevron: true,
-    subItems: [
-      { label: 'Goals', path: '/my-activity/goals' },
-      { label: 'Learning', path: '/my-activity/learning' },
-      { label: 'Contributions', path: '/my-activity/contributions' },
-    ],
+    subItems: [...MY_ACTIVITY_SUBITEMS],
   },
   { id: 'people', label: 'People', path: '/people' },
   { id: 'my-team', label: 'My team', path: '/my-team' },
