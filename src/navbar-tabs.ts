@@ -28,6 +28,30 @@ export const MY_ACTIVITY_SUBITEMS = [
   { label: 'Development Plan Templates', path: '/my-activity/dev-plan-templates' },
 ] as const
 
+/**
+ * Shared "Marketplace" submenu across employee / manager / HRBP personas.
+ * Apps may extend or override these paths to map to their own routes.
+ */
+export const MARKETPLACE_SUBITEMS = [
+  { label: 'Projects', path: '/marketplace/projects' },
+  { label: 'Jobs', path: '/marketplace/jobs' },
+  { label: 'Courses', path: '/marketplace/courses' },
+  { label: 'Development Plans', path: '/marketplace/development-plans' },
+  { label: 'Nectar', path: '/marketplace/nectar' },
+  { label: 'Google Drive', path: '/marketplace/google-drive' },
+] as const
+
+/**
+ * Shared "My career" submenu. Not included in the default tab sets below
+ * (which use Goals / Career navigator as top-level tabs instead); exported
+ * for apps that expose a "My career" dropdown.
+ */
+export const MY_CAREER_SUBITEMS = [
+  { label: 'Career Interests', path: '/profile?tab=career' },
+  { label: 'Career Navigator', path: '/career-navigator' },
+  { label: 'Resume Coach', path: '/resume-coach' },
+] as const
+
 /** Employee, non-manager: Home, Goals, Career navigator, Marketplace, My activity, People */
 export const EMPLOYEE_NON_MANAGER_TABS: NavbarTab[] = [
   { id: 'home', label: 'Home', path: '/' },
@@ -38,11 +62,7 @@ export const EMPLOYEE_NON_MANAGER_TABS: NavbarTab[] = [
     label: 'Marketplace',
     path: '/marketplace',
     chevron: true,
-    subItems: [
-      { label: 'Learning', path: '/marketplace/learning' },
-      { label: 'Projects', path: '/marketplace/projects' },
-      { label: 'Mentorship', path: '/marketplace/mentorship' },
-    ],
+    subItems: [...MARKETPLACE_SUBITEMS],
   },
   {
     id: 'my-activity',
@@ -64,11 +84,7 @@ export const MANAGER_TABS: NavbarTab[] = [
     label: 'Marketplace',
     path: '/marketplace',
     chevron: true,
-    subItems: [
-      { label: 'Learning', path: '/marketplace/learning' },
-      { label: 'Projects', path: '/marketplace/projects' },
-      { label: 'Mentorship', path: '/marketplace/mentorship' },
-    ],
+    subItems: [...MARKETPLACE_SUBITEMS],
   },
   {
     id: 'my-activity',
@@ -114,11 +130,7 @@ export const CAREER_HUB_HRBP_TABS: NavbarTab[] = [
     label: 'Marketplace',
     path: '/marketplace',
     chevron: true,
-    subItems: [
-      { label: 'Learning', path: '/marketplace/learning' },
-      { label: 'Projects', path: '/marketplace/projects' },
-      { label: 'Mentorship', path: '/marketplace/mentorship' },
-    ],
+    subItems: [...MARKETPLACE_SUBITEMS],
   },
   {
     id: 'my-activity',
