@@ -15,7 +15,7 @@ const headerRootVariants = cva(
         'talent-acquisition':
           'border-b-[var(--color-blue-70)] bg-[var(--background)] [border-bottom-width:2px]',
         'career-hub':
-          'border-b-[var(--border)] bg-[var(--color-background1-grey)]/60',
+          'bg-[var(--color-background1-grey)]/60',
       },
     },
     defaultVariants: {
@@ -36,9 +36,14 @@ export interface HeaderProps
   chSize?: CareerHubHeaderSize
   /**
    * Career Hub only. When `true`, the header bar is transparent so a **`ProductBackground`** (or other wash)
-   * behind it shows through fully. Border-bottom is unchanged for separation from page content.
+   * behind it shows through fully.
    */
   overlayBackground?: boolean
+  /**
+   * Career Hub only. Show the bottom border. Defaults to `false`.
+   * Talent Acquisition always shows its border regardless of this prop.
+   */
+  border?: boolean
 }
 
 /**
@@ -48,7 +53,7 @@ export interface HeaderProps
  */
 const Header = React.forwardRef<HTMLElement, HeaderProps>(
   (
-    { className, variant, chSize = 'parent', sticky = false, overlayBackground = false, ...props },
+    { className, variant, chSize = 'parent', sticky = false, overlayBackground = false, border = false, ...props },
     ref
   ) => {
     const v = variant ?? 'career-hub'
@@ -65,6 +70,8 @@ const Header = React.forwardRef<HTMLElement, HeaderProps>(
           data-ch-size={v === 'career-hub' ? chSize : undefined}
           className={cn(
             headerRootVariants({ variant: v }),
+            v === 'career-hub' && border && 'border-b-[var(--border)]',
+            v === 'career-hub' && !border && 'border-b-0',
             overlayBackground && v === 'career-hub' && '!bg-transparent',
             sticky && 'sticky top-0 z-30',
             sticky &&
