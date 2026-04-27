@@ -1,0 +1,240 @@
+/**
+ * DateTimePicker — Octuple DS Theme 2
+ * Date (and optional time) picker. Uses Radix Popover.
+ * Sizes: medium (36px trigger) | large (44px trigger).
+ */
+
+/* Trigger button */
+.ef-dtp__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  background: var(--color-bg-default);
+  border: 1px solid var(--color-background2-grey);
+  border-radius: var(--radius-2);
+  color: var(--color-primary-grey);
+  cursor: pointer;
+  transition: border-color 0.15s;
+  width: 100%;
+  text-align: left;
+}
+.ef-dtp__trigger:hover:not(:disabled) {
+  border-color: var(--color-tertiary-grey);
+}
+.ef-dtp__trigger:focus-visible {
+  outline: 2px solid var(--color-tertiary-blue);
+  outline-offset: 2px;
+}
+.ef-dtp__trigger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.ef-dtp__trigger--placeholder .ef-dtp__trigger-text {
+  color: var(--color-tertiary-grey);
+}
+.ef-dtp__trigger--medium {
+  height: 36px;
+  padding: 0 var(--spacing-4);
+  font: var(--typography-body3);
+}
+.ef-dtp__trigger--large {
+  height: 44px;
+  padding: 0 var(--spacing-5);
+  font: var(--typography-body2);
+}
+.ef-dtp__cal-icon {
+  font-size: 16px !important;
+  flex-shrink: 0;
+  color: var(--color-tertiary-grey);
+}
+.ef-dtp__trigger-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ef-dtp__clear {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-tertiary-grey);
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.ef-dtp__clear:hover { opacity: 1; }
+.ef-dtp__clear .material-symbols-outlined { font-size: 14px !important; }
+
+/* Popover */
+.ef-dtp__popover {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-default);
+  border: 1px solid var(--color-background2-grey);
+  border-radius: var(--radius-3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 9999;
+  overflow: hidden;
+  animation: ef-dtp-fade-in 150ms ease-out;
+  min-width: 280px;
+}
+
+/* Calendar */
+.ef-dtp__calendar {
+  padding: 12px;
+}
+
+.ef-dtp__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.ef-dtp__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-1);
+  color: var(--color-secondary-grey);
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.ef-dtp__nav-btn:hover { background: var(--color-background1-grey); }
+.ef-dtp__nav-btn:focus-visible {
+  outline: 2px solid var(--color-tertiary-blue);
+  outline-offset: 2px;
+}
+.ef-dtp__nav-btn .material-symbols-outlined { font-size: 18px !important; }
+
+.ef-dtp__month-label {
+  font: var(--typography-header6);
+  color: var(--color-primary-grey);
+}
+
+.ef-dtp__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.ef-dtp__day-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  font: var(--typography-caption);
+  color: var(--color-tertiary-grey);
+}
+
+.ef-dtp__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-full);
+  background: transparent;
+  font: var(--typography-body3);
+  color: var(--color-primary-grey);
+  cursor: pointer;
+  transition: background-color 0.15s;
+  justify-self: center;
+}
+.ef-dtp__day:hover:not(.ef-dtp__day--disabled):not(.ef-dtp__day--selected) {
+  background: var(--color-background1-grey);
+}
+.ef-dtp__day:focus-visible {
+  outline: 2px solid var(--color-tertiary-blue);
+  outline-offset: 1px;
+}
+.ef-dtp__day--today {
+  border: 1px solid var(--color-tertiary-blue);
+  color: var(--color-primary-blue);
+}
+.ef-dtp__day--selected {
+  background: var(--color-primary-blue);
+  color: #fff;
+}
+.ef-dtp__day--selected:hover { opacity: 0.88; }
+.ef-dtp__day--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Time section */
+.ef-dtp__time {
+  border-top: 1px solid var(--color-background2-grey);
+  padding: 10px 12px 12px;
+}
+.ef-dtp__time-label {
+  font: var(--typography-caption-semibold);
+  color: var(--color-tertiary-grey);
+  margin-bottom: 6px;
+}
+.ef-dtp__time-cols {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-1);
+}
+.ef-dtp__time-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 160px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.ef-dtp__time-col--ampm {
+  margin-left: var(--spacing-2);
+}
+.ef-dtp__time-sep {
+  font: var(--typography-header5);
+  color: var(--color-tertiary-grey);
+  align-self: flex-start;
+  padding-top: 4px;
+}
+.ef-dtp__time-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 28px;
+  padding: 0 var(--spacing-2);
+  border: none;
+  border-radius: var(--radius-1);
+  background: transparent;
+  font: var(--typography-body3);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-primary-grey);
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.ef-dtp__time-cell:hover { background: var(--color-background1-grey); }
+.ef-dtp__time-cell:focus-visible {
+  outline: 2px solid var(--color-tertiary-blue);
+  outline-offset: 2px;
+}
+.ef-dtp__time-cell--selected {
+  background: var(--color-primary-blue);
+  color: #fff;
+}
+.ef-dtp__time-cell--selected:hover { opacity: 0.88; }
+
+@keyframes ef-dtp-fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

@@ -113,6 +113,7 @@ export default defineConfig({
             },
         ],
     },
+    /* Prefer 5188 (avoids clash with other apps on 5173); falls back if port is busy */
     server: {
         port: 5188,
         strictPort: false,

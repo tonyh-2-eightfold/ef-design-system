@@ -1,0 +1,39 @@
+/**
+ * SegmentedProgress — Octuple DS Theme 2
+ * Step-based milestone progress bar.
+ * Each segment = one step. Filled = complete. Next = upcoming.
+ */
+.ef-segprogress {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  width: 100%;
+}
+
+.ef-segprogress__track {
+  display: flex;
+  gap: var(--spacing-1);
+  width: 100%;
+}
+
+.ef-segprogress__segment {
+  flex: 1;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-background2-grey);
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.ef-segprogress__segment--filled {
+  background: var(--color-tertiary-blue);
+}
+
+.ef-segprogress__segment--next {
+  background: var(--color-background2-blue);
+}
+
+.ef-segprogress__label {
+  font: var(--typography-caption);
+  color: var(--color-secondary-grey);
+}

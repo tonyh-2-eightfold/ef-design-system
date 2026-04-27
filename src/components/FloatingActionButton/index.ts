@@ -1,0 +1,6 @@
+export { FloatingActionButton } from './FloatingActionButton'
+export type {
+  FloatingActionButtonProps,
+  FloatingActionButtonVariant,
+  FloatingActionButtonSize,
+} from './FloatingActionButton'

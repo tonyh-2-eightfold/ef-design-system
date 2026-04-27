@@ -200,3 +200,45 @@ export type { SpacingKey, CornerRadiusKey } from '../tokens'
 
 export { EmptyIllustration } from './EmptyIllustration'
 export type { EmptyIllustrationProps, EmptyIllustrationVariant, EmptyVariant } from './EmptyIllustration'
+
+// ── Notifications / Banners ────────────────────────────────────────────────
+export { InfoBar } from './InfoBar'
+export type { InfoBarProps, InfoBarVariant } from './InfoBar'
+
+export { MessageBar } from './MessageBar'
+export type { MessageBarProps, MessageBarVariant } from './MessageBar'
+
+export { Snackbar, SnackbarContainer } from './Snackbar'
+export type { SnackbarProps, SnackbarVariant, SnackbarSize } from './Snackbar'
+
+// ── Overlays ───────────────────────────────────────────────────────────────
+export { Panel } from './Panel'
+export type { PanelProps, PanelWidth } from './Panel'
+
+// ── Tokens / Person chips ──────────────────────────────────────────────────
+export { Chip } from './Chip'
+export type { ChipProps, ChipSize, ChipVariant } from './Chip'
+
+// ── Inputs ─────────────────────────────────────────────────────────────────
+export { DateTimePicker } from './DateTimePicker'
+export type { DateTimePickerProps, DateTimePickerSize } from './DateTimePicker'
+
+// ── Progress ───────────────────────────────────────────────────────────────
+export { SegmentedProgress } from './SegmentedProgress'
+export type { SegmentedProgressProps } from './SegmentedProgress'
+
+// ── Timeline ───────────────────────────────────────────────────────────────
+export { Timeline, TimelineItem } from './Timeline'
+export type { TimelineProps, TimelineItemProps, TimelineItemStatus } from './Timeline'
+
+// ── File upload ────────────────────────────────────────────────────────────
+export { Uploader, UploaderFileItem } from './Uploader'
+export type { UploaderProps, UploaderFileItemProps, UploaderFileStatus } from './Uploader'
+
+// ── FAB ────────────────────────────────────────────────────────────────────
+export { FloatingActionButton } from './FloatingActionButton'
+export type {
+  FloatingActionButtonProps,
+  FloatingActionButtonVariant,
+  FloatingActionButtonSize,
+} from './FloatingActionButton'

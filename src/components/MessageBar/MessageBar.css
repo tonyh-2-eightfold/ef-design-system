@@ -1,0 +1,109 @@
+/**
+ * MessageBar — Octuple DS Theme 2
+ * Full-width system-level banner. Sits at the top of a page/section.
+ * Variants: neutral (blue), success (green), warning (orange), error (red).
+ */
+.ef-messagebar {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  padding: var(--spacing-5) var(--spacing-8);
+  border-bottom: 1px solid transparent;
+  font: var(--typography-body3);
+  width: 100%;
+}
+
+.ef-messagebar__icon {
+  flex-shrink: 0;
+  font-size: 20px !important;
+  margin-top: 1px;
+}
+
+.ef-messagebar__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.ef-messagebar__title {
+  font: var(--typography-header6);
+  color: var(--color-primary-grey);
+}
+
+.ef-messagebar__description {
+  font: var(--typography-body3);
+  color: var(--color-secondary-grey);
+}
+
+.ef-messagebar__action {
+  flex-shrink: 0;
+  padding: 0 var(--spacing-4);
+  height: 30px;
+  border: 1px solid currentColor;
+  background: transparent;
+  border-radius: var(--radius-2);
+  font: var(--typography-button3);
+  cursor: pointer;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+  align-self: center;
+}
+.ef-messagebar__action:hover { opacity: 0.75; }
+.ef-messagebar__action:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.ef-messagebar__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--radius-1);
+  opacity: 0.6;
+  transition: opacity 0.15s;
+  align-self: flex-start;
+}
+.ef-messagebar__close:hover { opacity: 1; }
+.ef-messagebar__close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.ef-messagebar__close .material-symbols-outlined {
+  font-size: 18px !important;
+}
+
+/* Variant: neutral */
+.ef-messagebar--neutral {
+  background: var(--color-background1-blue);
+  border-color: var(--color-background2-blue);
+  color: var(--color-primary-blue);
+}
+
+/* Variant: success */
+.ef-messagebar--success {
+  background: var(--color-background1-green);
+  border-color: var(--color-background2-green);
+  color: var(--color-primary-green);
+}
+
+/* Variant: warning */
+.ef-messagebar--warning {
+  background: var(--color-background1-orange);
+  border-color: var(--color-background2-orange);
+  color: var(--color-primary-orange);
+}
+
+/* Variant: error */
+.ef-messagebar--error {
+  background: var(--color-background1-red);
+  border-color: var(--color-background2-red);
+  color: var(--color-primary-red);
+}

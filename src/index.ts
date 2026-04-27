@@ -224,3 +224,48 @@ export type { CareerHubShellProps } from './components/CareerHubShell'
 
 export { SPACING_TOKENS, CORNER_RADIUS_TOKENS } from './tokens'
 export type { SpacingKey, CornerRadiusKey } from './tokens'
+
+export { EmptyIllustration } from './components/EmptyIllustration'
+export type { EmptyIllustrationProps, EmptyIllustrationVariant, EmptyVariant } from './components/EmptyIllustration'
+
+// ── Notifications / Banners ────────────────────────────────────────────────
+export { InfoBar } from './components/InfoBar'
+export type { InfoBarProps, InfoBarVariant } from './components/InfoBar'
+
+export { MessageBar } from './components/MessageBar'
+export type { MessageBarProps, MessageBarVariant } from './components/MessageBar'
+
+export { Snackbar, SnackbarContainer } from './components/Snackbar'
+export type { SnackbarProps, SnackbarVariant, SnackbarSize } from './components/Snackbar'
+
+// ── Overlays ───────────────────────────────────────────────────────────────
+export { Panel } from './components/Panel'
+export type { PanelProps, PanelWidth } from './components/Panel'
+
+// ── Tokens / Person chips ──────────────────────────────────────────────────
+export { Chip } from './components/Chip'
+export type { ChipProps, ChipSize, ChipVariant } from './components/Chip'
+
+// ── Inputs ─────────────────────────────────────────────────────────────────
+export { DateTimePicker } from './components/DateTimePicker'
+export type { DateTimePickerProps, DateTimePickerSize } from './components/DateTimePicker'
+
+// ── Progress ───────────────────────────────────────────────────────────────
+export { SegmentedProgress } from './components/SegmentedProgress'
+export type { SegmentedProgressProps } from './components/SegmentedProgress'
+
+// ── Timeline ───────────────────────────────────────────────────────────────
+export { Timeline, TimelineItem } from './components/Timeline'
+export type { TimelineProps, TimelineItemProps, TimelineItemStatus } from './components/Timeline'
+
+// ── File upload ────────────────────────────────────────────────────────────
+export { Uploader, UploaderFileItem } from './components/Uploader'
+export type { UploaderProps, UploaderFileItemProps, UploaderFileStatus } from './components/Uploader'
+
+// ── FAB ────────────────────────────────────────────────────────────────────
+export { FloatingActionButton } from './components/FloatingActionButton'
+export type {
+  FloatingActionButtonProps,
+  FloatingActionButtonVariant,
+  FloatingActionButtonSize,
+} from './components/FloatingActionButton'

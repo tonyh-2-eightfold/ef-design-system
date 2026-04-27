@@ -1,0 +1,103 @@
+/**
+ * Snackbar — Octuple DS Theme 2
+ * Toast notification. Use inside SnackbarContainer (fixed bottom-right)
+ * or inline for preview / Storybook.
+ */
+.ef-snackbar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4) var(--spacing-6);
+  min-width: 280px;
+  max-width: 480px;
+  border-radius: var(--radius-3);
+  border: 1px solid transparent;
+  background: var(--color-primary-grey);
+  color: var(--color-bg-default);
+  font: var(--typography-body3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  pointer-events: auto;
+}
+
+.ef-snackbar--small {
+  padding: var(--spacing-3) var(--spacing-5);
+  min-width: 200px;
+  font: var(--typography-caption);
+}
+
+.ef-snackbar__icon {
+  flex-shrink: 0;
+  font-size: 18px !important;
+}
+.ef-snackbar--small .ef-snackbar__icon {
+  font-size: 16px !important;
+}
+
+.ef-snackbar__message {
+  flex: 1;
+  color: var(--color-bg-default);
+}
+
+.ef-snackbar__action {
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font: var(--typography-button3);
+  color: var(--color-bg-default);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  opacity: 0.85;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+.ef-snackbar__action:hover { opacity: 1; }
+.ef-snackbar__action:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.ef-snackbar__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-bg-default);
+  cursor: pointer;
+  border-radius: var(--radius-1);
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.ef-snackbar__close:hover { opacity: 1; }
+.ef-snackbar__close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.ef-snackbar__close .material-symbols-outlined {
+  font-size: 16px !important;
+}
+
+/* Variant tints on dark base */
+.ef-snackbar--success { background: var(--color-primary-green); }
+.ef-snackbar--warning { background: var(--color-primary-orange); }
+.ef-snackbar--error   { background: var(--color-primary-red); }
+
+/* Container — fixed bottom-right stack */
+.ef-snackbar-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  pointer-events: none;
+  max-width: 480px;
+}

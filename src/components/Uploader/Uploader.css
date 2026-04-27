@@ -1,0 +1,200 @@
+/**
+ * Uploader — Octuple DS Theme 2
+ * Drag-and-drop file upload zone + file item list.
+ */
+
+/* Drop zone */
+.ef-uploader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.ef-uploader__zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-8) var(--spacing-6);
+  border: 2px dashed var(--color-background2-grey);
+  border-radius: var(--radius-3);
+  background: var(--color-background1-grey);
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+  text-align: center;
+  outline: none;
+}
+.ef-uploader__zone:hover:not(.ef-uploader__zone--disabled),
+.ef-uploader__zone:focus-visible:not(.ef-uploader__zone--disabled) {
+  border-color: var(--color-tertiary-blue);
+  background: var(--color-background1-blue);
+}
+.ef-uploader__zone:focus-visible {
+  outline: 2px solid var(--color-tertiary-blue);
+  outline-offset: 2px;
+}
+.ef-uploader__zone--dragging {
+  border-color: var(--color-tertiary-blue);
+  background: var(--color-background1-blue);
+}
+.ef-uploader__zone--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ef-uploader__icon {
+  font-size: 32px !important;
+  color: var(--color-tertiary-blue);
+}
+
+.ef-uploader__labels {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ef-uploader__drag-label {
+  font: var(--typography-body3);
+  color: var(--color-primary-grey);
+}
+.ef-uploader__or {
+  font: var(--typography-body3);
+  color: var(--color-tertiary-grey);
+}
+.ef-uploader__browse-label {
+  font: var(--typography-button3);
+  color: var(--color-tertiary-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ef-uploader__hint {
+  font: var(--typography-caption);
+  color: var(--color-tertiary-grey);
+}
+
+/* Hidden input */
+.ef-uploader__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* File list */
+.ef-uploader__file-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* File item */
+.ef-uploader-file {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  border: 1px solid var(--color-background2-grey);
+  border-radius: var(--radius-2);
+  background: var(--color-bg-default);
+  min-width: 0;
+}
+
+.ef-uploader-file--error {
+  border-color: var(--color-background2-red);
+  background: var(--color-background1-red);
+}
+
+.ef-uploader-file__icon {
+  flex-shrink: 0;
+  font-size: 20px !important;
+  color: var(--color-tertiary-blue);
+}
+.ef-uploader-file--error .ef-uploader-file__icon {
+  color: var(--color-primary-red);
+}
+
+.ef-uploader-file__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.ef-uploader-file__name-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-3);
+  min-width: 0;
+}
+
+.ef-uploader-file__name {
+  font: var(--typography-body3);
+  color: var(--color-primary-grey);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+.ef-uploader-file__size {
+  font: var(--typography-caption);
+  color: var(--color-tertiary-grey);
+  flex-shrink: 0;
+}
+
+.ef-uploader-file__progress-track {
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--color-background2-blue);
+  overflow: hidden;
+}
+.ef-uploader-file__progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-tertiary-blue);
+  transition: width 0.3s ease;
+}
+
+.ef-uploader-file__error {
+  font: var(--typography-caption);
+  color: var(--color-primary-red);
+}
+
+.ef-uploader-file__status-icon {
+  flex-shrink: 0;
+  font-size: 18px !important;
+  color: var(--color-primary-green);
+}
+.ef-uploader-file__status-icon--error {
+  color: var(--color-primary-red);
+}
+
+.ef-uploader-file__remove {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-tertiary-grey);
+  cursor: pointer;
+  border-radius: var(--radius-1);
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+.ef-uploader-file__remove:hover { opacity: 1; }
+.ef-uploader-file__remove:focus-visible {
+  outline: 2px solid var(--color-tertiary-blue);
+  outline-offset: 2px;
+}
+.ef-uploader-file__remove .material-symbols-outlined {
+  font-size: 16px !important;
+}

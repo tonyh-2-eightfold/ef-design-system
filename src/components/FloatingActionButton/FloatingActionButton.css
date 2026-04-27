@@ -1,0 +1,100 @@
+/**
+ * FloatingActionButton — Octuple DS Theme 2
+ * Fixed-position primary / secondary action button.
+ * Default size: 56px. Small: 40px. Extended: pill with label.
+ * Variants: primary (blue filled) | secondary (white outlined).
+ */
+.ef-fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.20);
+  transition: box-shadow 0.2s, opacity 0.15s, transform 0.15s;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.ef-fab:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.ef-fab:focus-visible {
+  outline: 2px solid var(--color-tertiary-blue);
+  outline-offset: 3px;
+}
+
+.ef-fab:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Sizes */
+.ef-fab {
+  width: 56px;
+  height: 56px;
+}
+
+.ef-fab--small {
+  width: 40px;
+  height: 40px;
+}
+
+/* Extended (with label) */
+.ef-fab--extended {
+  width: auto;
+  padding: 0 var(--spacing-6);
+}
+.ef-fab--small.ef-fab--extended {
+  padding: 0 var(--spacing-5);
+}
+
+/* Icon */
+.ef-fab__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ef-fab__icon svg,
+.ef-fab__icon .material-symbols-outlined {
+  width: 24px;
+  height: 24px;
+  font-size: 24px !important;
+}
+.ef-fab--small .ef-fab__icon svg,
+.ef-fab--small .ef-fab__icon .material-symbols-outlined {
+  width: 18px;
+  height: 18px;
+  font-size: 18px !important;
+}
+
+/* Label */
+.ef-fab__label {
+  font: var(--typography-button3);
+  white-space: nowrap;
+}
+
+/* Variant: primary */
+.ef-fab--primary {
+  background: var(--color-primary-blue, #1565C0);
+  color: #fff;
+}
+.ef-fab--primary:hover:not(:disabled) {
+  box-shadow: 0 6px 18px rgba(21, 101, 192, 0.35);
+}
+
+/* Variant: secondary */
+.ef-fab--secondary {
+  background: var(--color-bg-default, #fff);
+  color: var(--color-primary-grey);
+  border: 1px solid var(--color-background2-grey);
+}
+.ef-fab--secondary:hover:not(:disabled) {
+  background: var(--color-background1-grey);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}

@@ -1,4 +1,4 @@
-const o = {
+const e = {
   grey: {
     100: "#05070A",
     90: "#1A212E",
@@ -145,7 +145,7 @@ const o = {
     10: "#F0FEFA"
   }
 };
-function e(F, r) {
+function E(F, r) {
   return `var(--color-${F}-${r})`;
 }
 const t = {
@@ -166,7 +166,60 @@ const t = {
   buttonPrimaryText: "--color-button-primary-text",
   buttonSecondaryBg: "--color-button-secondary-bg",
   buttonOutlineHoverBg: "--color-button-outline-hover-bg"
-}, E = {
+}, o = [
+  "#054D7B",
+  // blue-80
+  "#1999AC",
+  // blue-green-60
+  "#2B715F",
+  // green-70
+  "#9D6309",
+  // orange-70
+  "#993838",
+  // red-70
+  "#975590",
+  // violet-60
+  "#2C8CC9",
+  // blue-60
+  "#51AB93"
+  // green-50
+], A = [
+  ...o,
+  "#5962B7",
+  // blue-violet-60
+  "#C97E19",
+  // orange-60
+  "#E46F6F",
+  // red-50
+  "#AE72A8"
+  // violet-50
+], B = {
+  success: "#2B715F",
+  // green-70
+  warning: "#9D6309",
+  // orange-70
+  error: "#993838",
+  // red-70
+  info: "#054D7B",
+  // blue-80
+  neutral: "#69717F",
+  // grey-60
+  accent: "#1999AC"
+  // blue-green-60
+}, C = {
+  blue: "#EBF7FF",
+  // blue-10
+  green: "#F0FEFA",
+  // green-10
+  red: "#FFEFEF",
+  // red-10
+  orange: "#FFF8EB",
+  // orange-10
+  violet: "#FBF6FB",
+  // violet-10
+  teal: "#EBFDFF"
+  // blue-green-10
+}, n = {
   0: 0,
   1: 2,
   2: 4,
@@ -182,7 +235,7 @@ const t = {
   20: 40,
   24: 48,
   32: 64
-}, B = {
+}, l = {
   0: 0,
   1: 4,
   2: 6,
@@ -193,13 +246,17 @@ const t = {
   7: 20,
   8: 24,
   full: 9999
-}, C = (F) => `var(--spacing-${F})`, l = (F) => `var(--radius-${F})`;
+}, a = (F) => `var(--spacing-${F})`, c = (F) => `var(--radius-${F})`;
 export {
-  o as COLOR_PALETTE,
-  B as CORNER_RADIUS_TOKENS,
+  C as CHART_AREA_FILLS,
+  o as CHART_PALETTE,
+  A as CHART_PALETTE_EXTENDED,
+  B as CHART_SEMANTIC,
+  e as COLOR_PALETTE,
+  l as CORNER_RADIUS_TOKENS,
   t as SEMANTIC_COLOR_VARS,
-  E as SPACING_TOKENS,
-  e as colorVar,
-  l as radiusVar,
-  C as spacingVar
+  n as SPACING_TOKENS,
+  E as colorVar,
+  c as radiusVar,
+  a as spacingVar
 };

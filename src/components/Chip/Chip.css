@@ -1,0 +1,160 @@
+/**
+ * Chip — Octuple DS Theme 2
+ * Person / entity token. Three sizes: large (32px), medium (24px), small (20px).
+ * Variants: default (outlined), filled (bg), ghost (no border).
+ */
+.ef-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+/* Sizes */
+.ef-chip--large {
+  height: 32px;
+  padding: 0 var(--spacing-4);
+  font: var(--typography-body3);
+  gap: var(--spacing-2);
+}
+
+.ef-chip--medium {
+  height: 24px;
+  padding: 0 var(--spacing-3);
+  font: var(--typography-caption);
+  gap: var(--spacing-2);
+}
+
+.ef-chip--small {
+  height: 20px;
+  padding: 0 var(--spacing-2);
+  font: var(--typography-caption);
+  font-size: 11px;
+  gap: var(--spacing-1);
+}
+
+/* Variants */
+.ef-chip--default {
+  background: var(--color-bg-default);
+  border: 1px solid var(--color-background2-grey);
+  color: var(--color-primary-grey);
+}
+
+.ef-chip--filled {
+  background: var(--color-background1-grey);
+  border: 1px solid transparent;
+  color: var(--color-primary-grey);
+}
+
+.ef-chip--ghost {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-primary-grey);
+}
+
+/* Interactive */
+.ef-chip--interactive {
+  cursor: pointer;
+}
+.ef-chip--interactive:hover {
+  background: var(--color-background1-grey);
+}
+.ef-chip--interactive:focus-visible {
+  outline: 2px solid var(--color-tertiary-blue);
+  outline-offset: 2px;
+}
+
+/* Disabled */
+.ef-chip[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Avatar */
+.ef-chip__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.ef-chip--large .ef-chip__avatar  { width: 22px; height: 22px; }
+.ef-chip--medium .ef-chip__avatar { width: 16px; height: 16px; }
+.ef-chip--small .ef-chip__avatar  { width: 14px; height: 14px; }
+
+.ef-chip__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ef-chip__avatar-initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: var(--color-avatar-initials-bg, #c62828);
+  color: var(--color-avatar-initials-text, #fff);
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+}
+
+/* Icon (non-person) */
+.ef-chip__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-tertiary-grey);
+}
+.ef-chip--large .ef-chip__icon  svg { width: 14px; height: 14px; }
+.ef-chip--medium .ef-chip__icon svg { width: 12px; height: 12px; }
+.ef-chip--small .ef-chip__icon  svg { width: 10px; height: 10px; }
+
+/* Label */
+.ef-chip__label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Remove button */
+.ef-chip__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-tertiary-grey);
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  transition: color 0.15s;
+  margin-left: var(--spacing-1);
+}
+.ef-chip__remove:hover { color: var(--color-primary-grey); }
+.ef-chip__remove:focus-visible {
+  outline: 2px solid var(--color-tertiary-blue);
+  outline-offset: 1px;
+}
+
+.ef-chip--large  .ef-chip__remove { width: 16px; height: 16px; }
+.ef-chip--medium .ef-chip__remove { width: 14px; height: 14px; }
+.ef-chip--small  .ef-chip__remove { width: 12px; height: 12px; }
+
+.ef-chip__remove .material-symbols-outlined {
+  font-size: 12px !important;
+}
+.ef-chip--large .ef-chip__remove .material-symbols-outlined {
+  font-size: 14px !important;
+}

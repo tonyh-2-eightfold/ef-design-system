@@ -1,0 +1,135 @@
+/**
+ * Timeline — Octuple DS Theme 2
+ * Activity / audit log. Vertical timeline with node + connector.
+ * Statuses: completed (blue), current (blue-active), upcoming (grey), error (red).
+ */
+
+.ef-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each item */
+.ef-timeline-item {
+  display: flex;
+  gap: var(--spacing-4);
+  position: relative;
+  min-height: 48px;
+}
+
+/* Last item hides the connector */
+.ef-timeline-item:last-child .ef-timeline-item__connector {
+  display: none;
+}
+
+/* Node column */
+.ef-timeline-item__node-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 28px;
+}
+
+.ef-timeline-item__node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.ef-timeline-item__node-icon {
+  font-size: 14px !important;
+}
+
+/* Connector line */
+.ef-timeline-item__connector {
+  width: 2px;
+  flex: 1;
+  min-height: 16px;
+  margin: 2px 0;
+  background: var(--color-background2-grey);
+  border-radius: 1px;
+}
+
+/* Content column */
+.ef-timeline-item__content {
+  flex: 1;
+  padding-bottom: 20px;
+  padding-top: 2px;
+}
+
+.ef-timeline-item__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.ef-timeline-item__title {
+  font: var(--typography-body3);
+  color: var(--color-primary-grey);
+}
+
+.ef-timeline-item__timestamp {
+  font: var(--typography-caption);
+  color: var(--color-tertiary-grey);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ef-timeline-item__description {
+  margin: var(--spacing-1) 0 0;
+  font: var(--typography-caption);
+  color: var(--color-secondary-grey);
+}
+
+.ef-timeline-item__body {
+  margin-top: var(--spacing-3);
+}
+
+/* Status: completed */
+.ef-timeline-item--completed .ef-timeline-item__node {
+  background: var(--color-background1-blue);
+  border-color: var(--color-background2-blue);
+  color: var(--color-tertiary-blue);
+}
+.ef-timeline-item--completed .ef-timeline-item__connector {
+  background: var(--color-background2-blue);
+}
+
+/* Status: current */
+.ef-timeline-item--current .ef-timeline-item__node {
+  background: var(--color-tertiary-blue);
+  border-color: var(--color-tertiary-blue);
+  color: #fff;
+}
+
+/* Status: upcoming */
+.ef-timeline-item--upcoming .ef-timeline-item__node {
+  background: var(--color-background1-grey);
+  border-color: var(--color-background2-grey);
+  color: var(--color-tertiary-grey);
+}
+.ef-timeline-item--upcoming .ef-timeline-item__title {
+  color: var(--color-secondary-grey);
+}
+
+/* Status: error */
+.ef-timeline-item--error .ef-timeline-item__node {
+  background: var(--color-background1-red);
+  border-color: var(--color-background2-red);
+  color: var(--color-primary-red);
+}
+.ef-timeline-item--error .ef-timeline-item__title {
+  color: var(--color-primary-red);
+}

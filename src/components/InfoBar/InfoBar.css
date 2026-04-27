@@ -1,0 +1,113 @@
+/**
+ * InfoBar — Octuple DS Theme 2
+ * Inline context banner for form sections / page areas.
+ * Variants: neutral (blue), success (green), warning (orange), error (red), ai-agent (violet).
+ */
+.ef-infobar {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-2);
+  border: 1px solid transparent;
+  font: var(--typography-body3);
+}
+
+.ef-infobar__icon {
+  flex-shrink: 0;
+  font-size: 18px !important;
+  margin-top: 1px;
+}
+
+.ef-infobar__message {
+  flex: 1;
+  color: var(--color-primary-grey);
+}
+
+.ef-infobar__action {
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font: var(--typography-button3);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.15s;
+}
+
+.ef-infobar__action:hover { opacity: 0.75; }
+.ef-infobar__action:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.ef-infobar__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--radius-1);
+  opacity: 0.6;
+  transition: opacity 0.15s;
+  margin-top: 1px;
+}
+.ef-infobar__close:hover { opacity: 1; }
+.ef-infobar__close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.ef-infobar__close .material-symbols-outlined {
+  font-size: 16px !important;
+}
+
+/* Variant: neutral (blue) */
+.ef-infobar--neutral {
+  background: var(--color-background1-blue);
+  border-color: var(--color-background2-blue);
+  color: var(--color-primary-blue);
+}
+.ef-infobar--neutral .ef-infobar__action { color: var(--color-primary-blue); }
+
+/* Variant: success (green) */
+.ef-infobar--success {
+  background: var(--color-background1-green);
+  border-color: var(--color-background2-green);
+  color: var(--color-primary-green);
+}
+.ef-infobar--success .ef-infobar__message { color: var(--color-primary-grey); }
+.ef-infobar--success .ef-infobar__action { color: var(--color-primary-green); }
+
+/* Variant: warning (orange) */
+.ef-infobar--warning {
+  background: var(--color-background1-orange);
+  border-color: var(--color-background2-orange);
+  color: var(--color-primary-orange);
+}
+.ef-infobar--warning .ef-infobar__message { color: var(--color-primary-grey); }
+.ef-infobar--warning .ef-infobar__action { color: var(--color-primary-orange); }
+
+/* Variant: error (red) */
+.ef-infobar--error {
+  background: var(--color-background1-red);
+  border-color: var(--color-background2-red);
+  color: var(--color-primary-red);
+}
+.ef-infobar--error .ef-infobar__message { color: var(--color-primary-grey); }
+.ef-infobar--error .ef-infobar__action { color: var(--color-primary-red); }
+
+/* Variant: ai-agent (violet) */
+.ef-infobar--ai-agent {
+  background: var(--color-background1-violet);
+  border-color: var(--color-background2-violet);
+  color: var(--color-primary-violet);
+}
+.ef-infobar--ai-agent .ef-infobar__message { color: var(--color-primary-grey); }
+.ef-infobar--ai-agent .ef-infobar__action { color: var(--color-primary-violet); }
