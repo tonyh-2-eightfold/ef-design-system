@@ -397,17 +397,18 @@ function TokensShowcase({ scrollToId }: { scrollToId?: string }) {
                             {varName}
                           </TableCell>
                           <TableCell>
-                            <span
-                              className="text-foreground"
-                              style={{
-                                font: `var(${varName})`,
-                                fontSize: '1.375rem',
-                                lineHeight: '1',
-                                ...(letterSpacingVar ? { letterSpacing: `var(${letterSpacingVar})` } : {}),
-                              } as React.CSSProperties}
-                            >
-                              Aa
-                            </span>
+                            <div style={{ height: '2rem', overflow: 'hidden', display: 'flex', alignItems: 'flex-start' }}>
+                              <span
+                                className="text-foreground"
+                                style={{
+                                  font: `var(${varName})`,
+                                  lineHeight: '1',
+                                  ...(letterSpacingVar ? { letterSpacing: `var(${letterSpacingVar})` } : {}),
+                                } as React.CSSProperties}
+                              >
+                                Aa
+                              </span>
+                            </div>
                           </TableCell>
                           <TableCell className="text-right tabular-nums text-muted-foreground">
                             {spec?.size ?? '—'}
