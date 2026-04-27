@@ -103,6 +103,19 @@ import {
   DataTableRow,
   DataTableHead,
   DataTableCell,
+  // New components
+  InfoBar,
+  MessageBar,
+  Snackbar,
+  Panel,
+  Chip,
+  DateTimePicker,
+  SegmentedProgress,
+  Timeline,
+  TimelineItem,
+  Uploader,
+  UploaderFileItem,
+  FloatingActionButton,
 } from '@tonyh-2-eightfold/ef-design-system'
 import { Label } from '@/components/ui/label'
 import {
@@ -2133,6 +2146,205 @@ export function UICatalog({
             <TooltipContent>Tooltip text</TooltipContent>
           </Tooltip>
         </Block>
+
+        {/* ── InfoBar ───────────────────────────────────────────────────── */}
+        <Block title="InfoBar" id="infobar">
+          <div className="w-full space-y-3">
+            <InfoBar variant="neutral"  message="Your draft was auto-saved." />
+            <InfoBar variant="success"  message="Review submitted successfully." onClose={() => {}} />
+            <InfoBar variant="warning"  message="Deadline in 2 days. Complete your review." onClose={() => {}} />
+            <InfoBar variant="error"    message="We couldn't save your changes." actionLabel="Retry" onAction={() => {}} onClose={() => {}} />
+            <InfoBar variant="ai-agent" message="AI matched 12 candidates to this role." onClose={() => {}} />
+          </div>
+        </Block>
+
+        {/* ── MessageBar ────────────────────────────────────────────────── */}
+        <Block title="MessageBar" id="messagebar">
+          <div className="w-full space-y-3">
+            <MessageBar variant="neutral" title="System update" description="A new version is available. Refresh to update." />
+            <MessageBar variant="success" title="Import complete" description="842 records were imported successfully." onClose={() => {}} />
+            <MessageBar variant="warning" title="Action required" description="Please review the updated policy before the deadline." actionLabel="Review" onAction={() => {}} onClose={() => {}} />
+            <MessageBar variant="error"   title="Sync failed" description="Could not connect to your HRIS." actionLabel="Retry" onAction={() => {}} onClose={() => {}} />
+          </div>
+        </Block>
+
+        {/* ── Snackbar ──────────────────────────────────────────────────── */}
+        <Block title="Snackbar" id="snackbar">
+          <div className="space-y-3 w-full">
+            <div className="flex flex-wrap gap-3">
+              <Snackbar variant="default" message="Profile updated." onClose={() => {}} />
+              <Snackbar variant="success" message="Changes saved." onClose={() => {}} />
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Snackbar variant="warning" message="Export may take a while." onClose={() => {}} />
+              <Snackbar variant="error"   message="Failed to export." actionLabel="Retry" onAction={() => {}} onClose={() => {}} />
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Snackbar size="small" message="Copied to clipboard." onClose={() => {}} />
+            </div>
+          </div>
+        </Block>
+
+        {/* ── Panel ─────────────────────────────────────────────────────── */}
+        <Block title="Panel" id="panel">
+          <PanelDemo />
+        </Block>
+
+        {/* ── Chip ──────────────────────────────────────────────────────── */}
+        <Block title="Chip" id="chip">
+          <div className="w-full space-y-4">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Person chips (large)</p>
+              <div className="flex flex-wrap gap-2">
+                <Chip label="Sarah Chen" avatarInitials="SC" size="large" onRemove={() => {}} />
+                <Chip label="David Park" avatarInitials="DP" size="large" variant="filled" />
+                <Chip label="Engineering" size="large" />
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Medium</p>
+              <div className="flex flex-wrap gap-2">
+                <Chip label="Sarah Chen" avatarInitials="SC" size="medium" onRemove={() => {}} />
+                <Chip label="David Park" avatarInitials="DP" size="medium" variant="filled" />
+                <Chip label="Engineering" size="medium" />
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Small</p>
+              <div className="flex flex-wrap gap-2">
+                <Chip label="Sarah Chen" avatarInitials="SC" size="small" onRemove={() => {}} />
+                <Chip label="David Park" avatarInitials="DP" size="small" variant="filled" />
+              </div>
+            </div>
+          </div>
+        </Block>
+
+        {/* ── DateTimePicker ────────────────────────────────────────────── */}
+        <Block title="DateTimePicker" id="datetimepicker">
+          <DateTimePickerDemo />
+        </Block>
+
+        {/* ── SegmentedProgress ─────────────────────────────────────────── */}
+        <Block title="SegmentedProgress" id="segmentedprogress">
+          <div className="w-full space-y-5">
+            <SegmentedProgress value={0} max={5} label="0 of 5 steps complete" />
+            <SegmentedProgress value={2} max={5} />
+            <SegmentedProgress value={3} max={5} />
+            <SegmentedProgress value={5} max={5} label="All steps complete" />
+            <SegmentedProgress value={4} max={8} />
+          </div>
+        </Block>
+
+        {/* ── Timeline ──────────────────────────────────────────────────── */}
+        <Block title="Timeline" id="timeline">
+          <div className="w-full max-w-md">
+            <Timeline>
+              <TimelineItem title="Application submitted" timestamp="Mar 12, 2025" status="completed" description="Resume and cover letter received." />
+              <TimelineItem title="Recruiter screen" timestamp="Mar 15, 2025" status="completed" description="30-min call with talent team." />
+              <TimelineItem title="Technical interview" timestamp="Mar 20, 2025" status="current" description="Live coding session with the engineering team." />
+              <TimelineItem title="Final round" status="upcoming" />
+              <TimelineItem title="Offer" status="upcoming" />
+            </Timeline>
+          </div>
+        </Block>
+
+        {/* ── Uploader ──────────────────────────────────────────────────── */}
+        <Block title="Uploader" id="uploader">
+          <div className="w-full max-w-md space-y-4">
+            <Uploader
+              accept=".pdf,.doc,.docx"
+              hint="PDF, DOC up to 10 MB"
+              onFiles={() => {}}
+            >
+              <UploaderFileItem name="resume-2025.pdf" size="142 KB" status="success" onRemove={() => {}} />
+              <UploaderFileItem name="cover-letter.docx" size="38 KB" status="uploading" progress={65} onRemove={() => {}} />
+              <UploaderFileItem name="portfolio.pdf" status="error" errorMessage="File exceeds 10 MB limit." onRemove={() => {}} />
+            </Uploader>
+          </div>
+        </Block>
+
+        {/* ── FloatingActionButton ──────────────────────────────────────── */}
+        <Block title="FloatingActionButton" id="fab">
+          <div className="w-full space-y-6">
+            <div>
+              <p className="mb-3 text-xs font-medium text-muted-foreground">Variants</p>
+              <div className="flex items-center gap-4">
+                <FloatingActionButton icon={<span className="material-symbols-outlined">add</span>} aria-label="Add" variant="primary" />
+                <FloatingActionButton icon={<span className="material-symbols-outlined">add</span>} aria-label="Add" variant="secondary" />
+              </div>
+            </div>
+            <div>
+              <p className="mb-3 text-xs font-medium text-muted-foreground">Sizes</p>
+              <div className="flex items-center gap-4">
+                <FloatingActionButton icon={<span className="material-symbols-outlined">add</span>} aria-label="Add" size="default" />
+                <FloatingActionButton icon={<span className="material-symbols-outlined">add</span>} aria-label="Add" size="small" />
+              </div>
+            </div>
+            <div>
+              <p className="mb-3 text-xs font-medium text-muted-foreground">Extended (with label)</p>
+              <div className="flex items-center gap-4">
+                <FloatingActionButton icon={<span className="material-symbols-outlined">add</span>} label="Add candidate" variant="primary" />
+                <FloatingActionButton icon={<span className="material-symbols-outlined">add</span>} label="Add candidate" variant="secondary" size="small" />
+              </div>
+            </div>
+          </div>
+        </Block>
+      </div>
+    </div>
+  )
+}
+
+function PanelDemo() {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="space-y-3">
+      <div className="flex flex-wrap gap-3">
+        <Button variant="outline" onClick={() => setOpen(true)}>Open Panel (medium)</Button>
+      </div>
+      <Panel
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Edit profile"
+        subtitle="Update candidate information"
+        width="medium"
+        confirmLabel="Save changes"
+        onConfirm={() => setOpen(false)}
+      >
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium mb-1">Job title</label>
+            <Input placeholder="Senior Engineer" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">Department</label>
+            <Input placeholder="Engineering" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">Location</label>
+            <Input placeholder="San Francisco, CA" />
+          </div>
+        </div>
+      </Panel>
+    </div>
+  )
+}
+
+function DateTimePickerDemo() {
+  const [date, setDate] = useState<Date | null>(null)
+  const [dateTime, setDateTime] = useState<Date | null>(null)
+  return (
+    <div className="w-full max-w-xs space-y-4">
+      <div>
+        <p className="mb-2 text-xs font-medium text-muted-foreground">Date only</p>
+        <DateTimePicker value={date} onChange={setDate} placeholder="Select date" />
+      </div>
+      <div>
+        <p className="mb-2 text-xs font-medium text-muted-foreground">Date + time</p>
+        <DateTimePicker value={dateTime} onChange={setDateTime} showTime placeholder="Select date and time" />
+      </div>
+      <div>
+        <p className="mb-2 text-xs font-medium text-muted-foreground">Large size</p>
+        <DateTimePicker value={date} onChange={setDate} size="large" placeholder="Select date" />
       </div>
     </div>
   )
