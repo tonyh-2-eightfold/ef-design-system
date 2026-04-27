@@ -1,8 +1,9 @@
 /**
  * FloatingActionButton — Octuple DS Theme 2
- * Fixed-position primary / secondary action button.
+ * Fixed-position primary / secondary action button. Uses DS light palette.
  * Default size: 56px. Small: 40px. Extended: pill with label.
- * Variants: primary (blue filled) | secondary (white outlined).
+ * Variants: primary (DS button-primary: light blue bg + dark text)
+ *           secondary (DS button-secondary: light grey bg + dark text)
  */
 .ef-fab {
   display: inline-flex;
@@ -12,15 +13,13 @@
   border: none;
   border-radius: var(--radius-full);
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.20);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   transition: box-shadow 0.2s, opacity 0.15s, transform 0.15s;
   outline: none;
   flex-shrink: 0;
 }
 
-.ef-fab:active:not(:disabled) {
-  transform: scale(0.96);
-}
+.ef-fab:active:not(:disabled) { transform: scale(0.96); }
 
 .ef-fab:focus-visible {
   outline: 2px solid var(--color-tertiary-blue);
@@ -34,24 +33,15 @@
 }
 
 /* Sizes */
-.ef-fab {
-  width: 56px;
-  height: 56px;
-}
-
-.ef-fab--small {
-  width: 40px;
-  height: 40px;
-}
+.ef-fab { width: 56px; height: 56px; }
+.ef-fab--small { width: 40px; height: 40px; }
 
 /* Extended (with label) */
 .ef-fab--extended {
   width: auto;
   padding: 0 var(--spacing-6);
 }
-.ef-fab--small.ef-fab--extended {
-  padding: 0 var(--spacing-5);
-}
+.ef-fab--small.ef-fab--extended { padding: 0 var(--spacing-5); }
 
 /* Icon */
 .ef-fab__icon {
@@ -74,27 +64,26 @@
 }
 
 /* Label */
-.ef-fab__label {
-  font: var(--typography-button3);
-  white-space: nowrap;
-}
+.ef-fab__label { font: var(--typography-button3); white-space: nowrap; }
 
-/* Variant: primary */
+/* Variant: primary — DS button-primary palette (light blue bg, dark text) */
 .ef-fab--primary {
-  background: var(--color-primary-blue, #1565C0);
-  color: #fff;
+  background: var(--color-button-primary-bg, rgba(176, 243, 254, 1));
+  color: var(--color-button-primary-text, rgba(5, 77, 123, 1));
+  border: 1px solid var(--color-background2-blue-green, rgba(176, 243, 254, 1));
 }
 .ef-fab--primary:hover:not(:disabled) {
-  box-shadow: 0 6px 18px rgba(21, 101, 192, 0.35);
+  background: var(--color-button-primary-bg-hover, rgba(235, 253, 255, 1));
+  box-shadow: 0 6px 18px rgba(0, 185, 200, 0.20);
 }
 
-/* Variant: secondary */
+/* Variant: secondary — DS button-secondary palette (light grey bg, dark text) */
 .ef-fab--secondary {
-  background: var(--color-bg-default, #fff);
+  background: var(--color-button-secondary-bg, rgba(246, 247, 248, 1));
   color: var(--color-primary-grey);
   border: 1px solid var(--color-background2-grey);
 }
 .ef-fab--secondary:hover:not(:disabled) {
-  background: var(--color-background1-grey);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  background: var(--color-button-secondary-bg-hover, rgba(237, 238, 240, 1));
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
 }

@@ -94,6 +94,17 @@ const SHADCN_COMPONENTS = [
   'Toggle',
   'Toggle Group',
   'Tooltip',
+  // New DS components
+  'InfoBar',
+  'MessageBar',
+  'Snackbar',
+  'Panel',
+  'Chip',
+  'DateTimePicker',
+  'SegmentedProgress',
+  'Timeline',
+  'Uploader',
+  'FloatingActionButton',
 ] as const
 
 function slug(title: string) {

@@ -1,7 +1,7 @@
 /**
  * Snackbar — Octuple DS Theme 2
- * Toast notification. Use inside SnackbarContainer (fixed bottom-right)
- * or inline for preview / Storybook.
+ * Toast notification. Uses light DS palette (no inverted/dark fills).
+ * Variants follow InfoBar colour logic: neutral=blue, success=green, warning=orange, error=red.
  */
 .ef-snackbar {
   display: inline-flex;
@@ -11,11 +11,11 @@
   min-width: 280px;
   max-width: 480px;
   border-radius: var(--radius-3);
-  border: 1px solid transparent;
-  background: var(--color-primary-grey);
-  color: var(--color-bg-default);
+  border: 1px solid var(--color-background2-blue);
+  background: var(--color-bg-default);
+  color: var(--color-primary-grey);
   font: var(--typography-body3);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
   pointer-events: auto;
 }
 
@@ -28,14 +28,13 @@
 .ef-snackbar__icon {
   flex-shrink: 0;
   font-size: 18px !important;
+  color: var(--color-tertiary-blue);
 }
-.ef-snackbar--small .ef-snackbar__icon {
-  font-size: 16px !important;
-}
+.ef-snackbar--small .ef-snackbar__icon { font-size: 16px !important; }
 
 .ef-snackbar__message {
   flex: 1;
-  color: var(--color-bg-default);
+  color: var(--color-primary-grey);
 }
 
 .ef-snackbar__action {
@@ -44,17 +43,16 @@
   border: none;
   background: transparent;
   font: var(--typography-button3);
-  color: var(--color-bg-default);
+  color: var(--color-tertiary-blue);
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 2px;
-  opacity: 0.85;
   white-space: nowrap;
   transition: opacity 0.15s;
 }
-.ef-snackbar__action:hover { opacity: 1; }
+.ef-snackbar__action:hover { opacity: 0.75; }
 .ef-snackbar__action:focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--color-tertiary-blue);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -69,25 +67,46 @@
   padding: 0;
   border: none;
   background: transparent;
-  color: var(--color-bg-default);
+  color: var(--color-tertiary-grey);
   cursor: pointer;
   border-radius: var(--radius-1);
-  opacity: 0.7;
+  opacity: 0.6;
   transition: opacity 0.15s;
 }
 .ef-snackbar__close:hover { opacity: 1; }
 .ef-snackbar__close:focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--color-tertiary-blue);
   outline-offset: 2px;
 }
-.ef-snackbar__close .material-symbols-outlined {
-  font-size: 16px !important;
-}
+.ef-snackbar__close .material-symbols-outlined { font-size: 16px !important; }
 
-/* Variant tints on dark base */
-.ef-snackbar--success { background: var(--color-primary-green); }
-.ef-snackbar--warning { background: var(--color-primary-orange); }
-.ef-snackbar--error   { background: var(--color-primary-red); }
+/* Variants — light palette, matches InfoBar */
+.ef-snackbar--default {
+  background: var(--color-bg-default);
+  border-color: var(--color-background2-blue);
+}
+.ef-snackbar--default .ef-snackbar__icon { color: var(--color-tertiary-blue); }
+
+.ef-snackbar--success {
+  background: var(--color-background1-green);
+  border-color: var(--color-background2-green);
+}
+.ef-snackbar--success .ef-snackbar__icon  { color: var(--color-primary-green); }
+.ef-snackbar--success .ef-snackbar__action { color: var(--color-primary-green); }
+
+.ef-snackbar--warning {
+  background: var(--color-background1-orange);
+  border-color: var(--color-background2-orange);
+}
+.ef-snackbar--warning .ef-snackbar__icon  { color: var(--color-primary-orange); }
+.ef-snackbar--warning .ef-snackbar__action { color: var(--color-primary-orange); }
+
+.ef-snackbar--error {
+  background: var(--color-background1-red);
+  border-color: var(--color-background2-red);
+}
+.ef-snackbar--error .ef-snackbar__icon  { color: var(--color-primary-red); }
+.ef-snackbar--error .ef-snackbar__action { color: var(--color-primary-red); }
 
 /* Container — fixed bottom-right stack */
 .ef-snackbar-container {

@@ -84,6 +84,7 @@ import {
 } from '@/components/ui/navigation-menu'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import {
+  Button as DSButton,
   Input,
   InsightCard,
   CourseObjectCard,
@@ -147,7 +148,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
-import { Sheet, SheetBody, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Slider } from '@/components/ui/slider'
 import { Switch } from '@/components/ui/switch'
@@ -616,13 +617,13 @@ export function UICatalog({
             <div>
               <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
               <div className="flex flex-wrap items-center gap-2">
-                <Button variant="default">Default</Button>
-                <Button variant="primary">Primary</Button>
-                <Button variant="destructive">Destructive</Button>
-                <Button variant="secondary">Secondary</Button>
-                <Button variant="outline">Outline</Button>
-                <Button variant="ghost">Ghost</Button>
-                <Button variant="orange">Orange</Button>
+                <DSButton variant="default">Default</DSButton>
+                <DSButton variant="primary">Primary</DSButton>
+                <DSButton variant="destructive">Destructive</DSButton>
+                <DSButton variant="secondary">Secondary</DSButton>
+                <DSButton variant="outline">Outline</DSButton>
+                <DSButton variant="ghost">Ghost</DSButton>
+                <DSButton variant="orange">Orange</DSButton>
               </div>
             </div>
             <div>
@@ -656,12 +657,12 @@ export function UICatalog({
             <div>
               <p className="mb-2 text-xs font-medium text-muted-foreground">With icon / badge</p>
               <div className="flex flex-wrap items-center gap-2">
-                <Button variant="outline" leadingIcon={<MaterialIcon name="arrow_back" />}>Back</Button>
-                <Button variant="outline" trailingIcon={<MaterialIcon name="arrow_forward" />}>Next</Button>
-                <Button variant="secondary" leadingIcon={<MaterialIcon name="add" />}>Add item</Button>
-                <Button variant="secondary" badge={3}>Notifications</Button>
-                <Button variant="outline" badge={12}>Inbox</Button>
-                <Button variant="primary" badge={99}>Alerts</Button>
+                <DSButton variant="outline" leadingIcon={<MaterialIcon name="arrow_back" />}>Back</DSButton>
+                <DSButton variant="outline" trailingIcon={<MaterialIcon name="arrow_forward" />}>Next</DSButton>
+                <DSButton variant="secondary" leadingIcon={<MaterialIcon name="add" />}>Add item</DSButton>
+                <DSButton variant="secondary" badge={3}>Notifications</DSButton>
+                <DSButton variant="outline" badge={12}>Inbox</DSButton>
+                <DSButton variant="primary" badge={99}>Alerts</DSButton>
               </div>
             </div>
             <div>
@@ -1866,9 +1867,9 @@ export function UICatalog({
               <SheetHeader>
                 <SheetTitle>Sheet title</SheetTitle>
               </SheetHeader>
-              <SheetBody>
+              <div className="p-4">
                 <p className="text-sm text-muted-foreground">Sheet content.</p>
-              </SheetBody>
+              </div>
             </SheetContent>
           </Sheet>
         </Block>
@@ -2264,7 +2265,7 @@ export function UICatalog({
         </Block>
 
         {/* ── FloatingActionButton ──────────────────────────────────────── */}
-        <Block title="FloatingActionButton" id="fab">
+        <Block title="FloatingActionButton" id="floatingactionbutton">
           <div className="w-full space-y-6">
             <div>
               <p className="mb-3 text-xs font-medium text-muted-foreground">Variants</p>
