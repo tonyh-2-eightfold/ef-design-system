@@ -1,4 +1,4 @@
-import { Pill } from '../Pill/Pill'
+import { Pill } from '@/components/Pill/Pill'
 import '../CourseObjectCard/ObjectCardBottomBar.css'
 import './ProjectObjectCard.css'
 

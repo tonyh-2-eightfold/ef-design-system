@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import { useItemStep, useStepper } from './stepper-context'
 
 export interface StepperTriggerProps extends React.ComponentPropsWithoutRef<'button'> {}
@@ -34,7 +34,6 @@ const StepperTrigger = React.forwardRef<HTMLButtonElement, StepperTriggerProps>(
           data-slot="stepper-trigger"
           aria-current={step === value ? 'step' : undefined}
           className={cls}
-          {...props}
         >
           {children}
         </div>

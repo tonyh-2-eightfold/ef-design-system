@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from 'react'
 import { cloneElement, isValidElement, type ReactNode } from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import './Button.css'
 
 const buttonVariants = cva('btn', {
@@ -47,6 +47,7 @@ export interface ButtonProps
   trailingIcon?: ReactNode
   /** Number shown in a badge pill after the label (e.g. count); omitted when undefined */
   badge?: number
+  ref?: React.Ref<HTMLButtonElement>
 }
 
 function wrapIcon(icon: ReactNode, dataIcon: 'inline-start' | 'inline-end'): ReactNode {

@@ -5,7 +5,7 @@
  */
 import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 
 const listClass =
   'm-0 flex list-none flex-wrap items-center gap-0 p-0 break-words'

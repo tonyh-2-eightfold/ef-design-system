@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import './SkillTag.css'
 
 export type SkillTagSize = 'sm' | 'md' | 'lg'

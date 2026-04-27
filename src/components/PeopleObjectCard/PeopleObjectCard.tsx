@@ -1,5 +1,5 @@
-import { OpenTo } from '../OpenTo/OpenTo'
-import { Pill } from '../Pill/Pill'
+import { OpenTo } from '@/components/OpenTo/OpenTo'
+import { Pill } from '@/components/Pill/Pill'
 import './ObjectCardBottomBar.css'
 import './PeopleObjectCard.css'
 
@@ -27,7 +27,7 @@ export interface PeopleObjectCardProps {
 function getInitials(name: string): string {
   const parts = name.trim().split(/\s+/)
   if (parts.length >= 2) {
-    return (parts[0][0] + parts[1][0]).toUpperCase().slice(0, 2)
+    return ((parts[0]?.[0] ?? '') + (parts[1]?.[0] ?? '')).toUpperCase().slice(0, 2)
   }
   return name.slice(0, 2).toUpperCase() || '?'
 }

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import './NumberBadge.css'
 
 export type NumberBadgeColor =

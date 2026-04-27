@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import { StepperContext } from './stepper-context'
 import type { StepperSize } from './stepper-context'
 

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import { StepperConnectorSegmentContext } from './stepper-context'
 import type { StepperItemProps } from './StepperItem'
 import type { StepperSeparatorProps } from './StepperSeparator'

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { createPortal } from 'react-dom'
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import './NavigationMenu.css'
 
 export type NavigationMenuVariant = 'underline' | 'pill'
@@ -67,7 +67,7 @@ function NavigationMenuItem({
 }
 
 /* Prevent Radix from opening on hover (capture phase so we run first); trigger still receives events so :hover works. */
-function preventOpenOnHover(e: React.PointerEvent) {
+function preventOpenOnHover(e: React.PointerEvent<Element>) {
   e.preventDefault()
 }
 
@@ -78,8 +78,6 @@ function NavigationMenuTrigger({
   onPointerLeave,
   onPointerEnter,
   onPointerMoveCapture,
-  onPointerLeaveCapture,
-  onPointerEnterCapture,
   ref: refProp,
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Trigger>) {
@@ -101,17 +99,15 @@ function NavigationMenuTrigger({
         preventOpenOnHover(e)
         onPointerMoveCapture?.(e)
       }}
-      onPointerLeaveCapture={(e) => {
+      onPointerLeave={(e) => {
         preventOpenOnHover(e)
-        onPointerLeaveCapture?.(e)
+        onPointerLeave?.(e)
       }}
-      onPointerEnterCapture={(e) => {
+      onPointerEnter={(e) => {
         preventOpenOnHover(e)
-        onPointerEnterCapture?.(e)
+        onPointerEnter?.(e)
       }}
       onPointerMove={onPointerMove}
-      onPointerLeave={onPointerLeave}
-      onPointerEnter={onPointerEnter}
       {...props}
     >
       <span className="nav-menu__trigger-label">
@@ -277,4 +273,3 @@ export {
   NavigationMenuLink,
   NavigationMenuViewport,
 }
-export type { NavigationMenuVariant }

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import { resolveProductBackgroundFillLayer } from './resolve-fill-layer'
 import type { ProductBackgroundProps } from './product-background.types'
 import './styles/gradient-fills.css'
@@ -16,8 +16,6 @@ const ProductBackground = React.forwardRef<HTMLDivElement, ProductBackgroundProp
       imageScrim = true,
       chevronsVariant,
       hexagonsVariant,
-      blueHexagonsVariant,
-      wavesVariant,
       children,
       ...props
     },
@@ -28,8 +26,6 @@ const ProductBackground = React.forwardRef<HTMLDivElement, ProductBackgroundProp
       imageScrim,
       chevronsVariant,
       hexagonsVariant,
-      blueHexagonsVariant,
-      wavesVariant,
     })
 
     return (

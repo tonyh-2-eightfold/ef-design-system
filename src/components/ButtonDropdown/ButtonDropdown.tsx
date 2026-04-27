@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
-import { DropdownMenu } from '../DropdownMenu/DropdownMenu'
-import type { ButtonProps } from '../Button/Button'
-import { Button } from '../Button/Button'
+import { DropdownMenu } from '@/components/DropdownMenu/DropdownMenu'
+import type { ButtonProps } from '@/components/Button/Button'
+import { Button } from '@/components/Button/Button'
 
 export interface ButtonDropdownProps {
   /** Button label (or use trigger for full control) */

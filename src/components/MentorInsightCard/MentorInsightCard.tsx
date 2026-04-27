@@ -1,4 +1,4 @@
-import { InsightCard } from '../InsightCard/InsightCard'
+import { InsightCard } from '@/components/InsightCard/InsightCard'
 import './MentorInsightCard.css'
 
 export interface MentorInsightCardProps {

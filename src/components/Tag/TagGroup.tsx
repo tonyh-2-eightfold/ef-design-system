@@ -1,6 +1,6 @@
 import React, { type ReactNode } from 'react'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import { Tag, tagGroupItemClass, type TagSize } from './Tag'
 
 export type TagGroupType = 'single' | 'multiple'
@@ -24,7 +24,7 @@ export interface TagGroupProps {
 
 function isTagChild(
   child: ReactNode
-): child is React.ReactElement<{ value?: string; children?: ReactNode; leadingIcon?: ReactNode; trailingIcon?: ReactNode }> {
+): child is React.ReactElement<{ value?: string; children?: ReactNode; leadingIcon?: ReactNode; trailingIcon?: ReactNode; disabled?: boolean }> {
   return React.isValidElement(child) && typeof child.type !== 'string' && (child.type === Tag || (child.type as { displayName?: string }).displayName === 'Tag')
 }
 

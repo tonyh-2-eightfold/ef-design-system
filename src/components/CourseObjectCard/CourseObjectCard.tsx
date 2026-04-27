@@ -1,5 +1,5 @@
-import { Pill } from '../Pill/Pill'
-import { OpenTo } from '../OpenTo/OpenTo'
+import { Pill } from '@/components/Pill/Pill'
+import { OpenTo } from '@/components/OpenTo/OpenTo'
 import './ObjectCardBottomBar.css'
 import './CourseObjectCard.css'
 
