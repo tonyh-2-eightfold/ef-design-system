@@ -1,31 +1,5 @@
 import * as React from 'react'
-import { cn } from '../../lib/utils'
-
-/* ─── Sort icons (inline SVG, no external deps) ─── */
-
-function IconUnsorted() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="m7 15 5 5 5-5" /><path d="m7 9 5-5 5 5" />
-    </svg>
-  )
-}
-
-function IconAsc() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="m18 15-6-6-6 6" />
-    </svg>
-  )
-}
-
-function IconDesc() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="m6 9 6 6 6-6" />
-    </svg>
-  )
-}
+import { cn } from '@/lib/utils'
 
 /* ─── DataTable (scroll wrapper + table) ─── */
 
@@ -42,7 +16,7 @@ function DataTable({
     <div data-slot="data-table-scroll" className="relative w-full overflow-x-auto [-webkit-overflow-scrolling:touch]">
       <table
         data-slot="data-table"
-        className={cn('min-w-full border-collapse text-sm', className)}
+        className={cn('w-full border-collapse text-sm', className)}
         {...props}
       >
         {children}
@@ -51,7 +25,7 @@ function DataTable({
   )
   if (!bordered) return table
   return (
-    <div data-slot="data-table-bordered" className="rounded-xl border border-border bg-card overflow-hidden">
+    <div data-slot="data-table-bordered" className="rounded-xl border border-[#e5e7eb] bg-white overflow-hidden">
       {table}
     </div>
   )
@@ -96,10 +70,10 @@ function DataTableRow({
     <tr
       data-slot="data-table-row"
       className={cn(
-        'border-b transition-colors',
-        variant === 'warn' && 'bg-amber-50/60 hover:bg-amber-50',
-        variant === 'default' && 'hover:bg-muted/50',
-        onClick && 'cursor-pointer',
+        'border-b border-[#f1f5f9] transition-colors',
+        variant === 'warn' && '',
+        onClick && 'cursor-pointer hover:bg-[#fafbff]',
+        !onClick && 'hover:bg-muted/50',
         className,
       )}
       onClick={onClick}
@@ -116,10 +90,6 @@ function DataTableHead({
   numeric,
   metric,
   shrink,
-  sortable,
-  sorted,
-  onSort,
-  children,
   ...props
 }: React.ComponentProps<'th'> & {
   /** Column alignment. Defaults to 'left'; numeric columns default to 'right'. */
@@ -130,41 +100,20 @@ function DataTableHead({
   metric?: boolean
   /** Collapse width for action columns */
   shrink?: boolean
-  /** Show sort indicator and make header clickable */
-  sortable?: boolean
-  /** Current sort direction; false or undefined = unsorted */
-  sorted?: 'asc' | 'desc' | false
-  /** Called when the header is clicked to toggle sort */
-  onSort?: () => void
 }) {
   const resolvedAlign = align ?? (numeric ? 'right' : 'left')
-  const inner = sortable ? (
-    <button
-      type="button"
-      onClick={onSort}
-      className={cn(
-        'inline-flex items-center gap-1.5 hover:text-foreground transition-colors',
-        sorted && 'text-foreground',
-      )}
-    >
-      {children}
-      {sorted === 'asc' ? <IconAsc /> : sorted === 'desc' ? <IconDesc /> : <IconUnsorted />}
-    </button>
-  ) : children
   return (
     <th
       data-slot="data-table-head"
       className={cn(
-        'px-5 py-2.5 text-left text-xs font-semibold text-muted-foreground uppercase tracking-[0.05em] bg-muted/50 whitespace-nowrap [&:has([role=checkbox])]:pr-0',
+        'px-5 py-2.5 text-left font-[var(--typography-caption-semibold)] text-[color:#64748b] uppercase tracking-[0.05em] text-xs font-semibold bg-[#f8fafc] whitespace-nowrap',
         resolvedAlign === 'right' && 'text-right',
         metric && 'min-w-[108px]',
         shrink && 'w-[1%] pl-3 pr-5',
         className,
       )}
       {...props}
-    >
-      {inner}
-    </th>
+    />
   )
 }
 
@@ -187,7 +136,7 @@ function DataTableCell({
     <td
       data-slot="data-table-cell"
       className={cn(
-        'px-5 py-3 align-middle whitespace-nowrap text-sm text-foreground [&:has([role=checkbox])]:pr-0',
+        'px-5 py-3 align-middle whitespace-nowrap text-sm text-[#0f172a]',
         align === 'right' && 'text-right',
         metric && 'min-w-[108px]',
         numeric && 'tabular-nums',

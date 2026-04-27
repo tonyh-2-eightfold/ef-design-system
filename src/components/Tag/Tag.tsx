@@ -1,15 +1,18 @@
 import type { ReactNode } from 'react'
 import { cloneElement, isValidElement } from 'react'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import './Tag.css'
 
 export type TagSize = '24' | '30' | '44'
+export type TagColor = 'grey' | 'blue' | 'green' | 'red' | 'orange' | 'violet' | 'blue-green' | 'blue-violet'
 export type TagVariant = 'default' | 'selected' | 'disabled'
 
 export interface TagProps {
   children: ReactNode
   onRemove?: () => void
   variant?: TagVariant
+  /** Octuple color family — controls background, text, and border */
+  color?: TagColor
   size?: TagSize
   value?: string
   className?: string
@@ -38,6 +41,7 @@ export function Tag({
   children,
   onRemove,
   variant = 'default',
+  color,
   size = '24',
   value,
   className,
@@ -52,6 +56,7 @@ export function Tag({
     size === '44' && 'tag--44',
     variant === 'selected' && 'tag--selected',
     variant === 'disabled' && 'tag--disabled',
+    color && `tag--color-${color}`,
     className
   )
 

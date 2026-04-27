@@ -2,15 +2,13 @@ import { useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import type { NavbarProps } from './Navbar.types'
-import { Input } from '../Input/Input'
+import { Input } from '@/components/Input/Input'
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-} from '../NavigationMenu/NavigationMenu'
+} from '@/components/NavigationMenu/NavigationMenu'
 import './Navbar.css'
 
 function DefaultLink({

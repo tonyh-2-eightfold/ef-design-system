@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import { ItemStepContext, useStepper } from './stepper-context'
 
 export interface StepperItemProps extends Omit<React.ComponentPropsWithoutRef<'li'>, 'children'> {

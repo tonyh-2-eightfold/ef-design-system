@@ -1,16 +1,16 @@
 import * as React from 'react'
-import { Navbar } from '../Navbar/Navbar'
+import { Navbar } from '@/components/Navbar/Navbar'
 import {
   Header,
   HeaderToolbar,
   HeaderTextGroup,
   HeaderTitle,
   HeaderSecondary,
-} from '../Navbar/Header'
-import { ProductBackground } from '../ProductBackground'
-import type { NavbarProps } from '../Navbar/Navbar.types'
-import type { CareerHubHeaderSize } from '../Navbar/header-types'
-import type { CareerHubChevronsVariant, HexagonVariant } from '../ProductBackground'
+} from '@/components/Navbar/Header'
+import { ProductBackground } from '@/components/ProductBackground'
+import type { NavbarProps } from '@/components/Navbar/Navbar.types'
+import type { CareerHubHeaderSize } from '@/components/Navbar/header-types'
+import type { CareerHubChevronsVariant, HexagonVariant } from '@/components/ProductBackground'
 import './CareerHubShell.css'
 
 export interface CareerHubShellProps {

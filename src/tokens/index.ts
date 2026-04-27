@@ -54,3 +54,12 @@ export {
   type ColorFamily,
   type ColorStep,
 } from './colors'
+
+// Chart color presets (Octuple-aligned)
+export {
+  CHART_PALETTE,
+  CHART_PALETTE_EXTENDED,
+  CHART_SEMANTIC,
+  CHART_AREA_FILLS,
+  type ChartPaletteIndex,
+} from './chart-colors'

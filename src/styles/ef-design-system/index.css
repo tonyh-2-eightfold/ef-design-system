@@ -1,0 +1,36 @@
+/**
+ * Eightfold Design System - Base Styles
+ * Tailwind v4 + tokens. Gilroy is loaded from /fonts/ (serve public/fonts at that path).
+ *
+ * Import this file after Tailwind in your app (e.g. @import 'tailwindcss'; @theme {...}; @import 'design-system/styles').
+ */
+@import 'tailwindcss';
+@import './gilroy.css';
+@import '../../tokens/colors.css';
+@import '../../tokens/semantic-colors.css';
+@import '../../tokens/typography.css';
+@import '../../tokens/spacing.css';
+@import '../../tokens/corner-radius.css';
+@import '../../tokens/shadcn.css';
+@import './overlay-surfaces.css';
+
+/* Component styles (so a single styles entry includes everything) */
+@import '../../components/Button/Button.css';
+@import '../../components/Input/Input.css';
+@import '../../components/NavigationMenu/NavigationMenu.css';
+@import '../../components/Navbar/Navbar.css';
+@import '../../components/Navbar/HeaderTitle.css';
+@import '../../components/Tag/Tag.css';
+@import '../../components/Badge/Badge.css';
+@import '../../components/InsightCard/InsightCard.css';
+@import '../../components/CourseObjectCard/CourseObjectCard.css';
+@import '../../components/ProjectObjectCard/ProjectObjectCard.css';
+@import '../../components/PeopleObjectCard/PeopleObjectCard.css';
+@import '../../components/MentorInsightCard/MentorInsightCard.css';
+@import '../../components/Stepper/StepperIndicator.css';
+@import '../../components/Stepper/StepperConnector.css';
+@import '../../components/Dialog/Dialog.css';
+@import '../../components/NumberBadge/NumberBadge.css';
+@import '../../components/StatCard/StatCard.css';
+@import '../../components/Tabs/Tabs.css';
+@import '../../components/Pill/Pill.css';

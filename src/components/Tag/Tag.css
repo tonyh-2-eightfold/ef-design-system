@@ -133,6 +133,48 @@
   border-color: var(--color-background2-grey);
 }
 
+/* Color variants — Octuple semantic palette */
+.tag--color-grey {
+  color: var(--color-tertiary-grey);
+  background: var(--color-background1-grey);
+  border-color: var(--color-background2-grey);
+}
+.tag--color-blue {
+  color: var(--color-primary-blue);
+  background: var(--color-background1-blue);
+  border-color: var(--color-background2-blue);
+}
+.tag--color-green {
+  color: var(--color-primary-green);
+  background: var(--color-background1-green);
+  border-color: var(--color-background2-green);
+}
+.tag--color-red {
+  color: var(--color-primary-red);
+  background: var(--color-background1-red);
+  border-color: var(--color-background2-red);
+}
+.tag--color-orange {
+  color: var(--color-primary-orange);
+  background: var(--color-background1-orange);
+  border-color: var(--color-background2-orange);
+}
+.tag--color-violet {
+  color: var(--color-primary-violet);
+  background: var(--color-background1-violet);
+  border-color: var(--color-background2-violet);
+}
+.tag--color-blue-green {
+  color: var(--color-primary-blue-green);
+  background: var(--color-background1-blue-green);
+  border-color: var(--color-background2-blue-green);
+}
+.tag--color-blue-violet {
+  color: var(--color-primary-blue-violet);
+  background: var(--color-background1-blue-violet);
+  border-color: var(--color-background2-blue-violet);
+}
+
 .tag-group {
   display: inline-flex;
   flex-wrap: wrap;
