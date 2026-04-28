@@ -27,7 +27,7 @@ import {
   AvatarGroupCount,
   AvatarImage,
 } from '@/components/ui/avatar'
-import { Badge, Tag, TagGroup } from '@tonyh-2-eightfold/ef-design-system'
+import { Tag, TagGroup } from '@tonyh-2-eightfold/ef-design-system'
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -343,9 +343,9 @@ export function UICatalog({
                   <p className="mb-2 text-xs font-medium text-muted-foreground">Fallback only</p>
                   <div className="flex flex-wrap items-end gap-3">
                     {[
-                      { size: 'sm' as const, label: 'sm', fallback: 'S', className: 'bg-[var(--color-background2-blue)] text-[var(--color-primary-blue)]' },
-                      { size: 'default' as const, label: 'default', fallback: 'AB', className: 'bg-[var(--color-background2-green)] text-[var(--color-primary-green)]' },
-                      { size: 'lg' as const, label: 'lg', fallback: 'XY', className: 'bg-[var(--color-background2-violet)] text-[var(--color-primary-violet)]' },
+                      { size: 'sm' as const, label: 'sm', fallback: 'S', className: 'bg-[var(--color-primary-blue-violet)] text-white' },
+                      { size: 'default' as const, label: 'default', fallback: 'AB', className: 'bg-[var(--color-avatar-initials-bg)] text-[var(--color-avatar-initials-text)]' },
+                      { size: 'lg' as const, label: 'lg', fallback: 'XY', className: 'bg-[var(--color-primary-violet)] text-white' },
                     ].map(({ size, label, fallback, className }) => (
                       <div key={label} className="flex flex-col items-center gap-1">
                         <Avatar size={size}>
