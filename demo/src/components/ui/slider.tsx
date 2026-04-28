@@ -3,6 +3,11 @@ import { Slider as SliderPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Slider — Octuple v2.5
+ * Track empty: #BEC2CA (grey-30), Track filled: #2C8CC9 (blue-60)
+ * Thumb: 28×28 white circle + #2C8CC9 border (hover: #054D7B border)
+ */
 function Slider({
   className,
   defaultValue,
@@ -25,33 +30,29 @@ function Slider({
     <SliderPrimitive.Root
       data-slot="slider"
       defaultValue={defaultValue}
-      value={value}
-      min={min}
       max={max}
+      min={min}
+      value={value}
       className={cn(
-        "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+        "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-40 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
         className
       )}
       {...props}
     >
       <SliderPrimitive.Track
+        className="relative grow overflow-hidden rounded-full bg-[#BEC2CA] data-[orientation=horizontal]:h-1 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1"
         data-slot="slider-track"
-        className={cn(
-          "relative grow overflow-hidden rounded-full bg-muted data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5"
-        )}
       >
         <SliderPrimitive.Range
+          className="absolute bg-[#2C8CC9] select-none data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
           data-slot="slider-range"
-          className={cn(
-            "absolute bg-primary data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
-          )}
         />
       </SliderPrimitive.Track>
       {Array.from({ length: _values.length }, (_, index) => (
         <SliderPrimitive.Thumb
-          data-slot="slider-thumb"
           key={index}
-          className="block size-4 shrink-0 rounded-full border border-primary bg-white shadow-sm ring-ring/50 transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
+          className="block size-7 shrink-0 rounded-full border-2 border-[#2C8CC9] bg-white shadow-sm transition-colors select-none hover:border-[#054D7B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2C8CC9]/50 disabled:pointer-events-none disabled:opacity-50"
+          data-slot="slider-thumb"
         />
       ))}
     </SliderPrimitive.Root>

@@ -12,7 +12,7 @@ import { CheckIcon } from "lucide-react"
  *   Unchecked default : white bg, #69717F (grey-60) border
  *   Hover             : #EBFDFF (blue-green-10) bg, #146DA6 (blue-70) border
  *   Pressed/active    : #B0F3FE (blue-green-20) bg, #146DA6 border
- *   Checked           : #146DA6 bg, #146DA6 border, white checkmark
+ *   Checked           : #B0F3FE bg, #146DA6 border, #146DA6 checkmark
  *   Disabled          : opacity 0.5
  */
 function Checkbox({
