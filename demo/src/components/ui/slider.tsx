@@ -36,17 +36,17 @@ function Slider({
       min={min}
       value={value}
       className={cn(
-        "relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col",
+        "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-40 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
         className
       )}
       {...props}
     >
       <SliderPrimitive.Track
-        className="relative grow overflow-hidden rounded-full bg-[#BEC2CA] data-horizontal:h-1 data-horizontal:w-full data-vertical:h-full data-vertical:w-1"
+        className="relative grow overflow-hidden rounded-full bg-[#BEC2CA] data-[orientation=horizontal]:h-1 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1"
         data-slot="slider-track"
       >
         <SliderPrimitive.Range
-          className="absolute bg-[#2C8CC9] select-none data-horizontal:h-full data-vertical:w-full"
+          className="absolute bg-[#2C8CC9] select-none data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
           data-slot="slider-range"
         />
       </SliderPrimitive.Track>
