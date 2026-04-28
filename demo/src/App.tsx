@@ -54,7 +54,6 @@ const SHADCN_COMPONENTS = [
   'Alert Dialog',
   'Aspect Ratio',
   'Avatar',
-  'Badge',
   'Breadcrumb',
   'Button',
   'Calendar',

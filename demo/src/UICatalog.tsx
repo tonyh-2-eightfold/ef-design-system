@@ -403,62 +403,6 @@ export function UICatalog({
           </div>
         </Block>
 
-        <Block title="Badge">
-          <div className="space-y-6 w-full">
-            <p className="text-xs text-muted-foreground">
-              Octuple DS Theme 2 — <a href="https://www.figma.com/design/SlKRC7oKF7XZyHMv2op4ch/Octuple-DS--Theme-2-?m=auto&node-id=21022-227242" target="_blank" rel="noreferrer" className="underline hover:text-foreground">Figma (node 21022-227242)</a>. Sizes: 44h, 30h, 24h, no container.
-            </p>
-            <div>
-              <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
-              <div className="flex flex-wrap gap-2">
-                <Badge>Default</Badge>
-                <Badge variant="secondary">Secondary</Badge>
-                <Badge variant="destructive">Destructive</Badge>
-                <Badge variant="outline">Outline</Badge>
-                <Badge variant="ghost">Ghost</Badge>
-                <Badge variant="link">Link</Badge>
-              </div>
-            </div>
-            <div>
-              <p className="mb-2 text-xs font-medium text-muted-foreground">Leading / trailing icons</p>
-              <div className="flex flex-wrap gap-2">
-                <Badge leadingIcon={<TagIcon className="size-3" />}>With leading</Badge>
-                <Badge trailingIcon={<X className="size-3" />}>With trailing</Badge>
-                <Badge leadingIcon={<TagIcon className="size-3" />} trailingIcon={<X className="size-3" />}>Both</Badge>
-              </div>
-            </div>
-            <div>
-              <p className="mb-2 text-xs font-medium text-muted-foreground">Size variants</p>
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-wrap items-end gap-3">
-                  <span className="w-12 text-xs text-muted-foreground">44h</span>
-                  <Badge size="44">44</Badge>
-                  <Badge size="44" variant="secondary">Secondary</Badge>
-                  <Badge size="44" variant="outline">Outline</Badge>
-                </div>
-                <div className="flex flex-wrap items-end gap-3">
-                  <span className="w-12 text-xs text-muted-foreground">30h</span>
-                  <Badge size="30">30</Badge>
-                  <Badge size="30" variant="secondary">Secondary</Badge>
-                  <Badge size="30" variant="outline">Outline</Badge>
-                </div>
-                <div className="flex flex-wrap items-end gap-3">
-                  <span className="w-12 text-xs text-muted-foreground">24h</span>
-                  <Badge size="24">24</Badge>
-                  <Badge size="24" variant="secondary">Secondary</Badge>
-                  <Badge size="24" variant="outline">Outline</Badge>
-                </div>
-                <div className="flex flex-wrap items-end gap-3">
-                  <span className="w-12 text-xs text-muted-foreground">None</span>
-                  <Badge size="none">No container</Badge>
-                  <Badge size="none" variant="secondary">Secondary</Badge>
-                  <Badge size="none" variant="outline">Outline</Badge>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Block>
-
         <Block title="Tag">
           <div className="space-y-6 w-full">
             <p className="text-xs text-muted-foreground">
@@ -487,6 +431,19 @@ export function UICatalog({
                 <Tag size="24">24h</Tag>
                 <Tag size="30">30h</Tag>
                 <Tag size="44">44h</Tag>
+              </div>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground">Color variants</p>
+              <div className="flex flex-wrap gap-2">
+                <Tag color="grey" size="24">Grey</Tag>
+                <Tag color="blue" size="24">Blue</Tag>
+                <Tag color="green" size="24">Green</Tag>
+                <Tag color="red" size="24">Red</Tag>
+                <Tag color="orange" size="24">Orange</Tag>
+                <Tag color="violet" size="24">Violet</Tag>
+                <Tag color="blue-green" size="24">Blue-green</Tag>
+                <Tag color="blue-violet" size="24">Blue-violet</Tag>
               </div>
             </div>
             <div>
@@ -1966,21 +1923,21 @@ export function UICatalog({
                   <DataTableCell className="font-semibold">Engineering</DataTableCell>
                   <DataTableCell align="right" numeric>2,100</DataTableCell>
                   <DataTableCell metric>35%</DataTableCell>
-                  <DataTableCell><Badge variant="secondary">On track</Badge></DataTableCell>
+                  <DataTableCell><Tag color="green" size="24">On track</Tag></DataTableCell>
                   <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
                 </DataTableRow>
                 <DataTableRow variant="warn" onClick={() => {}}>
                   <DataTableCell className="font-semibold">Sales</DataTableCell>
                   <DataTableCell align="right" numeric>1,240</DataTableCell>
                   <DataTableCell metric>12%</DataTableCell>
-                  <DataTableCell><Badge variant="destructive">Immediate action</Badge></DataTableCell>
+                  <DataTableCell><Tag color="red" size="24">Immediate action</Tag></DataTableCell>
                   <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
                 </DataTableRow>
                 <DataTableRow onClick={() => {}}>
                   <DataTableCell className="font-semibold">Marketing</DataTableCell>
                   <DataTableCell align="right" numeric>610</DataTableCell>
                   <DataTableCell metric>23%</DataTableCell>
-                  <DataTableCell><Badge variant="outline">Monitor closely</Badge></DataTableCell>
+                  <DataTableCell><Tag color="orange" size="24">Monitor closely</Tag></DataTableCell>
                   <DataTableCell><Button variant="secondary" size="sm">View</Button></DataTableCell>
                 </DataTableRow>
               </DataTableBody>
@@ -2007,9 +1964,9 @@ export function UICatalog({
               </DataTableHeader>
               <DataTableBody>
                 {([
-                  { id: 'eng', dept: 'Engineering', headcount: '2,100', badge: <Badge variant="secondary">On track</Badge> },
-                  { id: 'sales', dept: 'Sales', headcount: '1,240', badge: <Badge variant="destructive">Immediate action</Badge> },
-                  { id: 'mkt', dept: 'Marketing', headcount: '610', badge: <Badge variant="outline">Monitor closely</Badge> },
+                  { id: 'eng', dept: 'Engineering', headcount: '2,100', badge: <Tag color="green" size="24">On track</Tag> },
+                  { id: 'sales', dept: 'Sales', headcount: '1,240', badge: <Tag color="red" size="24">Immediate action</Tag> },
+                  { id: 'mkt', dept: 'Marketing', headcount: '610', badge: <Tag color="orange" size="24">Monitor closely</Tag> },
                 ] as const).map(row => (
                   <DataTableRow
                     key={row.id}

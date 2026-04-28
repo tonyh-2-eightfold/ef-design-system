@@ -26,21 +26,23 @@
 
 .ef-infobar__action {
   flex-shrink: 0;
-  padding: 0;
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 var(--spacing-8);
+  border-radius: 18px;
+  border: 1px solid currentColor;
   background: transparent;
   font: var(--typography-button3);
   cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 2px;
   transition: opacity 0.15s;
 }
-
 .ef-infobar__action:hover { opacity: 0.75; }
 .ef-infobar__action:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: 18px;
 }
 
 .ef-infobar__close {

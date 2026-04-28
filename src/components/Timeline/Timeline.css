@@ -56,7 +56,13 @@
   flex: 1;
   min-height: 16px;
   margin: 2px 0;
-  background: var(--color-background2-grey);
+  background: repeating-linear-gradient(
+    to bottom,
+    #2C8CC9 0px,
+    #2C8CC9 4px,
+    transparent 4px,
+    transparent 8px
+  );
   border-radius: 1px;
 }
 
@@ -103,15 +109,12 @@
   border-color: var(--color-background2-blue);
   color: var(--color-tertiary-blue);
 }
-.ef-timeline-item--completed .ef-timeline-item__connector {
-  background: var(--color-background2-blue);
-}
 
 /* Status: current */
 .ef-timeline-item--current .ef-timeline-item__node {
-  background: var(--color-tertiary-blue);
+  background: var(--color-background2-blue);
   border-color: var(--color-tertiary-blue);
-  color: #fff;
+  color: var(--color-primary-blue);
 }
 
 /* Status: upcoming */

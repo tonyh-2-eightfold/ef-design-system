@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils"
 
 /**
  * Slider — Octuple v2.5
- * SVG spec: track 4px high (rx 2), thumb 28×28 circle
- * Track empty: #BEC2CA, Track filled: #2C8CC9, Thumb: white + #2C8CC9 border
+ * SVG spec: track 5px high, thumb 28×28 circle
+ * Track empty: #EBFDFF bg + #2C8CC9 border, Track filled: #2C8CC9, Thumb: #B0F3FE (no border)
  */
 function Slider({
   className,
@@ -42,7 +42,7 @@ function Slider({
       {...props}
     >
       <SliderPrimitive.Track
-        className="relative grow overflow-hidden rounded-full bg-[#BEC2CA] data-[orientation=horizontal]:h-1 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1"
+        className="relative grow overflow-hidden rounded-full bg-[#EBFDFF] border border-[#2C8CC9] data-[orientation=horizontal]:h-1 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1"
         data-slot="slider-track"
       >
         <SliderPrimitive.Range
@@ -53,7 +53,7 @@ function Slider({
       {Array.from({ length: _values.length }, (_, index) => (
         <SliderPrimitive.Thumb
           key={index}
-          className="block size-7 shrink-0 rounded-full border-2 border-[#2C8CC9] bg-white shadow-sm transition-colors select-none hover:border-[#054D7B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2C8CC9]/50 disabled:pointer-events-none disabled:opacity-50"
+          className="block size-7 shrink-0 rounded-full bg-[#B0F3FE] shadow-sm transition-colors select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2C8CC9]/50 disabled:pointer-events-none disabled:opacity-50"
           data-slot="slider-thumb"
         />
       ))}

@@ -156,11 +156,11 @@
   min-width: 1.5rem;
   height: 1.5rem;
   padding: 0 0.375rem;
-  border-radius: var(--radius-5);
+  border-radius: 8px;
   font: var(--typography-button3);
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
-  background: var(--color-background1-grey);
-  color: var(--color-secondary-grey);
+  background: #F1F2FF;
+  color: #2B3271;
   margin-left: var(--spacing-2);
 }
