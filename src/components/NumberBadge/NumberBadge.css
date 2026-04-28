@@ -1,11 +1,12 @@
-/* NumberBadge — Octuple DS Theme 2
-   Colored number pills in 3 sizes × 12 colors */
+/* NumberBadge — Octuple v2.5
+   Colored number pills in 3 sizes × 12 colors
+   SVG spec: sm h=16 rx=4, md h=20 rx=6, lg h=24 rx=8
+   All bg/text colors verified from SVG fills */
 
 .number-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-full, 9999px);
   font-family: var(--font-family, sans-serif);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -14,85 +15,88 @@
   line-height: 1;
 }
 
-/* ---- Sizes ---- */
+/* ── Sizes ─────────────────────────────────────────────────────────── */
 .number-badge--sm {
-  min-width: 16px;
+  min-width: 14px; /* SVG: w=13 for single-digit */
   height: 16px;
-  padding: 0 4px;
+  padding: 0 3px;
   font-size: 10px;
+  border-radius: 4px;
 }
 
 .number-badge--md {
-  min-width: 20px;
+  min-width: 16px; /* SVG: w=16 for single-digit */
   height: 20px;
-  padding: 0 5px;
+  padding: 0 4px;
   font-size: 11px;
+  border-radius: 6px;
 }
 
 .number-badge--lg {
-  min-width: 24px;
+  min-width: 20px; /* SVG: w=19 for single-digit */
   height: 24px;
-  padding: 0 6px;
+  padding: 0 5px;
   font-size: 12px;
+  border-radius: 8px;
 }
 
-/* ---- Colors ---- */
+/* ── Colors — Octuple palette (verified from SVG) ─────────────────── */
 .number-badge--red {
-  background: rgba(254, 202, 202, 0.7);
-  color: #b91c1c;
+  background: #FFC6C6;
+  color: #6C2222;
 }
 
 .number-badge--orange {
-  background: rgba(254, 215, 170, 0.7);
-  color: #c2410c;
+  background: #FFD1BD;
+  color: #78351A;
 }
 
 .number-badge--amber {
-  background: rgba(253, 230, 138, 0.7);
-  color: #b45309;
+  background: #FFE3B0;
+  color: #6C4500;
 }
 
 .number-badge--yellow {
-  background: rgba(254, 249, 195, 0.8);
-  color: #a16207;
+  background: #FFF89C;
+  color: #525400;
 }
 
 .number-badge--lime {
-  background: rgba(217, 249, 157, 0.7);
-  color: #4d7c0f;
+  background: #F3F5B0;
+  color: #5C5500;
 }
 
 .number-badge--teal {
-  background: rgba(153, 246, 228, 0.5);
-  color: #0f766e;
+  background: #B9F4E4;
+  color: #1B5143;
 }
 
 .number-badge--mint {
-  background: rgba(167, 243, 208, 0.6);
-  color: #047857;
+  background: #EBFDFF;
+  color: #025966;
 }
 
 .number-badge--sky {
-  background: rgba(186, 230, 253, 0.6);
-  color: #0369a1;
+  background: #BCE4FF;
+  color: #054D7B;
 }
 
 .number-badge--blue {
-  background: rgba(191, 219, 254, 0.6);
-  color: #1d4ed8;
+  background: #EBF7FF;
+  color: #054D7B;
 }
 
 .number-badge--purple {
-  background: rgba(216, 180, 254, 0.5);
-  color: #7c3aed;
+  background: #CACFFC;
+  color: #2B3271;
 }
 
 .number-badge--pink {
-  background: rgba(249, 168, 212, 0.5);
-  color: #be185d;
+  background: #FCC8E7;
+  color: #5D2156;
 }
 
 .number-badge--grey {
-  background: rgba(229, 231, 235, 0.7);
-  color: #4b5563;
+  background: #D9DCE1;
+  color: #343C4C;
 }
