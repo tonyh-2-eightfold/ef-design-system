@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+// Alert component is blocked — using inline divs instead
 import {
   AlertDialog,
   AlertDialogAction,
@@ -38,7 +38,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
+// Calendar component is blocked — using placeholder div instead
 import {
   Card,
   CardContent,
@@ -258,14 +258,14 @@ export function UICatalog({
             <div>
               <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
               <div className="flex flex-wrap gap-3">
-                <Alert>
-                  <AlertTitle>Default</AlertTitle>
-                  <AlertDescription>Description text for the alert.</AlertDescription>
-                </Alert>
-                <Alert variant="destructive">
-                  <AlertTitle>Destructive</AlertTitle>
-                  <AlertDescription>Destructive variant.</AlertDescription>
-                </Alert>
+                <div className="rounded-md border border-border bg-background px-4 py-3 text-sm">
+                  <p className="font-medium">Default</p>
+                  <p className="text-muted-foreground">Description text for the alert.</p>
+                </div>
+                <div className="rounded-md border border-destructive/50 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+                  <p className="font-medium">Destructive</p>
+                  <p>Destructive variant.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -314,8 +314,6 @@ export function UICatalog({
                       { size: 'sm' as const, label: 'sm' },
                       { size: 'default' as const, label: 'default' },
                       { size: 'lg' as const, label: 'lg' },
-                      { size: 'xl' as const, label: 'xl' },
-                      { size: '2xl' as const, label: '2xl' },
                     ].map(({ size, label }) => (
                       <div key={label} className="flex flex-col items-center gap-1">
                         <Avatar size={size}>
@@ -348,8 +346,6 @@ export function UICatalog({
                       { size: 'sm' as const, label: 'sm', fallback: 'S', className: 'bg-blue-500 text-white' },
                       { size: 'default' as const, label: 'default', fallback: 'AB', className: 'bg-emerald-500 text-white' },
                       { size: 'lg' as const, label: 'lg', fallback: 'XY', className: 'bg-violet-500 text-white' },
-                      { size: 'xl' as const, label: 'xl', fallback: 'XL', className: 'bg-amber-500 text-white' },
-                      { size: '2xl' as const, label: '2xl', fallback: '2X', className: 'bg-rose-500 text-white' },
                     ].map(({ size, label, fallback, className }) => (
                       <div key={label} className="flex flex-col items-center gap-1">
                         <Avatar size={size}>
@@ -386,7 +382,7 @@ export function UICatalog({
                 </div>
                 <div>
                   <p className="mb-2 text-xs font-medium text-muted-foreground">Small</p>
-                  <AvatarGroup size="sm" className="grayscale">
+                  <AvatarGroup className="grayscale">
                     <Avatar>
                       <AvatarImage src="https://github.com/shadcn.png" alt="" />
                       <AvatarFallback>CN</AvatarFallback>
@@ -691,7 +687,9 @@ export function UICatalog({
         </Block>
 
         <Block title="Calendar">
-          <Calendar mode="single" className="rounded-md border" />
+          <div className="rounded-md border border-border px-4 py-3 text-sm text-muted-foreground">
+            Calendar — use DateTimePicker from @tonyh-2-eightfold/ef-design-system
+          </div>
         </Block>
 
         <Block title="Card">
@@ -1014,7 +1012,7 @@ export function UICatalog({
                     const display = avatarUrls.slice(0, 3)
                     const extra = avatarUrls.length - display.length
                     return (
-                      <AvatarGroup size="sm">
+                      <AvatarGroup>
                         {display.map((src: string, i: number) => (
                           <Avatar key={i}>
                             <AvatarImage src={src} alt="" />
@@ -1110,7 +1108,7 @@ export function UICatalog({
                 }}
                 href="#"
                 renderAvatar={({ src, alt, fallback }: { src: string; alt: string; fallback: string }) => (
-                  <Avatar size="2xl" className="people-object-card__avatar">
+                  <Avatar size="lg" className="people-object-card__avatar">
                     <AvatarImage src={src} alt={alt} />
                     <AvatarFallback>{fallback}</AvatarFallback>
                   </Avatar>
@@ -1161,7 +1159,7 @@ export function UICatalog({
         <Block title="Collapsible">
           <Collapsible>
             <CollapsibleTrigger asChild>
-              <Button variant="ghost" size="sm" trailingIcon={<MaterialIcon name="expand_more" />}>
+              <Button variant="ghost" size="sm">
                 Toggle
               </Button>
             </CollapsibleTrigger>
@@ -1220,7 +1218,7 @@ export function UICatalog({
           <div className="space-y-6 w-full">
             <div>
               <p className="mb-2 text-xs font-medium text-muted-foreground">Variant: underline</p>
-              <NavigationMenu variant="underline">
+              <NavigationMenu>
             <NavigationMenuList className="gap-1">
               <NavigationMenuItem>
                 <NavigationMenuLink href="#" active>Home</NavigationMenuLink>
@@ -1268,7 +1266,7 @@ export function UICatalog({
             </div>
             <div>
               <p className="mb-2 text-xs font-medium text-muted-foreground">Variant: pill</p>
-              <NavigationMenu variant="pill">
+              <NavigationMenu>
             <NavigationMenuList className="gap-1">
               <NavigationMenuItem>
                 <NavigationMenuLink href="#" active>Home</NavigationMenuLink>
@@ -1538,7 +1536,7 @@ export function UICatalog({
                 <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">labelVariant=&quot;scale&quot;</code>{' '}
                 · <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;60&#125;</code>
               </p>
-              <Progress value={60} className="w-full" labelVariant="scale" />
+              <Progress value={60} className="w-full" />
             </div>
             <div className="w-full max-w-md space-y-2">
               <p className="text-xs font-medium text-muted-foreground">
@@ -1549,8 +1547,6 @@ export function UICatalog({
                 value={33}
                 max={50}
                 className="w-full"
-                labelVariant="scale"
-                scaleEndLabel="50"
               />
             </div>
             <div className="w-full max-w-md space-y-2">
@@ -1558,7 +1554,7 @@ export function UICatalog({
                 <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">labelVariant=&quot;complete-left&quot;</code>{' '}
                 · <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;72&#125;</code>
               </p>
-              <Progress value={72} className="w-full" labelVariant="complete-left" />
+              <Progress value={72} className="w-full" />
             </div>
             <div className="flex flex-wrap items-end gap-8">
               <div className="w-44 space-y-2">
@@ -1764,7 +1760,7 @@ export function UICatalog({
               <p className="mb-2 text-xs font-medium text-muted-foreground">Variants</p>
               <div className="flex flex-wrap items-center gap-3">
                 <Select>
-                  <SelectTrigger variant="default" className="w-[180px]">
+                  <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Default" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1774,7 +1770,7 @@ export function UICatalog({
                   </SelectContent>
                 </Select>
                 <Select>
-                  <SelectTrigger variant="primary" className="w-[180px]">
+                  <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Primary" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1784,7 +1780,7 @@ export function UICatalog({
                   </SelectContent>
                 </Select>
                 <Select>
-                  <SelectTrigger variant="secondary" className="w-[180px]">
+                  <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Secondary" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1794,7 +1790,7 @@ export function UICatalog({
                   </SelectContent>
                 </Select>
                 <Select>
-                  <SelectTrigger variant="outline" className="w-[180px]">
+                  <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Outline" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1811,7 +1807,7 @@ export function UICatalog({
                 <div className="flex flex-col gap-1.5">
                   <span className="text-xs text-muted-foreground">Default</span>
                   <Select>
-                    <SelectTrigger variant="outline" className="w-[180px]">
+                    <SelectTrigger className="w-[180px]">
                       <SelectValue placeholder="Default" />
                     </SelectTrigger>
                     <SelectContent>
@@ -1824,7 +1820,7 @@ export function UICatalog({
                 <div className="flex flex-col gap-1.5">
                   <span className="text-xs text-muted-foreground">Small</span>
                   <Select>
-                    <SelectTrigger size="small" variant="outline" className="w-[140px]">
+                    <SelectTrigger size="sm" className="w-[140px]">
                       <SelectValue placeholder="Small" />
                     </SelectTrigger>
                     <SelectContent>
@@ -2081,8 +2077,8 @@ export function UICatalog({
               <p className="mb-2 text-xs font-medium text-muted-foreground">Default (pill) with badge</p>
               <Tabs defaultValue="t1">
                 <TabsList>
-                  <TabsTrigger value="t1" badge={8}>Tab</TabsTrigger>
-                  <TabsTrigger value="t2" badge={8}>Tab</TabsTrigger>
+                  <TabsTrigger value="t1">Tab</TabsTrigger>
+                  <TabsTrigger value="t2">Tab</TabsTrigger>
                   <TabsTrigger value="t3">Tab</TabsTrigger>
                   <TabsTrigger value="t4">Tab</TabsTrigger>
                   <TabsTrigger value="t5">Tab</TabsTrigger>
@@ -2093,9 +2089,9 @@ export function UICatalog({
               <p className="mb-2 text-xs font-medium text-muted-foreground">Line with icon and badge</p>
               <Tabs defaultValue="inbox">
                 <TabsList variant="line">
-                  <TabsTrigger value="inbox" leadingIcon={<Inbox />} badge={3}>Inbox</TabsTrigger>
-                  <TabsTrigger value="docs" leadingIcon={<FileText />} badge={12}>Docs</TabsTrigger>
-                  <TabsTrigger value="alerts" leadingIcon={<Bell />} badge={99}>Alerts</TabsTrigger>
+                  <TabsTrigger value="inbox"><Inbox className="size-4" />Inbox</TabsTrigger>
+                  <TabsTrigger value="docs"><FileText className="size-4" />Docs</TabsTrigger>
+                  <TabsTrigger value="alerts"><Bell className="size-4" />Alerts</TabsTrigger>
                 </TabsList>
                 <TabsContent value="inbox" className="pt-2 text-sm">Inbox content</TabsContent>
                 <TabsContent value="docs" className="pt-2 text-sm">Docs content</TabsContent>

@@ -1,66 +1,43 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+/**
+ * @deprecated BLOCKED — do NOT use Alert in new code.
+ *
+ * Use `InfoBar` from `@/components/ef-design-system` instead.
+ * InfoBar provides the same functionality with full Octuple DS styling.
+ *
+ * @example
+ * // ✅ CORRECT
+ * import { InfoBar } from '@/components/ef-design-system'
+ * <InfoBar variant="info"    title="Note"    message="Your draft was saved." />
+ * <InfoBar variant="warning" title="Warning" message="Deadline in 2 days." />
+ * <InfoBar variant="error"   title="Error"   message="Submission failed." />
+ * <InfoBar variant="success" title="Done"    message="Review submitted." />
+ *
+ * // ❌ WRONG — this shadcn Alert is blocked
+ * import { Alert } from '@/components/ui/alert'
+ */
 
-import { cn } from "@/lib/utils"
-
-const alertVariants = cva(
-  "relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
-  {
-    variants: {
-      variant: {
-        default: "bg-card text-card-foreground",
-        destructive:
-          "bg-card text-destructive *:data-[slot=alert-description]:text-destructive/90 [&>svg]:text-current",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-)
-
-function Alert({
-  className,
-  variant,
-  ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
-  return (
-    <div
-      data-slot="alert"
-      role="alert"
-      className={cn(alertVariants({ variant }), className)}
-      {...props}
-    />
+// Re-export InfoBar under Alert names so any stray import gets
+// a descriptive runtime error instead of a silent wrong render.
+export function Alert(): never {
+  throw new Error(
+    '[Alert] This component is blocked. Import InfoBar from "@/components/ef-design-system" instead.'
   )
 }
 
-function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="alert-title"
-      className={cn(
-        "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
-        className
-      )}
-      {...props}
-    />
+export function AlertTitle(): never {
+  throw new Error(
+    '[AlertTitle] Alert is blocked. Import InfoBar from "@/components/ef-design-system" instead.'
   )
 }
 
-function AlertDescription({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="alert-description"
-      className={cn(
-        "col-start-2 grid justify-items-start gap-1 text-sm text-muted-foreground [&_p]:leading-relaxed",
-        className
-      )}
-      {...props}
-    />
+export function AlertDescription(): never {
+  throw new Error(
+    '[AlertDescription] Alert is blocked. Import InfoBar from "@/components/ef-design-system" instead.'
   )
 }
 
-export { Alert, AlertTitle, AlertDescription }
+export function AlertAction(): never {
+  throw new Error(
+    '[AlertAction] Alert is blocked. Import InfoBar from "@/components/ef-design-system" instead.'
+  )
+}

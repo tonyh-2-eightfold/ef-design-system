@@ -76,6 +76,35 @@ a.badge--destructive:hover {
   color: var(--destructive-foreground);
 }
 
+/* ── Semantic status variants ───────────────────────────────────────────────
+ * Use these for entity status display (Active, Overdue, Warning, etc.).
+ * Always light bg + dark same-family text. Never solid/inverted.
+ * Color map: green=active, red=alert/overdue, orange=warning, blue=complete, grey=inactive
+ * ─────────────────────────────────────────────────────────────────────────── */
+.badge--success {
+  background: var(--status-active-bg);
+  color: var(--status-active-fg);
+  border-color: transparent;
+}
+
+.badge--warning {
+  background: var(--status-warning-bg);
+  color: var(--status-warning-fg);
+  border-color: transparent;
+}
+
+.badge--info {
+  background: var(--status-complete-bg);
+  color: var(--status-complete-fg);
+  border-color: transparent;
+}
+
+.badge--inactive {
+  background: var(--status-inactive-bg);
+  color: var(--status-inactive-fg);
+  border-color: transparent;
+}
+
 /* Outline */
 .badge--outline {
   background: transparent;
