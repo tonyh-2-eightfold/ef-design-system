@@ -1533,33 +1533,26 @@ export function UICatalog({
           <div className="flex w-full min-w-0 flex-col gap-6">
             <div className="w-full max-w-md space-y-2">
               <p className="text-xs font-medium text-muted-foreground">
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">labelVariant=&quot;scale&quot;</code>{' '}
-                · <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;60&#125;</code>
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;60&#125;</code>
               </p>
               <Progress value={60} className="w-full" />
             </div>
             <div className="w-full max-w-md space-y-2">
               <p className="text-xs font-medium text-muted-foreground">
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">labelVariant=&quot;scale&quot;</code>{' '}
-                · <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">max=&#123;50&#125; scaleEndLabel=&quot;50&quot;</code>
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;33&#125;</code>
+                {' '}· <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">max=&#123;50&#125;</code>
               </p>
-              <Progress
-                value={33}
-                max={50}
-                className="w-full"
-              />
+              <Progress value={33} max={50} className="w-full" />
             </div>
             <div className="w-full max-w-md space-y-2">
               <p className="text-xs font-medium text-muted-foreground">
-                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">labelVariant=&quot;complete-left&quot;</code>{' '}
-                · <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;72&#125;</code>
+                <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;72&#125;</code>
               </p>
               <Progress value={72} className="w-full" />
             </div>
             <div className="flex flex-wrap items-end gap-8">
               <div className="w-44 space-y-2">
                 <p className="text-xs font-medium text-muted-foreground">
-                  <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">labelVariant=&quot;none&quot;</code> (default) ·{' '}
                   <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-[11px]">value=&#123;100&#125;</code>
                 </p>
                 <Progress value={100} className="w-full" />
