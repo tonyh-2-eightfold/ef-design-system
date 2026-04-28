@@ -148,7 +148,7 @@
   color: var(--color-primary-orange);
 }
 
-/* Number badge pill (e.g. count) – 24h, large radius */
+/* Number badge pill (e.g. count) – 24h, rounded-rect per Octuple SVG */
 .btn__badge {
   display: inline-flex;
   align-items: center;
@@ -164,3 +164,12 @@
   color: #2B3271;
   margin-left: var(--spacing-2);
 }
+
+/* Per-variant badge colors — Octuple Buttons SVG spec */
+.btn--primary .btn__badge    { background: #EBFDFF; color: #025966; }
+.btn--default .btn__badge    { background: #BCE4FF; color: #054D7B; }
+.btn--destructive .btn__badge{ background: #FFEFEF; color: #6C2222; }
+.btn--secondary .btn__badge  { background: #CACFFC; color: #2B3271; }
+.btn--outline .btn__badge    { background: #EBF7FF; color: #054D7B; }
+.btn--ghost .btn__badge      { background: #D9DCE1; color: #343C4C; }
+.btn--orange .btn__badge     { background: #FFE3B0; color: #6C4500; }

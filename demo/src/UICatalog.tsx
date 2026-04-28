@@ -2009,6 +2009,17 @@ export function UICatalog({
                   </Tabs>
                 </div>
                 <div>
+                  <span className="text-xs text-muted-foreground">AI agent (pill)</span>
+                  <Tabs defaultValue="1" className="mt-1">
+                    <TabsList variant="ai-agent">
+                      <TabsTrigger value="1">Tab 1</TabsTrigger>
+                      <TabsTrigger value="2">Tab 2</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="1" className="pt-2 text-sm">Content 1</TabsContent>
+                    <TabsContent value="2" className="pt-2 text-sm">Content 2</TabsContent>
+                  </Tabs>
+                </div>
+                <div>
                   <span className="text-xs text-muted-foreground">Line</span>
                   <Tabs defaultValue="a" className="mt-1">
                     <TabsList variant="line">

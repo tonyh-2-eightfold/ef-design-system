@@ -142,34 +142,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 100%;
+  height: 36px;
   padding: 0;
-  border: none;
-  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  border-radius: 18px;
   background: transparent;
   font: var(--typography-body3);
   color: var(--color-primary-grey);
   cursor: pointer;
-  transition: background-color 0.15s;
+  transition: background-color 0.15s, border-color 0.15s;
   justify-self: center;
 }
 .ef-dtp__day:hover:not(.ef-dtp__day--disabled):not(.ef-dtp__day--selected) {
-  background: var(--color-background1-grey);
+  background: #EBF7FF;
 }
 .ef-dtp__day:focus-visible {
-  outline: 2px solid var(--color-tertiary-blue);
+  outline: 2px solid #2C8CC9;
   outline-offset: 1px;
 }
 .ef-dtp__day--today {
-  border: 1px solid var(--color-tertiary-blue);
-  color: var(--color-primary-blue);
+  border: 2px solid #2C8CC9;
+  color: #054D7B;
 }
 .ef-dtp__day--selected {
-  background: var(--color-primary-blue);
-  color: #fff;
+  background: #B0F3FE;
+  border: 2px solid #2C8CC9;
+  color: #054D7B;
 }
-.ef-dtp__day--selected:hover { opacity: 0.88; }
+.ef-dtp__day--selected:hover { background: #9EEDFB; }
 .ef-dtp__day--disabled {
   opacity: 0.35;
   cursor: not-allowed;
@@ -229,10 +230,11 @@
   outline-offset: 2px;
 }
 .ef-dtp__time-cell--selected {
-  background: var(--color-primary-blue);
-  color: #fff;
+  background: #B0F3FE;
+  border: 1px solid #2C8CC9;
+  color: #054D7B;
 }
-.ef-dtp__time-cell--selected:hover { opacity: 0.88; }
+.ef-dtp__time-cell--selected:hover { background: #9EEDFB; }
 
 @keyframes ef-dtp-fade-in {
   from { opacity: 0; transform: translateY(-4px); }
