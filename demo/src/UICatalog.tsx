@@ -335,7 +335,7 @@ export function UICatalog({
                     <Avatar>
                       <AvatarImage src="https://github.com/evilrabbit.png" alt="" />
                       <AvatarFallback>ER</AvatarFallback>
-                      <AvatarBadge className="bg-green-600 dark:bg-green-800" />
+                      <AvatarBadge className="bg-[var(--color-primary-green)]" />
                     </Avatar>
                   </div>
                 </div>
@@ -343,9 +343,9 @@ export function UICatalog({
                   <p className="mb-2 text-xs font-medium text-muted-foreground">Fallback only</p>
                   <div className="flex flex-wrap items-end gap-3">
                     {[
-                      { size: 'sm' as const, label: 'sm', fallback: 'S', className: 'bg-blue-500 text-white' },
-                      { size: 'default' as const, label: 'default', fallback: 'AB', className: 'bg-emerald-500 text-white' },
-                      { size: 'lg' as const, label: 'lg', fallback: 'XY', className: 'bg-violet-500 text-white' },
+                      { size: 'sm' as const, label: 'sm', fallback: 'S', className: 'bg-[var(--color-background2-blue)] text-[var(--color-primary-blue)]' },
+                      { size: 'default' as const, label: 'default', fallback: 'AB', className: 'bg-[var(--color-background2-green)] text-[var(--color-primary-green)]' },
+                      { size: 'lg' as const, label: 'lg', fallback: 'XY', className: 'bg-[var(--color-background2-violet)] text-[var(--color-primary-violet)]' },
                     ].map(({ size, label, fallback, className }) => (
                       <div key={label} className="flex flex-col items-center gap-1">
                         <Avatar size={size}>
