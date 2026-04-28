@@ -165,11 +165,29 @@
   margin-left: var(--spacing-2);
 }
 
-/* Per-variant badge colors — Octuple Buttons SVG spec */
+/* Per-variant badge colors — Octuple Buttons SVG spec (normal state) */
 .btn--primary .btn__badge    { background: #EBFDFF; color: #025966; }
 .btn--default .btn__badge    { background: #BCE4FF; color: #054D7B; }
 .btn--destructive .btn__badge{ background: #FFEFEF; color: #6C2222; }
 .btn--secondary .btn__badge  { background: #CACFFC; color: #2B3271; }
-.btn--outline .btn__badge    { background: #EBF7FF; color: #054D7B; }
+.btn--outline .btn__badge    { background: #D9DCE1; color: #343C4C; }
 .btn--ghost .btn__badge      { background: #D9DCE1; color: #343C4C; }
-.btn--orange .btn__badge     { background: #FFE3B0; color: #6C4500; }
+.btn--orange .btn__badge     { background: #F1F2FF; color: #2B3271; }
+
+/* Badge color shifts on hover — badge tracks button state */
+.btn--primary:hover:not(:disabled) .btn__badge    { background: #B0F3FE; color: #025966; }
+.btn--default:hover:not(:disabled) .btn__badge    { background: #BCE4FF; color: #054D7B; }
+.btn--destructive:hover:not(:disabled) .btn__badge{ background: #FFC6C6; color: #6C2222; }
+.btn--secondary:hover:not(:disabled) .btn__badge  { background: #CACFFC; color: #2B3271; }
+.btn--outline:hover:not(:disabled) .btn__badge    { background: #D9DCE1; color: #343C4C; }
+.btn--ghost:hover:not(:disabled) .btn__badge      { background: #D9DCE1; color: #343C4C; }
+.btn--orange:hover:not(:disabled) .btn__badge     { background: #CACFFC; color: #2B3271; }
+
+/* Badge color shifts on active/pressed */
+.btn--primary:active:not(:disabled) .btn__badge    { background: #EBFDFF; color: #025966; }
+.btn--default:active:not(:disabled) .btn__badge    { background: #EBF7FF; color: #054D7B; }
+.btn--destructive:active:not(:disabled) .btn__badge{ background: #FFEFEF; color: #6C2222; }
+.btn--secondary:active:not(:disabled) .btn__badge  { background: #F1F2FF; color: #2B3271; }
+.btn--outline:active:not(:disabled) .btn__badge    { background: #F6F7F8; color: #343C4C; }
+.btn--ghost:active:not(:disabled) .btn__badge      { background: #F6F7F8; color: #343C4C; }
+.btn--orange:active:not(:disabled) .btn__badge     { background: #F1F2FF; color: #2B3271; }
