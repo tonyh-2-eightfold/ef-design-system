@@ -485,6 +485,9 @@
     }
     .goal__status--ontrack { background: var(--color-green-10); color: var(--color-green-80); }
     .goal__status--risk { background: var(--color-orange-10); color: var(--color-orange-80); }
+    .goal__status--building { background: var(--color-orange-10); color: var(--color-orange-80); }
+    .goal__status--developing { background: var(--color-blue-10); color: var(--color-blue-80); }
+    .goal__status--mastered { background: var(--color-blue-green-10); color: var(--color-blue-green-80); }
 
     .goal-tooltip {
       position: absolute;
@@ -1039,8 +1042,8 @@
       <article class="card card--goals">
         <header class="card__header">
           <div>
-            <span class="card__eyebrow">Q2 OKRs · Quadrant 1</span>
-            <h2 class="card__title">Active goals</h2>
+            <span class="card__eyebrow">Skill growth · Quadrant 1</span>
+            <h2 class="card__title">Development topics</h2>
           </div>
           <button class="btn btn--ghost btn--sm" aria-label="More options">
             <span class="material-symbols-outlined">more_horiz</span>
@@ -1048,69 +1051,69 @@
         </header>
 
         <ul class="goals">
-          <li class="goal" data-update="Stakeholder review locked. 2 components remaining for v3.0 release.">
+          <li class="goal" data-update="Outline reviewed by VP last Friday. Drafting Q4 platform pitch with Theo.">
             <svg class="goal__ring" viewBox="0 0 60 60" aria-hidden="true">
               <circle class="goal__ring-track" cx="30" cy="30" r="26"></circle>
-              <circle class="goal__ring-fill goal__ring-fill--blue-green" cx="30" cy="30" r="26" style="--p: 78"></circle>
-              <text x="30" y="34" text-anchor="middle" class="goal__ring-text">78%</text>
+              <circle class="goal__ring-fill goal__ring-fill--orange" cx="30" cy="30" r="26" style="--p: 35"></circle>
+              <text x="30" y="34" text-anchor="middle" class="goal__ring-text">35%</text>
             </svg>
             <div class="goal__body">
-              <h3 class="goal__name">Ship Octuple v3.0 component library</h3>
-              <p class="goal__sub">On track · Due Jun 28</p>
+              <h3 class="goal__name">Strategic narrative</h3>
+              <p class="goal__sub">Workshop · Lead Q4 platform pitch</p>
             </div>
-            <span class="goal__status goal__status--ontrack">On track</span>
+            <span class="goal__status goal__status--building">Building</span>
             <div class="manager-note">
               <span class="material-symbols-outlined">lock</span>
-              <p>Push for v3.0 readiness. Coach Elena on running the design crit before lock-in.</p>
+              <p>Elena's biggest growth lever for Staff. Make sure the platform pitch lands with VPs.</p>
             </div>
           </li>
 
-          <li class="goal" data-update="Hosted research panel last Tuesday. Insights deck shared in #design-research.">
+          <li class="goal" data-update="4 of 6 sessions with Theo complete. Last topic was multi-pod design facilitation.">
             <svg class="goal__ring" viewBox="0 0 60 60" aria-hidden="true">
               <circle class="goal__ring-track" cx="30" cy="30" r="26"></circle>
-              <circle class="goal__ring-fill goal__ring-fill--blue" cx="30" cy="30" r="26" style="--p: 52"></circle>
-              <text x="30" y="34" text-anchor="middle" class="goal__ring-text">52%</text>
+              <circle class="goal__ring-fill goal__ring-fill--orange" cx="30" cy="30" r="26" style="--p: 67"></circle>
+              <text x="30" y="34" text-anchor="middle" class="goal__ring-text">67%</text>
             </svg>
             <div class="goal__body">
-              <h3 class="goal__name">Run 6 customer research sessions</h3>
-              <p class="goal__sub">In progress · 3 of 6 complete</p>
+              <h3 class="goal__name">Cross-org influence</h3>
+              <p class="goal__sub">Mentorship with Theo · 4 of 6 sessions</p>
             </div>
-            <span class="goal__status goal__status--ontrack">On track</span>
+            <span class="goal__status goal__status--building">Building</span>
           </li>
 
-          <li class="goal" data-update="Drafted three workshop modules. Pilot scheduled with the APAC pod next month.">
+          <li class="goal" data-update="3 of 5 modules complete. Live facilitation workshop scheduled for next week.">
             <svg class="goal__ring" viewBox="0 0 60 60" aria-hidden="true">
               <circle class="goal__ring-track" cx="30" cy="30" r="26"></circle>
-              <circle class="goal__ring-fill goal__ring-fill--orange" cx="30" cy="30" r="26" style="--p: 34"></circle>
-              <text x="30" y="34" text-anchor="middle" class="goal__ring-text">34%</text>
+              <circle class="goal__ring-fill goal__ring-fill--blue" cx="30" cy="30" r="26" style="--p: 60"></circle>
+              <text x="30" y="34" text-anchor="middle" class="goal__ring-text">60%</text>
             </svg>
             <div class="goal__body">
-              <h3 class="goal__name">Mentor 3 designers across orgs</h3>
-              <p class="goal__sub">At risk · Pilot pushed 2 weeks</p>
+              <h3 class="goal__name">Workshop facilitation</h3>
+              <p class="goal__sub">Course · Design facilitation 101 · 3 of 5 modules</p>
             </div>
-            <span class="goal__status goal__status--risk">At risk</span>
+            <span class="goal__status goal__status--developing">Developing</span>
             <div class="manager-note">
               <span class="material-symbols-outlined">lock</span>
-              <p>Help unblock APAC pilot — flag to Marcus. Could split mentoring scope to make it achievable.</p>
+              <p>Recommend the advanced track once she finishes the 101.</p>
             </div>
           </li>
 
-          <li class="goal" data-update="Foundations doc accepted by leadership. Token migration guide in review.">
+          <li class="goal" data-update="Inferred from Octuple v3 contributions. Now teaching the team.">
             <svg class="goal__ring" viewBox="0 0 60 60" aria-hidden="true">
               <circle class="goal__ring-track" cx="30" cy="30" r="26"></circle>
-              <circle class="goal__ring-fill goal__ring-fill--blue-green" cx="30" cy="30" r="26" style="--p: 92"></circle>
-              <text x="30" y="34" text-anchor="middle" class="goal__ring-text">92%</text>
+              <circle class="goal__ring-fill goal__ring-fill--blue-green" cx="30" cy="30" r="26" style="--p: 100"></circle>
+              <text x="30" y="34" text-anchor="middle" class="goal__ring-text">100%</text>
             </svg>
             <div class="goal__body">
-              <h3 class="goal__name">Publish design foundations doc</h3>
-              <p class="goal__sub">Nearly done · Due May 15</p>
+              <h3 class="goal__name">Token architecture</h3>
+              <p class="goal__sub">Octuple v3 contribution · validated by Eightfold</p>
             </div>
-            <span class="goal__status goal__status--ontrack">On track</span>
+            <span class="goal__status goal__status--mastered">Mastered</span>
           </li>
         </ul>
 
         <div class="goal-tooltip" id="goal-tooltip" role="tooltip" hidden>
-          <span class="goal-tooltip__label">Latest update</span>
+          <span class="goal-tooltip__label">Latest activity</span>
           <p class="goal-tooltip__body"></p>
         </div>
       </article>
