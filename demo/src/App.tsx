@@ -1,5 +1,5 @@
 import { Component, Fragment, useEffect, useState, type ReactNode } from 'react'
-import { Menu, Palette, LayoutGrid, PanelTop } from 'lucide-react'
+import { Menu, Palette, LayoutGrid, PanelTop, ExternalLink } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
   Table,
@@ -124,18 +124,28 @@ const TOKEN_SECTION_IDS = TOKEN_SECTIONS.map((s) => s.id)
 const SIDEBAR_GROUPS = [
   {
     label: 'Tokens',
-    items: TOKEN_SECTIONS.map((s) => ({ id: s.id, label: s.label, icon: Palette })),
+    items: TOKEN_SECTIONS.map((s) => ({ id: s.id, label: s.label, icon: Palette, href: undefined as string | undefined })),
   },
   {
     label: 'Components',
     items: [
-      { id: 'navbar', label: 'Navbar', icon: Menu },
-      { id: 'header', label: 'Header', icon: PanelTop },
+      { id: 'navbar', label: 'Navbar', icon: Menu, href: undefined as string | undefined },
+      { id: 'header', label: 'Header', icon: PanelTop, href: undefined as string | undefined },
       ...SHADCN_COMPONENTS.map((label) => ({
         id: `ui-${slug(label)}` as const,
         label,
         icon: LayoutGrid,
+        href: undefined as string | undefined,
       })),
+    ],
+  },
+  {
+    label: 'Examples',
+    items: [
+      { id: 'ex-overview', label: 'Talent Forge overview', icon: ExternalLink, href: '/examples/' },
+      { id: 'ex-growth-hub', label: 'Employee growth hub', icon: ExternalLink, href: '/examples/employee-growth-hub/' },
+      { id: 'ex-teams-agent', label: 'Hiring pipeline agent', icon: ExternalLink, href: '/examples/teams-hm-agent/' },
+      { id: 'ex-perform-360', label: 'Perform 360', icon: ExternalLink, href: '/examples/perform-360/' },
     ],
   },
 ]
@@ -1390,20 +1400,25 @@ export default function App() {
                 {group.items.map((item) => {
                   const Icon = item.icon
                   const isActive = page === item.id
+                  const itemClass = cn(
+                    'flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm transition-colors',
+                    isActive
+                      ? 'bg-accent text-accent-foreground font-medium'
+                      : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                  )
                   return (
                     <li key={item.id}>
-                      <button
-                        onClick={() => setPage(item.id)}
-                        className={cn(
-                          'flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm transition-colors',
-                          isActive
-                            ? 'bg-accent text-accent-foreground font-medium'
-                            : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-                        )}
-                      >
-                        <Icon className="h-4 w-4 shrink-0 opacity-70" />
-                        {item.label}
-                      </button>
+                      {item.href ? (
+                        <a href={item.href} target="_blank" rel="noreferrer" className={itemClass}>
+                          <Icon className="h-4 w-4 shrink-0 opacity-70" />
+                          {item.label}
+                        </a>
+                      ) : (
+                        <button onClick={() => setPage(item.id)} className={itemClass}>
+                          <Icon className="h-4 w-4 shrink-0 opacity-70" />
+                          {item.label}
+                        </button>
+                      )}
                     </li>
                   )
                 })}
