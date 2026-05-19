@@ -24,7 +24,13 @@ export function TopNav({ session, authEnabled, signOutAction }: Props) {
     <header className="border-b border-[var(--border)] bg-[var(--card)]">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
-          <span className="h-7 w-7 rounded bg-[var(--primary)]" aria-hidden />
+          {/* Octuple logo. Sits next to the wordmark; clicking either returns home. */}
+          <img
+            src="/octuple-logo.svg"
+            alt=""
+            aria-hidden
+            className="h-7 w-7 shrink-0 object-contain"
+          />
           <span className="font-semibold whitespace-nowrap">EF Design System</span>
         </Link>
         <nav className="flex items-center gap-1 text-sm">
