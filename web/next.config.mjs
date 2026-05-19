@@ -1,10 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Designs are static HTML in /public/content/designs/<category>/<slug>/index.html.
-  // We serve them in an iframe from the design detail page. They are NOT framed
-  // from any other origin — so a same-origin iframe policy is fine.
-  // Keep images unoptimized for thumbnails so the gallery can grow without
-  // touching next/image config.
   images: {
     unoptimized: true,
   },
@@ -14,6 +9,13 @@ const nextConfig = {
   // shouldn't block deploys. Audit and re-enable later.
   typescript: {
     ignoreBuildErrors: true,
+  },
+  // Catch old bookmarks from the previous Vite demo that lived under /examples/*.
+  // The old demo served them; the catalog now lives at /components/examples/*.
+  async redirects() {
+    return [
+      { source: "/examples/:path*", destination: "/components/examples/:path*", permanent: false },
+    ];
   },
 };
 
