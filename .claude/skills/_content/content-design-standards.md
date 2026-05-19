@@ -103,7 +103,7 @@ All principles work together to create a worldclass user experience. Some are in
 
 The Eightfold brand guidelines apply to marketing and external communications. Voice within Eightfold products is aligned with the brand voice and upholds the same values.
 
-<!-- Source PDF was truncated at "uphold the" with no continuation. This sentence has been completed based on context (the surrounding paragraphs about brand voice/values). Verify against the canonical Google Doc before publishing externally. -->
+<!-- Confirmed via re-render of source PDF page 2: the source sentence really does cut off mid-clause at "uphold the" with no continuation before the "Voice" subheading. The completion above ("the same values") is an editorial inference from surrounding context. Replace with the intended wording when the canonical Google Doc is updated. -->
 
 
 ### Voice
@@ -245,31 +245,33 @@ This guidance is aligned with WCAG Guidelines for Accessibility.
 | `aria-describedby` | Use `aria-describedby` to use the text of another UI element as a description that can be announced by assistive technology. Reference the unique id of the element containing the label. You can use the text of one or more elements. | `<label for="name">Name (required)</label>` `<input type="text" id="name" aria-describedby="error">` `<span id="error">Name is required. Enter your response.</span>` |
 | Multiple id references | Use when referencing more than one UI element in `aria-labelledby` or `aria-describedby` | `<span class="visually-hidden" id="context">plus context</span>` `<a href="#" id="self" aria-labelledby="self context">Link text</a>` |
 
-**Example**
+### Example: clap icon
 
-| Yes | No | Why |
-|---|---|---|
-**Yes** — Concise `aria-label`, separate tooltip via `aria-describedby`:
+A clap button shows two ARIA patterns at once. The "Yes" cell demonstrates **both** the concise `aria-label` and the `aria-describedby` tooltip pattern. The "No" cell shows the common anti-pattern of jamming everything into a single overstuffed `aria-label`.
+
+**Yes ✅** — Concise `aria-label` on the button, plus a separate input that uses `aria-describedby` to point to tooltip text:
 
 ```html
 <button aria-label="clap">clap icon</button>
+<label for="clap">clap icon</label>
 <input type="text" id="name" aria-describedby="tooltip">
 <span id="tooltip">You can support this project with a clap</span>
 ```
 
-**No** — Overstuffed `aria-label` containing state, instructions, and tooltip text all jammed together:
+**No ⛔** — A single `aria-label` jamming state ("clickable not clapped"), instructions ("click to add clap"), a count ("0 claps"), the action verb ("add button"), and the tooltip copy all together. Screen readers read the entire attribute, which becomes a single unintelligible string:
 
 ```html
-<!-- DON'T: aria-label is bloated with state ("clickable not clapped"),
-     instructions ("click to add clap"), a count ("0 claps"), the action verb
-     ("add button"), and the tooltip copy. Screen readers read the entire
-     attribute, which becomes unintelligible. -->
 <button aria-label="clickable not clapped, click to add clap, 0 claps add button. You can support this project with a clap (Tool Tip)">clap icon</button>
 ```
 
-**Why** — Label the icon as a button because it is clickable. Name the icon concisely. Use text from another UI element to describe the icon via `aria-describedby` — that follows ARIA best practice. Don't cram state, count, and tooltip text into the label itself.
+(The source PDF links a short video "play with sound on" that demonstrates the screen-reader output for this overstuffed pattern.)
 
-<!-- The "No" example was malformed in the source PDF (missing closing quote on aria-label). It has been reconstructed here to show the intent: an overstuffed aria-label is the anti-pattern. Verify against the canonical Google Doc before publishing externally. -->
+**Why:**
+
+- Label the icon as a button because it is clickable
+- Name the icon concisely
+- Use the text of another UI element to describe the icon via `aria-describedby` — that follows ARIA best practice
+- Don't cram state, count, and tooltip text into the label itself
 
 **Resources:**
 
