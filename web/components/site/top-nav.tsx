@@ -6,7 +6,8 @@ import type { Session } from "next-auth";
 
 interface Props {
   session: Session | null;
-  bypass: boolean;
+  /** True when Google OAuth is configured AND not explicitly bypassed. */
+  authEnabled: boolean;
   signOutAction: () => Promise<void>;
 }
 
@@ -17,7 +18,7 @@ const TABS = [
   { href: "/docs/workflow", label: "How to use", match: (p: string) => p.startsWith("/docs") },
 ] as const;
 
-export function TopNav({ session, bypass, signOutAction }: Props) {
+export function TopNav({ session, authEnabled, signOutAction }: Props) {
   const pathname = usePathname();
   return (
     <header className="border-b border-[var(--border)] bg-[var(--card)]">
@@ -47,11 +48,7 @@ export function TopNav({ session, bypass, signOutAction }: Props) {
           })}
         </nav>
         <div className="flex items-center gap-3 text-sm text-[var(--muted-foreground)]">
-          {bypass ? (
-            <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-900 dark:bg-yellow-900 dark:text-yellow-100">
-              Auth bypass
-            </span>
-          ) : session?.user ? (
+          {!authEnabled ? null : session?.user ? (
             <>
               <span className="hidden sm:inline">{session.user.email}</span>
               <form action={signOutAction}>

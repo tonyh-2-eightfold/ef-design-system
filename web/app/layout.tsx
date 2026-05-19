@@ -9,15 +9,21 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+// Auth is OFF by default — see middleware.ts for the rationale. Auth only
+// activates when Google OAuth credentials are configured in env vars.
+const hasOAuthCredentials = !!(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET);
+const explicitBypass = process.env.NEXT_PUBLIC_AUTH_BYPASS === "true";
+const authEnabled = hasOAuthCredentials && !explicitBypass;
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const session = process.env.NEXT_PUBLIC_AUTH_BYPASS === "true" ? null : await auth();
+  const session = authEnabled ? await auth() : null;
 
   return (
     <html lang="en">
       <body>
         <TopNav
           session={session}
-          bypass={process.env.NEXT_PUBLIC_AUTH_BYPASS === "true"}
+          authEnabled={authEnabled}
           signOutAction={async () => {
             "use server";
             await signOut({ redirectTo: "/" });

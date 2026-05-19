@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { auth } from "@/auth";
 
-// Routes always allowed (no auth):
+// Routes always allowed even when auth is enabled:
 const PUBLIC_PATHS = [
   "/signin",
   "/api/auth", // Auth.js handlers
@@ -10,12 +10,24 @@ const PUBLIC_PATHS = [
   "/favicon.ico",
 ];
 
-const bypassAuth = process.env.NEXT_PUBLIC_AUTH_BYPASS === "true";
+/**
+ * Auth is OFF by default — the site is wide open until OAuth credentials are
+ * configured. Auth only activates when BOTH:
+ *   - AUTH_GOOGLE_ID and AUTH_GOOGLE_SECRET are set in the environment
+ *   - NEXT_PUBLIC_AUTH_BYPASS is not "true"
+ *
+ * This means a fresh Vercel deployment with no env vars is browseable by
+ * anyone. The day someone follows web/docs/google-oauth-setup.md and adds
+ * the credentials in Vercel's env settings, the @eightfold.ai gate kicks in
+ * automatically — no code change required.
+ */
+const hasOAuthCredentials = !!(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET);
+const explicitBypass = process.env.NEXT_PUBLIC_AUTH_BYPASS === "true";
+const authEnabled = hasOAuthCredentials && !explicitBypass;
 
 export default async function middleware(req: NextRequest) {
+  if (!authEnabled) return NextResponse.next();
   const { pathname } = req.nextUrl;
-
-  if (bypassAuth) return NextResponse.next();
   if (PUBLIC_PATHS.some((p) => pathname.startsWith(p))) return NextResponse.next();
 
   const session = await auth();
@@ -28,7 +40,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // Match everything except static assets we want anonymous (none, for now —
-  // even thumbnails are gated behind auth so the gallery is fully private).
   matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };
