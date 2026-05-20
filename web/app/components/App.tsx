@@ -1,7 +1,9 @@
 "use client";
 
 import { Component, Fragment, useEffect, useState, type ReactNode } from 'react'
-import { Menu, Palette, LayoutGrid, PanelTop, ExternalLink } from 'lucide-react'
+import { Menu, Palette, LayoutGrid, PanelTop, ExternalLink, FileText } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { cn } from '@/lib/utils'
 import {
   Table,
@@ -123,10 +125,20 @@ const TOKEN_SECTIONS = [
 
 const TOKEN_SECTION_IDS = TOKEN_SECTIONS.map((s) => s.id)
 
+const CONTENT_PAGES = [
+  { id: 'content-design-standards', label: 'Content design standards' },
+  { id: 'terms-list', label: 'Terms list' },
+] as const
+
+const CONTENT_PAGE_IDS = CONTENT_PAGES.map((c) => c.id)
+
 const SIDEBAR_GROUPS = [
   {
     label: 'Tokens',
-    items: TOKEN_SECTIONS.map((s) => ({ id: s.id, label: s.label, icon: Palette, href: undefined as string | undefined })),
+    items: [
+      ...TOKEN_SECTIONS.map((s) => ({ id: s.id, label: s.label, icon: Palette, href: undefined as string | undefined })),
+      ...CONTENT_PAGES.map((c) => ({ id: c.id, label: c.label, icon: FileText, href: undefined as string | undefined })),
+    ],
   },
   {
     label: 'Components',
@@ -1315,7 +1327,58 @@ class PageErrorBoundary extends Component<
   }
 }
 
-function DemoContent({ page }: { page: string }) {
+function MarkdownDoc({ source }: { source: string }) {
+  return (
+    <div className="prose-like">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          h1: (props) => <h1 className="mt-2 mb-6 text-3xl font-semibold tracking-tight" {...props} />,
+          h2: (props) => <h2 className="mt-10 mb-3 text-2xl font-semibold tracking-tight border-b border-border pb-2" {...props} />,
+          h3: (props) => <h3 className="mt-7 mb-2 text-lg font-semibold" {...props} />,
+          h4: (props) => <h4 className="mt-5 mb-2 text-base font-semibold" {...props} />,
+          p: (props) => <p className="my-4 leading-relaxed" {...props} />,
+          ul: (props) => <ul className="my-4 ml-6 list-disc space-y-1" {...props} />,
+          ol: (props) => <ol className="my-4 ml-6 list-decimal space-y-1" {...props} />,
+          li: (props) => <li className="leading-relaxed" {...props} />,
+          a: (props) => <a className="text-[var(--primary)] underline" {...props} />,
+          code: ({ className, ...props }) => {
+            const inline = !className?.startsWith('language-')
+            return inline ? (
+              <code className="rounded bg-muted px-1.5 py-0.5 text-[0.9em] font-mono border border-border" {...props} />
+            ) : (
+              <code className={className} {...props} />
+            )
+          },
+          pre: (props) => <pre className="my-4 overflow-x-auto rounded-lg bg-muted p-4 text-sm border border-border" {...props} />,
+          table: (props) => (
+            <div className="my-6 overflow-x-auto">
+              <table className="w-full border-collapse text-sm" {...props} />
+            </div>
+          ),
+          thead: (props) => <thead className="border-b border-border bg-muted/50" {...props} />,
+          th: (props) => <th className="px-3 py-2 text-left font-medium" {...props} />,
+          td: (props) => <td className="px-3 py-2 border-t border-border align-top" {...props} />,
+          hr: () => <hr className="my-8 border-border" />,
+        }}
+      >
+        {source}
+      </ReactMarkdown>
+    </div>
+  )
+}
+
+function DemoContent({
+  page,
+  contentDesignStandards,
+  termsList,
+}: {
+  page: string
+  contentDesignStandards: string
+  termsList: string
+}) {
+  if (page === 'content-design-standards') return <MarkdownDoc source={contentDesignStandards} />
+  if (page === 'terms-list') return <MarkdownDoc source={termsList} />
   if ((TOKEN_SECTION_IDS as readonly string[]).includes(page)) return <TokensShowcase scrollToId={page} />
   if (page === 'header') {
     return (
@@ -1376,9 +1439,13 @@ function getPageTitle(page: string): { title: string; description: string } {
   return { title: 'Tokens', description: TOKENS_DESCRIPTION }
 }
 
-export default function App() {
+interface AppProps {
+  contentDesignStandards: string
+  termsList: string
+}
+
+export default function App({ contentDesignStandards, termsList }: AppProps) {
   const [page, setPage] = useState<string>('typography')
-  const { title, description } = getPageTitle(page)
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
@@ -1428,14 +1495,17 @@ export default function App() {
           ))}
         </nav>
       </aside>
+      {/* No sticky page-title header here — the section content itself
+          starts with the inline h2 ("Typography", "Spacing", etc.), so an
+          additional sticky title was rendering as a duplicate header. */}
       <main className="min-h-screen pl-56">
-        <header className="sticky top-16 z-30 border-b border-border bg-background/95 px-6 py-6 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">{title}</h1>
-          <p className="mt-1.5 text-base text-muted-foreground">{description}</p>
-        </header>
         <div className="px-6 py-8">
           <div className="mx-auto max-w-3xl">
-            <DemoContent page={page} />
+            <DemoContent
+              page={page}
+              contentDesignStandards={contentDesignStandards}
+              termsList={termsList}
+            />
           </div>
         </div>
       </main>

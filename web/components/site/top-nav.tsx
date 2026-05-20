@@ -13,7 +13,7 @@ interface Props {
 
 const TABS = [
   { value: "/", label: "Home" },
-  { value: "/components", label: "Components" },
+  { value: "/components", label: "Octuple" },
   { value: "/gallery", label: "Gallery" },
   { value: "/docs/workflow", label: "How to use" },
 ] as const;
@@ -34,7 +34,10 @@ export function TopNav({ session, authEnabled, signOutAction }: Props) {
 
   return (
     <header className="sticky top-0 z-50 h-16 border-b border-[var(--border)] bg-[var(--card)]">
-      <div className="mx-auto flex h-full max-w-6xl items-center justify-between gap-4 px-6">
+      {/* Full-width inner so the brand sits at the left edge of the viewport
+          (matching the catalog's full-width sidebar+main layout) instead of
+          floating inside a max-w-6xl box that misaligns with /components. */}
+      <div className="flex h-full w-full items-center justify-between gap-4 px-6">
         <Link href="/" className="flex items-center gap-3">
           <img
             src="/octuple-logo.png"
