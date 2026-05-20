@@ -1,0 +1,56 @@
+name: Sync from upstream
+
+# Lives in this repo AND in forks. On the upstream repo this is a no-op
+# (the first step detects "not a fork" and exits cleanly). On forks, every
+# 15 minutes (or on manual trigger), it merges-upstream so the fork's main
+# stays in sync without a designer having to click "Sync fork" by hand.
+#
+# Putting the workflow file in upstream too is the price of avoiding a
+# permanent history divergence: if the workflow only existed on the fork,
+# every sync would create a merge commit (fork = upstream + this one file).
+# With it here, the fork and upstream stay byte-identical and future syncs
+# fast-forward cleanly.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-from-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Detect whether this repo is a fork
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          is_fork=$(gh api /repos/${{ github.repository }} --jq .fork 2>/dev/null || echo "unknown")
+          echo "is_fork=$is_fork" >> "$GITHUB_OUTPUT"
+          if [ "$is_fork" != "true" ]; then
+            echo "::notice::Not a fork (is_fork=$is_fork). Skipping merge-upstream."
+          fi
+
+      - name: Merge upstream into main
+        if: steps.check.outputs.is_fork == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          echo "Calling /repos/${{ github.repository }}/merge-upstream branch=main"
+          response=$(gh api -X POST \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${{ github.repository }}/merge-upstream" \
+            -f branch=main 2>&1) || true
+          echo "$response"
+          if echo "$response" | grep -q '"merge_type"'; then
+            merge_type=$(echo "$response" | grep -o '"merge_type":[[:space:]]*"[^"]*"' | head -1)
+            echo "Result: $merge_type"
+          fi
