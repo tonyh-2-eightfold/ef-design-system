@@ -8,23 +8,29 @@ Everything here is built around the idea that **you talk to Claude in plain Engl
 
 ## One-time setup (10 minutes, once per laptop)
 
-You'll install three things. None of them require you to know what they do — just click through installers and follow the prompts.
+You'll get one access grant and install two things. None of these require you to know what they do — just send an email and click through installers.
 
-### 1. Install Claude Code
+### 1. Get added to the Eightfold GitHub org
+
+Email **helpdesk@eightfold.ai** asking to be added to the Eightfold GitHub organization. Include your GitHub username so they know who to invite. You'll get an email invitation from GitHub — accept it.
+
+This is a prerequisite for everything that follows: without it, you can't pull the design system repo, push design PRs, or have Claude push branches on your behalf.
+
+### 2. Install Claude Code
 
 Download from https://claude.com/claude-code and run the installer. Sign in with your Anthropic account.
 
-### 2. Install Node.js
+### 3. Install Node.js
 
 Download the **LTS** version from https://nodejs.org and run the installer. Click through with all defaults.
 
 (Node.js is what runs the gallery website on your laptop. Claude needs it.)
 
-### 3. Get added to the GitHub repo
+### 4. Get added to the design-system repo
 
-Ask whoever owns the `tonyh-2-eightfold/ef-design-system` repo to add you as a collaborator with **write** access. You'll get an email.
+Once you're in the Eightfold org (step 1), ask whoever owns the `tonyh-2-eightfold/ef-design-system` repo to add you as a collaborator with **write** access. You'll get an email.
 
-### 4. The first time Claude talks to GitHub
+### 5. The first time Claude talks to GitHub
 
 The first time you ask Claude to do anything with GitHub (clone the repo, push a design), Claude will say something like *"I need to authenticate with GitHub — running `gh auth login`."* A browser window will pop up. Click **Authorize**. Done.
 
