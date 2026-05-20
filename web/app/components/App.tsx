@@ -1,9 +1,40 @@
 "use client";
 
 import { Component, Fragment, useEffect, useState, type ReactNode } from 'react'
-import { Menu, Palette, LayoutGrid, PanelTop, ExternalLink, FileText } from 'lucide-react'
+import { Menu, Palette, LayoutGrid, PanelTop, ExternalLink, FileText, ChevronRight } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+
+/** GitHub-style slug: matches the same algorithm used server-side in page.tsx
+    when extracting headings for the sidebar's sub-items. So clicking
+    "Voice and tone" in the sidebar scrolls to the <h2 id="voice-and-tone"> in
+    the rendered markdown. */
+function slugifyHeading(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+}
+
+/** Recursively extract plain text from React children (used to derive
+    heading text for slug generation when the heading contains inline
+    elements like <code> or <strong>). */
+function extractText(node: React.ReactNode): string {
+  if (typeof node === 'string') return node
+  if (typeof node === 'number') return String(node)
+  if (Array.isArray(node)) return node.map(extractText).join('')
+  if (node && typeof node === 'object' && 'props' in node) {
+    return extractText((node as { props: { children?: React.ReactNode } }).props.children)
+  }
+  return ''
+}
+
+interface SidebarHeading {
+  id: string
+  label: string
+  depth: 2 | 3
+}
 import { cn } from '@/lib/utils'
 import {
   Table,
@@ -1333,9 +1364,21 @@ function MarkdownDoc({ source }: { source: string }) {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          h1: (props) => <h1 className="mt-2 mb-6 text-3xl font-semibold tracking-tight" {...props} />,
-          h2: (props) => <h2 className="mt-10 mb-3 text-2xl font-semibold tracking-tight border-b border-border pb-2" {...props} />,
-          h3: (props) => <h3 className="mt-7 mb-2 text-lg font-semibold" {...props} />,
+          h1: ({ children, ...props }) => (
+            <h1 id={slugifyHeading(extractText(children))} className="mt-2 mb-6 text-3xl font-semibold tracking-tight scroll-mt-20" {...props}>
+              {children}
+            </h1>
+          ),
+          h2: ({ children, ...props }) => (
+            <h2 id={slugifyHeading(extractText(children))} className="mt-10 mb-3 text-2xl font-semibold tracking-tight border-b border-border pb-2 scroll-mt-20" {...props}>
+              {children}
+            </h2>
+          ),
+          h3: ({ children, ...props }) => (
+            <h3 id={slugifyHeading(extractText(children))} className="mt-7 mb-2 text-lg font-semibold scroll-mt-20" {...props}>
+              {children}
+            </h3>
+          ),
           h4: (props) => <h4 className="mt-5 mb-2 text-base font-semibold" {...props} />,
           p: (props) => <p className="my-4 leading-relaxed" {...props} />,
           ul: (props) => <ul className="my-4 ml-6 list-disc space-y-1" {...props} />,
@@ -1442,10 +1485,83 @@ function getPageTitle(page: string): { title: string; description: string } {
 interface AppProps {
   contentDesignStandards: string
   termsList: string
+  contentDesignStandardsHeadings: SidebarHeading[]
+  termsListHeadings: SidebarHeading[]
 }
 
-export default function App({ contentDesignStandards, termsList }: AppProps) {
+export default function App({
+  contentDesignStandards,
+  termsList,
+  contentDesignStandardsHeadings,
+  termsListHeadings,
+}: AppProps) {
   const [page, setPage] = useState<string>('typography')
+
+  // Per-content-page expand state for the new "Content design standards" /
+  // "Terms list" sidebar entries. Starts collapsed; toggled by the chevron.
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({})
+
+  // When the user clicks a sub-heading we set this so a useEffect can scroll
+  // AFTER the MarkdownDoc has rendered with the new content + ids in the DOM.
+  const [pendingScrollId, setPendingScrollId] = useState<string | null>(null)
+
+  // Returns the sub-headings for a given content page id, or [] for everything else.
+  const getSubItems = (itemId: string): SidebarHeading[] => {
+    if (itemId === 'content-design-standards') return contentDesignStandardsHeadings
+    if (itemId === 'terms-list') return termsListHeadings
+    return []
+  }
+
+  // Distance from the viewport top to land the target heading at — enough
+  // to clear the sticky top nav (64px) plus a little breathing room.
+  const SCROLL_OFFSET_PX = 80
+
+  // Scrolls the window so the element with the given id sits SCROLL_OFFSET_PX
+  // below the viewport top. Deterministic — doesn't rely on scroll-margin
+  // utility classes that the catalog's Tailwind setup may not honor.
+  const scrollToHeading = (headingId: string) => {
+    const el = document.getElementById(headingId)
+    if (!el) return false
+    const top = el.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET_PX
+    window.scrollTo({ top, behavior: 'instant' as ScrollBehavior })
+    return true
+  }
+
+  // Scroll the target heading into place AFTER the new MarkdownDoc has
+  // painted. This effect only fires when pendingScrollId changes — keeping
+  // it isolated from page-change scroll-to-top (which is done in the click
+  // handler) so the two don't fight each other.
+  useEffect(() => {
+    if (!pendingScrollId) return
+    const id = pendingScrollId
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (scrollToHeading(id)) setPendingScrollId(null)
+      })
+    })
+  }, [pendingScrollId])
+
+  const handlePageClick = (itemId: string) => {
+    setPage(itemId)
+    // Scroll-to-top happens synchronously in the click handler — runs against
+    // the OLD page content, which is fine: the user was on that content, the
+    // window scrolls to 0, then the new page renders at the top.
+    window.scrollTo(0, 0)
+  }
+
+  const handleHeadingClick = (itemId: string, headingId: string) => {
+    if (page !== itemId) {
+      setPage(itemId)
+      setPendingScrollId(headingId)
+    } else {
+      // Already on the page; scroll immediately.
+      scrollToHeading(headingId)
+    }
+  }
+
+  const toggleExpanded = (itemId: string) => {
+    setExpanded((prev) => ({ ...prev, [itemId]: !prev[itemId] }))
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
@@ -1468,8 +1584,11 @@ export default function App({ contentDesignStandards, termsList }: AppProps) {
                 {group.items.map((item) => {
                   const Icon = item.icon
                   const isActive = page === item.id
+                  const subItems = getSubItems(item.id)
+                  const hasSubItems = subItems.length > 0
+                  const isExpanded = expanded[item.id] ?? false
                   const itemClass = cn(
-                    'flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm transition-colors',
+                    'flex items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm transition-colors',
                     isActive
                       ? 'bg-accent text-accent-foreground font-medium'
                       : 'text-muted-foreground hover:bg-muted hover:text-foreground'
@@ -1477,15 +1596,50 @@ export default function App({ contentDesignStandards, termsList }: AppProps) {
                   return (
                     <li key={item.id}>
                       {item.href ? (
-                        <a href={item.href} target="_blank" rel="noreferrer" className={itemClass}>
+                        <a href={item.href} target="_blank" rel="noreferrer" className={cn(itemClass, 'w-full')}>
                           <Icon className="h-4 w-4 shrink-0 opacity-70" />
                           {item.label}
                         </a>
+                      ) : hasSubItems ? (
+                        // Two-button row: main button sets the page, chevron toggles expansion.
+                        <div className="flex w-full items-center gap-0">
+                          <button onClick={() => handlePageClick(item.id)} className={cn(itemClass, 'flex-1')}>
+                            <Icon className="h-4 w-4 shrink-0 opacity-70" />
+                            {item.label}
+                          </button>
+                          <button
+                            onClick={() => toggleExpanded(item.id)}
+                            aria-label={isExpanded ? `Collapse ${item.label}` : `Expand ${item.label}`}
+                            aria-expanded={isExpanded}
+                            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground"
+                          >
+                            <ChevronRight
+                              className={cn(
+                                'h-3.5 w-3.5 transition-transform',
+                                isExpanded && 'rotate-90'
+                              )}
+                            />
+                          </button>
+                        </div>
                       ) : (
-                        <button onClick={() => setPage(item.id)} className={itemClass}>
+                        <button onClick={() => handlePageClick(item.id)} className={cn(itemClass, 'w-full')}>
                           <Icon className="h-4 w-4 shrink-0 opacity-70" />
                           {item.label}
                         </button>
+                      )}
+                      {hasSubItems && isExpanded && (
+                        <ul className="ml-7 mt-0.5 space-y-0.5 border-l border-border pl-2">
+                          {subItems.map((sub) => (
+                            <li key={sub.id}>
+                              <button
+                                onClick={() => handleHeadingClick(item.id, sub.id)}
+                                className="flex w-full items-center rounded-md px-2 py-1 text-left text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                              >
+                                {sub.label}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
                       )}
                     </li>
                   )
