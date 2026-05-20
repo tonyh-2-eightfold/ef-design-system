@@ -1,4 +1,4 @@
-// The 11 product categories the gallery supports. Adding a new category requires:
+// The 12 product categories the gallery supports. Adding a new category requires:
 // 1. add an entry to this array
 // 2. create the corresponding empty directory under public/content/designs/<slug>/
 // 3. update the publish-design SKILL.md's allowed list
@@ -15,7 +15,8 @@ export type CategorySlug =
   | "talent-flex"
   | "job-intelligence-engine"
   | "admin-console"
-  | "analytics";
+  | "analytics"
+  | "other-example-screens";
 
 export interface Category {
   slug: CategorySlug;
@@ -35,6 +36,7 @@ export const CATEGORIES: Category[] = [
   { slug: "job-intelligence-engine", name: "Job Intelligence Engine", blurb: "Job and skills intelligence surfaces." },
   { slug: "admin-console", name: "Admin Console", blurb: "Configuration, governance, and platform admin." },
   { slug: "analytics", name: "Analytics", blurb: "Dashboards, reports, and insight views." },
+  { slug: "other-example-screens", name: "Other example screens", blurb: "Reference full-screen examples — overview pages, agent flows, growth hub, performance review." },
 ];
 
 export const CATEGORY_SLUGS: CategorySlug[] = CATEGORIES.map((c) => c.slug);

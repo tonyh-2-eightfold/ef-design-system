@@ -1,0 +1,9 @@
+{
+  "title": "Hiring pipeline agent",
+  "description": "MS Teams chat panel showing a recruiter-side hiring pipeline AI agent.",
+  "category": "other-example-screens",
+  "version": "tailwind",
+  "slug": "teams-hm-agent",
+  "author": "ef-design-system",
+  "createdAt": "2026-05-20T00:00:00Z"
+}

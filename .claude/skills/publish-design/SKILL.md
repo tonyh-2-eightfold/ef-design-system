@@ -48,6 +48,7 @@ talent-flex
 job-intelligence-engine
 admin-console
 analytics
+other-example-screens
 ```
 
 Reject any other category — the gallery's index only renders these.
