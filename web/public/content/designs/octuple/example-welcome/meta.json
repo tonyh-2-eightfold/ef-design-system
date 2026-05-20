@@ -1,9 +1,9 @@
 {
-  "title": "Welcome — example design",
-  "description": "A minimal example showing the gallery file format. Replace with a real design via the publish-design skill.",
+  "title": "Design at Eightfold AI — home",
+  "description": "Snapshot of the unified home page for the Design at Eightfold AI hub — design system, gallery, and workflow in one view.",
   "category": "octuple",
-  "version": "og",
+  "version": "tailwind",
   "slug": "example-welcome",
   "author": "ef-design-system",
-  "createdAt": "2026-05-18T00:00:00Z"
+  "createdAt": "2026-05-20T00:00:00Z"
 }
