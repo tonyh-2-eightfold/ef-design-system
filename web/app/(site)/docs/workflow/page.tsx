@@ -15,10 +15,12 @@ function hasScreenshot(filename: string): boolean {
   }
 }
 
-/** Two-column step block: text on the left, screenshot on the right. On
-    narrow viewports they stack vertically. If the screenshot file isn't
-    in /docs-screenshots/ yet, renders a labeled placeholder card so the
-    user can see exactly which filename to drop in. */
+/** Stacked step block: text on top, screenshot below at a comfortable
+    reading width. Images use w-full + a max-width so they never get
+    cramped into a narrow side column, and they don't blow up to span
+    the full page on wide viewports. If the screenshot file isn't in
+    /docs-screenshots/ yet, renders a labeled placeholder card showing
+    the expected filename. */
 function Step({
   number,
   title,
@@ -34,15 +36,13 @@ function Step({
 }) {
   const available = hasScreenshot(screenshot);
   return (
-    <section className="grid grid-cols-1 gap-8 border-t border-[var(--border)] py-10 lg:grid-cols-2 lg:gap-12">
-      <div>
-        <h3 className="text-xl font-semibold tracking-tight">
-          {number ? `${number}. ` : ""}
-          {title}
-        </h3>
-        <div className="mt-3 space-y-3 leading-relaxed">{children}</div>
-      </div>
-      <div>
+    <section className="border-t border-[var(--border)] py-10">
+      <h3 className="text-xl font-semibold tracking-tight">
+        {number ? `${number}. ` : ""}
+        {title}
+      </h3>
+      <div className="mt-3 space-y-3 leading-relaxed">{children}</div>
+      <div className="mt-6">
         {available ? (
           <figure>
             <img
@@ -53,7 +53,7 @@ function Step({
             <figcaption className="mt-2 text-xs text-[var(--muted-foreground)]">{caption}</figcaption>
           </figure>
         ) : (
-          <div className="flex aspect-[1440/900] items-center justify-center rounded-lg border border-dashed border-[var(--border)] bg-[var(--card)] p-6 text-center">
+          <div className="flex aspect-[1440/900] w-full items-center justify-center rounded-lg border border-dashed border-[var(--border)] bg-[var(--card)] p-6 text-center">
             <div className="space-y-3">
               <div className="text-[10px] font-semibold uppercase tracking-wider text-[var(--muted-foreground)]">
                 Screenshot pending
@@ -76,8 +76,11 @@ export const metadata = {
 
 export default function WorkflowPage() {
   return (
-    <article>
-      <header className="mb-10 max-w-3xl">
+    // Constrain the article to a readable width (~896px). Text and screenshots
+    // stay aligned at this width on every viewport — no side-by-side squish,
+    // no images blowing up to fill 1152px on wide monitors.
+    <article className="mx-auto max-w-4xl">
+      <header className="mb-10">
         <h1 className="text-4xl font-semibold tracking-tight">Designer workflow</h1>
         <p className="mt-3 text-lg text-[var(--muted-foreground)]">
           How to use this repo to design, get feedback, and ship designs to the gallery — without
