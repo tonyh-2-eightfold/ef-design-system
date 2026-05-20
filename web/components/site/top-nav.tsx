@@ -1,31 +1,41 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import type { Session } from "next-auth";
+import { Tabs, TabsList, TabsTrigger } from "@tonyh-2-eightfold/ef-design-system";
 
 interface Props {
   session: Session | null;
-  /** True when Google OAuth is configured AND not explicitly bypassed. */
   authEnabled: boolean;
   signOutAction: () => Promise<void>;
 }
 
 const TABS = [
-  { href: "/", label: "Home", match: (p: string) => p === "/" },
-  { href: "/components", label: "Components", match: (p: string) => p.startsWith("/components") },
-  { href: "/gallery", label: "Gallery", match: (p: string) => p.startsWith("/gallery") },
-  { href: "/docs/workflow", label: "How to use", match: (p: string) => p.startsWith("/docs") },
+  { value: "/", label: "Home" },
+  { value: "/components", label: "Components" },
+  { value: "/gallery", label: "Gallery" },
+  { value: "/docs/workflow", label: "How to use" },
 ] as const;
 
+/** Map the current URL to one of the four tab values. Prefix-matched
+    so e.g. /gallery/talent-management still highlights "Gallery". */
+function activeTabFor(pathname: string): string {
+  if (pathname.startsWith("/components")) return "/components";
+  if (pathname.startsWith("/gallery")) return "/gallery";
+  if (pathname.startsWith("/docs")) return "/docs/workflow";
+  return "/";
+}
+
 export function TopNav({ session, authEnabled, signOutAction }: Props) {
+  const router = useRouter();
   const pathname = usePathname();
+  const active = activeTabFor(pathname);
+
   return (
-    <header className="border-b border-[var(--border)] bg-[var(--card)]">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+    <header className="sticky top-0 z-50 h-16 border-b border-[var(--border)] bg-[var(--card)]">
+      <div className="mx-auto flex h-full max-w-6xl items-center justify-between gap-4 px-6">
         <Link href="/" className="flex items-center gap-3">
-          {/* Octuple logo (PNG; the brand version with the full-color gradient).
-              Sits next to the wordmark; clicking either returns home. */}
           <img
             src="/octuple-logo.png"
             alt=""
@@ -34,26 +44,23 @@ export function TopNav({ session, authEnabled, signOutAction }: Props) {
           />
           <span className="font-semibold whitespace-nowrap">EF Design System</span>
         </Link>
-        <nav className="flex items-center gap-1 text-sm">
-          {TABS.map((tab) => {
-            const active = tab.match(pathname);
-            return (
-              <Link
-                key={tab.href}
-                href={tab.href}
-                aria-current={active ? "page" : undefined}
-                className={
-                  "rounded-md px-3 py-1.5 transition " +
-                  (active
-                    ? "bg-[var(--primary)]/10 font-medium text-[var(--primary)]"
-                    : "text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]")
-                }
-              >
+
+        {/* Design system's Tabs primitive (line variant) used as top-level
+            navigation. Clicking a tab calls onValueChange, which routes
+            via Next.js's router. asChild + Link doesn't compose here
+            because TabsTrigger always renders 3 internal children
+            (leadingIcon + children + badge), breaking Radix Slot's
+            single-child requirement. */}
+        <Tabs value={active} onValueChange={(v) => router.push(v)}>
+          <TabsList variant="line">
+            {TABS.map((tab) => (
+              <TabsTrigger key={tab.value} value={tab.value}>
                 {tab.label}
-              </Link>
-            );
-          })}
-        </nav>
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+
         <div className="flex items-center gap-3 text-sm text-[var(--muted-foreground)]">
           {!authEnabled ? null : session?.user ? (
             <>

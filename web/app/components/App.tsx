@@ -1382,15 +1382,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans antialiased">
-      <aside className="fixed left-0 top-0 z-40 flex h-screen w-56 flex-col border-r border-border bg-background">
-        <div className="flex h-14 shrink-0 items-center gap-2 border-b border-border px-4">
-          {/* Octuple logo (PNG, same as the global top nav). EIGHTFOLD_LOGO_PATH
-              continues to power the Navbar component examples below so the
-              catalog still shows what those components actually look like
-              with the brand logo. */}
-          <img src="/octuple-logo.png" alt="" className="h-6 w-6 shrink-0 object-contain" />
-          <span className="font-semibold tracking-tight text-foreground">Design System</span>
-        </div>
+      {/* Sidebar sits BELOW the global top nav (h-16 = 64px = top-16).
+          Its own brand header has been removed — the top nav already shows
+          the Octuple logo + wordmark, no need to duplicate it here. */}
+      <aside className="fixed left-0 top-16 z-40 flex h-[calc(100vh-4rem)] w-56 flex-col border-r border-border bg-background">
         <nav className="flex-1 overflow-y-auto overflow-x-hidden px-2 py-4 scrollbar-hidden">
           <p className="mb-4 px-2 text-xs text-muted-foreground">
             Last updated: {process.env.NEXT_PUBLIC_LAST_UPDATED
@@ -1434,7 +1429,7 @@ export default function App() {
         </nav>
       </aside>
       <main className="min-h-screen pl-56">
-        <header className="sticky top-0 z-30 border-b border-border bg-background/95 px-6 py-6 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <header className="sticky top-16 z-30 border-b border-border bg-background/95 px-6 py-6 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <h1 className="text-3xl font-bold tracking-tight text-foreground">{title}</h1>
           <p className="mt-1.5 text-base text-muted-foreground">{description}</p>
         </header>
