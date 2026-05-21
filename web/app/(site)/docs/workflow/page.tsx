@@ -131,7 +131,7 @@ export default function WorkflowPage() {
         number={2}
         title="Install Claude Code"
         screenshot="step-02-install-claude-code.png"
-        caption="The Claude Code download page at claude.com/claude-code."
+        caption="Claude Code Overview docs — same install instructions, easier to skim. The download link itself is at claude.com/claude-code."
       >
         <p>
           Download from{" "}
