@@ -421,6 +421,72 @@ export default function WorkflowPage() {
         </table>
       </div>
 
+      <h2 className="mb-3 mt-16 text-2xl font-semibold tracking-tight">How to prompt Claude</h2>
+      <p className="mb-4 max-w-3xl">
+        You may have read that you should write long, structured prompts with a role, tech stack,
+        constraints, and step-by-step rules. <strong>You don't need to do that here.</strong> All of
+        that scaffolding is already baked into the skills under <code>.claude/skills/</code> — the
+        role, the Octuple-vs-Tailwind rules, the "don't use emojis" list, the accessibility
+        minimums, the content standards. Writing it again in every prompt fights the skills rather
+        than helping them.
+      </p>
+      <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-5">
+          <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">
+            Worth including
+          </h3>
+          <ul className="ml-5 list-disc space-y-1 text-sm">
+            <li><strong>Product surface</strong> — e.g. "for the Talent Profile," "in Career Hub."</li>
+            <li><strong>Persona</strong> — manager, recruiter, candidate, employee.</li>
+            <li><strong>The actual job</strong> — what does the user need to do on this screen?</li>
+            <li><strong>This-design-only constraints</strong> — "must work on mobile," "no modals — slide-over only."</li>
+            <li><strong>Reuse hints</strong> — "like the layout we used on screen X."</li>
+          </ul>
+        </div>
+        <div className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-5">
+          <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">
+            Don't bother including
+          </h3>
+          <ul className="ml-5 list-disc space-y-1 text-sm">
+            <li>"You are a senior frontend engineer…" — the skills already say this.</li>
+            <li>Tech stack reminders — the skills pin Octuple, TypeScript, MDI icons.</li>
+            <li>"Use TypeScript strict mode" / "no <code>any</code>" — already in the rules.</li>
+            <li>"Don't use emojis," "use Gilroy" — already in critical-rules.md.</li>
+            <li>A 5-step "before coding / after coding" workflow — already in workflow.md.</li>
+          </ul>
+        </div>
+      </div>
+      <p className="mb-2 max-w-3xl text-sm font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">
+        Example
+      </p>
+      <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-5">
+          <div className="mb-2 text-xs font-medium uppercase tracking-wide text-[var(--muted-foreground)]">
+            Over-engineered (don't)
+          </div>
+          <pre className="overflow-x-auto whitespace-pre-wrap text-xs leading-relaxed text-[var(--muted-foreground)]">{`You are a senior staff engineer.
+We are building: an Eightfold product.
+Tech stack: React + Octuple + TypeScript.
+Goal: a manager screen to approve flagged 1:1 notes.
+Constraints: no emojis, use MDI icons, strict TS,
+keep files small, no duplication, accessibility AA.
+Before coding: 1) analyze 2) propose architecture
+3) explain tradeoffs 4) edge cases 5) implementation
+plan. After: explain changes, identify risks, etc.`}</pre>
+        </div>
+        <div className="rounded-lg border border-[var(--primary)] bg-[var(--card)] p-5">
+          <div className="mb-2 text-xs font-medium uppercase tracking-wide text-[var(--primary)]">
+            Right-sized (do)
+          </div>
+          <pre className="overflow-x-auto whitespace-pre-wrap text-sm leading-relaxed">{`Design a manager view in the Talent
+Profile for approving flagged 1:1 notes.
+Use Octuple. The manager needs to see
+who flagged it, the note text, and
+approve / reject / send back with comment.
+Inline approve-reject — no modal.`}</pre>
+        </div>
+      </div>
+
       <h2 className="mb-3 mt-16 text-2xl font-semibold tracking-tight">The two rules you should not break</h2>
       <ol className="ml-6 list-decimal space-y-3">
         <li>
