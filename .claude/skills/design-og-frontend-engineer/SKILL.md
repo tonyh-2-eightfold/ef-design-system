@@ -30,8 +30,12 @@ Before writing any code:
 
 | File | When to read |
 |---|---|
+| [`references/session-rules.md`](references/session-rules.md) | **Read first.** Session-start checklist, the "remember this" learning loop, page-organization rules, and the documentation hierarchy. The original Cursor-rules file ported in verbatim. |
 | [`references/critical-rules.md`](references/critical-rules.md) | **Read first.** The 12 critical mistakes that have been made repeatedly across projects, each with the wrong and correct code. |
 | [`references/learnings.md`](references/learnings.md) | **Read first.** Accumulated quirks and gotchas. Update this file when you fix a new class of mistake. |
+| [`references/workflow.md`](references/workflow.md) | The session workflow — what to do before generating code, how to verify, and when to update learnings. |
+| [`references/quick-reference.md`](references/quick-reference.md) | Component decision trees and a "common problems → solution" lookup table. Reach for this when you're not sure which component to use. |
+| [`references/design-system-overview.md`](references/design-system-overview.md) | Integrated reference for all 72 Octuple components in one file. Use when you want a single pass over the system; use per-component docs when you need depth on one. |
 | [`references/component-patterns.md`](references/component-patterns.md) | Copy-ready patterns: forms, tables, layouts, dashboards, navigation, modals, person cards. |
 | [`references/api-reference.md`](references/api-reference.md) | Authoritative component name + prop list. The source of truth when there's any doubt. |
 | [`references/accessibility.md`](references/accessibility.md) | WCAG 2.1 AA requirements. Form labels, aria-label on icon-only buttons, focus management, color contrast. |

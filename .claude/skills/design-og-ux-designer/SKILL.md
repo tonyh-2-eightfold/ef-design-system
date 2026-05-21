@@ -35,6 +35,7 @@ Before designing:
 | [`references/information-architecture.md`](references/information-architecture.md) | Navigation patterns, persona scoping, product-line page organization, breadcrumb conventions. |
 | [`references/component-selection.md`](references/component-selection.md) | **Read for every screen.** Decision matrix mapping user needs to specific Octuple components. |
 | [`references/prototype-patterns.md`](references/prototype-patterns.md) | Verified, working code patterns for screens, dashboards, forms, tables, cards. Copy these — they are tested. |
+| [`references/example-prompts.md`](references/example-prompts.md) | Sample prompts designers can use to ask Claude to build common Octuple screens — login forms, dashboards, grids, profile cards. Useful when a designer wants suggestions on how to phrase a request. |
 | `../design-og-component-reference/components/<Name>.md` | When you need exact props or accessibility surface for a specific component. |
 | `../design-og-component-reference/patterns/<name>.md` | Layout patterns (card-grid, dashboard-layout, data-table, form-validation, navigation, stepper-workflow, two-column-layout, user-profile). |
 | `../design-og-frontend-engineer/references/critical-rules.md` | The 12 mistakes the engineer skill warns about — many of them affect the design (forced button dims, wrong icons, Row/Col flex, custom components when Octuple has them). Read these so your prototype is buildable. |
