@@ -457,9 +457,9 @@ export default function WorkflowPage() {
         </div>
       </div>
       <p className="mb-2 max-w-3xl text-sm font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">
-        Example
+        Over-engineered vs. right-sized
       </p>
-      <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-5">
           <div className="mb-2 text-xs font-medium uppercase tracking-wide text-[var(--muted-foreground)]">
             Over-engineered (don't)
@@ -486,6 +486,52 @@ approve / reject / send back with comment.
 Inline approve-reject — no modal.`}</pre>
         </div>
       </div>
+
+      <p className="mb-2 max-w-3xl text-sm font-semibold uppercase tracking-wide text-[var(--muted-foreground)]">
+        Pick a version — same shape, different stack
+      </p>
+      <p className="mb-3 max-w-3xl text-sm">
+        Whichever design system you name, your prompt looks the same. Claude routes to the matching
+        skill (which loads the right role, stack, components, and rules) based on which version you
+        mention.
+      </p>
+      <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-5">
+          <div className="mb-2 text-xs font-medium uppercase tracking-wide text-[var(--muted-foreground)]">
+            OG Octuple (<code>og</code>)
+          </div>
+          <pre className="overflow-x-auto whitespace-pre-wrap text-sm leading-relaxed">{`Design a recruiter screen in
+Talent Acquisition for triaging
+new applicants. Use Octuple.
+Show 10 candidates per page,
+inline approve / decline, and
+a quick-filter sidebar.`}</pre>
+          <p className="mt-3 text-xs text-[var(--muted-foreground)]">
+            Loads <code>design-og-frontend-engineer</code> — imports from{" "}
+            <code>@eightfold.ai/octuple</code>, classic CSS, MDI icons, Gilroy font, no Tailwind.
+          </p>
+        </div>
+        <div className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-5">
+          <div className="mb-2 text-xs font-medium uppercase tracking-wide text-[var(--muted-foreground)]">
+            Tailwind ef-design-system (<code>tw</code>)
+          </div>
+          <pre className="overflow-x-auto whitespace-pre-wrap text-sm leading-relaxed">{`Design a recruiter screen in
+Talent Acquisition for triaging
+new applicants. Use tw. Show
+10 candidates per page, inline
+approve / decline, and a
+quick-filter sidebar.`}</pre>
+          <p className="mt-3 text-xs text-[var(--muted-foreground)]">
+            Loads <code>design-tw-frontend-engineer</code> — imports from{" "}
+            <code>@tonyh-2-eightfold/ef-design-system</code>, Tailwind v4 + shadcn primitives,
+            Lucide icons, design-system tokens.
+          </p>
+        </div>
+      </div>
+      <p className="mb-4 max-w-3xl text-sm text-[var(--muted-foreground)]">
+        Not sure which to pick? Just describe the work and Claude will ask. See{" "}
+        <em>Step 2 — Tell Claude which version</em> above.
+      </p>
 
       <h2 className="mb-3 mt-16 text-2xl font-semibold tracking-tight">The two rules you should not break</h2>
       <ol className="ml-6 list-decimal space-y-3">
