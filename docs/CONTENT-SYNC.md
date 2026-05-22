@@ -1,15 +1,16 @@
 # Content sync — Google Docs → skill files
 
-Some of the Markdown files under `.claude/skills/_content/` (and the OG-skill references) are **owned by Google Docs**, not by this repo. They sync into the repo via a small Google Apps Script bound to each doc. When a doc owner clicks **Eightfold → Sync to repo** in the doc's menu bar, the doc is exported as Markdown and committed to `main`.
+Some of the Markdown files under `.claude/skills/_content/` (plus the `gems/` tree) are **owned by Google Docs**, not by this repo. They sync into the repo via a small Google Apps Script bound to each doc. When a doc owner clicks **Eightfold → Sync to repo** in the doc's menu bar, the doc is exported as Markdown and committed to `main`.
 
 This file documents:
 
 - Which files in this repo are auto-synced from a doc
 - How to set up the sync for a new doc
-- How to update / rotate the GitHub token the script uses
+- Whether the Apps Script writes to **upstream** or to a **fork** (and how the two repos stay in parity)
+- How to rotate the GitHub tokens
 - What to do when an `.md` and a doc drift apart
 
-> **Where the sync actually runs:** Google Apps Script, bound to each doc. There's no GitHub Action involved on the receiving side — the script writes to the repo via the GitHub Contents API.
+> **Where the sync actually runs:** Google Apps Script, bound to each doc, writes to a target repo via the GitHub Contents API. Two complementary GitHub Actions (`sync-from-upstream.yml` and `mirror-fork-to-upstream.yml`) keep the upstream and the fork at parity, regardless of which one the Apps Script chooses to write to.
 
 ---
 
@@ -36,6 +37,74 @@ Docs 1+2 are shared content read by every design skill. Docs 3+4 are generic Gem
 - The **`.md` file is a generated mirror.** Direct edits will be **overwritten on the next sync.**
 - Both files in `.claude/skills/_content/` carry a `<!-- AUTO-SYNCED FROM A GOOGLE DOC -->` banner near the top to remind editors.
 - If you absolutely need to hand-edit an `.md` (e.g. emergency fix while a doc owner is OOO), edit the **doc** to match afterwards, or the next sync will revert you.
+
+---
+
+## Where the Apps Script writes — upstream or fork?
+
+You have two coherent setups. Pick one and stick with it.
+
+### Pattern A — Apps Script writes to upstream (simpler)
+
+```
+Google Doc ──▶ Apps Script ──▶ tonyh-2-eightfold/ef-design-system (upstream)
+                                          │
+                                          ▼ sync-from-upstream.yml (every 15 min)
+                                ypike-eightfold/Octuple-TW-design-system (fork)
+                                          │
+                                          ▼
+                                       Vercel
+```
+
+- `TARGET_REPO = 'tonyh-2-eightfold/ef-design-system'` in each Apps Script.
+- One GitHub PAT (your personal account, fine-grained, repo: upstream, contents: write).
+- Update latency: a few seconds (script) + up to 15 min (fork-sync action). You can trigger the sync manually for faster turnaround:
+  ```
+  gh workflow run sync-from-upstream.yml -R ypike-eightfold/Octuple-TW-design-system
+  ```
+- One action runs on each side; they never collide.
+
+### Pattern B — Apps Script writes to fork, fork mirrors to upstream
+
+```
+Google Doc ──▶ Apps Script ──▶ ypike-eightfold/Octuple-TW-design-system (fork)
+                                          │
+                                          ├──▶ Vercel (immediate)
+                                          │
+                                          ▼ mirror-fork-to-upstream.yml (on push)
+                                tonyh-2-eightfold/ef-design-system (upstream)
+```
+
+- `TARGET_REPO = 'ypike-eightfold/Octuple-TW-design-system'` in each Apps Script.
+- **Two PATs** required:
+  - `GITHUB_PAT` — in Apps Script properties — fine-grained, **repo: fork**, contents: write.
+  - `UPSTREAM_PAT` — in the **fork's** GitHub Actions secrets — fine-grained, **repo: upstream**, contents: write. The mirror action uses this to push to upstream.
+- Two actions run together but are idempotent (each is a no-op when nothing's needed):
+  - `mirror-fork-to-upstream.yml` (fork → upstream, on every push)
+  - `sync-from-upstream.yml` (upstream → fork, every 15 min — catches anything Tony pushed directly)
+- Update latency: a few seconds for fork + Vercel; another minute or so for upstream.
+
+### How the two actions coexist without ping-ponging
+
+| Trigger | What happens |
+|---|---|
+| Apps Script writes to fork | `mirror-fork-to-upstream` runs → upstream fast-forwards to fork's HEAD → upstream and fork at same SHA → `sync-from-upstream` finds nothing to do (merge_type: none). |
+| Someone pushes to upstream | `sync-from-upstream` (next 15-min tick) merges-upstream into fork → both at same SHA → next push to fork doesn't cause anything new on upstream. |
+| Both diverge (rare) | `mirror-fork-to-upstream` refuses to clobber upstream (logs a warning); `sync-from-upstream` reconciles by creating a merge commit in fork. |
+
+Both actions ship in this repo so they end up on both copies. Each action's first step checks whether the running repo is a fork — runs the relevant body on the right side, no-op on the other.
+
+### Setting up `UPSTREAM_PAT` (Pattern B only)
+
+1. Generate a fine-grained GitHub PAT (different from `GITHUB_PAT`):
+   - **Resource owner:** the org that owns the upstream (`tonyh-2-eightfold`).
+   - **Repository access:** *Only select repositories* → `ef-design-system`.
+   - **Repository permissions** → **Contents** → **Read and write**.
+   - **Name:** `mirror-from-fork-pat`. **Expiration:** 1 year (calendar a reminder).
+2. On the fork (`ypike-eightfold/Octuple-TW-design-system`):
+   - **Settings → Secrets and variables → Actions → New repository secret**
+   - Name: `UPSTREAM_PAT`. Value: the token from step 1.
+3. Test: `gh workflow run mirror-fork-to-upstream.yml -R ypike-eightfold/Octuple-TW-design-system`. Check the run logs for `Fast-forwarded ... main` or `Already in sync` or `UPSTREAM_PAT not configured`.
 
 ---
 
@@ -84,6 +153,10 @@ const TARGET_PATH   = '.claude/skills/_content/your-target-file.md';
 const COMMIT_PREFIX = 'content: sync "Doc Name Here"';
 // ─────────────────────────────────────────────────────────────
 
+// Pattern A: write to upstream directly (simpler). Pattern B: write to
+// the fork — set this to 'ypike-eightfold/Octuple-TW-design-system' and
+// configure UPSTREAM_PAT on the fork. See "Where the Apps Script writes"
+// section above for the tradeoffs.
 const TARGET_REPO   = 'tonyh-2-eightfold/ef-design-system';
 const TARGET_BRANCH = 'main';
 
