@@ -459,6 +459,35 @@ a.project-object-card {
   z-index: 10;
 }
 
+/**
+ * Prototype-only: bleed the ProductBackground (chevron art) up under
+ * the navbar so the hero image sits behind the nav, with the nav reading
+ * as a glass layer. Pattern matches the site's TopNav glassmorphism.
+ *
+ * Layout: the CareerHubShell renders three top-level elements (navbar
+ * wrapper, then ProductBackground wrapper, then children). Pull the
+ * ProductBackground up by --navbar-height and pad it back the same
+ * amount so the Header still sits in the right place visually.
+ */
+.prototype-careerhub-shell {
+  position: relative;
+}
+.prototype-careerhub-shell .navbar {
+  /* Translucent + blur — let chevrons show through. The design system's
+     default is rgba(255,255,255,0.92) which is too opaque for this. */
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(18px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  z-index: 20;
+}
+/* The element immediately after the navbar wrapper holds the
+   ProductBackground. Pull it up under the navbar. */
+.prototype-careerhub-shell > .career-hub-shell:first-child + * {
+  margin-top: calc(-1 * var(--navbar-height, 60px));
+  padding-top: var(--navbar-height, 60px);
+}
+
 /* Force main page scrollbar hidden (last so it wins) */
 html,
 body,
