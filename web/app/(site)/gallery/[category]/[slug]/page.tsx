@@ -73,15 +73,6 @@ export default async function DesignDetailPage({ params }: { params: Params }) {
           Open prototype in a new tab ↗
         </a>
       </p>
-
-      <section className="mt-8">
-        <h2 className="mb-3 text-sm font-medium text-[var(--muted-foreground)]">Thumbnail</h2>
-        <img
-          src={design.thumbnailUrl}
-          alt=""
-          className="max-w-full rounded-lg border border-[var(--border)]"
-        />
-      </section>
     </div>
   );
 }
