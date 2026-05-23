@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CATEGORY_SLUGS, getCategory, type CategorySlug } from "@/lib/categories";
 import { getAllDesigns, getDesign } from "@/lib/designs";
+import { PrototypeFullscreen } from "./PrototypeFullscreen";
 
 export const revalidate = 60;
 
@@ -62,23 +63,16 @@ export default async function DesignDetailPage({ params }: { params: Params }) {
         )}
       </dl>
 
-      <section className="mt-8">
-        <h2 className="mb-3 text-sm font-medium text-[var(--muted-foreground)]">Prototype</h2>
-        <div className="overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--card)]">
-          {/* Sandbox the iframe so the design can't navigate the parent. */}
-          <iframe
-            src={design.previewUrl}
-            title={`Prototype: ${design.title}`}
-            className="block h-[80vh] w-full"
-            sandbox="allow-same-origin allow-scripts allow-forms"
-          />
-        </div>
-        <p className="mt-2 text-xs text-[var(--muted-foreground)]">
-          <a className="underline" href={design.previewUrl} target="_blank" rel="noopener noreferrer">
-            Open prototype in a new tab ↗
-          </a>
-        </p>
-      </section>
+      <PrototypeFullscreen
+        previewUrl={design.previewUrl}
+        title={design.title}
+        slug={design.slug}
+      />
+      <p className="mt-2 text-xs text-[var(--muted-foreground)]">
+        <a className="underline" href={design.previewUrl} target="_blank" rel="noopener noreferrer">
+          Open prototype in a new tab ↗
+        </a>
+      </p>
 
       <section className="mt-8">
         <h2 className="mb-3 text-sm font-medium text-[var(--muted-foreground)]">Thumbnail</h2>

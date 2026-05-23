@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { auth, signOut } from "@/auth";
 import { TopNav } from "@/components/site/top-nav";
+import { SiteFooter } from "@/components/site/site-footer";
 
 export const metadata: Metadata = {
   title: "Design at Eightfold AI",
@@ -43,12 +44,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             landing/gallery/docs/signin. /components is outside the group
             so it can render full-width (catalog has full-width Navbar examples). */}
         <main>{children}</main>
-        <footer className="mt-16 border-t border-[var(--border)]">
-          <div className="mx-auto max-w-6xl px-6 py-6 text-xs text-[var(--muted-foreground)]">
-            Internal. Designs added via PR to{" "}
-            <code className="rounded bg-[var(--card)] px-1 py-0.5">ypike-eightfold/Octuple-TW-design-system</code>.
-          </div>
-        </footer>
+        <SiteFooter />
       </body>
     </html>
   );
