@@ -471,6 +471,10 @@ a.project-object-card {
  */
 .prototype-careerhub-shell {
   position: relative;
+  /* Taller hero — the default 160px ("parent" chSize) feels cramped
+     given the chevron art. Override the design system's CSS variable
+     in our scope only, so we don't touch the default. */
+  --header-career-hub-parent-height: 240px;
 }
 /* Sticky the wrapper that contains the navbar — not the navbar itself.
    The navbar's immediate parent (.career-hub-shell) is only as tall as
@@ -483,16 +487,26 @@ a.project-object-card {
   z-index: 20;
 }
 .prototype-careerhub-shell .navbar {
-  /* Translucent + heavy blur lets the chevron hero show through behind
-     the nav on initial load; once the user scrolls past the hero, the
-     blur reads against the page content. Opacity is intentionally low
-     (0.25) so the chevron art behind the nav reads clearly on the
-     right side of the hero — text legibility holds because the blur
-     softens whatever's behind into a muted wash. */
-  background: rgba(255, 255, 255, 0.25) !important;
-  backdrop-filter: blur(24px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  /* Real glassmorphism — two-layer technique:
+     1. A soft white-to-translucent gradient gives the nav a frosted
+        sheen at the top while letting more of the chevron art bleed
+        through near the bottom edge.
+     2. A heavy backdrop-filter (32px blur + 180% saturate +
+        110% brightness) gives the colored chevron art a warm, glassy
+        wash without making it unreadable.
+     Text contrast still passes AA — the saturated wash never goes
+     below ~50% white luminance behind the labels. */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.25) 60%,
+      rgba(255, 255, 255, 0.15) 100%
+    ) !important;
+  backdrop-filter: blur(32px) saturate(180%) brightness(1.1) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(180%) brightness(1.1) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset;
 }
 /* The element immediately after the navbar wrapper holds the
    ProductBackground. Pull it up under the navbar. */

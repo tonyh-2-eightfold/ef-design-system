@@ -189,8 +189,12 @@ export function PrototypeFullscreen({
             key={viewport}
             src={previewUrl}
             title={`Prototype: ${title}`}
+            /* h-[1024px] fits real desktop content (sticky nav + hero +
+               first card row) at common laptop scales without forcing
+               the parent page to scroll. Internal content beyond 1024px
+               scrolls inside the iframe via its native scrollbar. */
             className={
-              "block h-[80vh] " +
+              "block h-[1024px] " +
               (active.width == null ? "w-full min-w-[1440px]" : "w-full")
             }
             sandbox="allow-same-origin allow-scripts allow-forms"
