@@ -90,12 +90,22 @@ When in doubt, **ask the user where the screens go in the existing IA**. See `mu
 
 ### Glassmorphic hero treatment
 
-Career Hub prototypes use the chevron `ProductBackground` bleeding up under a translucent navbar. The technique:
+Career Hub prototypes use the chevron `ProductBackground` bleeding up under a translucent navbar. **The glass technique must match the site's TopNav exactly** — the source of truth is [`web/components/site/top-nav.tsx`](../../../web/components/site/top-nav.tsx), specifically the header element's Tailwind classes:
+
+```tsx
+className="sticky top-0 z-50 h-16 border-b border-white/30 bg-white/40 backdrop-blur-xl supports-[backdrop-filter]:bg-white/30"
+```
+
+Translated into CSS so we can override the design system's default navbar background:
 
 ```css
 /* Container class on the wrapper that holds CareerHubShell. */
 .prototype-careerhub-shell {
   position: relative;
+  /* Override the design system's default 160px hero — that's too
+     short for the chevron art to feel like a real hero treatment.
+     Scoped, so the design system's default stays at 160px elsewhere. */
+  --header-career-hub-parent-height: 240px;
 }
 
 /* Sticky the wrapper containing the navbar — NOT the navbar itself.
@@ -108,15 +118,24 @@ Career Hub prototypes use the chevron `ProductBackground` bleeding up under a tr
   z-index: 20;
 }
 
-/* Translucent + heavy blur so the chevron art reads through the nav.
-   Calibrated at 0.25 opacity + 24px blur + 160% saturate — anything
-   more opaque kills the glass effect; anything more transparent fails
-   AA contrast on the navbar text. */
+/* Glass matching the site TopNav. Two-step pattern:
+   - Default rule: 40% white opacity so the nav stays legible in
+     browsers without backdrop-filter support.
+   - @supports rule: 30% white + 24px blur in browsers with backdrop-
+     filter — the actual frosted-glass effect.
+   This is what the site uses everywhere. Don't invent gradients,
+   saturate, or brightness layering — the simpler technique is the
+   correct one and matches the site visually 1:1. */
 .prototype-careerhub-shell .navbar {
-  background: rgba(255, 255, 255, 0.25) !important;
-  backdrop-filter: blur(24px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgb(255 255 255 / 0.4) !important;
+  border-bottom: 1px solid rgb(255 255 255 / 0.3) !important;
+}
+@supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
+  .prototype-careerhub-shell .navbar {
+    background-color: rgb(255 255 255 / 0.3) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+  }
 }
 
 /* Pull the ProductBackground up behind the navbar (negative margin)
@@ -126,6 +145,8 @@ Career Hub prototypes use the chevron `ProductBackground` bleeding up under a tr
   padding-top: var(--navbar-height, 60px);
 }
 ```
+
+**Why no gradient / saturate / brightness?** Earlier iterations tried those — they read as "obviously customized" and diverged from the site's nav, and the production build sometimes failed to apply them (Vercel's CSS pipeline reordered or stripped layered effects). The two-step `bg-white/40` → `supports-[backdrop-filter]:bg-white/30` pattern is what the site ships and it works identically in dev and production.
 
 The container class goes on the outer wrapper inside `PrototypeShell` alongside `.header-assembled-ch-shell` (the design system's in-flow override).
 
