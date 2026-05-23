@@ -1,23 +1,18 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import { Button } from "@tonyh-2-eightfold/ef-design-system";
 
 /* Iframe + viewport-size switcher + Take screenshot + Full screen.
 
-   The viewport switcher constrains the iframe to a fixed pixel width
-   matching common form-factor breakpoints, so designers can review the
-   prototype's responsive behaviour without resizing their browser:
+   Fullscreen target is the entire <section> (not just the iframe), so
+   the viewport switcher / Take screenshot / Full screen controls stay
+   reachable while fullscreen. In fullscreen the section flips to a
+   flex column with the control bar pinned to the top and the iframe
+   filling the rest via CSS that keys on the `:fullscreen` state.
 
-   - Desktop          full width (≥ 1440px via min-width)
-   - Tablet landscape 1024px
-   - Tablet portrait   800px
-   - Mobile            420px
-
-   The iframe stays the same height; it just gets a horizontal constraint.
-
-   The Screenshot button uses html-to-image against the iframe's
+   The Take screenshot button uses html-to-image against the iframe's
    contentDocument.body. Works because the iframe is same-origin (it
    loads /content/designs/<slug>/index.html from the host app), and
    sandbox="allow-same-origin allow-scripts" preserves that access. */
@@ -40,18 +35,35 @@ export function PrototypeFullscreen({
   title: string;
   slug: string;
 }) {
+  const sectionRef = useRef<HTMLElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [capturing, setCapturing] = useState(false);
   const [viewport, setViewport] = useState<Viewport>("desktop");
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const active = VIEWPORTS.find((v) => v.id === viewport) ?? VIEWPORTS[0];
 
+  /* Track fullscreen state so we can update layout (button bar pinned
+     to top + iframe fills the rest). The browser also auto-applies the
+     :fullscreen pseudo-class, which the CSS below uses for layout. */
+  useEffect(() => {
+    function onChange() {
+      setIsFullscreen(document.fullscreenElement === sectionRef.current);
+    }
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
+
   function enterFullscreen() {
-    const el = iframeRef.current;
+    const el = sectionRef.current;
     if (!el) return;
     el.requestFullscreen?.().catch(() => {
       window.open(previewUrl, "_blank", "noopener,noreferrer");
     });
+  }
+
+  function exitFullscreen() {
+    document.exitFullscreen?.().catch(() => {});
   }
 
   async function takeScreenshot() {
@@ -88,8 +100,18 @@ export function PrototypeFullscreen({
   }
 
   return (
-    <section className="mt-8">
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+    <section
+      ref={sectionRef}
+      /* In fullscreen: full-screen flex column with a small inner padding
+         + bg, so the control bar reads against the page colour instead
+         of the dark default fullscreen backdrop. CSS in globals.css ties
+         the iframe height to fill the remaining space. */
+      className={
+        "mt-8 [&:fullscreen]:mt-0 [&:fullscreen]:flex [&:fullscreen]:flex-col " +
+        "[&:fullscreen]:bg-background [&:fullscreen]:p-4 [&:fullscreen]:gap-3"
+      }
+    >
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-3 [section:fullscreen_&]:mb-0">
         <h2 className="text-sm font-medium text-[var(--muted-foreground)]">
           Prototype
         </h2>
@@ -150,37 +172,36 @@ export function PrototypeFullscreen({
           <Button
             variant="secondary"
             size="sm"
-            onClick={enterFullscreen}
+            onClick={isFullscreen ? exitFullscreen : enterFullscreen}
             leadingIcon={
               <span
                 className="material-symbols-outlined"
                 style={{ fontSize: 14 }}
                 aria-hidden
               >
-                fullscreen
+                {isFullscreen ? "fullscreen_exit" : "fullscreen"}
               </span>
             }
           >
-            Full screen
+            {isFullscreen ? "Exit full screen" : "Full screen"}
           </Button>
         </div>
       </div>
 
-      {/* Iframe wrapper. For non-desktop viewports we constrain the
-          iframe to a fixed pixel width and center it; desktop uses the
-          original full-width behaviour with min-w-[1440px] so the
-          product navbar reads in its desktop layout. */}
+      {/* Iframe wrapper. Default state: fixed 900px iframe (with min-w
+          for desktop layout). Fullscreen state: wrapper grows to fill
+          remaining space; iframe height keyed off CSS variable below. */}
       <div
         className={
           "rounded-lg border border-[var(--border)] bg-[var(--muted)]/30 " +
-          (active.width == null ? "overflow-x-auto overflow-y-hidden" : "overflow-hidden")
+          (active.width == null ? "overflow-x-auto overflow-y-hidden" : "overflow-hidden") +
+          " [section:fullscreen_&]:flex-1 [section:fullscreen_&]:min-h-0"
         }
       >
         <div
           className={
-            active.width == null
-              ? "w-full"
-              : "mx-auto"
+            (active.width == null ? "w-full" : "mx-auto") +
+            " h-full"
           }
           style={active.width != null ? { width: active.width, maxWidth: "100%" } : undefined}
         >
@@ -189,12 +210,11 @@ export function PrototypeFullscreen({
             key={viewport}
             src={previewUrl}
             title={`Prototype: ${title}`}
-            /* h-[1024px] fits real desktop content (sticky nav + hero +
-               first card row) at common laptop scales without forcing
-               the parent page to scroll. Internal content beyond 1024px
-               scrolls inside the iframe via its native scrollbar. */
+            /* Default 900px tall; in fullscreen the section gives this
+               iframe the rest of the viewport via the
+               .prototype-iframe in globals.css rule. */
             className={
-              "block h-[1024px] " +
+              "prototype-iframe block h-[900px] [section:fullscreen_&]:h-full " +
               (active.width == null ? "w-full min-w-[1440px]" : "w-full")
             }
             sandbox="allow-same-origin allow-scripts allow-forms"
