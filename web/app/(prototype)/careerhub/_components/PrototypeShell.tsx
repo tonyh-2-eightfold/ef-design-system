@@ -22,6 +22,7 @@ import {
 } from '@tonyh-2-eightfold/ef-design-system'
 import type { NavbarTab, NavbarUser } from '@tonyh-2-eightfold/ef-design-system'
 import { usePrototype } from '../_lib/PrototypeContext'
+import { useFittedTabs } from '../_lib/useFittedTabs'
 import { MOCK_DATA } from '../_lib/mock-data'
 
 /* Add a "Team" tab to the employee navbar (employees don't ship with one
@@ -91,7 +92,10 @@ export function PrototypeShell({
     avatarInitials: personaUser.avatarInitials,
   }
 
-  const tabs = persona === 'alex' ? ALEX_TABS : SAM_TABS
+  const allTabs = persona === 'alex' ? ALEX_TABS : SAM_TABS
+  /* Greedy fit-to-width: items that don't fit go into a "More" tab;
+     no "More" appears when everything fits at the current viewport. */
+  const tabs = useFittedTabs(allTabs)
   /* Highlight the Team tab whenever we're inside any /careerhub/team route. */
   const activeTab =
     pathname.startsWith('/careerhub/team') ? tabs.find((t) => t.id === 'team') : undefined

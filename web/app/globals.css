@@ -483,12 +483,15 @@ a.project-object-card {
   z-index: 20;
 }
 .prototype-careerhub-shell .navbar {
-  /* Translucent + blur lets the chevron hero show through behind the
-     nav on initial load; once the user scrolls past the hero, the
-     blur reads against the page content. */
-  background: rgba(255, 255, 255, 0.4) !important;
-  backdrop-filter: blur(18px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+  /* Translucent + heavy blur lets the chevron hero show through behind
+     the nav on initial load; once the user scrolls past the hero, the
+     blur reads against the page content. Opacity is intentionally low
+     (0.25) so the chevron art behind the nav reads clearly on the
+     right side of the hero — text legibility holds because the blur
+     softens whatever's behind into a muted wash. */
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 /* The element immediately after the navbar wrapper holds the
