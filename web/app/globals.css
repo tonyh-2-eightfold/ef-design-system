@@ -472,14 +472,24 @@ a.project-object-card {
 .prototype-careerhub-shell {
   position: relative;
 }
+/* Sticky the wrapper that contains the navbar — not the navbar itself.
+   The navbar's immediate parent (.career-hub-shell) is only as tall as
+   the navbar, so applying sticky to .navbar loses its containing block
+   as soon as you scroll past it. Putting sticky on the wrapper instead
+   keeps the navbar pinned to the top of the iframe / page scroll. */
+.prototype-careerhub-shell > .career-hub-shell:first-child {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
 .prototype-careerhub-shell .navbar {
-  /* Translucent + blur — let chevrons show through. The design system's
-     default is rgba(255,255,255,0.92) which is too opaque for this. */
+  /* Translucent + blur lets the chevron hero show through behind the
+     nav on initial load; once the user scrolls past the hero, the
+     blur reads against the page content. */
   background: rgba(255, 255, 255, 0.4) !important;
   backdrop-filter: blur(18px) saturate(140%) !important;
   -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  z-index: 20;
 }
 /* The element immediately after the navbar wrapper holds the
    ProductBackground. Pull it up under the navbar. */
