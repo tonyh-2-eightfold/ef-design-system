@@ -1,0 +1,9 @@
+{
+  "title": "Talent Agent · Inside Talent Acquisition",
+  "description": "Eightfold copilot as a parallel side-panel on top of the Talent Acquisition pipeline view. Recruiters chat with an MCP-backed agent to filter applicants, search communities and the global network, monitor requisition health, and surface silver medalists — all in natural language. Includes a Figma-matched gradient header, tabs (Chat / Active workflows / History), and an X-to-close, AI-button-to-reopen pattern.",
+  "category": "other-example-screens",
+  "version": "tailwind",
+  "slug": "talent-agent-in-ta",
+  "author": "ypike-eightfold",
+  "createdAt": "2026-06-01T22:57:41Z"
+}

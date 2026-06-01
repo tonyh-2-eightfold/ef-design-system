@@ -1,0 +1,9 @@
+{
+  "title": "Talent Agent · Slack",
+  "description": "The Eightfold Talent Agent as a DM inside Slack, styled to Slack's visual language (aubergine workspace rail, Lato typography, Block Kit response blocks). Same Phase 1 read/filter/search capabilities as the Teams and Talent Acquisition versions — covers all 9 capabilities for NVIDIA's recruiting teams.",
+  "category": "other-example-screens",
+  "version": "tailwind",
+  "slug": "talent-agent-in-slack",
+  "author": "ypike-eightfold",
+  "createdAt": "2026-06-01T22:57:41Z"
+}

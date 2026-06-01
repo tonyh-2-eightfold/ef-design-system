@@ -1,0 +1,9 @@
+{
+  "title": "Talent Agent · Microsoft Teams",
+  "description": "The Eightfold Talent Agent as a 1:1 conversation inside Microsoft Teams, built with Fluent UI v9. Recruiters ask the same natural-language questions — filter applicants by req, search communities, global network, events, CRM outreach, requisition health, talent pool depth, silver medalists — and get Adaptive Card-style responses with FactSets, tables, and 'Open in Eightfold' actions.",
+  "category": "other-example-screens",
+  "version": "tailwind",
+  "slug": "talent-agent-in-teams",
+  "author": "ypike-eightfold",
+  "createdAt": "2026-06-01T22:57:41Z"
+}
