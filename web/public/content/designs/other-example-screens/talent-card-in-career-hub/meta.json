@@ -1,0 +1,9 @@
+{
+  "title": "Talent Card · Inside Career Hub",
+  "description": "A web-native Talent Card surface added as a new tab on the Career Hub employee profile, next to Development plans. Built for online use (not print) — fully responsive across desktop, tablet, and mobile. Three-section layout: hero with key facts, Current snapshot (skills, positions, external history, gigs as a vertical timeline), and Future plans (development opportunities, career goals, skills to develop, development actions with progress bars and status pills). Uses real Octuple SkillTag, Pill, NumberBadge, and Button components.",
+  "category": "other-example-screens",
+  "version": "tailwind",
+  "slug": "talent-card-in-career-hub",
+  "author": "ypike-eightfold",
+  "createdAt": "2026-06-02T18:36:00Z"
+}
