@@ -78,7 +78,7 @@ export default function HomePage() {
                     <div
                       key={`placeholder-${i}`}
                       aria-hidden
-                      className="aspect-[16/10] rounded-md border border-dashed border-[var(--border)] bg-[var(--background)]"
+                      className="aspect-[16/10] rounded-md border border-dashed border-[var(--border)] bg-[var(--muted)]"
                     />
                   );
                 })}
