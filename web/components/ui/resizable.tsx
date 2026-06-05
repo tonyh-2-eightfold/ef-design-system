@@ -4,6 +4,12 @@ import * as ResizablePrimitive from "react-resizable-panels"
 
 import { cn } from "@/lib/utils"
 
+// react-resizable-panels v2 renamed Group → PanelGroup and Separator →
+// PanelResizeHandle. This file was originally scaffolded against v1
+// (where the shorter names existed). The v1 names became undefined at
+// runtime in v2 and crashed the catalog with "Element type is invalid…
+// Check the render method of `ResizablePanelGroup`". Use the v2 names.
+
 function ResizablePanelGroup({
   className,
   ...props

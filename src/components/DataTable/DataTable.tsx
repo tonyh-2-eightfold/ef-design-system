@@ -116,6 +116,7 @@ function DataTableHead({
   return (
     <th
       data-slot="data-table-head"
+      aria-sort={ariaSort}
       className={cn(
         'px-5 py-2.5 text-left font-[var(--typography-caption-semibold)] text-[color:#64748b] uppercase tracking-[0.05em] text-xs font-semibold bg-[#f8fafc] whitespace-nowrap',
         resolvedAlign === 'right' && 'text-right',

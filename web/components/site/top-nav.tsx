@@ -32,6 +32,12 @@ export function TopNav({ session, authEnabled, signOutAction }: Props) {
   const pathname = usePathname();
   const active = activeTabFor(pathname);
 
+  /* Hide the site chrome on prototype routes — these are sandboxed
+     experiences (also rendered inside the gallery's iframe) and have
+     their own product navbar. Showing both at once doubles up the
+     header. */
+  if (pathname.startsWith("/careerhub")) return null;
+
   return (
     <header className="sticky top-0 z-50 h-16 border-b border-white/30 bg-white/40 backdrop-blur-xl supports-[backdrop-filter]:bg-white/30">
       {/* Glassmorphism: translucent fill + backdrop-blur so the hero

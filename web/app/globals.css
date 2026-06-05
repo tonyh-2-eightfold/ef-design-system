@@ -459,6 +459,65 @@ a.project-object-card {
   z-index: 10;
 }
 
+/**
+ * Prototype-only: bleed the ProductBackground (chevron art) up under
+ * the navbar so the hero image sits behind the nav, with the nav reading
+ * as a glass layer. Pattern matches the site's TopNav glassmorphism.
+ *
+ * Layout: the CareerHubShell renders three top-level elements (navbar
+ * wrapper, then ProductBackground wrapper, then children). Pull the
+ * ProductBackground up by --navbar-height and pad it back the same
+ * amount so the Header still sits in the right place visually.
+ */
+.prototype-careerhub-shell {
+  position: relative;
+  /* Taller hero — the default 160px ("parent" chSize) feels cramped
+     given the chevron art. Override the design system's CSS variable
+     in our scope only, so we don't touch the default. */
+  --header-career-hub-parent-height: 240px;
+}
+/* Sticky the wrapper that contains the navbar — not the navbar itself.
+   The navbar's immediate parent (.career-hub-shell) is only as tall as
+   the navbar, so applying sticky to .navbar loses its containing block
+   as soon as you scroll past it. Putting sticky on the wrapper instead
+   keeps the navbar pinned to the top of the iframe / page scroll. */
+.prototype-careerhub-shell > .career-hub-shell:first-child {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.prototype-careerhub-shell .navbar {
+  /* Match the site's TopNav glassmorphism exactly. Source of truth:
+     web/components/site/top-nav.tsx — the same Tailwind classes
+     (bg-white/40 + supports-[backdrop-filter]:bg-white/30 +
+     backdrop-blur-xl + border-white/30) translated into CSS so we can
+     override the design system's default navbar background.
+
+     Why this technique:
+     - The two-step `bg-white/40` → `bg-white/30 supports-[backdrop-filter]`
+       split keeps the nav readable in browsers without backdrop-filter
+       (40% opaque white) and gives genuine glass in browsers with it
+       (30% opaque white + 24px blur).
+     - No gradient / saturate / brightness layering — the simpler
+       technique is what the site uses everywhere; this prototype just
+       inherits the convention. */
+  background-color: rgb(255 255 255 / 0.4) !important;
+  border-bottom: 1px solid rgb(255 255 255 / 0.3) !important;
+}
+@supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
+  .prototype-careerhub-shell .navbar {
+    background-color: rgb(255 255 255 / 0.3) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+  }
+}
+/* The element immediately after the navbar wrapper holds the
+   ProductBackground. Pull it up under the navbar. */
+.prototype-careerhub-shell > .career-hub-shell:first-child + * {
+  margin-top: calc(-1 * var(--navbar-height, 60px));
+  padding-top: var(--navbar-height, 60px);
+}
+
 /* Force main page scrollbar hidden (last so it wins) */
 html,
 body,

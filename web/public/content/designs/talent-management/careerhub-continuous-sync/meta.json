@@ -1,0 +1,9 @@
+{
+  "title": "Career Hub Continuous Sync",
+  "description": "Continuous 1-on-1 and AI-drafted performance review prototype for Career Hub. Employee and manager views with sub-tabs for Continuous sync, Meeting canvas, and Performance hub; the manager flow drills into individual reports.",
+  "category": "talent-management",
+  "version": "tailwind",
+  "slug": "careerhub-continuous-sync",
+  "author": "ypike-eightfold",
+  "createdAt": "2026-05-22T00:00:00Z"
+}

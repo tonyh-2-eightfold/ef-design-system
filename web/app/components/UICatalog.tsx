@@ -1690,7 +1690,7 @@ export function UICatalog({
         </Block>
 
         <Block title="Resizable">
-          <ResizablePanelGroup orientation="horizontal" className="max-w-md rounded-lg border">
+          <ResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
             <ResizablePanel defaultSize={50}>Panel 1</ResizablePanel>
             <ResizableHandle />
             <ResizablePanel defaultSize={50}>Panel 2</ResizablePanel>

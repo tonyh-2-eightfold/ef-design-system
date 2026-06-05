@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Hub Continuous Sync · Eightfold</title>
+  <!--
+    Gallery entry for a *live* React prototype rather than a static mock.
+    The iframe loads this file; the meta refresh re-targets the iframe at
+    /careerhub/team/sync where the actual Next.js prototype lives. The
+    JS-redirect line is a belt-and-braces fallback for browsers that
+    delay meta refresh inside sandboxed iframes.
+  -->
+  <meta http-equiv="refresh" content="0; url=/careerhub/team/sync" />
+  <link rel="canonical" href="/careerhub/team/sync" />
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: "Gilroy", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+    }
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 12px;
+      text-align: center;
+    }
+    .loading h1 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .loading p {
+      margin: 0;
+      font-size: 13px;
+      color: #4F5666;
+    }
+    .loading a {
+      color: #146DA6;
+      text-decoration: underline;
+      font-size: 13px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid #BDC1C9;
+      border-top-color: #146DA6;
+      animation: spin 0.8s linear infinite;
+    }
+  </style>
+  <script>
+    // Final fallback — if meta refresh is suppressed, send the iframe
+    // (or top window when opened directly) to the live route.
+    window.location.replace('/careerhub/team/sync');
+  </script>
+</head>
+<body>
+  <div class="loading">
+    <div class="spinner" aria-hidden="true"></div>
+    <h1>Career Hub Continuous Sync</h1>
+    <p>Loading the live prototype…</p>
+    <a href="/careerhub/team/sync">Open it directly</a>
+  </div>
+</body>
+</html>
