@@ -14,13 +14,12 @@ missing, it renders a labeled placeholder showing the expected filename.
 | `step-day-01-clone-repo.png` | Day-to-day 1 — Open Claude Code and point it at the repo |
 | `step-day-05-check-copy.png` | Day-to-day 4 — Check the copy |
 | `step-day-05-check-a11y.png` | Day-to-day 5 — Check accessibility |
+| `step-day-07-publish.png` | Day-to-day 6 — Publish |
 | `step-13-design-in-gallery.png` | Day-to-day 7 — After the PR merges |
 
 ## Still pending (need to capture)
 
-| Filename | What to show |
-|---|---|
-| `step-day-07-publish.png` | Claude Code running publish-design (asking title, slug, opening PR) |
+_None — every referenced slot has a real screenshot on disk._
 
 ## Steps that intentionally have no screenshot
 
