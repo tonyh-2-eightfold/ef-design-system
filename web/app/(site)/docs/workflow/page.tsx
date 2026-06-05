@@ -284,6 +284,35 @@ export default function WorkflowPage() {
 
       <Step
         number={5}
+        title="Check accessibility"
+      >
+        <p>
+          Then ask Claude to verify accessibility against WCAG 2.2 AA — the standard most Eightfold
+          products target:
+        </p>
+        <blockquote className="border-l-4 border-[var(--primary)] bg-[var(--card)] py-2 pl-4 italic text-[var(--muted-foreground)]">
+          <strong>You:</strong> Check this design against WCAG 2.2 AA. Verify color contrast,
+          keyboard navigation, ARIA labels on icon-only buttons, form labels, target sizes, heading
+          hierarchy, and screen-reader semantics. Flag anything missing.
+        </blockquote>
+        <p>
+          Claude will scan the markup and report. Common fixes: add <code>aria-label</code> to
+          icon-only buttons, swap <code>placeholder</code>-only inputs for visible labels, replace
+          color-only status indicators with a label + icon, ensure heading levels don't skip.
+        </p>
+        <p className="rounded-md border border-[var(--border)] bg-[var(--card)] p-4 text-sm">
+          <strong>What this check covers and what it doesn't.</strong> Claude can verify roughly 80%
+          of WCAG 2.2 AA by reading the code — alt text, semantic HTML, color tokens, form labels,
+          target sizes, focus order, Radix primitives wrapped correctly. The remaining 20% needs you
+          (or a reviewer) to actually open the design in a browser: zoom to 200%, reflow at 320px,
+          tab through with the keyboard, listen with VoiceOver / NVDA, and confirm sticky elements
+          don't obscure the focused element. The skills don't claim what they can't verify — Claude
+          will tell you which checks it ran and which still need a human pass.
+        </p>
+      </Step>
+
+      <Step
+        number={6}
         title="Capture a thumbnail"
         screenshot="step-day-06-screenshot-tool.png"
         caption="macOS Cmd+Shift+4 selection screenshot tool capturing the design."
@@ -295,7 +324,7 @@ export default function WorkflowPage() {
       </Step>
 
       <Step
-        number={6}
+        number={7}
         title="Publish"
         screenshot="step-day-07-publish.png"
         caption="Claude Code running the publish-design skill: asking for title, category, slug, then opening the PR."
@@ -350,7 +379,7 @@ export default function WorkflowPage() {
       </Step>
 
       <Step
-        number={7}
+        number={8}
         title="After the PR merges"
         screenshot="step-13-design-in-gallery.png"
         caption="The published design appearing on the gallery's product-area page."
