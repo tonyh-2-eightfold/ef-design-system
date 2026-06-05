@@ -247,6 +247,15 @@ export default function WorkflowPage() {
           Claude will produce <strong>working React code</strong> with mock data — not Figma frames,
           not static images. You can open it in a browser and click around.
         </p>
+        <p className="rounded-md border border-[var(--border)] bg-[var(--card)] p-4 text-sm">
+          <strong>If you're building a multi-screen interactive prototype</strong> (think Career
+          Hub-style flows, not a single screen), Claude may ask{" "}
+          <em>"Where should the prototype live?"</em> Pick{" "}
+          <strong>Route group in web/Next.js app</strong> — it reuses the gallery's design-system
+          setup and is the easiest to make interactive. The other options (fresh standalone app,
+          static gallery entry) are rarely the right call. You won't see this question for simple
+          single-screen designs.
+        </p>
       </Step>
 
       <Step
@@ -321,6 +330,27 @@ export default function WorkflowPage() {
           You'll get a link to the PR. <strong>You don't need to merge it yourself</strong> — a
           reviewer will look at it, ask questions if anything's unclear, and then merge.
         </p>
+        <p className="rounded-md border border-[var(--border)] bg-[var(--card)] p-4 text-sm">
+          <strong>For multi-screen interactive prototypes</strong>, Claude may also ask{" "}
+          <em>"Final delivery?"</em> and <em>"Which gallery category should this land in?"</em>
+        </p>
+        <ul className="ml-6 list-disc space-y-1 text-sm">
+          <li>
+            <strong>Final delivery</strong> — pick{" "}
+            <strong>Open a PR to the fork</strong>. That's the standard production path. "Local
+            working prototype" is for when you're still iterating; "Publish to design gallery"
+            only works for single static HTML pages, not interactive prototypes.
+          </li>
+          <li>
+            <strong>Gallery category</strong> — match the product surface you're prototyping.
+            Performance reviews / 1-on-1s / growth → <code>talent-management</code>. Candidate
+            experience / hiring → <code>talent-acquisition</code>. Generic design-system showcase →{" "}
+            <code>octuple</code>. Reference example with no clear product home →{" "}
+            <code>other-example-screens</code>. Not ready to publish? Pick{" "}
+            <strong>Don't publish yet</strong> and Claude builds the prototype without wiring it
+            into the gallery.
+          </li>
+        </ul>
       </Step>
 
       <Step
