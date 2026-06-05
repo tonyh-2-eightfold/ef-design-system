@@ -234,8 +234,6 @@ export default function WorkflowPage() {
       <Step
         number={2}
         title="Describe the design"
-        screenshot="step-day-03-design-prompt.png"
-        caption="A Claude Code session where the designer describes a manager 1:1 dashboard and Claude starts producing the React mock."
       >
         <p>Just talk. Be specific about persona and what they're trying to do.</p>
         <blockquote className="border-l-4 border-[var(--primary)] bg-[var(--card)] py-2 pl-4 italic text-[var(--muted-foreground)]">
@@ -261,8 +259,6 @@ export default function WorkflowPage() {
       <Step
         number={3}
         title="Iterate"
-        screenshot="step-day-04-iterate.png"
-        caption="Designer asking Claude for a change (e.g. 'show 8 weeks instead of 4') and Claude updating the design."
       >
         <p>Look at what Claude built. Tell it what to change.</p>
         <blockquote className="border-l-4 border-[var(--primary)] bg-[var(--card)] py-2 pl-4 italic text-[var(--muted-foreground)]">
