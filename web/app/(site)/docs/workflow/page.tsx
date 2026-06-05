@@ -233,29 +233,6 @@ export default function WorkflowPage() {
 
       <Step
         number={2}
-        title="Tell Claude which version you're designing for"
-        screenshot="step-day-02-version-question.png"
-        caption="Claude Code asking which design-system version (Tailwind or OG Octuple) the designer wants to use."
-      >
-        <p>At the start of every new design conversation, Claude will ask:</p>
-        <blockquote className="border-l-4 border-[var(--primary)] bg-[var(--card)] py-2 pl-4 italic text-[var(--muted-foreground)]">
-          <strong>Claude:</strong> Which design system are you working in — Tailwind (<code>tw</code>) or
-          OG Octuple (<code>og</code>)?
-        </blockquote>
-        <ul className="ml-6 list-disc space-y-1">
-          <li>
-            <strong>Tailwind (<code>tw</code>)</strong>: New product, greenfield, no existing UI to match.
-          </li>
-          <li>
-            <strong>OG Octuple (<code>og</code>)</strong>: The design lives inside an existing product
-            (Talent Management, Talent Acquisition, Career Hub, etc.).
-          </li>
-        </ul>
-        <p>If you're not sure: tell Claude what you're designing for, and Claude will recommend one.</p>
-      </Step>
-
-      <Step
-        number={3}
         title="Describe the design"
         screenshot="step-day-03-design-prompt.png"
         caption="A Claude Code session where the designer describes a manager 1:1 dashboard and Claude starts producing the React mock."
@@ -273,7 +250,7 @@ export default function WorkflowPage() {
       </Step>
 
       <Step
-        number={4}
+        number={3}
         title="Iterate"
         screenshot="step-day-04-iterate.png"
         caption="Designer asking Claude for a change (e.g. 'show 8 weeks instead of 4') and Claude updating the design."
@@ -287,7 +264,7 @@ export default function WorkflowPage() {
       </Step>
 
       <Step
-        number={5}
+        number={4}
         title="Check the copy"
         screenshot="step-day-05-check-copy.png"
         caption="Claude scanning the design's labels and button copy against the Eightfold terms list and reporting any issues."
@@ -301,7 +278,7 @@ export default function WorkflowPage() {
       </Step>
 
       <Step
-        number={6}
+        number={5}
         title="Capture a thumbnail"
         screenshot="step-day-06-screenshot-tool.png"
         caption="macOS Cmd+Shift+4 selection screenshot tool capturing the design."
@@ -313,7 +290,7 @@ export default function WorkflowPage() {
       </Step>
 
       <Step
-        number={7}
+        number={6}
         title="Publish"
         screenshot="step-day-07-publish.png"
         caption="Claude Code running the publish-design skill: asking for title, category, slug, then opening the PR."
@@ -347,7 +324,7 @@ export default function WorkflowPage() {
       </Step>
 
       <Step
-        number={8}
+        number={7}
         title="After the PR merges"
         screenshot="step-13-design-in-gallery.png"
         caption="The published design appearing on the gallery's product-area page."
