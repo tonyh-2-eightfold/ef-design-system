@@ -113,6 +113,13 @@ function DataTableHead({
 }) {
   const resolvedAlign = align ?? (numeric ? 'right' : 'left')
   const sortIcon = sorted === 'asc' ? 'arrow_upward' : sorted === 'desc' ? 'arrow_downward' : 'unfold_more'
+  const ariaSort = sortable
+    ? sorted === 'asc'
+      ? ('ascending' as const)
+      : sorted === 'desc'
+        ? ('descending' as const)
+        : ('none' as const)
+    : undefined
   return (
     <th
       data-slot="data-table-head"
