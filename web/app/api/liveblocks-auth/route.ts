@@ -1,6 +1,7 @@
 import { Liveblocks } from "@liveblocks/node";
 import { cookies } from "next/headers";
 import { auth } from "@/auth";
+import { anonName } from "@/components/comments/identity";
 
 /**
  * Issues Liveblocks access tokens for the gallery comment feature.
@@ -14,27 +15,8 @@ import { auth } from "@/auth";
  */
 
 const ANON_COOKIE = "lb-anon-id";
-
-// A small pool of friendly anonymous display names so comment threads
-// during the auth-bypass period are tellable-apart. Deterministic per
-// anon id, so the same browser keeps the same name.
-const ANON_NAMES = [
-  "Anonymous Otter",
-  "Anonymous Heron",
-  "Anonymous Lynx",
-  "Anonymous Ibex",
-  "Anonymous Tern",
-  "Anonymous Vole",
-  "Anonymous Crane",
-  "Anonymous Marten",
-];
-
-function anonName(id: string): string {
-  let hash = 0;
-  for (let i = 0; i < id.length; i++) hash = (hash * 31 + id.charCodeAt(i)) | 0;
-  const idx = Math.abs(hash) % ANON_NAMES.length;
-  return ANON_NAMES[idx]!;
-}
+// Anonymous display names come from the shared identity helper so the
+// token (server) and resolveUsers (client) always agree.
 
 export async function POST() {
   const secret = process.env.LIVEBLOCKS_SECRET_KEY;

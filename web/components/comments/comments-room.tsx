@@ -1,6 +1,7 @@
 "use client";
 
 import { LiveblocksProvider, RoomProvider } from "@liveblocks/react/suspense";
+import { displayNameFor } from "./identity";
 
 /**
  * Wraps a gallery design page in a Liveblocks room so comment threads
@@ -32,7 +33,16 @@ export function CommentsRoom({
 }) {
   if (!COMMENTS_ENABLED) return <>{children}</>;
   return (
-    <LiveblocksProvider authEndpoint="/api/liveblocks-auth">
+    <LiveblocksProvider
+      authEndpoint="/api/liveblocks-auth"
+      /* The Comments UI resolves author display names by userId via this
+         callback (token userInfo is not used for comment authors). Our
+         ids are self-describing — anon-<uuid> or an email — so no server
+         lookup is needed. */
+      resolveUsers={async ({ userIds }) =>
+        userIds.map((id) => ({ name: displayNameFor(id) }))
+      }
+    >
       <RoomProvider id={roomId} initialPresence={{}}>
         {children}
       </RoomProvider>
