@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import { Button } from "@tonyh-2-eightfold/ef-design-system";
+import { commentsEnabled } from "@/components/comments/comments-room";
+import { CommentLayer, ThreadCount } from "@/components/comments/comment-layer";
 
 /* Iframe + viewport-size switcher + Take screenshot + Full screen.
 
@@ -40,6 +42,7 @@ export function PrototypeFullscreen({
   const [capturing, setCapturing] = useState(false);
   const [viewport, setViewport] = useState<Viewport>("desktop");
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [commentsOn, setCommentsOn] = useState(false);
 
   const active = VIEWPORTS.find((v) => v.id === viewport) ?? VIEWPORTS[0];
 
@@ -152,6 +155,31 @@ export function PrototypeFullscreen({
             })}
           </div>
 
+          {commentsEnabled() && (
+            <ThreadCount
+              render={(count) => (
+                <Button
+                  variant={commentsOn ? "primary" : "secondary"}
+                  size="sm"
+                  onClick={() => setCommentsOn((on) => !on)}
+                  aria-pressed={commentsOn}
+                  {...(count > 0 ? { badge: count } : {})}
+                  leadingIcon={
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ fontSize: 14 }}
+                      aria-hidden
+                    >
+                      comment
+                    </span>
+                  }
+                >
+                  Comments
+                </Button>
+              )}
+            />
+          )}
+
           <Button
             variant="secondary"
             size="sm"
@@ -201,7 +229,7 @@ export function PrototypeFullscreen({
         <div
           className={
             (active.width == null ? "w-full" : "mx-auto") +
-            " h-full"
+            " h-full relative"
           }
           style={active.width != null ? { width: active.width, maxWidth: "100%" } : undefined}
         >
@@ -220,6 +248,13 @@ export function PrototypeFullscreen({
             sandbox="allow-same-origin allow-scripts allow-forms"
             allowFullScreen
           />
+          {/* Comment overlay — sits inside the same positioned box as the
+              iframe, so pins track the frame exactly (including the
+              horizontal scroll at desktop width). While ON, the overlay
+              captures clicks and the prototype underneath is inert. */}
+          {commentsEnabled() && commentsOn && (
+            <CommentLayer iframeRef={iframeRef} />
+          )}
         </div>
       </div>
     </section>
