@@ -35,6 +35,11 @@ export function CommentsRoom({
   return (
     <LiveblocksProvider
       authEndpoint="/api/liveblocks-auth"
+      /* The free-plan "Powered by Liveblocks" badge is injected by their
+         server (showBrand flag) and is removable only on a paid plan.
+         Bottom-left keeps it clear of the flow canvas's zoom controls
+         and the comment thread popovers, which live bottom-right. */
+      badgeLocation="bottom-left"
       /* The Comments UI resolves author display names by userId via this
          callback (token userInfo is not used for comment authors). Our
          ids are self-describing — anon-<uuid> or an email — so no server

@@ -17,9 +17,17 @@ import {
   Badge,
 } from "@tonyh-2-eightfold/ef-design-system";
 
+export interface LatestDesign {
+  title: string;
+  href: string;
+  thumbnailUrl: string;
+  categoryName: string;
+}
+
 interface Props {
   totalDesigns: number;
   categoryCount: number;
+  latestDesigns: LatestDesign[];
 }
 
 function NextLink({ to, children, className }: { to: string; children: React.ReactNode; className?: string }) {
@@ -30,7 +38,7 @@ function NextLink({ to, children, className }: { to: string; children: React.Rea
   );
 }
 
-export function HomePageView({ totalDesigns, categoryCount }: Props) {
+export function HomePageView({ totalDesigns, categoryCount, latestDesigns }: Props) {
   return (
     <div>
       {/* HERO BACKGROUND --------------------------------------------------
@@ -141,7 +149,7 @@ export function HomePageView({ totalDesigns, categoryCount }: Props) {
 
             <InsightCard
               title="Design with Claude"
-              description="Conversational design: ask in plain English, get working React + Octuple."
+              description="Describe the screen in plain English; Claude builds it as a working prototype."
               icon="smart_toy"
               bgColor="#FFF7ED"
               iconBgColor="#FED7AA"
@@ -153,11 +161,57 @@ export function HomePageView({ totalDesigns, categoryCount }: Props) {
               LinkComponent={NextLink}
             >
               <p className="text-sm leading-relaxed">
-                Publish to the gallery via a pull request. No terminal required.
+                Every prototype ships with a flow map, comment threads for
+                review, and WCAG AA checks — then lands in the gallery via
+                a pull request. No terminal required.
               </p>
             </InsightCard>
           </div>
         </section>
+
+        {/* Latest designs — fed by the same filesystem index as the
+            stats, so every merged design PR updates this strip with no
+            manual upkeep. Hidden entirely while the gallery is empty. */}
+        {latestDesigns.length > 0 && (
+          <section className="mt-20">
+            <div className="mb-8 flex items-end justify-between">
+              <h2 className="text-3xl font-semibold tracking-tight">Latest designs</h2>
+              <Link
+                href="/gallery"
+                className="inline-flex items-center gap-1 text-sm font-medium text-[var(--primary)] hover:underline"
+              >
+                View all designs
+                <ArrowRight aria-hidden className="h-4 w-4" />
+              </Link>
+            </div>
+            <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {latestDesigns.map((d) => (
+                <li key={d.href}>
+                  <Link
+                    href={d.href}
+                    className="group block overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] transition hover:border-[var(--primary)] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
+                  >
+                    {/* Decorative: the title below names the design. */}
+                    <img
+                      src={d.thumbnailUrl}
+                      alt=""
+                      loading="lazy"
+                      className="block aspect-[16/10] w-full border-b border-[var(--border)] object-cover object-top"
+                    />
+                    <div className="p-4">
+                      <div className="truncate font-medium group-hover:text-[var(--primary)]">
+                        {d.title}
+                      </div>
+                      <div className="mt-0.5 text-sm text-[var(--muted-foreground)]">
+                        {d.categoryName}
+                      </div>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <section className="mt-20 rounded-2xl bg-[var(--card)] p-10 border border-[var(--border)]">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
