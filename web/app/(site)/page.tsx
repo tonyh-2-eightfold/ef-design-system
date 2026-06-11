@@ -1,6 +1,6 @@
-import { CATEGORIES } from "@/lib/categories";
+import { CATEGORIES, getCategory } from "@/lib/categories";
 import { getAllDesigns } from "@/lib/designs";
-import { HomePageView } from "@/components/site/home-page-view";
+import { HomePageView, type LatestDesign } from "@/components/site/home-page-view";
 
 export const revalidate = 60;
 
@@ -9,5 +9,19 @@ export const revalidate = 60;
 // that require browser-only React features like useState/useLayoutEffect).
 export default function HomePage() {
   const all = getAllDesigns();
-  return <HomePageView totalDesigns={all.length} categoryCount={CATEGORIES.length} />;
+  // getAllDesigns sorts newest-first by createdAt; the strip self-updates
+  // with every merged design PR.
+  const latest: LatestDesign[] = all.slice(0, 4).map((d) => ({
+    title: d.title,
+    href: `/gallery/${d.category}/${d.slug}`,
+    thumbnailUrl: d.thumbnailUrl,
+    categoryName: getCategory(d.category)?.name ?? d.category,
+  }));
+  return (
+    <HomePageView
+      totalDesigns={all.length}
+      categoryCount={CATEGORIES.length}
+      latestDesigns={latest}
+    />
+  );
 }
