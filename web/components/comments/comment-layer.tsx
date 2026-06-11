@@ -38,12 +38,16 @@ function PinBadge({
   return (
     <span
       className={
+        /* Pin fill is InVision pink (#FF3366) — picked specifically
+           because it never blends into product UI the way blues do.
+           Active/open pins invert (white fill, pink ring, dark number)
+           so the selected pin pops AND its number stays high-contrast. */
         "flex h-7 w-7 items-center justify-center rounded-full rounded-bl-none border-2 text-xs font-semibold shadow-md transition-transform " +
         (active
-          ? "scale-110 border-[var(--primary)] bg-[var(--primary)] text-white"
+          ? "scale-110 border-[#FF3366] bg-white text-[#1f2937]"
           : resolved
             ? "border-white bg-[#94a3b8] text-white opacity-70 hover:opacity-100 hover:scale-110"
-            : "border-white bg-[#054D7B] text-white hover:scale-110")
+            : "border-white bg-[#FF3366] text-white hover:scale-110")
       }
     >
       {/* Resolved threads show a check instead of their number — done is
