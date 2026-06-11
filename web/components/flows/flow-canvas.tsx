@@ -42,6 +42,10 @@ export function FlowCanvas({
   const [transform, setTransform] = useState({ x: FIT_PADDING, y: FIT_PADDING, z: 0.6 });
   const drag = useRef<{ startX: number; startY: number; baseX: number; baseY: number } | null>(null);
   const [dragging, setDragging] = useState(false);
+  /* Ref mirror of `dragging` for the click guard in openScreen — the
+     click after a drag-release fires synchronously, before React has
+     re-rendered, so reading the state there is a race. */
+  const draggingRef = useRef(false);
 
   /* Fit the whole flow into the viewport. */
   const fit = useCallback(() => {
@@ -103,7 +107,7 @@ export function FlowCanvas({
   }, [zoomAt]);
 
   function onPointerDown(e: React.PointerEvent) {
-    // Left button / touch only; let screen-card clicks through.
+    // Left button / touch only.
     if (e.button !== 0) return;
     drag.current = {
       startX: e.clientX,
@@ -111,7 +115,13 @@ export function FlowCanvas({
       baseX: transform.x,
       baseY: transform.y,
     };
-    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    /* Do NOT capture the pointer here. Capturing on press retargets
+       every subsequent pointer event — and the click derived from it —
+       to this element, which silently swallows real mouse clicks on
+       the screen-card buttons (programmatic .click() still worked,
+       which is how this slipped past verification). Capture starts
+       only once movement crosses the drag threshold in onPointerMove;
+       a clean press-release on a card stays a native click. */
   }
 
   function onPointerMove(e: React.PointerEvent) {
@@ -119,7 +129,18 @@ export function FlowCanvas({
     if (!d) return;
     const dx = e.clientX - d.startX;
     const dy = e.clientY - d.startY;
-    if (!dragging && Math.hypot(dx, dy) > 4) setDragging(true);
+    if (!draggingRef.current && Math.hypot(dx, dy) > 4) {
+      draggingRef.current = true;
+      setDragging(true);
+      // Now it's a pan — capture so the drag survives leaving the canvas.
+      // Guarded: capture throws if the pointer was already released
+      // (fast flick) and that must not abort the pan update below.
+      try {
+        (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+      } catch {
+        /* pointer gone — pan continues uncaptured */
+      }
+    }
     /* Compute the next position eagerly — the updater must not read
        drag.current, which onPointerUp nulls before React (possibly)
        runs the queued updater during the next render. */
@@ -131,11 +152,14 @@ export function FlowCanvas({
   function onPointerUp() {
     drag.current = null;
     // Delay clearing so the click handler on cards can check it.
-    setTimeout(() => setDragging(false), 0);
+    setTimeout(() => {
+      draggingRef.current = false;
+      setDragging(false);
+    }, 0);
   }
 
   function openScreen(href: string) {
-    if (dragging) return; // it was a pan, not a click
+    if (draggingRef.current) return; // it was a pan, not a click
     onOpenScreen(href);
   }
 
@@ -187,8 +211,14 @@ export function FlowCanvas({
   /* Pan a focused screen card into view. The canvas pans by CSS
      transform, not scroll, so focus alone never reveals an off-screen
      card — without this a keyboard user can focus a card they can't
-     see (2.4.11 territory). */
+     see (2.4.11 territory).
+
+     Keyboard focus only (:focus-visible): a mouse press also focuses
+     the card, and panning at that moment moves the card out from
+     under the cursor before release — the mousedown/mouseup targets
+     diverge and the browser never fires the click. */
   function ensureCardVisible(el: HTMLElement) {
+    if (!el.matches(":focus-visible")) return;
     const vp = viewportRef.current;
     if (!vp) return;
     const pad = 24;
