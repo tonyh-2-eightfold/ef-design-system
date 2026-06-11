@@ -14,6 +14,14 @@ import type { Flow } from "@/lib/flows";
  * - Click a screen card → onOpenScreen(href): the parent flips back to
  *   Prototype view with the iframe at that screen.
  *
+ * Keyboard (WCAG 2.1.1 + 2.5.7 — drag and scroll-zoom both need
+ * non-pointer alternatives):
+ * - Canvas is focusable; arrow keys pan (Shift = larger steps).
+ * - + / − zoom at the viewport center, 0 fits the whole flow.
+ * - Tab reaches every screen card; focusing a card pans it into view
+ *   (the canvas moves by transform, not scroll, so the browser can't
+ *   do this for us), Enter/Space opens it.
+ *
  * Implementation: one inner div carrying translate+scale; no canvas/2D
  * context, no graph library — we don't need edges or drag-rearrange.
  */
@@ -34,6 +42,10 @@ export function FlowCanvas({
   const [transform, setTransform] = useState({ x: FIT_PADDING, y: FIT_PADDING, z: 0.6 });
   const drag = useRef<{ startX: number; startY: number; baseX: number; baseY: number } | null>(null);
   const [dragging, setDragging] = useState(false);
+  /* Ref mirror of `dragging` for the click guard in openScreen — the
+     click after a drag-release fires synchronously, before React has
+     re-rendered, so reading the state there is a race. */
+  const draggingRef = useRef(false);
 
   /* Fit the whole flow into the viewport. */
   const fit = useCallback(() => {
@@ -95,7 +107,7 @@ export function FlowCanvas({
   }, [zoomAt]);
 
   function onPointerDown(e: React.PointerEvent) {
-    // Left button / touch only; let screen-card clicks through.
+    // Left button / touch only.
     if (e.button !== 0) return;
     drag.current = {
       startX: e.clientX,
@@ -103,7 +115,13 @@ export function FlowCanvas({
       baseX: transform.x,
       baseY: transform.y,
     };
-    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    /* Do NOT capture the pointer here. Capturing on press retargets
+       every subsequent pointer event — and the click derived from it —
+       to this element, which silently swallows real mouse clicks on
+       the screen-card buttons (programmatic .click() still worked,
+       which is how this slipped past verification). Capture starts
+       only once movement crosses the drag threshold in onPointerMove;
+       a clean press-release on a card stays a native click. */
   }
 
   function onPointerMove(e: React.PointerEvent) {
@@ -111,7 +129,18 @@ export function FlowCanvas({
     if (!d) return;
     const dx = e.clientX - d.startX;
     const dy = e.clientY - d.startY;
-    if (!dragging && Math.hypot(dx, dy) > 4) setDragging(true);
+    if (!draggingRef.current && Math.hypot(dx, dy) > 4) {
+      draggingRef.current = true;
+      setDragging(true);
+      // Now it's a pan — capture so the drag survives leaving the canvas.
+      // Guarded: capture throws if the pointer was already released
+      // (fast flick) and that must not abort the pan update below.
+      try {
+        (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+      } catch {
+        /* pointer gone — pan continues uncaptured */
+      }
+    }
     /* Compute the next position eagerly — the updater must not read
        drag.current, which onPointerUp nulls before React (possibly)
        runs the queued updater during the next render. */
@@ -123,24 +152,99 @@ export function FlowCanvas({
   function onPointerUp() {
     drag.current = null;
     // Delay clearing so the click handler on cards can check it.
-    setTimeout(() => setDragging(false), 0);
+    setTimeout(() => {
+      draggingRef.current = false;
+      setDragging(false);
+    }, 0);
   }
 
   function openScreen(href: string) {
-    if (dragging) return; // it was a pan, not a click
+    if (draggingRef.current) return; // it was a pan, not a click
     onOpenScreen(href);
+  }
+
+  /* Keyboard pan/zoom — the non-pointer alternative to drag and
+     scroll-zoom. Handled on the viewport so it also works while a
+     screen card inside has focus. */
+  function onKeyDown(e: React.KeyboardEvent) {
+    const vp = viewportRef.current;
+    if (!vp) return;
+    const step = e.shiftKey ? 240 : 60;
+    const center = () => {
+      const r = vp.getBoundingClientRect();
+      return [r.left + r.width / 2, r.top + r.height / 2] as const;
+    };
+    switch (e.key) {
+      case "ArrowLeft":
+        setTransform((t) => ({ ...t, x: t.x + step }));
+        break;
+      case "ArrowRight":
+        setTransform((t) => ({ ...t, x: t.x - step }));
+        break;
+      case "ArrowUp":
+        setTransform((t) => ({ ...t, y: t.y + step }));
+        break;
+      case "ArrowDown":
+        setTransform((t) => ({ ...t, y: t.y - step }));
+        break;
+      case "+":
+      case "=": {
+        const [cx, cy] = center();
+        zoomAt(cx, cy, 1.25);
+        break;
+      }
+      case "-":
+      case "_": {
+        const [cx, cy] = center();
+        zoomAt(cx, cy, 1 / 1.25);
+        break;
+      }
+      case "0":
+        fit();
+        break;
+      default:
+        return; // unhandled — let it through
+    }
+    e.preventDefault();
+  }
+
+  /* Pan a focused screen card into view. The canvas pans by CSS
+     transform, not scroll, so focus alone never reveals an off-screen
+     card — without this a keyboard user can focus a card they can't
+     see (2.4.11 territory).
+
+     Keyboard focus only (:focus-visible): a mouse press also focuses
+     the card, and panning at that moment moves the card out from
+     under the cursor before release — the mousedown/mouseup targets
+     diverge and the browser never fires the click. */
+  function ensureCardVisible(el: HTMLElement) {
+    if (!el.matches(":focus-visible")) return;
+    const vp = viewportRef.current;
+    if (!vp) return;
+    const pad = 24;
+    const r = el.getBoundingClientRect();
+    const v = vp.getBoundingClientRect();
+    let dx = 0;
+    let dy = 0;
+    if (r.left < v.left + pad) dx = v.left + pad - r.left;
+    else if (r.right > v.right - pad) dx = v.right - pad - r.right;
+    if (r.top < v.top + pad) dy = v.top + pad - r.top;
+    else if (r.bottom > v.bottom - pad) dy = v.bottom - pad - r.bottom;
+    if (dx || dy) setTransform((t) => ({ ...t, x: t.x + dx, y: t.y + dy }));
   }
 
   return (
     <div
       ref={viewportRef}
-      className="relative h-full w-full overflow-hidden bg-[#1e2530] select-none"
+      className="relative h-full w-full overflow-hidden bg-[#1e2530] select-none focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#B0F3FE]"
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
+      onKeyDown={onKeyDown}
+      tabIndex={0}
       role="application"
-      aria-label="Flow canvas — drag to pan, scroll to zoom, click a screen to open it in the prototype"
+      aria-label="Flow canvas. Drag or use arrow keys to pan, scroll or plus and minus to zoom, 0 to fit. Tab to a screen and press Enter to open it in the prototype."
       style={{ cursor: dragging ? "grabbing" : "grab", touchAction: "none" }}
     >
       <div
@@ -178,6 +282,7 @@ export function FlowCanvas({
                         <button
                           type="button"
                           onClick={() => openScreen(screen.href)}
+                          onFocus={(e) => ensureCardVisible(e.currentTarget)}
                           aria-label={`Open "${screen.caption}" in the prototype`}
                           className="block w-full cursor-pointer overflow-hidden rounded-md border border-white/15 bg-white shadow-lg transition hover:border-[#B0F3FE] hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B0F3FE]"
                         >
