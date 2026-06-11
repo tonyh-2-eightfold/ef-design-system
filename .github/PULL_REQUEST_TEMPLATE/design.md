@@ -9,7 +9,7 @@ For code changes (components, build, gallery infrastructure), use the default PR
 
 ## Metadata
 
-- **Category:** <!-- one of: talent-management, talent-acquisition, octuple, talent-forge, workforce-exchange, personal-career-site, resource-management, talent-flex, job-intelligence-engine, admin-console, analytics, other-example-screens -->
+- **Category:** <!-- one of: talent-management, talent-acquisition, talent-forge, workforce-exchange, personal-career-site, resource-management, talent-flex, job-intelligence-engine, admin-console, analytics, other-example-screens -->
 - **Version:** <!-- tailwind | og -->
 - **Slug:** <!-- gallery URL slug, lowercase kebab-case -->
 - **Built with skill:** <!-- design-tw-ux-designer | design-og-ux-designer -->

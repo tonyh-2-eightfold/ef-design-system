@@ -47,7 +47,6 @@ Before making any filesystem or git changes, ask the user for the following — 
 ```
 talent-management
 talent-acquisition
-octuple
 talent-forge
 workforce-exchange
 personal-career-site
