@@ -40,6 +40,8 @@ Before making any filesystem or git changes, ask the user for the following — 
 | `source_path` | path | The path on disk to the design's HTML or React route output. The skill copies this in. |
 | `thumbnail_path` | path | The path on disk to a thumbnail image (PNG, ≥ 800×500). |
 
+**Flows (MANDATORY for multi-screen prototypes):** before opening the PR, author `flow.json` + per-screen `flow/*.png` thumbnails in the design folder so the gallery's Prototype | Flows toggle shows the real screen map. Schema, capture steps, and self-checks: [`../_shared/prototype-scaffolding.md`](../_shared/prototype-scaffolding.md) § "Flows view". Single-screen designs skip this — the gallery synthesizes a one-node flow automatically.
+
 ### Allowed category slugs
 
 ```

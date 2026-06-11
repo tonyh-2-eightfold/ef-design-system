@@ -5,6 +5,8 @@ import { toPng } from "html-to-image";
 import { Button } from "@tonyh-2-eightfold/ef-design-system";
 import { commentsEnabled } from "@/components/comments/comments-room";
 import { CommentLayer, ThreadCount } from "@/components/comments/comment-layer";
+import { FlowCanvas } from "@/components/flows/flow-canvas";
+import type { Flow } from "@/lib/flows";
 
 /* Iframe + viewport-size switcher + Take screenshot + Full screen.
 
@@ -32,10 +34,12 @@ export function PrototypeFullscreen({
   previewUrl,
   title,
   slug,
+  flow,
 }: {
   previewUrl: string;
   title: string;
   slug: string;
+  flow: Flow;
 }) {
   const sectionRef = useRef<HTMLElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -43,6 +47,15 @@ export function PrototypeFullscreen({
   const [viewport, setViewport] = useState<Viewport>("desktop");
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [commentsOn, setCommentsOn] = useState(false);
+  const [view, setView] = useState<"prototype" | "flows">("prototype");
+  /* The iframe's current screen. Starts at the design's entry point;
+     clicking a screen on the flow canvas retargets it. */
+  const [iframeSrc, setIframeSrc] = useState(previewUrl);
+
+  function openScreenFromFlow(href: string) {
+    setIframeSrc(href);
+    setView("prototype");
+  }
 
   const active = VIEWPORTS.find((v) => v.id === viewport) ?? VIEWPORTS[0];
 
@@ -115,11 +128,50 @@ export function PrototypeFullscreen({
       }
     >
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3 [section:fullscreen_&]:mb-0">
-        <h2 className="text-sm font-medium text-[var(--muted-foreground)]">
-          Prototype
-        </h2>
+        {/* Prototype | Flows toggle — same visual language as the
+            viewport switcher on the right. */}
+        <div
+          role="radiogroup"
+          aria-label="View"
+          className="inline-flex items-center rounded-md border border-[var(--border)] bg-[var(--card)] p-0.5"
+        >
+          {(
+            [
+              { id: "prototype", label: "Prototype", icon: "play_circle" },
+              { id: "flows", label: "Flows", icon: "account_tree" },
+            ] as const
+          ).map((v) => {
+            const isActive = view === v.id;
+            return (
+              <button
+                key={v.id}
+                type="button"
+                role="radio"
+                aria-checked={isActive}
+                onClick={() => setView(v.id)}
+                className={
+                  "inline-flex h-7 items-center justify-center gap-1.5 rounded px-3 text-xs font-medium transition-colors " +
+                  (isActive
+                    ? "bg-[#B0F3FE] text-[#054D7B]"
+                    : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]")
+                }
+              >
+                <span
+                  className="material-symbols-outlined"
+                  style={{ fontSize: 16 }}
+                  aria-hidden
+                >
+                  {v.icon}
+                </span>
+                {v.label}
+              </button>
+            );
+          })}
+        </div>
         <div className="flex flex-wrap items-center gap-2">
-          {/* Viewport switcher */}
+          {/* Viewport switcher — prototype view only; sizes don't apply
+              to the flow canvas. */}
+          {view === "prototype" && (
           <div
             role="radiogroup"
             aria-label="Viewport size"
@@ -154,8 +206,9 @@ export function PrototypeFullscreen({
               );
             })}
           </div>
+          )}
 
-          {commentsEnabled() && (
+          {view === "prototype" && commentsEnabled() && (
             <ThreadCount
               render={(count) => (
                 <Button
@@ -180,6 +233,7 @@ export function PrototypeFullscreen({
             />
           )}
 
+          {view === "prototype" && (
           <Button
             variant="secondary"
             size="sm"
@@ -197,6 +251,7 @@ export function PrototypeFullscreen({
           >
             {capturing ? "Capturing…" : "Take screenshot"}
           </Button>
+          )}
           <Button
             variant="secondary"
             size="sm"
@@ -216,9 +271,16 @@ export function PrototypeFullscreen({
         </div>
       </div>
 
-      {/* Iframe wrapper. Default state: fixed 900px iframe (with min-w
+      {view === "flows" ? (
+        /* Flows view — the zoomable canvas takes the iframe's box.
+           Same height + fullscreen behavior as the prototype frame. */
+        <div className="h-[900px] overflow-hidden rounded-lg border border-[var(--border)] [section:fullscreen_&]:h-auto [section:fullscreen_&]:flex-1 [section:fullscreen_&]:min-h-0">
+          <FlowCanvas flow={flow} onOpenScreen={openScreenFromFlow} />
+        </div>
+      ) : (
+      /* Iframe wrapper. Default state: fixed 900px iframe (with min-w
           for desktop layout). Fullscreen state: wrapper grows to fill
-          remaining space; iframe height keyed off CSS variable below. */}
+          remaining space; iframe height keyed off CSS variable below. */
       <div
         className={
           "rounded-lg border border-[var(--border)] bg-[var(--muted)]/30 " +
@@ -235,8 +297,8 @@ export function PrototypeFullscreen({
         >
           <iframe
             ref={iframeRef}
-            key={viewport}
-            src={previewUrl}
+            key={`${viewport}-${iframeSrc}`}
+            src={iframeSrc}
             title={`Prototype: ${title}`}
             /* Default 900px tall; in fullscreen the section gives this
                iframe the rest of the viewport via the
@@ -257,6 +319,7 @@ export function PrototypeFullscreen({
           )}
         </div>
       </div>
+      )}
     </section>
   );
 }
