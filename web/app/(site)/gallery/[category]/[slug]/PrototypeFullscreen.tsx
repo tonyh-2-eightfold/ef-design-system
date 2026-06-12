@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
+import { useTheme } from "next-themes";
 import { Button } from "@tonyh-2-eightfold/ef-design-system";
 import { commentsEnabled } from "@/components/comments/comments-room";
 import { CommentLayer, ThreadCount } from "@/components/comments/comment-layer";
@@ -54,6 +55,38 @@ export function PrototypeFullscreen({
   const [commentsOn, setCommentsOn] = useState(false);
   const [view, setView] = useState<"prototype" | "flows">("prototype");
   const [linkCopied, setLinkCopied] = useState(false);
+  const { resolvedTheme } = useTheme();
+
+  /** Push the gallery's resolved theme (light | dark) into the iframe so
+   *  prototypes that opt in can flip their own surfaces to match. Posts
+   *  on iframe load, when the user toggles the gallery theme, and on
+   *  request from the iframe (handshake for SPAs that mount after the
+   *  load event fires). Prototypes opt in by listening for
+   *  `{ type: 'gallery-theme', theme }` messages — anything that
+   *  ignores them just keeps rendering its default styling. */
+  useEffect(() => {
+    const post = () => {
+      const win = iframeRef.current?.contentWindow;
+      if (!win || !resolvedTheme) return;
+      win.postMessage({ type: "gallery-theme", theme: resolvedTheme }, "*");
+    };
+
+    const onIframeLoad = () => post();
+    const onMessage = (e: MessageEvent) => {
+      if (e?.data?.type === "gallery-theme-request") post();
+    };
+
+    iframeRef.current?.addEventListener("load", onIframeLoad);
+    window.addEventListener("message", onMessage);
+    // Initial post (covers the case where the iframe finished loading
+    // before this effect attached).
+    post();
+
+    return () => {
+      iframeRef.current?.removeEventListener("load", onIframeLoad);
+      window.removeEventListener("message", onMessage);
+    };
+  }, [resolvedTheme, iframeSrc]);
   /* The iframe's current screen. Starts at the design's entry point;
      clicking a screen on the flow canvas retargets it. */
   const [iframeSrc, setIframeSrc] = useState(previewUrl);
