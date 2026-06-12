@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Button, Pill } from "@tonyh-2-eightfold/ef-design-system";
+import { Button } from "@tonyh-2-eightfold/ef-design-system";
 import type { ActivityEntry } from "@/lib/github-activity";
 
 export interface LatestDesign {
@@ -41,8 +41,16 @@ export function HomePageView({
           turns the top edge into a frosted glass band. Kept short — the
           page is a dashboard now, and the feeds below are the point. */}
       <section className="relative -mt-16 overflow-hidden">
+        {/* Two brand-art hero variants. octuple-hero.svg is the light
+            "comic rocks" geometric illustration (warm pink → purple
+            angular shapes). octuple-hero-dark.svg is the official dark
+            variant from the design team — same gradient palette, dark
+            #1A212E base. Each variant is paired with a Tailwind dark:
+            visibility class so only one shows at a time once the theme
+            switcher is in place; both are committed so future hero
+            tweaks edit the SVG directly. */}
         <div
-          className="absolute inset-0 -z-10"
+          className="absolute inset-0 -z-10 dark:hidden"
           aria-hidden
           style={{
             backgroundImage: "url('/octuple-hero.svg')",
@@ -52,20 +60,32 @@ export function HomePageView({
           }}
         />
         <div
-          className="absolute inset-x-0 bottom-0 h-32 -z-10 bg-gradient-to-b from-transparent to-[var(--background)]"
+          className="absolute inset-0 -z-10 hidden dark:block"
           aria-hidden
+          style={{
+            backgroundImage: "url('/octuple-hero-dark.svg')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center top",
+            backgroundSize: "cover",
+          }}
         />
-
         <div className="px-6">
           <div className="mx-auto max-w-6xl pt-28 pb-14">
             <div className="max-w-3xl">
-              <Pill icon="auto_awesome" variant="blueGreen" size="medium">
+              <div className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--foreground)]">
+                <span
+                  className="material-symbols-outlined"
+                  style={{ fontSize: 16 }}
+                  aria-hidden
+                >
+                  auto_awesome
+                </span>
                 For everyone designing for Eightfold AI
-              </Pill>
-              <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">
+              </div>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">
                 Design at Eightfold&nbsp;AI
               </h1>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted-foreground)]">
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--foreground)]">
                 The design system, the approved designs, and what the team shipped
                 lately &mdash; {totalDesigns} {totalDesigns === 1 ? "design" : "designs"} across{" "}
                 {categoryCount} product areas and counting.
@@ -77,12 +97,21 @@ export function HomePageView({
                     <ArrowRight aria-hidden className="ml-1 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/gallery">Browse the gallery</Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/docs/workflow">How to use</Link>
-                </Button>
+                {/* Glassmorphic secondary CTAs — translucent + backdrop
+                    blur so they stay legible against any hero artwork.
+                    Plain anchors so we don't fight Octuple's btn--outline. */}
+                <Link
+                  href="/gallery"
+                  className="inline-flex h-11 items-center rounded-full border border-white/50 bg-white/40 px-5 text-base font-semibold text-[var(--foreground)] backdrop-blur-md transition hover:bg-white/60 dark:border-white/20 dark:bg-white/10 dark:hover:bg-white/15"
+                >
+                  Browse the gallery
+                </Link>
+                <Link
+                  href="/docs/workflow"
+                  className="inline-flex h-11 items-center rounded-full border border-white/50 bg-white/40 px-5 text-base font-semibold text-[var(--foreground)] backdrop-blur-md transition hover:bg-white/60 dark:border-white/20 dark:bg-white/10 dark:hover:bg-white/15"
+                >
+                  How to use
+                </Link>
               </div>
             </div>
           </div>
