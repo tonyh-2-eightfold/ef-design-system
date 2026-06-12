@@ -1,0 +1,54 @@
+{
+  "lanes": [
+    {
+      "title": "Recruiter flow",
+      "sections": [
+        {
+          "title": "Start",
+          "screens": [
+            {
+              "id": "dashboard",
+              "caption": "Dashboard — Hi Du",
+              "thumbnail": "flow/dashboard.png",
+              "href": "index.html#dashboard"
+            }
+          ]
+        },
+        {
+          "title": "Create a new posting",
+          "screens": [
+            {
+              "id": "create-position",
+              "caption": "Create-position wizard",
+              "thumbnail": "flow/create-position.png",
+              "href": "index.html#create-position"
+            },
+            {
+              "id": "create-overview",
+              "caption": "Posting overview (EN/DE editor)",
+              "thumbnail": "flow/create-overview.png",
+              "href": "index.html#create-overview"
+            }
+          ]
+        },
+        {
+          "title": "Manage postings",
+          "screens": [
+            {
+              "id": "postings",
+              "caption": "Postings — all jobs",
+              "thumbnail": "flow/postings.png",
+              "href": "index.html#postings"
+            },
+            {
+              "id": "candidates",
+              "caption": "Candidate pipeline",
+              "thumbnail": "flow/candidates.png",
+              "href": "index.html#candidates"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
