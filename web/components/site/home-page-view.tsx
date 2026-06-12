@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Button, Pill } from "@tonyh-2-eightfold/ef-design-system";
+import { Button } from "@tonyh-2-eightfold/ef-design-system";
 import type { ActivityEntry } from "@/lib/github-activity";
 
 export interface LatestDesign {
@@ -69,21 +69,28 @@ export function HomePageView({
             backgroundSize: "cover",
           }}
         />
-        <div
-          className="absolute inset-x-0 bottom-0 h-32 -z-10 bg-gradient-to-b from-transparent to-[var(--background)]"
-          aria-hidden
-        />
-
         <div className="px-6">
           <div className="mx-auto max-w-6xl pt-28 pb-14">
-            <div className="max-w-3xl">
-              <Pill icon="auto_awesome" variant="blueGreen" size="medium">
+            {/* Glass card behind the hero copy. CSS can't auto-pick a
+                contrast colour from a multi-colour illustration, so we
+                give the text a frosted backdrop that reads consistently
+                regardless of what the hero is showing — same pattern as
+                the top-nav glass. */}
+            <div className="max-w-3xl rounded-2xl border border-white/30 bg-white/40 p-8 backdrop-blur-md dark:border-white/10 dark:bg-black/30">
+              <div className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--muted-foreground)]">
+                <span
+                  className="material-symbols-outlined"
+                  style={{ fontSize: 16 }}
+                  aria-hidden
+                >
+                  auto_awesome
+                </span>
                 For everyone designing for Eightfold AI
-              </Pill>
-              <h1 className="mt-5 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">
+              </div>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">
                 Design at Eightfold&nbsp;AI
               </h1>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted-foreground)]">
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--foreground)]/80">
                 The design system, the approved designs, and what the team shipped
                 lately &mdash; {totalDesigns} {totalDesigns === 1 ? "design" : "designs"} across{" "}
                 {categoryCount} product areas and counting.
@@ -95,12 +102,22 @@ export function HomePageView({
                     <ArrowRight aria-hidden className="ml-1 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/gallery">Browse the gallery</Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/docs/workflow">How to use</Link>
-                </Button>
+                {/* Glassmorphic secondary CTAs that read against any hero
+                    illustration. Wrap each Button so we can layer the
+                    blur + translucent fill without fighting Octuple's
+                    .btn--outline classes. */}
+                <Link
+                  href="/gallery"
+                  className="inline-flex h-11 items-center rounded-full border border-white/50 bg-white/40 px-5 text-base font-semibold text-[var(--foreground)] backdrop-blur-md transition hover:bg-white/60 dark:border-white/20 dark:bg-white/10 dark:hover:bg-white/15"
+                >
+                  Browse the gallery
+                </Link>
+                <Link
+                  href="/docs/workflow"
+                  className="inline-flex h-11 items-center rounded-full border border-white/50 bg-white/40 px-5 text-base font-semibold text-[var(--foreground)] backdrop-blur-md transition hover:bg-white/60 dark:border-white/20 dark:bg-white/10 dark:hover:bg-white/15"
+                >
+                  How to use
+                </Link>
               </div>
             </div>
           </div>

@@ -55,12 +55,10 @@ export function TopNav({ session, authEnabled, signOutAction }: Props) {
           <span className="font-semibold whitespace-nowrap">Design at Eightfold AI</span>
         </Link>
 
-        {/* Design system's Tabs primitive (line variant). Wrapped in a
-            bottom-aligned flex container with pb-[5px] so the underline
-            indicator — which TabsTrigger renders at bottom:-5px relative
-            to the button — coincides exactly with the header's bottom
-            border (otherwise it floats mid-header). */}
-        <div className="flex h-full items-end pb-[5px]">
+        {/* Design system's Tabs primitive (line variant). Bottom-aligned
+            so the trigger's underline (rendered at bottom:-5px) touches
+            the header's border-b instead of floating above it. */}
+        <div className="flex h-full items-end">
           <Tabs value={active} onValueChange={(v) => router.push(v)}>
             <TabsList variant="line">
               {TABS.map((tab) => (
