@@ -53,6 +53,7 @@ export function PrototypeFullscreen({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [commentsOn, setCommentsOn] = useState(false);
   const [view, setView] = useState<"prototype" | "flows">("prototype");
+  const [linkCopied, setLinkCopied] = useState(false);
   /* The iframe's current screen. Starts at the design's entry point;
      clicking a screen on the flow canvas retargets it. */
   const [iframeSrc, setIframeSrc] = useState(previewUrl);
@@ -85,6 +86,27 @@ export function PrototypeFullscreen({
 
   function exitFullscreen() {
     document.exitFullscreen?.().catch(() => {});
+  }
+
+  /** Copy the current gallery page URL so a teammate can open the same
+   *  prototype (with any deep link to a screen via the iframe hash). */
+  async function copyShareLink() {
+    const url = window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      // Fallback for browsers without clipboard API or insecure contexts.
+      const ta = document.createElement("textarea");
+      ta.value = url;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch { /* give up silently */ }
+      ta.remove();
+    }
+    setLinkCopied(true);
+    window.setTimeout(() => setLinkCopied(false), 1600);
   }
 
   async function takeScreenshot() {
@@ -237,6 +259,24 @@ export function PrototypeFullscreen({
               )}
             />
           )}
+
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={copyShareLink}
+            aria-live="polite"
+            leadingIcon={
+              <span
+                className="material-symbols-outlined"
+                style={{ fontSize: 14 }}
+                aria-hidden
+              >
+                {linkCopied ? "check" : "link"}
+              </span>
+            }
+          >
+            {linkCopied ? "Copied" : "Share link"}
+          </Button>
 
           {view === "prototype" && (
           <Button
