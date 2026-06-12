@@ -203,7 +203,6 @@ const SIDEBAR_GROUPS = [
   {
     label: 'Examples',
     items: [
-      { id: 'ex-overview', label: 'Talent Forge overview', icon: ExternalLink, href: '/gallery/other-example-screens/talent-forge-overview' },
       { id: 'ex-growth-hub', label: 'Employee growth hub', icon: ExternalLink, href: '/gallery/other-example-screens/employee-growth-hub' },
       { id: 'ex-teams-agent', label: 'Hiring pipeline agent', icon: ExternalLink, href: '/gallery/other-example-screens/teams-hm-agent' },
       { id: 'ex-perform-360', label: 'Perform 360', icon: ExternalLink, href: '/gallery/other-example-screens/perform-360' },
