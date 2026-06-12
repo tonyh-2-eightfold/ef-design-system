@@ -56,6 +56,9 @@ export function PrototypeFullscreen({
   const [view, setView] = useState<"prototype" | "flows">("prototype");
   const [linkCopied, setLinkCopied] = useState(false);
   const { resolvedTheme } = useTheme();
+  /* The iframe's current screen. Starts at the design's entry point;
+     clicking a screen on the flow canvas retargets it. */
+  const [iframeSrc, setIframeSrc] = useState(previewUrl);
 
   /** Push the gallery's resolved theme (light | dark) into the iframe so
    *  prototypes that opt in can flip their own surfaces to match. Posts
@@ -87,9 +90,6 @@ export function PrototypeFullscreen({
       window.removeEventListener("message", onMessage);
     };
   }, [resolvedTheme, iframeSrc]);
-  /* The iframe's current screen. Starts at the design's entry point;
-     clicking a screen on the flow canvas retargets it. */
-  const [iframeSrc, setIframeSrc] = useState(previewUrl);
 
   function openScreenFromFlow(href: string) {
     setIframeSrc(href);
